@@ -1,0 +1,43 @@
+{
+  "width": 729,
+  "height": 263,
+  "cx": [
+    [ "REGISTER", 68 ],
+    [ "HAVE", 181 ],
+    [ "ROLES", 283 ],
+    [ "CONNECT", 394 ],
+    [ "ORGANIZATIONS", 530 ],
+    [ "BELONG", 663 ],
+    [ "USERS", 181 ],
+    [ "BE", 283 ],
+    [ "LANGUAGES", 394 ],
+    [ "MAKE", 530 ],
+    [ "PROJECTS", 663 ]
+  ],
+  "cy": [
+    [ "REGISTER", 60 ],
+    [ "HAVE", 60 ],
+    [ "ROLES", 60 ],
+    [ "CONNECT", 60 ],
+    [ "ORGANIZATIONS", 60 ],
+    [ "BELONG", 60 ],
+    [ "USERS", 195 ],
+    [ "BE", 195 ],
+    [ "LANGUAGES", 195 ],
+    [ "MAKE", 195 ],
+    [ "PROJECTS", 195 ]
+  ],
+  "shift": [
+    [ "HAVE,USERS,0", 0 ],
+    [ "HAVE,REGISTER,0", 0 ],
+    [ "CONNECT,LANGUAGES,0", 0 ],
+    [ "CONNECT,ORGANIZATIONS,0", 0 ],
+    [ "BELONG,PROJECTS,0", 0 ],
+    [ "BELONG,ORGANIZATIONS,0", 0 ],
+    [ "BE,ROLES,0", 0 ],
+    [ "BE,USERS,0", 0 ],
+    [ "MAKE,LANGUAGES,0", 0 ],
+    [ "MAKE,PROJECTS,0", 0 ]
+  ],
+  "ratio": []
+}
