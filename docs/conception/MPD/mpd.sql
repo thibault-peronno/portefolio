@@ -37,7 +37,8 @@ CREATE TABLE `roles`(
 CREATE TABLE `projects` (
 `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `title` VARCHAR(100) NOT NULL,
-`description` VARCHAR(100) NOT NULL,
+`description` VARCHAR(255) NOT NULL,
+`url` VARCHAR(255) NOT NULL,
 `picture` VARCHAR(100) NOT NULL,
 `organization_id` INT  NOT NULL,
 FOREIGN KEY (`organization_id`)
