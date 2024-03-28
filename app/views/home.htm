@@ -1,22 +1,95 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="../../style/output.css" rel="stylesheet">
-        <meta title="Portefolio Thibault PERONNO">
-        <meta description="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent a progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif.">
-    </head>
-    <body>
-        <header class="text-primary">
-            test header
-        </header>
-        <main>
-            test main
-        </main>
-        <footer>
-            test footer
-        </footer>
-    </body>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../style/output.css" rel="stylesheet" />
+    <meta title="Portefolio Thibault PERONNO" />
+    <meta
+      description="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent a progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif."
+    />
+  </head>
+  <body>
+    <header>
+      <ul class="flex flex-col gap-2.5">
+        <li>Accueil</li>
+        <li>Projets</li>
+        <li>Technologies</li>
+        <li>CV</li>
+        <li>Administration</li>
+      </ul>
+    </header>
+    <main>
+      <section class="flex flex-col">
+        <img src="../../public/assets/images/face_co.jpg" alt="" class="w-52" />
+        <h1>Thibault PERONNO</h1>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+          blanditiis modi dolores reprehenderit tenetur repudiandae quaerat
+          officia ad! Earum minima cumque veritatis repudiandae eaque, doloribus
+          blanditiis dolor quibusdam autem hic.
+        </p>
+      </section>
+      <section>
+        <h2 class="bg-primary text-secondary uppercase font-bold p-1 mb-5">
+          Mes projets
+        </h2>
+        <div class="bg-primary border-2 border-secondary rounded p-2 max-w-64">
+          <h3 class="font-bold mb-2">Title</h3>
+          <p class="mb-2">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
+            ipsa ullam similique, consequuntur dicta sint quae numquam deleniti
+            dolorem harum repellendus ipsum et modi ad tempora? Est architecto
+            mollitia hic.
+          </p>
+          <div class="flex justify-around mb-2 text-secondary">
+            <p>Aller sur le site</p>
+            <p>En savoir plus</p>
+          </div>
+          <div class="flex justify-end gap-2">
+            <img
+              src="../../public/assets/images/icons/react_mono.png"
+              alt=""
+              class="w-5"
+            />
+            <img
+              src="../../public/assets/images/icons/javascript_mono.svg"
+              alt=""
+              class="w-5"
+            />
+            <img
+              src="../../public/assets/images/icons/docker_mono.svg"
+              alt=""
+              class="w-5"
+            />
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2 class="bg-primary text-secondary uppercase font-bold p-1 mb-5">
+          Mes technos
+        </h2>
+        <div
+          class="bg-primary border-2 border-secondary rounded w-64 h-64 flex flex-wrap justify-around gap-2"
+        >
+          <img
+            src="../../public/assets/images/icons/react_mono.png"
+            alt=""
+            class="w-20"
+          />
+          <img
+            src="../../public/assets/images/icons/javascript_mono.svg"
+            alt=""
+            class="w-20"
+          />
+          <img
+            src="../../public/assets/images/icons/docker_mono.svg"
+            alt=""
+            class="w-20"
+          />
+        </div>
+      </section>
+    </main>
+    <footer>test footer</footer>
+  </body>
 </html>
