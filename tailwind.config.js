@@ -26,6 +26,10 @@ module.exports = {
         black: '#000000',
         'btn-sec': '#293241',
       },
+      padding: {
+        'dpc': '10%',
+        'vpc': '20%',
+      }
     },
   },
   plugins: [],

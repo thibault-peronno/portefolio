@@ -23,3 +23,7 @@ Error Handling: Implement robust error handling to manage exceptions and errors 
 Security: Ensure that your application is secure by implementing best practices such as input validation, output escaping, and using prepared statements for database queries to prevent SQL injection attacks 3.
 Documentation: Document your codebase thoroughly. This includes inline comments in your code, as well as external documentation that explains the architecture and how to contribute to the project.
 By following these best practices, you can effectively organize your PHP project using an MVC architecture without relying on a framework. This approach gives you more control over your application's structure and behavior, allowing you to tailor it to your specific needs.
+
+
+To lunch tailwind
+npx tailwindcss -i ./style/input.css -o ./style/output.css --watch

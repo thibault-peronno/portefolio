@@ -10,9 +10,9 @@
     />
   </head>
 
-  <body class="px-2">
+  <body class="px-2 sm:px-vpc">
     <header>
-      <ul class="flex flex-col gap-2.5">
+      <ul class="flex flex-col gap-2.5 sm:flex-row sm:justify-end	 sm:my-5 sm:py-5">
         <li>Accueil</li>
         <li>Projets</li>
         <li>Technologies</li>
@@ -32,12 +32,12 @@
         </p>
       </section>
       <section>
-        <h2 class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-5">
+        <h2 class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-5 sm:w-[20%] sm:mt-12">
           Mes projets
         </h2>
         <!-- For scroll works, you need add flex and shrink=0. Shrink allow to keep the width like we ask. the class to use scroll with tailwind 
         is snap on parent and snap-position on child -->
-        <div class="snap-x flex overflow-x-auto gap-5">
+        <div class="snap-x flex overflow-x-auto gap-5 sm:snap-none sm:gap-10 sm:flex-wrap sm:justify-around">
           <div
             class="snap-start bg-primary border-2 border-secondary rounded p-2 w-64 shrink-0"
           >
@@ -141,10 +141,10 @@
         </button>
       </section>
       <section>
-        <h2 class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-5">
+        <h2 class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-5 sm:w-[20%] sm:mt-12">
           Mes technos
         </h2>
-        <div class="snap-x flex overflow-x-auto gap-5">
+        <div class="snap-x flex overflow-x-auto gap-5 sm:snap-none sm:gap-10 sm:flex-wrap sm:justify-between">
           <div
             class="bg-primary border-2 border-secondary rounded w-64 h-64 flex flex-wrap justify-around gap-2 snap-start shrink-0"
           >
