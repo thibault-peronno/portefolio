@@ -10,9 +10,11 @@
     />
   </head>
 
-  <body class="px-2 sm:px-vpc">
+  <body class="px-2 md:px-dpc xl:px-vpc">
     <header>
-      <ul class="flex flex-col gap-2.5 sm:flex-row sm:justify-end	 sm:my-5 sm:py-5">
+      <ul
+        class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5"
+      >
         <li>Accueil</li>
         <li>Projets</li>
         <li>Technologies</li>
@@ -21,26 +23,40 @@
       </ul>
     </header>
     <main>
-      <section class="flex flex-col">
-        <img src="../../public/assets/images/face_co.jpg" alt="" class="w-52" />
-        <h1 class="text-3xl text-secondary">Thibault PERONNO</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-          blanditiis modi dolores reprehenderit tenetur repudiandae quaerat
-          officia ad! Earum minima cumque veritatis repudiandae eaque, doloribus
-          blanditiis dolor quibusdam autem hic.
-        </p>
+      <section class="flex flex-col sm:flex-row">
+        <img src="../../public/assets/images/face_co.jpg" alt="" class="w-52 h-52 rounded-full sm:mr-2.5" />
+        <div class="flex flex-col">
+          <h1
+            class="text-3xl text-secondary mb-5 text-secondary uppercase font-bold sm:mt-12"
+          >
+            Thibault PERONNO
+          </h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
+            blanditiis modi dolores reprehenderit tenetur repudiandae quaerat
+            officia ad! Earum minima cumque veritatis repudiandae eaque, doloribus
+            blanditiis dolor quibusdam autem hic.
+          </p>
+        </div>
       </section>
       <section>
-        <h2 class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-5 sm:w-[20%] sm:mt-12">
+        <h2
+          class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-10 sm:w-6/12 sm:mt-12"
+        >
           Mes projets
         </h2>
         <!-- For scroll works, you need add flex and shrink=0. Shrink allow to keep the width like we ask. the class to use scroll with tailwind 
         is snap on parent and snap-position on child -->
-        <div class="snap-x flex overflow-x-auto gap-5 sm:snap-none sm:gap-10 sm:flex-wrap sm:justify-around">
-          <div
-            class="snap-start bg-primary border-2 border-secondary rounded p-2 w-64 shrink-0"
-          >
+        <div
+          class="snap-x flex overflow-x-auto gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap"
+        >
+          <div class="snap-start p-5 w-72 shrink-0 relative">
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"
+            ></span>
             <h3 class="font-bold mb-2">Title</h3>
             <p class="mb-2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
@@ -49,8 +65,16 @@
               architecto mollitia hic.
             </p>
             <div class="flex justify-around mb-2 text-secondary">
-              <p>Aller sur le site</p>
-              <p>En savoir plus</p>
+              <button
+                class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary"
+              >
+                Aller sur le site
+              </button>
+              <button
+                class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary"
+              >
+                En savoir plus
+              </button>
             </div>
             <div class="flex justify-end gap-2">
               <img
@@ -69,10 +93,20 @@
                 class="w-5"
               />
             </div>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"
+            ></span>
           </div>
-          <div
-            class=" snap-start bg-primary border-2 border-secondary rounded p-2 w-64 shrink-0"
-          >
+          <div class="snap-start p-5 w-72 shrink-0 relative">
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"
+            ></span>
             <h3 class="font-bold mb-2">Title</h3>
             <p class="mb-2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
@@ -81,8 +115,16 @@
               architecto mollitia hic.
             </p>
             <div class="flex justify-around mb-2 text-secondary">
-              <p>Aller sur le site</p>
-              <p>En savoir plus</p>
+              <button
+                class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary"
+              >
+                Aller sur le site
+              </button>
+              <button
+                class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary"
+              >
+                En savoir plus
+              </button>
             </div>
             <div class="flex justify-end gap-2">
               <img
@@ -101,10 +143,20 @@
                 class="w-5"
               />
             </div>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"
+            ></span>
           </div>
-          <div
-            class=" snap-start bg-primary border-2 border-secondary rounded p-2 w-64 shrink-0"
-          >
+          <div class="snap-start p-5 w-72 shrink-0 relative">
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"
+            ></span>
             <h3 class="font-bold mb-2">Title</h3>
             <p class="mb-2">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque
@@ -113,8 +165,8 @@
               architecto mollitia hic.
             </p>
             <div class="flex justify-around mb-2 text-secondary">
-              <p>Aller sur le site</p>
-              <p>En savoir plus</p>
+              <button class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary">Aller sur le site</button>
+              <button class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary">En savoir plus</button>
             </div>
             <div class="flex justify-end gap-2">
               <img
@@ -133,87 +185,143 @@
                 class="w-5"
               />
             </div>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"
+            ></span>
           </div>
         </div>
-        <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center	 mt-3 w-64">
+        <button
+          class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-64"
+        >
           <p class="text-white">Voir toutes les projets</p>
-          <img src="../../public/assets/images/icons/arrow-right-circle.svg" alt="">
+          <img
+            src="../../public/assets/images/icons/arrow-right-circle.svg"
+            alt=""
+          />
         </button>
       </section>
       <section>
-        <h2 class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-5 sm:w-[20%] sm:mt-12">
+        <h2
+          class="bg-primary text-secondary text-xl uppercase font-bold p-1 my-10 sm:w-6/12 sm:mt-12"
+        >
           Mes technos
         </h2>
-        <div class="snap-x flex overflow-x-auto gap-5 sm:snap-none sm:gap-10 sm:flex-wrap sm:justify-between">
+        <div
+          class="snap-x flex overflow-x-auto gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap"
+        >
           <div
-            class="bg-primary border-2 border-secondary rounded w-64 h-64 flex flex-wrap justify-around gap-2 snap-start shrink-0"
+            class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7"
           >
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"
+            ></span>
             <img
               src="../../public/assets/images/icons/react_mono.png"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
             <img
               src="../../public/assets/images/icons/javascript_mono.svg"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
             <img
               src="../../public/assets/images/icons/docker_mono.svg"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"
+            ></span>
           </div>
           <div
-            class="bg-primary border-2 border-secondary rounded w-64 h-64 flex flex-wrap justify-around gap-2 snap-start shrink-0"
+            class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7"
           >
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"
+            ></span>
             <img
               src="../../public/assets/images/icons/react_mono.png"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
             <img
               src="../../public/assets/images/icons/javascript_mono.svg"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
             <img
               src="../../public/assets/images/icons/docker_mono.svg"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"
+            ></span>
           </div>
           <div
-            class="bg-primary border-2 border-secondary rounded w-64 h-64 flex flex-wrap justify-around gap-2 snap-start shrink-0"
+            class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7"
           >
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"
+            ></span>
             <img
               src="../../public/assets/images/icons/react_mono.png"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
             <img
               src="../../public/assets/images/icons/javascript_mono.svg"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
             <img
               src="../../public/assets/images/icons/docker_mono.svg"
               alt=""
-              class="w-20"
+              class="w-20 h-20"
             />
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"
+            ></span>
+            <span
+              class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"
+            ></span>
           </div>
         </div>
-        <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center	 mt-3 w-64">
+        <button
+          class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-64"
+        >
           <p class="text-white">Voir toutes les technos</p>
-          <img src="../../public/assets/images/icons/arrow-right-circle.svg" alt="">
+          <img
+            src="../../public/assets/images/icons/arrow-right-circle.svg"
+            alt=""
+          />
         </button>
       </section>
     </main>
-    <footer class="border-secondary border-t-2 my-3 pt-1">
-      <p class="text-center	">Portefolio Thibault PERONNO</p>
+    <footer class="border-secondary border-t-2 my-10 pt-1">
+      <p class="text-center">Portefolio Thibault PERONNO</p>
       <div class="flex justify-center">
-        <img src="../../public/assets/images/icons/linkedin.svg" alt="">
-        <img src="../../public/assets/images/icons/github.svg" alt="">
+        <img src="../../public/assets/images/icons/linkedin.svg" alt="" />
+        <img src="../../public/assets/images/icons/github.svg" alt="" />
       </div>
     </footer>
   </body>
