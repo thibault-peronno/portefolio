@@ -745,12 +745,24 @@ video {
   margin-bottom: 0.5rem;
 }
 
+.mb-2\.5 {
+  margin-bottom: 0.625rem;
+}
+
 .mb-5 {
   margin-bottom: 1.25rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
+}
+
+.mt-2\.5 {
+  margin-top: 0.625rem;
 }
 
 .mt-3 {
@@ -759,18 +771,6 @@ video {
 
 .mt-5 {
   margin-top: 1.25rem;
-}
-
-.mt-2\.5 {
-  margin-top: 0.625rem;
-}
-
-.mb-2\.5 {
-  margin-bottom: 0.625rem;
-}
-
-.mt-10 {
-  margin-top: 2.5rem;
 }
 
 .box-border {
@@ -938,10 +938,6 @@ video {
 
 .w-full {
   width: 100%;
-}
-
-.min-w-full {
-  min-width: 100%;
 }
 
 .flex-shrink {
@@ -2728,6 +2724,10 @@ video {
 
   .sm\:w-\[30\%\] {
     width: 30%;
+  }
+
+  .sm\:w-80 {
+    width: 20rem;
   }
 
   .sm\:snap-none {
