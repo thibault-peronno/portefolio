@@ -761,6 +761,18 @@ video {
   margin-top: 1.25rem;
 }
 
+.mt-2\.5 {
+  margin-top: 0.625rem;
+}
+
+.mb-2\.5 {
+  margin-bottom: 0.625rem;
+}
+
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -880,12 +892,16 @@ video {
   height: 18rem;
 }
 
-.w-14 {
-  width: 3.5rem;
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-20 {
   width: 5rem;
+}
+
+.w-28 {
+  width: 7rem;
 }
 
 .w-5 {
@@ -924,8 +940,8 @@ video {
   width: 100%;
 }
 
-.w-28 {
-  width: 7rem;
+.min-w-full {
+  min-width: 100%;
 }
 
 .flex-shrink {
@@ -2092,14 +2108,14 @@ video {
   padding-right: 0.5rem;
 }
 
-.py-5 {
-  padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
 .px-2\.5 {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .pl-0 {
@@ -2110,12 +2126,12 @@ video {
   padding-left: 0.125rem;
 }
 
-.pt-1 {
-  padding-top: 0.25rem;
-}
-
 .pr-2 {
   padding-right: 0.5rem;
+}
+
+.pt-1 {
+  padding-top: 0.25rem;
 }
 
 .text-left {
@@ -2686,12 +2702,12 @@ video {
     margin-right: 0.625rem;
   }
 
-  .sm\:mt-12 {
-    margin-top: 3rem;
-  }
-
   .sm\:mt-0 {
     margin-top: 0px;
+  }
+
+  .sm\:mt-12 {
+    margin-top: 3rem;
   }
 
   .sm\:flex {
@@ -2740,11 +2756,6 @@ video {
 
   .sm\:gap-14 {
     gap: 3.5rem;
-  }
-
-  .sm\:px-vpc {
-    padding-left: 20%;
-    padding-right: 20%;
   }
 
   .sm\:py-5 {
