@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../style/output.css" rel="stylesheet" />
+    <meta title="Portefolio Thibault PERONNO" />
+    <meta
+      description="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent a progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif."
+    />
+  </head>
+
+  <body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen">
+    <header>
+      <!-- Our menu to diplay from tablet size -->
+      <ul
+        class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex"
+      >
+        <li>Accueil</li>
+        <li>Projets</li>
+        <li>Technologies</li>
+        <li>CV</li>
+        <li>Administration</li>
+      </ul>
+      <!-- Our menu to display for mobil size -->
+      <img
+        src="../../public/assets/images/icons/menu.svg"
+        alt=""
+        class="sm:hidden w-10 float-right mb-2.5"
+        id="mobil-menu"
+      />
+      <ul
+        class="flex flex-col gap-5 p-5 bg-primary text-xl font-bold text-secondary w-screen h-screen sm:hidden fixed top-0 left-[1000px] z-10 transition-left duration-500 ease-out"
+        id="menu"
+      >
+        <img
+          src="../../public/assets/images/icons/x.svg"
+          alt="close the menu"
+          class="w-12 self-end"
+          id="close-menu"
+        />
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/home.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <li>Accueil</li>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/cup.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <li>Projets</li>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/techs.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <li>Technologies</li>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/file-text.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <li>CV</li>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/sliders.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <li>Administration</li>
+        </span>
+      </ul>
+    </header>
+    <main class="grow">
+      <div class="flex flex-row justify-around gap-10 flex-wrap">
+        <div class="flex flex-col">
+          <p class="font-bold text-lg">Front-end</p>
+          <div class="flex flex-row gap-2.5">
+              <span><img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-7 h-7 m-auto" /><p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">React</p></span>
+              <span><img src="../../public/assets/images/icons/vuejs_mono.svg" alt="" class="w-7 h-7 m-auto" /><p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Vue.js</p></span>
+              <span><img src="../../public/assets/images/icons/flutter_mono.svg" alt="" class="w-7 h-7 m-auto" /><p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Flutter</p></span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <p class="font-bold text-lg">Back-end</p>
+          <div class="flex flex-row gap-2.5">
+              <span><img src="../../public/assets/images/icons/laravel_mono.png" alt="" class="w-7 h-7 m-auto" /><p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Laravel</p></span>
+              <span><img src="../../public/assets/images/icons/nodejs_mono.png" alt="" class="w-7 h-7 m-auto" /><p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Node.js</p></span>
+          </div>
+        </div>
+        <div class="flex flex-col">
+          <p class="font-bold text-lg">DevOps</p>
+          <div class="flex flex-row gap-2.5">
+              <span><img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-7 h-7 m-auto" /><p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Docker</p></span>
+              <span><img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-7 h-7 m-auto" /><p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Nginx</p></span>
+          </div>
+        </div>
+      </div>
+      Mon CV
+    </main>
+    <footer class="border-secondary border-t-2 mt-10 mb-2.5 pt-1">
+      <p class="text-center">Portefolio Thibault PERONNO</p>
+      <div class="flex justify-center">
+        <img src="../../public/assets/images/icons/linkedin.svg" alt="" />
+        <img src="../../public/assets/images/icons/github.svg" alt="" />
+      </div>
+    </footer>
+    <script src="../../public/javascript/app.js"></script>
+    <script src="../../public/javascript/menu.js"></script>
+  </body>
+</html>
