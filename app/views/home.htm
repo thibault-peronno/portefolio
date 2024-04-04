@@ -23,10 +23,11 @@
         <li>Administration</li>
       </ul>
       <!-- Our menu to display for mobil size -->
-      <img src="../../public/assets/images/icons/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5">
+      <img src="../../public/assets/images/icons/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5" id="mobil-menu">
       <ul
-        class="flex flex-col gap-5 p-5 bg-primary text-xl font-bold text-secondary w-screen h-screen sm:hidden"
+        class="flex flex-col gap-5 p-5 bg-primary text-xl font-bold text-secondary w-screen h-screen sm:hidden fixed top-0 left-[1000px] z-10" id="menu"
       >
+        <img src="../../public/assets/images/icons/x.svg" alt="close the menu" class="w-12 self-end" id="close-menu">
         <span class="flex flex-row">
           <img src="../../public/assets/images/icons/home.svg" alt="" class="mr-2.5">
           <li>Accueil</li>
@@ -351,5 +352,7 @@
         <img src="../../public/assets/images/icons/github.svg" alt="" />
       </div>
     </footer>
+    <script src="../../public/javascript/app.js"></script>
+    <script src="../../public/javascript/menu.js"></script>
   </body>
 </html>
