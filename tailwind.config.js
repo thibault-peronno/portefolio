@@ -45,12 +45,14 @@ module.exports = {
         }
       },
       animation: {
-        front: 'front 1s ease-out',
-        back: 'front 1s ease-out',
-        devops: 'front 1s ease-out',
+        front: 'front 5s ease-out 1s forwards',
+        back: 'front 5s ease-out 2s forwards',
+        devops: 'front 5s ease-out 3s forwards',
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animation-delay'),
+  ],
 }
 
