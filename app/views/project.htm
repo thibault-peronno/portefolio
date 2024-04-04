@@ -11,14 +11,42 @@
   </head>
   <body class="px-2 lg:px-dpc 2xl:px-vpc flex flex-col min-h-screen">
     <header>
+      <!-- Our menu to diplay from tablet size -->
       <ul
-        class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5"
+        class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex"
       >
         <li>Accueil</li>
         <li>Projets</li>
         <li>Technologies</li>
         <li>CV</li>
         <li>Administration</li>
+      </ul>
+      <!-- Our menu to display for mobil size -->
+      <img src="../../public/assets/images/icons/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5" id="mobil-menu">
+      <ul
+        class="flex flex-col gap-5 p-5 bg-primary text-xl font-bold text-secondary w-screen h-screen sm:hidden fixed top-0 left-[1000px] z-10 transition-left duration-500 ease-out" id="menu"
+      >
+        <img src="../../public/assets/images/icons/x.svg" alt="close the menu" class="w-12 self-end" id="close-menu">
+        <span class="flex flex-row">
+          <img src="../../public/assets/images/icons/home.svg" alt="" class="mr-2.5">
+          <li>Accueil</li>
+        </span>
+        <span class="flex flex-row">
+          <img src="../../public/assets/images/icons/cup.svg" alt="" class="mr-2.5">
+          <li>Projets</li>
+        </span>
+        <span class="flex flex-row">
+          <img src="../../public/assets/images/icons/techs.svg" alt="" class="mr-2.5">
+          <li>Technologies</li>
+        </span>
+        <span class="flex flex-row">
+          <img src="../../public/assets/images/icons/file-text.svg" alt="" class="mr-2.5">
+          <li>CV</li>
+        </span>
+        <span class="flex flex-row">
+          <img src="../../public/assets/images/icons/sliders.svg" alt="" class="mr-2.5">
+          <li>Administration</li>
+        </span>
       </ul>
     </header>
     <main class="grow">
@@ -80,5 +108,7 @@
         <img src="../../public/assets/images/icons/github.svg" alt="" />
       </div>
     </footer>
+    <script src="../../public/javascript/app.js"></script>
+    <script src="../../public/javascript/menu.js"></script>
   </body>
 </html>
