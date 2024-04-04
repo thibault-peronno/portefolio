@@ -29,6 +29,25 @@ module.exports = {
       padding: {
         'dpc': '10%',
         'vpc': '20%',
+      },
+      keyframes: {
+        front: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1},
+        },
+        back: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1},
+        },
+        devops: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1},
+        }
+      },
+      animation: {
+        front: 'front 1s ease-out',
+        back: 'front 1s ease-out',
+        devops: 'front 1s ease-out',
       }
     },
   },
