@@ -42,12 +42,37 @@ module.exports = {
         devops: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1},
+        },
+        borderTop: {
+          '0%': { top: '45%', left:'45%'},
+          '100%': {top: 0, left:0, width:'50%'}
+        },
+        borderLeft: {
+          '0%': { top: '45%', left:'45%'},
+          '100%': {top: 0, left:0, width:'50%'}
+        },
+        borderRight: {
+          '0%': { bottom: '45%', right:'45%'},
+          '100%': {bottom: 0, right:0, width:'50%'}
+        },
+        borderBottom: {
+          '0%': { bottom: '45%', right:'45%'},
+          '100%': {bottom: 0, right:0, width:'50%'}
+        },
+        projectsScale: {
+          '0%': { opacity: 0, transform: 'scale(0.2)'},
+          '100%': { opacity: 1, transform: 'scale(1)'}
         }
       },
       animation: {
         front: 'front 5s ease-out 1s forwards',
         back: 'front 5s ease-out 2s forwards',
         devops: 'front 5s ease-out 3s forwards',
+        borderTop: 'borderTop 2s ease-out 1s forwards',
+        borderLeft: 'borderLeft 2s ease-out 1s forwards',
+        borderRight: 'borderRight 2s ease-out 1s forwards',
+        borderBottom: 'borderBottom 2s ease-out 1s forwards',
+        projectsScale: 'projectsScale 2s ease-out 2s forwards'
       }
     },
   },
