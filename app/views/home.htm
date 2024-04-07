@@ -13,42 +13,42 @@
   <body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen">
     <header>
       <!-- Our menu to diplay from tablet size -->
-      <ul
+      <nav
         class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex"
       >
-        <li>Accueil</li>
-        <li>Projets</li>
-        <li>Technologies</li>
-        <li>CV</li>
-        <li>Administration</li>
-      </ul>
+        <a>Accueil</a>
+        <a>Projets</a>
+        <a>Technologies</a>
+        <a>CV</a>
+        <a>Administration</a>
+    </nav>
       <!-- Our menu to display for mobil size -->
       <img src="../../public/assets/images/icons/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5" id="mobil-menu">
-      <ul
+      <nav
         class="flex flex-col gap-5 p-5 bg-primary text-xl font-bold text-secondary w-screen h-screen sm:hidden fixed top-0 left-[1000px] z-10 transition-left duration-500 ease-out" id="menu"
       >
         <img src="../../public/assets/images/icons/x.svg" alt="close the menu" class="w-12 self-end" id="close-menu">
         <span class="flex flex-row">
           <img src="../../public/assets/images/icons/home.svg" alt="" class="mr-2.5">
-          <li><a href="home.htm">Accueil</a></li>
+        <a href="home.htm">Accueil</a>
         </span>
         <span class="flex flex-row">
           <img src="../../public/assets/images/icons/cup.svg" alt="" class="mr-2.5">
-          <li><a href="projects.htm">Projets</a></li>
+        <a href="projects.htm">Projets</a>
         </span>
         <span class="flex flex-row">
           <img src="../../public/assets/images/icons/techs.svg" alt="" class="mr-2.5">
-          <li><a href="#">Technologies</a></li>
+        <a href="#">Technologies</a>
         </span>
         <span class="flex flex-row">
           <img src="../../public/assets/images/icons/file-text.svg" alt="" class="mr-2.5">
-          <li><a href="cv.htm">CV</a></li>
+        <a href="cv.htm">CV</a>
         </span>
         <span class="flex flex-row">
           <img src="../../public/assets/images/icons/sliders.svg" alt="" class="mr-2.5">
-          <li><a href="connect.htm">Administration</a></li>
+        <a href="connect.htm">Administration</a>
         </span>
-      </ul>
+      </nav>
     </header>
     <main class="grow">
       <section class="flex flex-col sm:flex-row">
