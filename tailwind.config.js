@@ -32,6 +32,7 @@ module.exports = {
       },
       boxShadow: {
         'card': '2px 2px 4px rgba(216, 232, 243)',
+        'formConnect' : '2px 2px 5px 2px rgba(216, 232, 243)',
       },
       keyframes: {
         front: {
