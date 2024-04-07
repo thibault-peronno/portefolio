@@ -940,6 +940,10 @@ video {
   height: 18rem;
 }
 
+.h-9 {
+  height: 2.25rem;
+}
+
 .h-screen {
   height: 100vh;
 }
@@ -996,6 +1000,10 @@ video {
   width: 18rem;
 }
 
+.w-9 {
+  width: 2.25rem;
+}
+
 .w-9\/12 {
   width: 75%;
 }
@@ -1018,6 +1026,11 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-max {
+  width: -moz-max-content;
+  width: max-content;
 }
 
 .flex-shrink {
@@ -2443,11 +2456,6 @@ video {
   line-height: 1.75rem;
 }
 
-.text-2xl {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
 .font-bold {
   font-weight: 700;
 }
@@ -2733,6 +2741,12 @@ video {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.shadow-card {
+  --tw-shadow: 2px 2px 4px rgba(216, 232, 243);
+  --tw-shadow-colored: 2px 2px 4px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -2974,10 +2988,6 @@ video {
     display: none;
   }
 
-  .sm\:w-4\/12 {
-    width: 33.333333%;
-  }
-
   .sm\:w-6\/12 {
     width: 50%;
   }
@@ -3003,24 +3013,6 @@ video {
     width: max-content;
   }
 
-<<<<<<< HEAD
-  .sm\:w-\[50\%\] {
-    width: 50%;
-  }
-
-  .sm\:w-\[60\%\] {
-    width: 60%;
-  }
-
-=======
-<<<<<<< Updated upstream
-=======
-  .sm\:w-3\/12 {
-    width: 25%;
-  }
-
->>>>>>> Stashed changes
->>>>>>> connexion-page
   .sm\:snap-none {
     scroll-snap-type: none;
   }
@@ -3052,11 +3044,6 @@ video {
   .sm\:py-5 {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
-  }
-
-  .sm\:px-2 {
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
   }
 
   .sm\:underline {

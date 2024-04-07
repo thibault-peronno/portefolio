@@ -30,6 +30,9 @@ module.exports = {
         'dpc': '10%',
         'vpc': '20%',
       },
+      boxShadow: {
+        'card': '2px 2px 4px rgba(216, 232, 243)',
+      },
       keyframes: {
         front: {
           '0%': { opacity: 0 },
