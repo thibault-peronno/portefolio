@@ -777,8 +777,20 @@ video {
   margin-bottom: 0.625rem;
 }
 
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mb-5 {
   margin-bottom: 1.25rem;
+}
+
+.me-auto {
+  margin-inline-end: auto;
 }
 
 .mr-2 {
@@ -928,6 +940,10 @@ video {
   height: 5rem;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .h-28 {
   height: 7rem;
 }
@@ -948,21 +964,12 @@ video {
   height: 2.25rem;
 }
 
+.h-full {
+  height: 100%;
+}
+
 .h-screen {
   height: 100vh;
-}
-
-.h-10 {
-  height: 2.5rem;
-}
-
-.h-2 {
-  height: 0.5rem;
-}
-
-.h-max {
-  height: -moz-max-content;
-  height: max-content;
 }
 
 .min-h-screen {
@@ -1092,12 +1099,6 @@ video {
 
 .border-separate {
   border-collapse: separate;
-}
-
-.border-spacing-2 {
-  --tw-border-spacing-x: 0.5rem;
-  --tw-border-spacing-y: 0.5rem;
-  border-spacing: var(--tw-border-spacing-x) var(--tw-border-spacing-y);
 }
 
 .origin-left {
@@ -1271,6 +1272,10 @@ video {
 
 .animate-projectsScale {
   animation: projectsScale 2s ease-out 2s forwards;
+}
+
+.cursor-default {
+  cursor: default;
 }
 
 .cursor-pointer {
@@ -2251,6 +2256,10 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
+.bg-white\/\[0\.15\] {
+  background-color: rgb(255 255 255 / 0.15);
+}
+
 .decoration-slice {
   -webkit-box-decoration-break: slice;
           box-decoration-break: slice;
@@ -2365,6 +2374,10 @@ video {
   padding: 0.25rem;
 }
 
+.p-14 {
+  padding: 3.5rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -2393,14 +2406,6 @@ video {
 
 .py-5 {
   padding-top: 1.25rem;
-  padding-bottom: 1.25rem;
-}
-
-.pb-2 {
-  padding-bottom: 0.5rem;
-}
-
-.pb-5 {
   padding-bottom: 1.25rem;
 }
 
@@ -2577,9 +2582,19 @@ video {
   color: rgb(51 102 153 / .35);
 }
 
+.text-\[\#7f1d1d\] {
+  --tw-text-opacity: 1;
+  color: rgb(127 29 29 / var(--tw-text-opacity));
+}
+
 .text-btn-sec {
   --tw-text-opacity: 1;
   color: rgb(41 50 65 / var(--tw-text-opacity));
+}
+
+.text-primary {
+  --tw-text-opacity: 1;
+  color: rgb(216 232 243 / var(--tw-text-opacity));
 }
 
 .text-secondary {
@@ -3031,10 +3046,6 @@ video {
     margin-top: 3rem;
   }
 
-  .sm\:block {
-    display: block;
-  }
-
   .sm\:flex {
     display: flex;
   }
@@ -3084,6 +3095,10 @@ video {
     flex-wrap: wrap;
   }
 
+  .sm\:flex-nowrap {
+    flex-wrap: nowrap;
+  }
+
   .sm\:justify-end {
     justify-content: flex-end;
   }
@@ -3098,6 +3113,14 @@ video {
 
   .sm\:gap-14 {
     gap: 3.5rem;
+  }
+
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .sm\:p-14 {
+    padding: 3.5rem;
   }
 
   .sm\:py-5 {

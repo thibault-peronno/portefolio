@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../style/output.css" rel="stylesheet" />
+    <meta title="Portefolio Thibault PERONNO" />
+    <meta
+      description="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent a progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif."
+    />
+  </head>
+
+  <body
+    class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen bg-secondary"
+  >
+    <header>
+      <!-- Our menu to diplay from tablet size -->
+      <nav
+        class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex text-white"
+      >
+        <a href="home.htm">Accueil</a>
+        <a href="projects.htm">Projets</a>
+        <a href="technos.htm">Technologies</a>
+        <a href="cv.htm">CV</a>
+        <a href="connect.htm">Administration</a>
+      </nav>
+      <!-- Our menu to display for mobil size -->
+      <img
+        src="../../public/assets/images/icons/menu.svg"
+        alt=""
+        class="sm:hidden w-10 float-right mb-2.5"
+        id="mobil-menu"
+      />
+      <nav
+        class="flex flex-col gap-5 p-5 bg-primary text-xl font-bold text-secondary w-screen h-screen sm:hidden fixed top-0 left-[1000px] z-10 transition-left duration-500 ease-out"
+        id="menu"
+      >
+        <img
+          src="../../public/assets/images/icons/x.svg"
+          alt="close the menu"
+          class="w-12 self-end"
+          id="close-menu"
+        />
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/home.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <a href="home.htm">Accueil</a>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/cup.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <a href="projects.htm">Projets</a>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/techs.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <a href="#">Technologies</a>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/file-text.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <a href="cv.htm">CV</a>
+        </span>
+        <span class="flex flex-row">
+          <img
+            src="../../public/assets/images/icons/sliders.svg"
+            alt=""
+            class="mr-2.5"
+          />
+          <a href="connect.htm">Administration</a>
+        </span>
+      </nav>
+    </header>
+    <main class="grow">
+      <h1
+        class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12"
+      >
+        Ajouter un projet
+      </h1>
+      <section class="rounded p-2 bg-white/[0.15] sm:p-14">
+        <form action="" id="project-form" method="post">
+          <div class="mb-5">
+            <label for="name" class="text-primary"
+              >Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg"
+                >*</span
+              ></label
+            >
+            <input
+              type="text"
+              name="name"
+              id="name"
+              class="rounded bg-white h-12 w-full p-2"
+            />
+          </div>
+          <div class="mb-5">
+            <label for="description" class="text-primary"
+              >Description<span
+                class="text-red-900 text-[#7f1d1d] font-bold text-lg"
+                >*</span
+              ></label
+            >
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="10"
+              class="rounded bg-white h-24 w-full p-2"
+            ></textarea>
+          </div>
+          <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
+            <div class="mb-5 sm:w-6/12">
+              <label for="link" class="text-primary">URL</label>
+              <input
+                type="text"
+                name="link"
+                id="link"
+                class="rounded bg-white h-12 w-full p-2"
+              />
+            </div>
+            <div class="mb-5 sm:w-6/12">
+              <label for="image" class="text-primary"
+                >Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg"
+                  >*</span
+                ></label
+              >
+              <input
+                type="file"
+                name="image"
+                id="image"
+                accept="image/png, image/jpeg"
+                class="rounded bg-white h-12 w-full p-2"
+              />
+            </div>
+          </span>
+          <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
+            <div class="mb-5 sm:w-6/12">
+              <label for="tech" class="text-primary"
+                >Technologies<span
+                  class="text-red-900 text-[#7f1d1d] font-bold text-lg"
+                  >*</span
+                ></label
+              >
+              <div class="block rounded bg-white h-12 w-full p-2 relative">
+                <div id="selectTechnos" class="h-full">
+                  <div
+                    class="block bg-white h-full h-12 w-full flex flex-row items-center justify-between"
+                  >
+                    <p>Choisi les technos</p>
+                    <p class="cursor-default">+</p>
+                  </div>
+                  <div class="hidden"></div>
+                </div>
+                <div
+                  id="checkTechnos"
+                  class="hidden absolute flex flex-col gap-2 bg-white left-0 p-2 w-full rounded h-28 overflow-y-auto"
+                >
+                  <span>
+                    <input type="checkbox" id="one" />
+                    <label for="one">React</label>
+                  </span>
+                  <span>
+                    <input type="checkbox" id="two" />
+                    <label for="two"> Laravel</label>
+                  </span>
+                  <span>
+                    <input type="checkbox" id="three" />
+                    <label for="three"> Tailwind</label>
+                  </span>
+                  <span>
+                    <input type="checkbox" id="three" />
+                    <label for="three">Node.js</label>
+                  </span>
+                  <span>
+                    <input type="checkbox" id="three" />
+                    <label for="three">HTML</label>
+                  </span>
+                  <span>
+                    <input type="checkbox" id="three" />
+                    <label for="three">Nginx</label>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="mb-5 sm:w-6/12">
+              <label for="tech" class="text-primary"
+                >Organisation<span
+                  class="text-red-900 text-[#7f1d1d] font-bold text-lg"
+                  >*</span
+                ></label
+              >
+              <select
+                name="tech"
+                id="tech"
+                class="block rounded bg-white h-12 w-full p-2"
+              >
+                <option value="">Choisi les technos</option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="hamster">Hamster</option>
+                <option value="parrot">Parrot</option>
+                <option value="spider">Spider</option>
+                <option value="goldfish">Goldfish</option>
+              </select>
+            </div>
+          </span>
+        </form>
+      </section>
+      <button
+        class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64"
+        type="submit"
+        form="project-form"
+      >
+        <img src="../../public/assets/images/icons/add.svg" alt="" />
+        <p class="text-white">Ajouter</p>
+      </button>
+    </main>
+    <footer class="border-white border-t-2 mt-10 mb-2.5 pt-1">
+      <p class="text-center text-white">Portefolio Thibault PERONNO</p>
+      <div class="flex justify-center">
+        <img src="../../public/assets/images/icons/linkedin.svg" alt="" />
+        <img src="../../public/assets/images/icons/github.svg" alt="" />
+      </div>
+    </footer>
+    <script src="../../public/javascript/app.js"></script>
+    <script src="../../public/javascript/menu.js"></script>
+    <script src="../../public/javascript/form.js"></script>
+  </body>
+</html>
