@@ -3,6 +3,7 @@ const app = {
     init: function() {
         console.log('DOM loaded');
         menu.init();
+        form.init();
     }
 }
 
