@@ -1,6 +1,9 @@
 <?php
 
 // We ask to required a fil in vendro folder to use our routing
+
+use App\Controllers\CoreController;
+
 require __DIR__.'/../vendor/autoload.php';
 
 $router = new AltoRouter();
@@ -71,11 +74,17 @@ if($match !== false)
     $params = $match['params'];
 
     // We create our object controller
-    $controller = new $controllerMatch;
-    dump($controller);
+    // $controller = new $controllerMatch;
+    // dump($controller);
     // And we call the method 
-    $controller->$method($params);
+    // $controller->$method($params);
+    // Instance of CoreController
+    
+    $controller = new $controllerMatch($router);
+    // dump($controller);
+    $controller->$method($match['params']);
 
 } else {
     echo "Erreur 404, la page n'existe pas, contacte moi";
 }
+

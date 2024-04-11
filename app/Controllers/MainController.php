@@ -2,11 +2,11 @@
 
 namespace App\Controllers;
 
-class MainController {
+class MainController extends CoreController {
 
     public function home()
     {
-        echo 'methode home dans MainController';
-        // $this->show('home');
+        // echo 'methode home dans MainController';
+        $this->show('home');
     }
 };

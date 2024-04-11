@@ -1,6 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.{html,js,php,htm}"],
+  content: 
+  [
+    "./**/*.{html,js,php,htm}",
+    "./app/Views/inc/*.{html,js,tpl.php,php,htm}"
+            
+  ],
   theme: {
     colors: {
       transparent: 'transparent',
