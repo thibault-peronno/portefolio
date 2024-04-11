@@ -9,4 +9,9 @@ class MainController extends CoreController {
         // echo 'methode home dans MainController';
         $this->show('home');
     }
+
+    public function cv()
+    {
+        $this->show('cv');
+    }
 };

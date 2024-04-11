@@ -23,6 +23,24 @@ $router->map(
     // 'MainController#home',
     'home', // named route
 );
+$router->map(
+  'GET',
+  '/cv',
+  [
+      'controller'=>'MainController',
+      'method' => 'cv',
+  ],
+  'cv',
+);
+$router->map(
+  'GET',
+  '/projets',
+  [
+      'controller'=>'MainController',
+      'method' => 'cv',
+  ],
+  'projets',
+);
 
 // dump($router);
 /* the dump on method GET on / url
