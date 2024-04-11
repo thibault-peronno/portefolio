@@ -960,6 +960,10 @@ video {
   height: 100vh;
 }
 
+.h-10 {
+  height: 2.5rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -3042,6 +3046,10 @@ video {
     display: none;
   }
 
+  .sm\:w-32 {
+    width: 8rem;
+  }
+
   .sm\:w-6\/12 {
     width: 50%;
   }
@@ -3087,16 +3095,8 @@ video {
     justify-content: flex-end;
   }
 
-  .sm\:justify-center {
-    justify-content: center;
-  }
-
   .sm\:justify-between {
     justify-content: space-between;
-  }
-
-  .sm\:justify-evenly {
-    justify-content: space-evenly;
   }
 
   .sm\:gap-10 {
