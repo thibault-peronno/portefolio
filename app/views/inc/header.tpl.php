@@ -22,7 +22,7 @@ dump($currentPage);
             <a href="projets" class="<?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
             <a href="technos" class="<?php echo $currentPage == 'technologie' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
             <a href="cv" class="<?php echo $currentPage == 'cv' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">CV</a>
-            <a href="connect" class="<?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
+            <a href="connexion" class="<?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
         </nav>
         <!-- Our menu to display for mobil size -->
         <img src="/assets/images/nav/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5" id="mobil-menu">

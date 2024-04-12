@@ -51,6 +51,16 @@ $router->map(
   'projet',
 );
 
+$router->map(
+  'GET',
+  '/connexion',
+  [
+      'controller'=>'ConnectController',
+      'method' => 'page',
+  ],
+  'connexion',
+);
+
 // dump($router);
 /* the dump on method GET on / url
  ^ AltoRouter {#3 ▼
