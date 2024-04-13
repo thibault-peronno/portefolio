@@ -8,7 +8,7 @@
   </head>
 
   <body
-    class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen bg-secondary"
+    class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen bg-secondary text-lg"
   >
     <header>
       <!-- Our menu to diplay from tablet size -->

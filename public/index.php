@@ -100,6 +100,16 @@ $router->map(
   'bo-technos',
 );
 
+$router->map(
+  'GET',
+  '/bo-organisation',
+  [
+      'controller'=>'OrgaController',
+      'method' => 'organization',
+  ],
+  'bo-organisation',
+);
+
 // dump($router);
 /* the dump on method GET on / url
  ^ AltoRouter {#3 ▼
