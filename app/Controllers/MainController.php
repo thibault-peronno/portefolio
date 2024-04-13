@@ -14,4 +14,9 @@ class MainController extends CoreController {
     {
         $this->show('cv');
     }
+
+    public function boHome()
+    {
+        $this->boShow('bo-home');
+    }
 };

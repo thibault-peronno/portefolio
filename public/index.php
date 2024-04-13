@@ -71,6 +71,26 @@ $router->map(
   'technologies',
 );
 
+$router->map(
+  'GET',
+  '/bo-accueil',
+  [
+      'controller'=>'MainController',
+      'method' => 'boHome',
+  ],
+  'bo-accueil',
+);
+
+$router->map(
+  'GET',
+  '/bo-projets',
+  [
+      'controller'=>'MainController',
+      'method' => 'boHome',
+  ],
+  'bo-projets',
+);
+
 // dump($router);
 /* the dump on method GET on / url
  ^ AltoRouter {#3 ▼
@@ -98,7 +118,7 @@ $router->map(
 
 
 $match = $router->match();
-// dump($match);
+dump($match);
 /* the dump on method GET on / url
  array:3 [▼
  "target" => array:2 [▼
@@ -128,7 +148,7 @@ if($match !== false)
     // Instance of CoreController
     
     $controller = new $controllerMatch($router);
-    // dump($controller);
+    dump($controller);
     $controller->$method($match['params']);
 
 } else {

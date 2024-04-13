@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+  <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="../../style/output.css" rel="stylesheet" />
-    <meta title="Portefolio Thibault PERONNO" />
-    <meta
-      description="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent a progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif."
-    />
+    <link href="assets/style/output.css" rel="stylesheet" />
+    <title>"Portefolio Thibault PERONNO"</title>
   </head>
 
   <body
