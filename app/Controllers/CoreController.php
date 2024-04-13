@@ -33,12 +33,15 @@ class CoreController {
         // dump($getNeededData);
         // include : ask to include, but does not allow a fatal error
         // require : the content is required, ans if does not exist, there is a fatal error.
-        
+        /**
+         * We added try catch to manage the fatal error
+         */
         try {
             require_once __DIR__ . '/../views/inc/header.tpl.php';
             require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';
             require_once __DIR__ . '/../views/inc/footer.tpl.php';
         } catch (\Throwable $th) {
+            // we should to create a special page html
             header('location: /html/error.htm');
             die;
         }
