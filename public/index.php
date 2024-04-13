@@ -97,15 +97,6 @@ $router->addRoutes(
     ],
     [
       'GET',
-      '/bo-ajouter-technologie',
-      [
-        'controller' => 'TechnoController',
-        'method' => 'addTechnoPage',
-      ],
-      'bo-ajouter-technologie',
-    ],
-    [
-      'GET',
       '/bo-technos',
       [
         'controller' => 'TechnoController',

@@ -1,3 +1,10 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+dump($currentPage);
+
+?>
+
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,11 +22,11 @@
       <nav
         class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex text-white"
       >
-        <a href="BO-home.htm">Dashboard</a>
-        <a href="BO-projects.htm">Projets</a>
-        <a href="BO-technos.htm">Technologies</a>
-        <a href="BO-orga.htm">Organisations</a>
-        <a href="home.htm">Portefolio</a>
+        <a href="bo-accueil" class="<?php echo $currentPage == 'bo-accueil' ? 'underline underline-offset-8' : ''; ?>">Dashboard</a>
+        <a href="bo-projets" class="<?php echo $currentPage == 'bo-projets' ? 'underline underline-offset-8' : ''; ?>">Projets</a>
+        <a href="bo-technos" class="<?php echo $currentPage == 'bo-technos' ? 'underline underline-offset-8' : ''; ?>">Technologies</a>
+        <a href="bo-organisation" class="<?php echo $currentPage == 'bo-organisation' ? 'underline underline-offset-8' : ''; ?>">Organisations</a>
+        <a href="/" class="<?php echo $currentPage == 'index.php' ? 'underline underline-offset-8' : ''; ?>">Portefolio</a>
       </nav>
       <!-- Our menu to display for mobil size -->
       <img
