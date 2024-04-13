@@ -3,17 +3,17 @@
         <div class="flex flex-col animate-front opacity-0">
             <p class="font-bold text-lg">Front-end</p>
             <div class="flex flex-row gap-2.5">
-                <span><img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-7 h-7 m-auto" />
+                <span><img src="/assets/images/icons/react_mono.png" alt="" class="w-7 h-7 m-auto" />
                     <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">
                         React
                     </p>
                 </span>
-                <span><img src="../../public/assets/images/icons/vuejs_mono.svg" alt="" class="w-7 h-7 m-auto" />
+                <span><img src="/assets/images/icons/vuejs_mono.svg" alt="" class="w-7 h-7 m-auto" />
                     <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">
                         Vue.js
                     </p>
                 </span>
-                <span><img src="../../public/assets/images/icons/flutter_mono.svg" alt="" class="w-7 h-7 m-auto" />
+                <span><img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-7 h-7 m-auto" />
                     <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">
                         Flutter
                     </p>
@@ -23,12 +23,12 @@
         <div class="flex flex-col animate-back opacity-0">
             <p class="font-bold text-lg">Back-end</p>
             <div class="flex flex-row gap-2.5">
-                <span><img src="../../public/assets/images/icons/laravel_mono.png" alt="" class="w-7 h-7 m-auto" />
+                <span><img src="/assets/images/icons/laravel_mono.png" alt="" class="w-7 h-7 m-auto" />
                     <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">
                         Laravel
                     </p>
                 </span>
-                <span><img src="../../public/assets/images/icons/nodejs_mono.png" alt="" class="w-7 h-7 m-auto" />
+                <span><img src="/assets/images/icons/nodejs_mono.png" alt="" class="w-7 h-7 m-auto" />
                     <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">
                         Node.js
                     </p>
@@ -38,12 +38,12 @@
         <div class="flex flex-col animate-devops opacity-0">
             <p class="font-bold text-lg">DevOps</p>
             <div class="flex flex-row gap-2.5">
-                <span><img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-7 h-7 m-auto" />
+                <span><img src="/assets/images/icons/docker_mono.svg" alt="" class="w-7 h-7 m-auto" />
                     <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">
                         Docker
                     </p>
                 </span>
-                <span><img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-7 h-7 m-auto" />
+                <span><img src="/assets/images/icons/docker_mono.svg" alt="" class="w-7 h-7 m-auto" />
                     <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">
                         Nginx
                     </p>
@@ -56,7 +56,7 @@
             <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[30%]">
                 Mon parcours
             </h1>
-            <img src="../../public/assets/images/icons/linkedin.svg" alt="Link to linkedin profil" class="w-14 cursor-pointer" />
+            <img src="/assets/images/icons/linkedin.svg" alt="Link to linkedin profil" class="w-14 cursor-pointer" />
         </div>
         <p class="my-5">
             Issue d'un parcours bac+5 en management du marketing et communication
