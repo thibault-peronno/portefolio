@@ -4,7 +4,7 @@
 
 use App\Controllers\CoreController;
 
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 $router = new AltoRouter();
 // You can use setBatchPath method, to set the path. If your project needed. Here,we can not use it. I leave it for example.
@@ -12,196 +12,139 @@ $router->setBasePath('');
 
 // echo 'test';
 
-$router->map(
-    'GET', // HTTP method
-    '/', // url of the route, for routing
-    // An array with our controller and method to use
+$router->addRoutes(
+  [
     [
-        'controller'=>'MainController',
+      'GET',
+      '/',
+      [
+        'controller' => 'MainController',
         'method' => 'home',
+      ],
+      'home',
     ],
-    // 'MainController#home',
-    'home', // named route
+    [
+      'GET',
+      '/cv',
+      [
+        'controller' => 'MainController',
+        'method' => 'cv',
+      ],
+      'cv',
+    ],
+    [
+      'GET',
+      '/bo-accueil',
+      [
+        'controller' => 'MainController',
+        'method' => 'boHome',
+      ],
+      'bo-accueil',
+    ],
+    [
+      'GET',
+      '/projets',
+      [
+        'controller' => 'ProjectController',
+        'method' => 'projects',
+      ],
+      'projets',
+    ],
+    [
+      'GET',
+      '/projet',
+      [
+        'controller' => 'ProjectController',
+        'method' => 'project',
+      ],
+      'projet',
+    ],
+    [
+      'GET',
+      '/bo-projets',
+      [
+        'controller' => 'ProjectController',
+        'method' => 'boProjects',
+      ],
+      'bo-projets',
+    ],
+    [
+      'GET',
+      '/bo-ajouter-projet',
+      [
+        'controller' => 'ProjectController',
+        'method' => 'addProjectPage',
+      ],
+      'bo-ajouter-projet',
+    ],
+    [
+      'GET',
+      '/connexion',
+      [
+        'controller' => 'ConnectController',
+        'method' => 'page',
+      ],
+      'connexion',
+    ],
+    [
+      'GET',
+      '/bo-ajouter-technologie',
+      [
+        'controller' => 'TechnoController',
+        'method' => 'addTechnoPage',
+      ],
+      'bo-ajouter-technologie',
+    ],
+    [
+      'GET',
+      '/bo-ajouter-technologie',
+      [
+        'controller' => 'TechnoController',
+        'method' => 'addTechnoPage',
+      ],
+      'bo-ajouter-technologie',
+    ],
+    [
+      'GET',
+      '/bo-technos',
+      [
+        'controller' => 'TechnoController',
+        'method' => 'botechnos',
+      ],
+      'bo-technos',
+    ],
+    [
+      'GET',
+      '/bo-organisation',
+      [
+        'controller' => 'OrgaController',
+        'method' => 'organization',
+      ],
+      'bo-organisation',
+    ],
+    [
+      'GET',
+      '/bo-ajouter-organisation',
+      [
+        'controller' => 'OrgaController',
+        'method' => 'addOrgaPage',
+      ],
+      'bo-ajouter-organisation',
+    ],
+  ]
 );
-$router->map(
-  'GET',
-  '/cv',
-  [
-      'controller'=>'MainController',
-      'method' => 'cv',
-  ],
-  'cv',
-);
-$router->map(
-  'GET',
-  '/projets',
-  [
-      'controller'=>'ProjectController',
-      'method' => 'projects',
-  ],
-  'projets',
-);
-$router->map(
-  'GET',
-  '/projet',
-  [
-      'controller'=>'ProjectController',
-      'method' => 'project',
-  ],
-  'projet',
-);
-
-$router->map(
-  'GET',
-  '/connexion',
-  [
-      'controller'=>'ConnectController',
-      'method' => 'page',
-  ],
-  'connexion',
-);
-
-$router->map(
-  'GET',
-  '/technologies',
-  [
-      'controller'=>'TechnoController',
-      'method' => 'technologies',
-  ],
-  'technologies',
-);
-
-$router->map(
-  'GET',
-  '/bo-ajouter-technologie',
-  [
-      'controller'=>'TechnoController',
-      'method' => 'addTechnoPage',
-  ],
-  'bo-ajouter-technologie',
-);
-
-$router->map(
-  'GET',
-  '/bo-accueil',
-  [
-      'controller'=>'MainController',
-      'method' => 'boHome',
-  ],
-  'bo-accueil',
-);
-
-$router->map(
-  'GET',
-  '/bo-projets',
-  [
-      'controller'=>'ProjectController',
-      'method' => 'boProjects',
-  ],
-  'bo-projets',
-);
-
-$router->map(
-  'GET',
-  '/bo-ajouter-projet',
-  [
-      'controller'=>'ProjectController',
-      'method' => 'addProjectPage',
-  ],
-  'bo-ajouter-projet',
-);
-
-$router->map(
-  'GET',
-  '/bo-technos',
-  [
-      'controller'=>'TechnoController',
-      'method' => 'botechnos',
-  ],
-  'bo-technos',
-);
-
-$router->map(
-  'GET',
-  '/bo-organisation',
-  [
-      'controller'=>'OrgaController',
-      'method' => 'organization',
-  ],
-  'bo-organisation',
-);
-
-$router->map(
-  'GET',
-  '/bo-ajouter-organisation',
-  [
-      'controller'=>'OrgaController',
-      'method' => 'addOrgaPage',
-  ],
-  'bo-ajouter-organisation',
-);
-
-// dump($router);
-/* the dump on method GET on / url
- ^ AltoRouter {#3 ▼
-     #routes: array:1 [▼
-       0 => array:4 [▼
-         0 => "GET"
-         1 => "/"
-         2 => array:2 [▶]
-         3 => "home"
-       ]
-     ]
-     #namedRoutes: array:1 [▼
-       "home" => "/"
-     ]
-     #basePath: ""
-     #matchTypes: array:6 [▼
-       "i" => "[0-9]++"
-       "a" => "[0-9A-Za-z]++"
-       "h" => "[0-9A-Fa-f]++"
-       "*" => ".+?"
-       "**" => ".++"
-       "" => "[^/\.]++"
-     ]
-   } */
-
 
 $match = $router->match();
 dump($match);
-/* the dump on method GET on / url
- array:3 [▼
- "target" => array:2 [▼
-   "controller" => "MainController"
-   "method" => "home"
- ]
- "params" => []
- "name" => "home"
- ] */
 
+if ($match !== false) {
 
-
-if($match !== false)
-{
-    // We retreive the controller that matched, from the $match array
-    $controllerMatch = 'App\Controllers\\' . $match['target']['controller'];
-    // We retrieve the methode that matched, from the $match array
-    $method = $match['target']['method'];
-    // We retreive the params that matched, from the $match array
-    $params = $match['params'];
-
-    // We create our object controller
-    // $controller = new $controllerMatch;
-    // dump($controller);
-    // And we call the method 
-    // $controller->$method($params);
-    // Instance of CoreController
-    
-    $controller = new $controllerMatch($router);
-    dump($controller);
-    $controller->$method($match['params']);
-
+  $controllerMatch = 'App\Controllers\\' . $match['target']['controller'];
+  $method = $match['target']['method'];
+  $params = $match['params'];
+  $controller = new $controllerMatch($router);
+  dump($controller);
+  $controller->$method($match['params']);
 } else {
-    echo "Erreur 404, la page n'existe pas, contacte moi";
+  echo "Erreur 404, la page n'existe pas, contacte moi";
 }
-
