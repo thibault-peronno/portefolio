@@ -13,4 +13,9 @@ class TechnoController extends CoreController
     {
         $this->boShow('bo-technos');
     }
+
+    public function addTechnoPage():void
+    {
+        $this->boShow('bo-add-techno');
+    }
 }

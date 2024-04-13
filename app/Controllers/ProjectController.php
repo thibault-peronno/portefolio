@@ -19,7 +19,7 @@ class ProjectController extends CoreController {
         $this->boShow('bo-projects');
     }
 
-    public function boAddProjects():void
+    public function addProjectPage():void
     {
         $this->boShow('bo-add-project');
     }

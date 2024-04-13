@@ -73,6 +73,16 @@ $router->map(
 
 $router->map(
   'GET',
+  '/bo-ajouter-technologie',
+  [
+      'controller'=>'TechnoController',
+      'method' => 'addTechnoPage',
+  ],
+  'bo-ajouter-technologie',
+);
+
+$router->map(
+  'GET',
   '/bo-accueil',
   [
       'controller'=>'MainController',
@@ -96,7 +106,7 @@ $router->map(
   '/bo-ajouter-projet',
   [
       'controller'=>'ProjectController',
-      'method' => 'boAddProjects',
+      'method' => 'addProjectPage',
   ],
   'bo-ajouter-projet',
 );
