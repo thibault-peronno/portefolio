@@ -36,10 +36,39 @@ $router->map(
   'GET',
   '/projets',
   [
-      'controller'=>'MainController',
-      'method' => 'cv',
+      'controller'=>'ProjectController',
+      'method' => 'projects',
   ],
   'projets',
+);
+$router->map(
+  'GET',
+  '/projet',
+  [
+      'controller'=>'ProjectController',
+      'method' => 'project',
+  ],
+  'projet',
+);
+
+$router->map(
+  'GET',
+  '/connexion',
+  [
+      'controller'=>'ConnectController',
+      'method' => 'page',
+  ],
+  'connexion',
+);
+
+$router->map(
+  'GET',
+  '/technologies',
+  [
+      'controller'=>'TechnoController',
+      'method' => 'technologies',
+  ],
+  'technologies',
 );
 
 // dump($router);
