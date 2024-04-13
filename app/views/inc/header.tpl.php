@@ -1,6 +1,6 @@
 <?php
 $currentPage = basename($_SERVER['PHP_SELF']);
-dump($currentPage);
+// dump($currentPage);
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@ dump($currentPage);
     <title>"Portefolio Thibault PERONNO"</title>
     <meta name="description" content="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent à progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif.">
 </head>
-// header('location:/connexion')
+<!-- header('location:/connexion') -->
 <body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen">
     <header>
         <!-- Our menu to diplay from tablet size -->
