@@ -110,6 +110,16 @@ $router->map(
   'bo-organisation',
 );
 
+$router->map(
+  'GET',
+  '/bo-ajouter-organisation',
+  [
+      'controller'=>'OrgaController',
+      'method' => 'addOrgaPage',
+  ],
+  'bo-ajouter-organisation',
+);
+
 // dump($router);
 /* the dump on method GET on / url
  ^ AltoRouter {#3 ▼

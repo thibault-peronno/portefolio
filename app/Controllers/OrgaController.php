@@ -7,4 +7,9 @@ class OrgaController extends CoreController
     {
         $this->boShow('bo-orga');
     }
+
+    public function addOrgaPage():void
+    {
+        $this->boShow('bo-add-orga');
+    }
 }
