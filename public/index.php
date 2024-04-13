@@ -61,6 +61,16 @@ $router->map(
   'connexion',
 );
 
+$router->map(
+  'GET',
+  '/technologies',
+  [
+      'controller'=>'TechnoController',
+      'method' => 'technologies',
+  ],
+  'technologies',
+);
+
 // dump($router);
 /* the dump on method GET on / url
  ^ AltoRouter {#3 ▼

@@ -31,7 +31,8 @@ class CoreController {
         $getNeededData = $this->getNeededDatas();
 
         // dump($getNeededData);
-
+        // include : ask to include, but does not allow a fatal error
+        // require : the content is required, ans if does not exist, there is a fatal error.
         require_once __DIR__ . '/../views/inc/header.tpl.php';
         require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';
         require_once __DIR__ . '/../views/inc/footer.tpl.php';
