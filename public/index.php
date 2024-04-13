@@ -85,8 +85,8 @@ $router->map(
   'GET',
   '/bo-projets',
   [
-      'controller'=>'MainController',
-      'method' => 'boHome',
+      'controller'=>'ProjectController',
+      'method' => 'boProjects',
   ],
   'bo-projets',
 );
