@@ -90,6 +90,15 @@ $router->map(
   ],
   'bo-projets',
 );
+$router->map(
+  'GET',
+  '/bo-technos',
+  [
+      'controller'=>'TechnoController',
+      'method' => 'botechnos',
+  ],
+  'bo-technos',
+);
 
 // dump($router);
 /* the dump on method GET on / url

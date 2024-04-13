@@ -8,4 +8,9 @@ class TechnoController extends CoreController
     {
         $this->show('technos');
     }
+
+    public function botechnos():void
+    {
+        $this->boShow('bo-technos');
+    }
 }
