@@ -2,7 +2,8 @@
 
 namespace App\Controllers;
 
-class CoreController {
+class CoreController
+{
 
     protected $router;
 
@@ -26,7 +27,7 @@ class CoreController {
      * @param array $data array with needed datas
      * @return void
      */
-    public function show(string $pageName, array $data = []):void
+    public function show(string $pageName, array $data = []): void
     {
         $getNeededData = $this->getNeededDatas();
 
@@ -45,7 +46,20 @@ class CoreController {
             header('location: /html/error.htm');
             die;
         }
-        // require_once __DIR__ . '/../views/' . $pageNam . '.tpl.php';
-        
+    }
+
+    public function boShow(string $pageName, array $data = []): void
+    {
+        $getNeededData = $this->getNeededDatas();
+        dump($getNeededData);
+
+        try {
+            require_once __DIR__ . '/../views/inc/bo-header.tpl.php';
+            require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';
+            require_once __DIR__ . '/../views/inc/bo-footer.tpl.php';
+        } catch (\Throwable $th) {
+            header('location: /html/error.htm');
+            die;
+        }
     }
 }
