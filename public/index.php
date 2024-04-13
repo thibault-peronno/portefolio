@@ -90,6 +90,17 @@ $router->map(
   ],
   'bo-projets',
 );
+
+$router->map(
+  'GET',
+  '/bo-ajouter-projet',
+  [
+      'controller'=>'ProjectController',
+      'method' => 'boAddProjects',
+  ],
+  'bo-ajouter-projet',
+);
+
 $router->map(
   'GET',
   '/bo-technos',

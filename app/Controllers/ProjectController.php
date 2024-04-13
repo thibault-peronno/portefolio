@@ -18,5 +18,10 @@ class ProjectController extends CoreController {
     {
         $this->boShow('bo-projects');
     }
+
+    public function boAddProjects():void
+    {
+        $this->boShow('bo-add-project');
+    }
 }
 
