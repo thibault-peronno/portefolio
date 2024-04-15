@@ -51,7 +51,7 @@ class CoreController
     public function boShow(string $pageName, array $data = []): void
     {
         $getNeededData = $this->getNeededDatas();
-        dump($getNeededData);
+        // dump($getNeededData);
 
         try {
             require_once __DIR__ . '/../views/inc/bo-header.tpl.php';

@@ -135,7 +135,7 @@ $router->addRoutes(
 );
 
 $match = $router->match();
-dump($match);
+// dump($match);
 
 if ($match !== false) {
 
@@ -143,7 +143,7 @@ if ($match !== false) {
   $method = $match['target']['method'];
   $params = $match['params'];
   $controller = new $controllerMatch($router);
-  dump($controller);
+  // dump($controller);
   $controller->$method($match['params']);
 } else {
   echo "Erreur 404, la page n'existe pas, contacte moi";

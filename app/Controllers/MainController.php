@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\User;
 
 class MainController extends CoreController {
 
@@ -17,6 +18,9 @@ class MainController extends CoreController {
 
     public function boHome()
     {
+        $user = new User;
+        // dump('get user', $user->getUser());
+        // die;
         $this->boShow('bo-home');
     }
 };
