@@ -1,3 +1,14 @@
+<?php
+
+use App\Controllers\ProjectController;
+
+// include '../Controllers/ProjectController.php';
+
+// $projectCtrl = new ProjectController;
+
+// $projectCtrl->addProject($_POST);
+?>
+
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
     Ajouter un projet
 </h1>

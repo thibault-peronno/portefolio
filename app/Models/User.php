@@ -10,7 +10,7 @@ class User
     private $lastname;
     private $role_id;
 
-    public function getUser()
+    public function getUser():object
     {
         $pdo = Database::getPDO();
 

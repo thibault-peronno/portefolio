@@ -30,7 +30,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       </nav>
       <!-- Our menu to display for mobil size -->
       <img
-        src="../../public/assets/images/icons/menu.svg"
+        src="/assets/images/nav/menu.svg"
         alt=""
         class="sm:hidden w-10 float-right mb-2.5"
         id="mobil-menu"
@@ -40,7 +40,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         id="menu"
       >
         <img
-          src="../../public/assets/images/icons/x.svg"
+          src="/assets/images/icons/x.svg"
           alt="close the menu"
           class="w-12 self-end"
           id="close-menu"

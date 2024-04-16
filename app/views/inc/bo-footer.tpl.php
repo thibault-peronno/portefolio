@@ -6,7 +6,8 @@
         <img src="/assets/images/icons/github.svg" alt="" />
       </div>
     </footer>
-    <script src="../../public/javascript/app.js"></script>
-    <script src="../../public/javascript/menu.js"></script>
+    <script src="/javascript/app.js"></script>
+    <script src="/javascript/menu.js"></script>
+    <script src="/javascript/form.js"></script>
   </body>
 </html>
