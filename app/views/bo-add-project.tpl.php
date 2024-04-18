@@ -1,18 +1,17 @@
-<?php
-
-use App\Controllers\ProjectController;
-
-// include '../Controllers/ProjectController.php';
-
-// $projectCtrl = new ProjectController;
-
-// $projectCtrl->addProject($_POST);
-?>
-
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
     Ajouter un projet
 </h1>
-<section class="rounded p-2 bg-white/[0.15] sm:p-14">
+<section class="rounded p-2 bg-white/[0.15] sm:p-14 bg-lime-600">
+    <?php if($succeeded == true) ?>
+    <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-lime-600">
+        <p>L'ajout à réussi</p>
+    </div>
+    <?php ?>
+    <?php if($succeeded == false) ?>
+    <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-orange-400">
+        <p>L'ajout à réussi</p>
+    </div>
+    <?php ?>
     <form action="" id="project-form" method="post">
         <div class="mb-5">
             <label for="name" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
@@ -75,12 +74,12 @@ use App\Controllers\ProjectController;
                 <label for="tech" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="tech" id="tech" class="block rounded bg-white h-12 w-full p-2">
                     <option value="">Choisi les technos</option>
-                    <option value="dog">Dog</option>
-                    <option value="cat">Cat</option>
-                    <option value="hamster">Hamster</option>
-                    <option value="parrot">Parrot</option>
-                    <option value="spider">Spider</option>
-                    <option value="goldfish">Goldfish</option>
+                    <option value="1">Dog</option>
+                    <option value="2">Cat</option>
+                    <option value="3">Hamster</option>
+                    <option value="4">Parrot</option>
+                    <option value="5">Spider</option>
+                    <option value="6">Goldfish</option>
                 </select>
             </div>
         </span>

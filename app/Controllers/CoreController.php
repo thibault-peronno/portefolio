@@ -7,7 +7,7 @@ class CoreController
 
     protected $router;
 
-    public function __construct($router)
+    public function __construct($router=[])
     {
         $this->router = $router;
     }
@@ -32,6 +32,7 @@ class CoreController
         $getNeededData = $this->getNeededDatas();
 
         // dump($getNeededData);
+        // die;
         // include : ask to include, but does not allow a fatal error
         // require : the content is required, ans if does not exist, there is a fatal error.
         /**
@@ -52,7 +53,8 @@ class CoreController
     {
         $getNeededData = $this->getNeededDatas();
         // dump($getNeededData);
-
+        dump($data);
+        extract($data);
         try {
             require_once __DIR__ . '/../views/inc/bo-header.tpl.php';
             require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';

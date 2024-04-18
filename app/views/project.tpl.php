@@ -10,21 +10,21 @@
   </p>
   <div class="flex justify-center gap-5 my-10 sm:w-6/12 sm:mt-0">
     <span class="flex flex-col content-center">
-      <img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-28" />
+      <img src="/assets/images/icons/react_mono.png" alt="" class="w-28" />
       <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">React</p>
     </span>
     <span class="flex flex-col ">
-      <img src="../../public/assets/images/icons/javascript_mono.svg" alt="" class="w-28" />
+      <img src="/assets/images/icons/javascript_mono.svg" alt="" class="w-28" />
       <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Javascript</p>
     </span>
     <span class="flex flex-col ">
-      <img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-28" />
+      <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-28" />
       <p class="text-center rounded-full bg-secondary text-white px-2.5 text-sm">Docker</p>
     </span>
   </div>
 </span>
 <button class="bg-btn-sec rounded flex p-2.5 items-center mt-3 w-full sm:w-64">
-  <img src="../../public/assets/images/icons/online.svg" alt="" class="pr-2" />
+  <img src="/assets/images/icons/online.svg" alt="" class="pr-2" />
   <p class="text-white">Projet en ligne</p>
 </button>
-<img src="../../public/assets/images/img_project.png" alt="logo du projet" class="mt-2.5">
+<img src="/assets/images/img_project.png" alt="logo du projet" class="mt-2.5">

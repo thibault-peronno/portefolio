@@ -38,9 +38,9 @@
                 </button>
             </div>
             <div class="flex justify-end gap-2">
-                <img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
-                <img src="../../public/assets/images/icons/javascript_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
-                <img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/react_mono.png" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/javascript_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
             </div>
             <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%] animate-borderRight"></span>
             <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%]  animate-borderBottom rotate-90 origin-right"></span>
@@ -64,9 +64,9 @@
                 </button>
             </div>
             <div class="flex justify-end gap-2">
-                <img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
-                <img src="../../public/assets/images/icons/javascript_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
-                <img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/react_mono.png" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/javascript_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
             </div>
             <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%] animate-borderRight"></span>
             <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%]  animate-borderBottom rotate-90 origin-right"></span>
@@ -90,9 +90,9 @@
                 </button>
             </div>
             <div class="flex justify-end gap-2">
-                <img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
-                <img src="../../public/assets/images/icons/javascript_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
-                <img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/react_mono.png" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/javascript_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-5 opacity-0 scale-20 animate-projectsScale" />
             </div>
             <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%] animate-borderRight"></span>
             <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%]  animate-borderBottom rotate-90 origin-right"></span>
@@ -100,7 +100,7 @@
     </div>
     <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-64">
         <p class="text-white">Voir toutes les projets</p>
-        <img src="../../public/assets/images/icons/arrow-right-circle.svg" alt="" />
+        <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
     </button>
 </section>
 <section>
@@ -111,33 +111,33 @@
         <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
-            <img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-20 h-20" />
-            <img src="../../public/assets/images/icons/javascript_mono.svg" alt="" class="w-20 h-20" />
-            <img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/react_mono.png" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/javascript_mono.svg" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-20 h-20" />
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
         </div>
         <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
-            <img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-20 h-20" />
-            <img src="../../public/assets/images/icons/javascript_mono.svg" alt="" class="w-20 h-20" />
-            <img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/react_mono.png" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/javascript_mono.svg" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-20 h-20" />
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
         </div>
         <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
-            <img src="../../public/assets/images/icons/react_mono.png" alt="" class="w-20 h-20" />
-            <img src="../../public/assets/images/icons/javascript_mono.svg" alt="" class="w-20 h-20" />
-            <img src="../../public/assets/images/icons/docker_mono.svg" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/react_mono.png" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/javascript_mono.svg" alt="" class="w-20 h-20" />
+            <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-20 h-20" />
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
         </div>
     </div>
     <button class="bg-btn-sec rounded flex p-2.5 items-center  w-64 justify-between mt-5">
         <p class="text-white">Voir toutes les technos</p>
-        <img src="../../public/assets/images/icons/arrow-right-circle.svg" alt="" />
+        <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
     </button>
 </section>

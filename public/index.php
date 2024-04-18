@@ -78,6 +78,14 @@ $router->addRoutes(
       'bo-ajouter-projet',
     ],
     [
+      'POST',
+      '/bo-ajouter-projet',
+      [
+        'controller' => 'ProjectController',
+        'method' => 'addProject',
+      ],
+    ],
+    [
       'GET',
       '/connexion',
       [
@@ -133,9 +141,9 @@ $router->addRoutes(
     ],
   ]
 );
-
+// var_dump('router', $router);
 $match = $router->match();
-// dump($match);
+// var_dump('match', $match);
 
 if ($match !== false) {
 

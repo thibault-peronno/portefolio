@@ -6,17 +6,17 @@
               <h2 class="text-2xl text-secondary uppercase mb-2">Nom du projet</h2>
               <div class="flex justify-start gap-2">
                 <img
-                  src="../../public/assets/images/icons/react_mono.png"
+                  src="/assets/images/icons/react_mono.png"
                   alt=""
                   class="w-5"
                 />
                 <img
-                  src="../../public/assets/images/icons/javascript_mono.svg"
+                  src="/assets/images/icons/javascript_mono.svg"
                   alt=""
                   class="w-5"
                 />
                 <img
-                  src="../../public/assets/images/icons/docker_mono.svg"
+                  src="/assets/images/icons/docker_mono.svg"
                   alt=""
                   class="w-5"
                 />
@@ -32,7 +32,7 @@
               >
                 <p class="text-white">En savori plus</p>
                 <img
-                  src="../../public/assets/images/icons/arrow-right-circle.svg"
+                  src="/assets/images/icons/arrow-right-circle.svg"
                   alt=""
                 />
               </button>
@@ -41,17 +41,17 @@
               <h2 class="text-2xl text-secondary uppercase mb-2">Nom du projet</h2>
               <div class="flex justify-start gap-2">
                 <img
-                  src="../../public/assets/images/icons/react_mono.png"
+                  src="/assets/images/icons/react_mono.png"
                   alt=""
                   class="w-5"
                 />
                 <img
-                  src="../../public/assets/images/icons/javascript_mono.svg"
+                  src="/assets/images/icons/javascript_mono.svg"
                   alt=""
                   class="w-5"
                 />
                 <img
-                  src="../../public/assets/images/icons/docker_mono.svg"
+                  src="/assets/images/icons/docker_mono.svg"
                   alt=""
                   class="w-5"
                 />
@@ -67,7 +67,7 @@
               >
                 <p class="text-white">En savori plus</p>
                 <img
-                  src="../../public/assets/images/icons/arrow-right-circle.svg"
+                  src="/assets/images/icons/arrow-right-circle.svg"
                   alt=""
                 />
               </button>
@@ -76,17 +76,17 @@
               <h2 class="text-2xl text-secondary uppercase mb-2">Nom du projet</h2>
               <div class="flex justify-start gap-2">
                 <img
-                  src="../../public/assets/images/icons/react_mono.png"
+                  src="/assets/images/icons/react_mono.png"
                   alt=""
                   class="w-5"
                 />
                 <img
-                  src="../../public/assets/images/icons/javascript_mono.svg"
+                  src="/assets/images/icons/javascript_mono.svg"
                   alt=""
                   class="w-5"
                 />
                 <img
-                  src="../../public/assets/images/icons/docker_mono.svg"
+                  src="/assets/images/icons/docker_mono.svg"
                   alt=""
                   class="w-5"
                 />
@@ -102,7 +102,7 @@
               >
                 <p class="text-white">En savori plus</p>
                 <img
-                  src="../../public/assets/images/icons/arrow-right-circle.svg"
+                  src="/assets/images/icons/arrow-right-circle.svg"
                   alt=""
                 />
               </button>

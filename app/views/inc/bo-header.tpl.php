@@ -47,7 +47,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         />
         <span class="flex flex-row">
           <img
-            src="../../public/assets/images/icons/home.svg"
+            src="/assets/images/icons/home.svg"
             alt=""
             class="mr-2.5"
           />
@@ -55,7 +55,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </span>
         <span class="flex flex-row">
           <img
-            src="../../public/assets/images/icons/cup.svg"
+            src="/assets/images/icons/cup.svg"
             alt=""
             class="mr-2.5"
           />
@@ -63,7 +63,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </span>
         <span class="flex flex-row">
           <img
-            src="../../public/assets/images/icons/techs.svg"
+            src="/assets/images/icons/techs.svg"
             alt=""
             class="mr-2.5"
           />
@@ -71,7 +71,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </span>
         <span class="flex flex-row">
           <img
-            src="../../public/assets/images/icons/file-text.svg"
+            src="/assets/images/icons/file-text.svg"
             alt=""
             class="mr-2.5"
           />
@@ -79,7 +79,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         </span>
         <span class="flex flex-row">
           <img
-            src="../../public/assets/images/icons/sliders.svg"
+            src="/assets/images/icons/sliders.svg"
             alt=""
             class="mr-2.5"
           />

@@ -1,9 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  mode: 'jit',
   content: 
   [
-    "./**/*.{html,js,php,htm}",
-    "./app/Views/inc/*.{html,js,tpl.php,php,htm}"
+    "./app/views/inc/*.{tpl.php,php}",
+    "./app/views/*.{tpl.php,php}",
+    "./**/**/*.{tpl.php,php}"
             
   ],
   theme: {
@@ -19,6 +21,8 @@ module.exports = {
       'bubble-gum': '#ff77e9',
       'bermuda': '#78dcca',
       'text-red-900': '#7f1d1d',
+      'bg-lime-600':'#65a30d',
+      'bg-orange-600': '#ea580c'
     },
     fontFamily: {
       sans: ['Rubik', 'sans-serif'],
