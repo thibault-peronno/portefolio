@@ -27,18 +27,20 @@ class ProjectController extends CoreController {
 
     public function addProject():void
     {
-        // dump('post', $_POST);
+        dump('post', $_POST);
+        die;
 
         $projectModel = new Project;
         /*  With FILTER_SANITIZE_STRING that is deprecated as of PHP 8.1.0
             $title = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
             You could use this way : $title = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         */
-        $title = htmlspecialchars($_POST['name'], ENT_QUOTES);
+        $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
         $description = htmlspecialchars($_POST['description'], ENT_QUOTES);
-        $url = htmlspecialchars($_POST['link'], ENT_QUOTES);
-        $picture = htmlspecialchars($_POST['image'], ENT_QUOTES);
-        $organization_id = filter_input(INPUT_POST, 'tech', FILTER_SANITIZE_NUMBER_INT);
+        $url = htmlspecialchars($_POST['url'], ENT_QUOTES);
+        $picture = htmlspecialchars($_POST['picture'], ENT_QUOTES);
+        $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);
+        $languages_id = filter_input_array(INPUT_POST, 'languages', FILTER_DEFAULT);
 
         /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;
@@ -54,7 +56,8 @@ class ProjectController extends CoreController {
         $insert = $projectModel->addProject();
 
         $data =[];
-        if($insert)
+        dump($insert);
+        if($insert || !$insert)
         {
             $data['succeeded'] = $insert;
         }

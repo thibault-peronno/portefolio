@@ -7,7 +7,7 @@ const form = {
 
     handleSelectTechno: function () {
         console.log('handleSelectTechnos');
-        let boxesTEchnos = document.getElementById('checkTechnos');
+        let boxesTEchnos = document.getElementById('checklanguages');
         console.log(boxesTEchnos.classList.value);
         let classList = boxesTEchnos.classList.value;
 
