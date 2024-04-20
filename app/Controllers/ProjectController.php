@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\CoreController;
 use App\Models\Project;
+use App\Models\ProjectLanguage;
 
 class ProjectController extends CoreController
 {
@@ -34,6 +35,7 @@ class ProjectController extends CoreController
         // die;
 
         $projectModel = new Project;
+        
         /*  With FILTER_SANITIZE_STRING that is deprecated as of PHP 8.1.0
             $title = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
             You could use this way : $title = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
@@ -44,14 +46,6 @@ class ProjectController extends CoreController
         $picture = htmlspecialchars($_POST['picture'], ENT_QUOTES);
         $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);
 
-        foreach ($_POST['languages'] as $key => $value) {
-            $intValue = intval($value);
-            dump($intValue);
-            $_POST['languages'][$key] = $intValue;
-        }
-        dump($_POST);
-
-        $languages_id = filter_input_array(INPUT_POST, 'languages', FILTER_DEFAULT);
 
         /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;

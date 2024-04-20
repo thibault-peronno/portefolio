@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+
+use App\Controllers\ProjectLanguageController;
 use App\Utils\Database;
 use PDO;
 
@@ -46,8 +48,9 @@ class Project
 
             if ($insertedRows > 0) {
                 // We retrieve the last id.
-                $this->id = $pdo->lastInsertId();
-                $insertLanguages = $this->addLanguagesProjects($_POST['languages']);
+                $projectLanguageCtrl = new ProjectLanguageController;
+                $projectId = $pdo->lastInsertId();
+                $insertLanguages = $projectLanguageCtrl->addProjectLanguage($projectId);
 
                 if($insertLanguages){
                     // We return true, because the sql insert has worked.
@@ -67,34 +70,6 @@ class Project
         // dump($pdoStatement);
         // die;
         
-    }
-
-    public function addLanguagesProjects($languagesId):bool
-    {
-        try {
-            $pdo = Database::getPDO();
-            // Préparation de la requête pour insérer les langages
-            $sql = "INSERT INTO `projects_languages` (`project_id`, `language_id`) VALUES (:projectId, :languageId)";
-            $pdoStatementLanguages = $pdo->prepare($sql);
-    
-            // Boucle pour insérer chaque langage sélectionné
-            foreach ($languagesId as $languageId) {
-                $pdoStatementLanguages->bindValue(':projectId', $this->id, PDO::PARAM_INT);
-                $pdoStatementLanguages->bindValue(':languageId', $languageId, PDO::PARAM_INT);
-                $insertedRows = $pdoStatementLanguages->execute();
-            }
-            if ($insertedRows > 0) {
-                // We return true, because the sql insert has worked.
-                return true;
-            }
-
-            return false;
-
-        } catch (\Throwable $error) {
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            dump($error->getMessage());
-            die;
-        }
     }
 
     public function getTitle():string
