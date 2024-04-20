@@ -44,27 +44,27 @@
                     </div>
                     <div id="checklanguages" class="hidden absolute flex flex-col gap-2 bg-white left-0 p-2 w-full rounded h-28 overflow-y-auto">
                         <span>
-                            <input type="checkbox" id="React" value="1" name="languages[]"/>
+                            <input type="checkbox" id="React" value=1 name="languages[]"/>
                             <label for="React">React</label>
                         </span>
                         <span>
-                            <input type="checkbox" id="Laravel" value="2" name="languages[]"/>
+                            <input type="checkbox" id="Laravel" value=2 name="languages[]"/>
                             <label for="Laravel">Laravel</label>
                         </span>
                         <span>
-                            <input type="checkbox" id="Tailwind" value="3" name="languages[]"/>
+                            <input type="checkbox" id="Tailwind" value=3 name="languages[]"/>
                             <label for="Tailwind">Tailwind</label>
                         </span>
                         <span>
-                            <input type="checkbox" id="Node.js" value="4" name="languages[]"/>
+                            <input type="checkbox" id="Node.js" value=4 name="languages[]"/>
                             <label for="Node.js">Node.js</label>
                         </span>
                         <span>
-                            <input type="checkbox" id="HTML" value="5" name="languages[]"/>
+                            <input type="checkbox" id="HTML" value=5 name="languages[]"/>
                             <label for="HTML" >HTML</label>
                         </span>
                         <span>
-                            <input type="checkbox" id="Nginx" value="6" name="languages[]"/>
+                            <input type="checkbox" id="Nginx" value=6 name="languages[]"/>
                             <label for="Nginx">Nginx</label>
                         </span>
                     </div>
@@ -74,12 +74,12 @@
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
                     <option value="">Choisi les technos</option>
-                    <option value="1">Dog</option>
-                    <option value="2">Cat</option>
-                    <option value="3">Hamster</option>
-                    <option value="4">Parrot</option>
-                    <option value="5">Spider</option>
-                    <option value="6">Goldfish</option>
+                    <option value=1>Dog</option>
+                    <option value=2>Cat</option>
+                    <option value=3>Hamster</option>
+                    <option value=4>Parrot</option>
+                    <option value=5>Spider</option>
+                    <option value=6>Goldfish</option>
                 </select>
             </div>
         </span>

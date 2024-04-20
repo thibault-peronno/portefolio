@@ -1,34 +1,37 @@
 <?php
+
 namespace App\Controllers;
+
 use App\Controllers\CoreController;
 use App\Models\Project;
 
-class ProjectController extends CoreController {
+class ProjectController extends CoreController
+{
 
-    public function projects():void
+    public function projects(): void
     {
         $this->show('projects');
     }
 
-    public function project():void
+    public function project(): void
     {
         $this->show('project');
     }
 
-    public function boProjects():void
+    public function boProjects(): void
     {
         $this->boShow('bo-projects');
     }
 
-    public function addProjectPage():void
+    public function addProjectPage(): void
     {
         $this->boShow('bo-add-project');
     }
 
-    public function addProject():void
+    public function addProject(): void
     {
         dump('post', $_POST);
-        die;
+        // die;
 
         $projectModel = new Project;
         /*  With FILTER_SANITIZE_STRING that is deprecated as of PHP 8.1.0
@@ -40,6 +43,14 @@ class ProjectController extends CoreController {
         $url = htmlspecialchars($_POST['url'], ENT_QUOTES);
         $picture = htmlspecialchars($_POST['picture'], ENT_QUOTES);
         $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);
+
+        foreach ($_POST['languages'] as $key => $value) {
+            $intValue = intval($value);
+            dump($intValue);
+            $_POST['languages'][$key] = $intValue;
+        }
+        dump($_POST);
+
         $languages_id = filter_input_array(INPUT_POST, 'languages', FILTER_DEFAULT);
 
         /*  Now we create our object with datas from input
@@ -55,14 +66,12 @@ class ProjectController extends CoreController {
 
         $insert = $projectModel->addProject();
 
-        $data =[];
+        $data = [];
         dump($insert);
-        if($insert || !$insert)
-        {
+        if ($insert || !$insert) {
             $data['succeeded'] = $insert;
         }
 
         $this->boShow('bo-add-project', $data);
     }
 }
-
