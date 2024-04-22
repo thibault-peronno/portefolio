@@ -103,7 +103,7 @@
           >
           <span
             ><img
-              src="c/assets/images/icons/laravel_mono.png"
+              src="/assets/images/icons/laravel_mono.png"
               alt=""
               class="w-12 h-12 m-auto"
             />
