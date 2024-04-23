@@ -2,7 +2,7 @@
     back office Organisations
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
-    <a href="BO-add-orga.htm">
+    <a href="bo-ajouter-organisation">
         <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl">
             <img src="/assets/images/icons/add.svg" alt="" />
             <p class="text-white">Ajouter</p>

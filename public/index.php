@@ -139,6 +139,14 @@ $router->addRoutes(
       ],
       'bo-ajouter-organisation',
     ],
+    [
+      'POST',
+      '/bo-ajouter-organisation',
+      [
+        'controller' => 'OrgaController',
+        'method' => 'addOrga',
+      ],
+    ],
   ]
 );
 // var_dump('router', $router);
