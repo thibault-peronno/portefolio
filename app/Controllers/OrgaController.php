@@ -31,10 +31,15 @@ class OrgaController extends CoreController
         $organizationModel->setDescription($description);
         $organizationModel->setPicture($picture);
 
+        // aller faire la requête dans notre model
         $insert = $organizationModel->addOrganization();
 
+        $data = [];
+        dump($insert);
+        if ($insert || !$insert) {
+            $data['succeeded'] = $insert;
+        }
 
-        // aller faire la requête dans notre model
-        $this->boShow('bo-add-orga');
+        $this->boShow('bo-add-orga', $data);
     }
 }

@@ -2,6 +2,16 @@
     Ajouter une organisation
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
+    <?php if(isset($succeeded) && $succeeded == true): ?>
+        <div class="p-2 text-center text-white font-bold fixed bg-lime-600 rounded animate-notif">
+        <p>L'ajout a réussi</p>
+    </div>
+    <?php endif ?>
+    <?php if(isset($succeeded) && $succeeded == false): ?>
+        <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-orange-600 animate-notif">
+        <p>L'ajout a échoué, réssayez plus tard</p>
+    </div>
+    <?php endif ?>
     <form action="" id="project-form" method="post">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
