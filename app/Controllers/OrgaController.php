@@ -18,6 +18,8 @@ class OrgaController extends CoreController
     public function addOrga():void
     {
         dump($_POST);
+        dump($_SERVER);
+        // die;
         // instancier notre model "organization" pour créer un nouvel objet
         $organizationModel = new Organization;
         
