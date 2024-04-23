@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Languages;
+
 class TechnoController extends CoreController
 {
     public function technologies():void
@@ -17,5 +19,39 @@ class TechnoController extends CoreController
     public function addTechnoPage():void
     {
         $this->boShow('bo-add-techno');
+    }
+
+    public function addTechno():void
+    {
+        dump($_POST);
+
+        $languagesModel = new Languages;
+
+        // Clean data with filter sanitaze
+        $label = filter_input(INPUT_POST, 'label', FILTER_SANITIZE_SPECIAL_CHARS);
+        $picture = filter_input(INPUT_POST, 'picture', FILTER_SANITIZE_SPECIAL_CHARS);
+        $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_SPECIAL_CHARS);
+
+        
+        if( !filter_var($label) || !filter_var($picture) || !filter_var($type)) {
+            // alors j'execute un code d'erreur;
+        }
+
+        // dump($label, $picture, $type);
+        // die;
+
+        $languagesModel->setLabel($label);
+        $languagesModel->setPicture($picture);
+        $languagesModel->setType($type);
+
+        $insert = $languagesModel->addLanguages();
+
+        $data = [];
+        dump($insert);
+        if (isset($insert)) {
+            $data['succeeded'] = $insert;
+        }
+
+        $this->boShow('bo-add-techno', $data);
     }
 }
