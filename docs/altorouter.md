@@ -45,7 +45,7 @@ You need to read the documentation of Altorouter
 /**
  * This way, does not work in our file. But you can find this way on documentation
  * $router->map(
- *   'GET', '/bo-ajouter-technologie', 'TechnoController#addTechnoPage', 'bo-ajouter-technologie',
+ *   'GET', '/bo-ajouter-technologie', 'LanguageController#addTechnoPage', 'bo-ajouter-technologie',
  * );
  */
 

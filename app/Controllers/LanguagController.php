@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Languages;
 
-class TechnoController extends CoreController
+class LanguageController extends CoreController
 {
     public function technologies():void
     {
