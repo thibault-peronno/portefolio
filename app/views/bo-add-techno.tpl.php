@@ -12,7 +12,7 @@
         <p>L'ajout a échoué, réssayez plus tard</p>
     </div>
     <?php endif ?>
-    <form action="" id="project-form" method="post">
+    <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="label" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
             <input type="text" name="label" id="label" class="rounded bg-white h-12 w-full p-2" />

@@ -98,7 +98,7 @@ $router->addRoutes(
       'GET',
       '/technologies',
       [
-        'controller' => 'TechnoController',
+        'controller' => 'LanguageController',
         'method' => 'technologies',
       ],
       'technologies',
@@ -107,7 +107,7 @@ $router->addRoutes(
       'GET',
       '/bo-ajouter-technologie',
       [
-        'controller' => 'TechnoController',
+        'controller' => 'LanguageController',
         'method' => 'addTechnoPage',
       ],
       'bo-ajouter-technologie',
@@ -116,7 +116,7 @@ $router->addRoutes(
       'POST',
       '/bo-ajouter-technologie',
       [
-        'controller' => 'TechnoController',
+        'controller' => 'LanguageController',
         'method' => 'addTechno',
       ],
     ],
@@ -124,7 +124,7 @@ $router->addRoutes(
       'GET',
       '/bo-technos',
       [
-        'controller' => 'TechnoController',
+        'controller' => 'LanguageController',
         'method' => 'botechnos',
       ],
       'bo-technos',

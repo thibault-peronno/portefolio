@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Languages;
 
-class TechnoController extends CoreController
+class LanguageController extends CoreController
 {
     public function technologies():void
     {
@@ -24,6 +24,8 @@ class TechnoController extends CoreController
     public function addTechno():void
     {
         dump($_POST);
+        dump($_FILES);
+        die;
 
         $languagesModel = new Languages;
 
