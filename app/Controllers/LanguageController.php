@@ -24,6 +24,8 @@ class LanguageController extends CoreController
     public function addTechno():void
     {
         dump($_POST);
+        dump($_FILES);
+        die;
 
         $languagesModel = new Languages;
 
