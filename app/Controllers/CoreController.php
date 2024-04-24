@@ -53,7 +53,7 @@ class CoreController
     {
         $getNeededData = $this->getNeededDatas();
         // dump($getNeededData);
-        dump($data);
+        // dump($data);
         extract($data);
         try {
             require_once __DIR__ . '/../views/inc/bo-header.tpl.php';

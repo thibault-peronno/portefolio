@@ -113,6 +113,14 @@ $router->addRoutes(
       'bo-ajouter-technologie',
     ],
     [
+      'POST',
+      '/bo-ajouter-technologie',
+      [
+        'controller' => 'TechnoController',
+        'method' => 'addTechno',
+      ],
+    ],
+    [
       'GET',
       '/bo-technos',
       [
