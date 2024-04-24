@@ -27,8 +27,8 @@ class Languages
 
             $insertedRows = $pdoStatement->execute();
 
-            dump($insertedRows, $insertedRows->rowCount()>0);
-            die;
+            // dump($insertedRows, $insertedRows->rowCount()>0);
+            // die;
 
             if($insertedRows) {
                 return true;
