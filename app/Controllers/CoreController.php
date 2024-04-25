@@ -38,6 +38,7 @@ class CoreController
         /**
          * We added try catch to manage the fatal error
          */
+        extract($data);
         try {
             require_once __DIR__ . '/../views/inc/header.tpl.php';
             require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';
