@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Utils\Database;
 use PDO;
+use Error;
 
 class Languages 
 {
@@ -12,7 +13,7 @@ class Languages
     private $picture;
     private $type;
 
-    public function addLanguages():bool
+    public function addLanguages():bool | Error
     {
         $pdo = Database::getPDO();
 
@@ -30,14 +31,15 @@ class Languages
             // dump($insertedRows, $insertedRows->rowCount()>0);
             // die;
 
-            if($insertedRows) {
-                return true;
+            if(!$insertedRows) {
+                throw new Error("L'ajout a échoué");
             }
-            return false;
+            return true;
         } catch (\Throwable $error) {
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            dump($error->getMessage());
-            die;
+            // $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            // dump($error->getMessage());
+            // die;
+            return $error;
         }
     }
 

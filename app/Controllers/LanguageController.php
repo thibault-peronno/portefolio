@@ -27,10 +27,13 @@ class LanguageController extends CoreController
     {
         try {
             $languagesModel = new Languages();
-
             $imageHelper = new ImageHelper();
 
             $insertedImage = $imageHelper->languageImage();
+
+            if(!$insertedImage){
+                throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
+            }
 
             // Clean data with filter sanitaze
             $label = filter_input(INPUT_POST, 'label', FILTER_SANITIZE_SPECIAL_CHARS);

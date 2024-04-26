@@ -16,7 +16,7 @@ class ImageHelper
     // To check the extension file.
     private function  checkExtension():bool
     {
-        return !in_array($_FILES['picture']['type'], $this->IMAGE_TYPES);
+        return in_array($_FILES['picture']['type'], $this->IMAGE_TYPES);
     }
     // To check the sign of the picture. One more security.
     private function checkSign():bool
