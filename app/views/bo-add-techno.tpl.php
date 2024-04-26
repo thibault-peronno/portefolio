@@ -2,15 +2,15 @@
     Ajouter une technos
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
-<?php if(isset($succeeded) && $succeeded): ?>
+    <?php if (isset($succeeded) && $succeeded) : ?>
         <div class="p-2 text-center text-white font-bold fixed bg-lime-600 rounded animate-notif">
-        <p>L'ajout a réussi</p>
-    </div>
+            <p>L'ajout a réussi</p>
+        </div>
     <?php endif ?>
-    <?php if(isset($succeeded) && !$succeeded): ?>
+    <?php if (isset($succeeded) && !$succeeded) : ?>
         <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-orange-600 animate-notif">
-        <p><?= $message ?></p>
-    </div>
+            <p><?= $message ?></p>
+        </div>
     <?php endif ?>
     <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
