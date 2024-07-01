@@ -4,13 +4,29 @@ namespace App\Models;
 
 use App\Utils\Database;
 use PDO;
+use Error;
 
 class Organization 
 {
-    private $id;
-    private $title;
-    private $description;
-    private $picture; 
+    public $id;
+    public $title;
+    public $description;
+    public $picture; 
+
+
+    public function getOrganizations(): array
+    {
+        $pdo= Database::getPDO();
+        $sql= "SELECT id, title FROM `organizations`";
+
+        try {
+            $pdoStatement = $pdo->query($sql);
+            return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Organization::class);
+        } catch (\Throwable $error) {
+            dump($error);
+            throw new Error("La récupération des langues de développemen a échoué");
+        }
+    }
 
     public function addOrganization():bool
     {
