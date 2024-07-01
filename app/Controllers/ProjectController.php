@@ -26,6 +26,14 @@ class ProjectController extends CoreController
 
     public function addProjectPage(): void
     {
+        // instancier le model des langues
+
+        // instancier le model des oragnisations
+
+        // faire un tabelau qui contien les deux données : languages et organisations
+
+        // gestion des erreurs
+
         $this->boShow('bo-add-project');
     }
 
@@ -43,7 +51,7 @@ class ProjectController extends CoreController
         $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
         $description = htmlspecialchars($_POST['description'], ENT_QUOTES);
         $url = htmlspecialchars($_POST['url'], ENT_QUOTES);
-        $picture = htmlspecialchars($_POST['picture'], ENT_QUOTES);
+        $picture = $_FILES["picture"]["name"];
         $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);
 
 
