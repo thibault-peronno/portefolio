@@ -16,7 +16,7 @@ class Languages
     public function getLanguages(): array
     {
         $pdo= Database::getPDO();
-        $sql = "SELECT id, label, type FROM `languages`";
+        $sql = "SELECT * FROM `languages`";
 
         try {
             $pdoStatement =$pdo->query($sql);
