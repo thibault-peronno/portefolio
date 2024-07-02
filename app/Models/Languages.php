@@ -6,12 +6,26 @@ use App\Utils\Database;
 use PDO;
 use Error;
 
-class Languages 
+class Languages
 {
-    private $id;
-    private $label;
-    private $picture;
-    private $type;
+    public $id;
+    public $label;
+    public $picture;
+    public $type;
+
+    public function getLanguages(): array
+    {
+        $pdo= Database::getPDO();
+        $sql = "SELECT id, label, type FROM `languages`";
+
+        try {
+            $pdoStatement =$pdo->query($sql);
+            return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);
+        } catch (\Throwable $error) {
+            dump($error);
+            throw new Error("La récupération des langues de développemen a échoué");
+        }
+    }
 
     public function addLanguages():bool | Error
     {
@@ -27,9 +41,6 @@ class Languages
             $pdoStatement->bindValue(':type',  $this->type);
 
             $insertedRows = $pdoStatement->execute();
-
-            // dump($insertedRows, $insertedRows->rowCount()>0);
-            // die;
 
             if(!$insertedRows) {
                 throw new Error("L'ajout a échoué");

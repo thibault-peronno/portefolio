@@ -2,17 +2,17 @@
     Ajouter un projet
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
-    <?php if(isset($succeeded) && $succeeded == true): ?>
-    <div class="p-2 text-center text-white font-bold fixed bg-lime-600 rounded animate-notif">
-        <p>L'ajout a réussi</p>
-    </div>
+    <?php if (isset($succeeded) && $succeeded == true) : ?>
+        <div class="p-2 text-center text-white font-bold fixed bg-lime-600 rounded animate-notif">
+            <p>L'ajout a réussi</p>
+        </div>
     <?php endif ?>
-    <?php if(isset($succeeded) && $succeeded == false): ?>
-    <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-orange-600 animate-notif">
-        <p>L'ajout a échoué, réssayez plus tard</p>
-    </div>
+    <?php if (isset($succeeded) && $succeeded == false) : ?>
+        <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-orange-600 animate-notif">
+            <p>L'ajout a échoué, réssayez plus tard</p>
+        </div>
     <?php endif ?>
-    <form action="" id="project-form" method="post">
+    <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
             <input type="text" name="title" id="title" class="rounded bg-white h-12 w-full p-2" />
@@ -43,43 +43,22 @@
                         <div class="hidden"></div>
                     </div>
                     <div id="checklanguages" class="hidden absolute flex flex-col gap-2 bg-white left-0 p-2 w-full rounded h-28 overflow-y-auto">
-                        <span>
-                            <input type="checkbox" id="React" value=1 name="languages[]"/>
-                            <label for="React">React</label>
-                        </span>
-                        <span>
-                            <input type="checkbox" id="Laravel" value=2 name="languages[]"/>
-                            <label for="Laravel">Laravel</label>
-                        </span>
-                        <span>
-                            <input type="checkbox" id="Tailwind" value=3 name="languages[]"/>
-                            <label for="Tailwind">Tailwind</label>
-                        </span>
-                        <span>
-                            <input type="checkbox" id="Node.js" value=4 name="languages[]"/>
-                            <label for="Node.js">Node.js</label>
-                        </span>
-                        <span>
-                            <input type="checkbox" id="HTML" value=5 name="languages[]"/>
-                            <label for="HTML" >HTML</label>
-                        </span>
-                        <span>
-                            <input type="checkbox" id="Nginx" value=6 name="languages[]"/>
-                            <label for="Nginx">Nginx</label>
-                        </span>
+                        <?php foreach ($langages as $langage) : ?>
+                            <span>
+                                <input type="checkbox" id="<?= htmlspecialchars($langage->id) ?>" value="<?= htmlspecialchars($langage->id) ?>" name="languages[]" />
+                                <label for="<?= htmlspecialchars($langage->id) ?>"><?= htmlspecialchars($langage->label) ?></label>
+                            </span>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
             <div class="mb-5 sm:w-6/12">
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
-                    <option value="">Choisi les technos</option>
-                    <option value=1>Dog</option>
-                    <option value=2>Cat</option>
-                    <option value=3>Hamster</option>
-                    <option value=4>Parrot</option>
-                    <option value=5>Spider</option>
-                    <option value=6>Goldfish</option>
+                    <option value="">Choisi l'organisation'</option>
+                    <?php foreach ($organizations as $organization) : ?>
+                        <option value=<?= htmlspecialchars($organization->id) ?>><?= htmlspecialchars($organization->title) ?></option>
+                    <?php endforeach; ?>
                 </select>
             </div>
         </span>

@@ -33,8 +33,6 @@ class ProjectLanguage
 
         } catch (\Throwable $error) {
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            dump($error->getMessage());
-            die;
         }
     }
 

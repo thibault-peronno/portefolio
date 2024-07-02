@@ -19,12 +19,14 @@ class OrgaController extends CoreController
 
     public function addOrga(): void
     {
-        try {
-            // instancier notre model "organization" pour créer un nouvel objet
-            $organizationModel = new Organization();
-            $imageHelper = new ImageHelper();
+        $organizationModel = new Organization();
+        $imageHelper = new ImageHelper();
 
-            $însertedImage = $imageHelper->organizationImage();
+        $data = [];
+        try {
+
+            /* Inserte image : return true or an trow error */
+            $imageHelper->isInsertedOrganizationImage();
 
             // échapper nos données pour éviter les failles XSS
             $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
@@ -38,9 +40,6 @@ class OrgaController extends CoreController
 
             // aller faire la requête dans notre model
             $insert = $organizationModel->addOrganization();
-
-            $data = [];
-            dump($insert);
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }

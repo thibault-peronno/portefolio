@@ -64,11 +64,7 @@ class Project
        
         } catch (\Throwable $error) {
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            dump($error->getMessage());
-            die;
         }
-        // dump($pdoStatement);
-        // die;
         
     }
 
