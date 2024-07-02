@@ -13,7 +13,7 @@ class LanguageController extends CoreController
         $this->show('technos');
     }
 
-    public function botechnos(): void
+    public function boTechnos(): void
     {
         $languagesModel = new Languages();
         $data = [];
@@ -83,5 +83,13 @@ class LanguageController extends CoreController
             ];
             $this->boShow('bo-add-techno', $data);
         }
+    }
+
+    public function boDeleteTechnos($labelId)
+    {
+        dump("boDeleteTechnos", (int)$labelId['id']);
+        $languagesModel = new Languages();
+        $languagesModel->deleteLanguage((int)$labelId['id']);
+
     }
 }

@@ -20,7 +20,7 @@
         <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
           Editer
         </button>
-        <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
+        <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl" id="deleteLanguages" data-label-id="<?= $language->id ?>">
           Supprimer
         </button>
       </span>

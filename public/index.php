@@ -86,7 +86,7 @@ $router->addRoutes(
       ],
     ],
     [
-      'GET',
+      'POST',
       '/connexion',
       [
         'controller' => 'ConnectController',
@@ -125,9 +125,18 @@ $router->addRoutes(
       '/bo-technos',
       [
         'controller' => 'LanguageController',
-        'method' => 'botechnos',
+        'method' => 'boTechnos',
       ],
       'bo-technos',
+    ],
+    [
+      'DELETE',
+      '/bo-delete--technos/[i:id]',
+      [
+        'controller' => 'LanguageController',
+        'method' => 'boDeleteTechnos',
+      ],
+      'bo-delete-technos',
     ],
     [
       'GET',

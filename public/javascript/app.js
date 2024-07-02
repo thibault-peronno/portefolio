@@ -1,9 +1,14 @@
 // We develop our javascript files on object-oriented programming
 const app = {
     init: function() {
-        console.log('DOM loaded');
+        console.log('const app DOM loaded');
         menu.init();
-        form.init();
+        if (window.location.pathname === "/bo-ajouter-projet") {
+            form.init();
+        }
+        if (window.location.pathname === "/bo-technos") {
+            deleteLanguage.init();
+        }
     }
 }
 
