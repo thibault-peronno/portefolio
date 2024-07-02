@@ -25,15 +25,16 @@ class LanguageController extends CoreController
 
     public function addTechno(): void
     {
+        $languagesModel = new Languages();
+        $imageHelper = new ImageHelper();
+        $data = [];
         try {
-            $languagesModel = new Languages();
-            $imageHelper = new ImageHelper();
 
-            $insertedImage = $imageHelper->languageImage();
+            $imageHelper->isInsertedLanguageImage();
 
-            if(!$insertedImage){
-                throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
-            }
+            // if(!$insertedImage){
+            //     throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
+            // }
 
             // Clean data with filter sanitaze
             $label = filter_input(INPUT_POST, 'label', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -51,8 +52,6 @@ class LanguageController extends CoreController
             $languagesModel->setType($type);
 
             $insert = $languagesModel->addLanguages();
-
-            $data = [];
            
             if (isset($insert)) {
                 $data['succeeded'] = $insert;
@@ -60,7 +59,6 @@ class LanguageController extends CoreController
 
             $this->boShow('bo-add-techno', $data);
         } catch (\Throwable $error) {
-            //throw $th;
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,

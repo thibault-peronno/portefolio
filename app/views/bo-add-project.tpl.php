@@ -1,4 +1,3 @@
-<?php dump($organizations) ?>
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
     Ajouter un projet
 </h1>
@@ -56,7 +55,7 @@
             <div class="mb-5 sm:w-6/12">
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
-                    <option value="">Choisi les technos</option>
+                    <option value="">Choisi l'organisation'</option>
                     <?php foreach ($organizations as $organization) : ?>
                         <option value=<?= htmlspecialchars($organization->id) ?>><?= htmlspecialchars($organization->title) ?></option>
                     <?php endforeach; ?>
