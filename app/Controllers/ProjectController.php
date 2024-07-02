@@ -29,13 +29,6 @@ class ProjectController extends CoreController
 
     public function addProjectPage(): void
     {
-        // instancier le model des langues
-
-        // instancier le model des oragnisations
-
-        // faire un tabelau qui contien les deux données : languages et organisations
-
-        // gestion des erreurs
         $langagesHelper = new GetLangagesHelper();
         $organizationModel = new Organization();
 
@@ -89,7 +82,7 @@ class ProjectController extends CoreController
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('bo-add-orga', $data);
+            $this->boShow('bo-add-project', $data);
         }
     }
 }
