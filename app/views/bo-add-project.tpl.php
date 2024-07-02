@@ -73,13 +73,10 @@
             <div class="mb-5 sm:w-6/12">
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
-                    <option value="">Choisi les technos</option>
-                    <option value=1>Dog</option>
-                    <option value=2>Cat</option>
-                    <option value=3>Hamster</option>
-                    <option value=4>Parrot</option>
-                    <option value=5>Spider</option>
-                    <option value=6>Goldfish</option>
+                    <option value="">Choisi l'organisations'</option>
+                    <?php foreach ($organizations as $organization) : ?>
+                        <option value=<?= htmlspecialchars($organization->id) ?>><?= htmlspecialchars($organization->title) ?></option>
+                        <?php endforeach; ?>
                 </select>
             </div>
         </span>
