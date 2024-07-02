@@ -5,6 +5,8 @@ namespace App\Controllers;
 use App\Controllers\CoreController;
 use App\Models\Project;
 use App\Models\ProjectLanguage;
+use App\Helpers\GetLangagesHelper;
+use App\Models\Organization;
 
 class ProjectController extends CoreController
 {
@@ -33,8 +35,15 @@ class ProjectController extends CoreController
         // faire un tabelau qui contien les deux données : languages et organisations
 
         // gestion des erreurs
+        $langagesHelper = new GetLangagesHelper();
+        $organizationModel = new Organization();
 
-        $this->boShow('bo-add-project');
+        $data = [];
+
+        $data['langages'] = $langagesHelper->getLanguages();
+        $data['organizations'] = $organizationModel->getOrganizations();
+
+        $this->boShow('bo-add-project', $data);
     }
 
     public function addProject(): void
