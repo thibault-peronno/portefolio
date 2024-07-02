@@ -11,10 +11,8 @@ class ProjectLanguageController extends CoreController
 
         foreach ($_POST['languages'] as $key => $value) {
             $intValue = intval($value);
-            dump($intValue);
             $_POST['languages'][$key] = $intValue;
         }
-        dump($_POST);
 
         foreach ($_POST['languages'] as $key => $value) {
 
@@ -24,7 +22,6 @@ class ProjectLanguageController extends CoreController
             // call the method to exect the sql request
             $result = $projectLanguageModel->addLanguagesProjects();
         }
-        dump($_POST);
         return $result;
 
         

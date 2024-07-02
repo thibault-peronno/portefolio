@@ -49,9 +49,6 @@ class ProjectController extends CoreController
 
     public function addProject(): void
     {
-        dump('post', $_POST);
-        // die;
-
         $projectModel = new Project();
         $imageHelper = new ImageHelper();
 
@@ -74,7 +71,6 @@ class ProjectController extends CoreController
             /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;
         */
-            dump('controller', $organization_id);
             $projectModel->setTitle($title);
             $projectModel->setDescription($description);
             $projectModel->setUrl($url);
@@ -83,7 +79,6 @@ class ProjectController extends CoreController
 
             $insert = $projectModel->addProject();
 
-            dump($insert);
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }

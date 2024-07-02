@@ -2,59 +2,56 @@
 
 namespace App\Helpers;
 
-use Error;
+use Exception;
 
 class ImageHelper
 {
     private $IMAGE_TYPES = ['image/jpeg', 'image/png'];
 
-    public function isInsertedLanguageImage():bool | Error
+    public function isInsertedLanguageImage():bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
-                throw new Error("L'image n'est pas valide");
+                throw new Exception("L'image n'est pas valide");
             }
             // Check if image with same name exist
             if (file_exists(__DIR__ . "/../../public/assets/images/languages/" . $_FILES["picture"]["name"])) {
-                throw new Error("Le fichier existe déjà");
+                throw new Exception("Le fichier existe déjà");
             };
             // copy the picture from cache to directory I want
             return copy($_FILES['picture']['tmp_name'], "./assets/images/languages/" . $_FILES['picture']['name']);
         } catch (\Throwable $error) {
-            // I return a throw error, to handle in the method where I have called it
-            throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
+            throw $error;
         }
     }
 
-    public function isInsertedOrganizationImage():bool | Error
+    public function isInsertedOrganizationImage():bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
-                throw new Error("L'image n'est pas valide");
+                throw new Exception("L'image n'est pas valide");
             }
             if (file_exists(__DIR__ . "/../../public/assets/images/organizations/" . $_FILES["picture"]["name"])) {
-                throw new Error("Le fichier existe déjà");
+                throw new Exception("Le fichier existe déjà");
             };
             return copy($_FILES['picture']['tmp_name'], "./assets/images/organizations/" . $_FILES['picture']['name']);
         } catch (\Throwable $error) {
-            // throw $error;
-            throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
+            throw $error;
         }
     }
 
-    public function isInsertedProjectImage():bool | Error
+    public function isInsertedProjectImage():bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
-                throw new Error("L'image n'est pas valide");
+                throw new Exception("L'image n'est pas valide");
             }
-            if (file_exists(__DIR__ . "/../../public/assets/images/organizations/" . $_FILES["picture"]["name"])) {
-                throw new Error("Le fichier existe déjà");
+            if (file_exists(__DIR__ . "/../../public/assets/images/projects/" . $_FILES["picture"]["name"])) {
+                throw new Exception("Le fichier existe déjà");
             };
             return copy($_FILES['picture']['tmp_name'], "./assets/images/projects/" . $_FILES['picture']['name']);
         } catch (\Throwable $error) {
-            // throw $error;
-            throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
+            throw $error;
         }
     }
     // To check if I have data in tmp_name and it is not empty. I call the method to check the extension file, and the method to check the sign of the picture.

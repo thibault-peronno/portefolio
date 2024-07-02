@@ -23,7 +23,6 @@ class Organization
             $pdoStatement = $pdo->query($sql);
             return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Organization::class);
         } catch (\Throwable $error) {
-            dump($error);
             throw new Error("La récupération des langues de développemen a échoué");
         }
     }
@@ -40,9 +39,6 @@ class Organization
             $pdoStatement->bindValue(':description',  $this->description, PDO::PARAM_STR);
             $pdoStatement->bindValue(':picture',  $this->picture, PDO::PARAM_STR);
 
-            // dump($pdoStatement);
-            // die;
-
             $insertedRows = $pdoStatement->execute();
 
             if($insertedRows > 0) {
@@ -51,8 +47,6 @@ class Organization
             return false;
         } catch (\Throwable $error) {
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-            dump($error->getMessage());
-            die;
         }
     }
 

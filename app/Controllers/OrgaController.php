@@ -40,8 +40,6 @@ class OrgaController extends CoreController
 
             // aller faire la requête dans notre model
             $insert = $organizationModel->addOrganization();
-
-            dump($insert);
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }

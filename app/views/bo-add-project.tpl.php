@@ -45,7 +45,7 @@
                     <div id="checklanguages" class="hidden absolute flex flex-col gap-2 bg-white left-0 p-2 w-full rounded h-28 overflow-y-auto">
                         <?php foreach ($langages as $langage) : ?>
                             <span>
-                                <input type="checkbox" id="<?= htmlspecialchars($langage->id) ?>" value="<?= htmlspecialchars($langage->id) ?>" name="<?= htmlspecialchars($langage->label) ?>" />
+                                <input type="checkbox" id="<?= htmlspecialchars($langage->id) ?>" value="<?= htmlspecialchars($langage->id) ?>" name="languages[]" />
                                 <label for="<?= htmlspecialchars($langage->id) ?>"><?= htmlspecialchars($langage->label) ?></label>
                             </span>
                         <?php endforeach; ?>
