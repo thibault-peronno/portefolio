@@ -13,9 +13,27 @@ class LanguageController extends CoreController
         $this->show('technos');
     }
 
-    public function botechnos(): void
+    public function boTechnos(): void
     {
-        $this->boShow('bo-technos');
+        $languagesModel = new Languages();
+        $data = [];
+
+        $getLanguages = $languagesModel->getLanguages();
+        foreach ($getLanguages as $getLanguage) {
+            if (in_array("Front-end", (array) $getLanguage)) {
+                $data['languages']['frontend'][] = $getLanguage;
+                continue;
+            }
+            if (in_array("Back-end", (array) $getLanguage)) {
+                $data['languages']['backend'][] = $getLanguage;
+                continue;
+            }
+            if (in_array("DevOps", (array) $getLanguage)) {
+                $data['languages']['devOps'][] = $getLanguage;
+                continue;
+            }
+        }
+        $this->boShow('bo-technos', $data);
     }
 
     public function addTechnoPage(): void
@@ -52,7 +70,7 @@ class LanguageController extends CoreController
             $languagesModel->setType($type);
 
             $insert = $languagesModel->addLanguages();
-           
+
             if (isset($insert)) {
                 $data['succeeded'] = $insert;
             }
@@ -65,5 +83,13 @@ class LanguageController extends CoreController
             ];
             $this->boShow('bo-add-techno', $data);
         }
+    }
+
+    public function boDeleteTechnos($labelId)
+    {
+        dump("boDeleteTechnos", (int)$labelId['id']);
+        $languagesModel = new Languages();
+        $languagesModel->deleteLanguage((int)$labelId['id']);
+
     }
 }

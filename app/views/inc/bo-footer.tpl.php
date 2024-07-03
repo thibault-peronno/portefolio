@@ -6,8 +6,14 @@
         <img src="/assets/images/icons/github.svg" alt="" />
       </div>
     </footer>
+    <?= dump($_SERVER['REQUEST_URI']) ?>
     <script src="/javascript/app.js"></script>
     <script src="/javascript/menu.js"></script>
+    <?php if($_SERVER['REQUEST_URI'] == "/bo-ajouter-projet") : ?>
     <script src="/javascript/form.js"></script>
+    <?php endif ?>
+    <?php if($_SERVER['REQUEST_URI'] == '/bo-technos') : ?>
+    <script src="/javascript/deleteLanguage.js"></script>
+    <?php endif ?>
   </body>
 </html>

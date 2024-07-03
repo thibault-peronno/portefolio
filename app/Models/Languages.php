@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Utils\Database;
 use PDO;
 use Error;
+use Exception;
 
 class Languages
 {
@@ -16,14 +17,14 @@ class Languages
     public function getLanguages(): array
     {
         $pdo= Database::getPDO();
-        $sql = "SELECT id, label, type FROM `languages`";
+        $sql = "SELECT * FROM `languages`";
 
         try {
             $pdoStatement =$pdo->query($sql);
             return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);
         } catch (\Throwable $error) {
             dump($error);
-            throw new Error("La récupération des langues de développemen a échoué");
+            throw new Exception("La récupération des langues de développement a échoué");
         }
     }
 
@@ -51,6 +52,24 @@ class Languages
             // dump($error->getMessage());
             // die;
             return $error;
+        }
+    }
+
+    public function deleteLanguage($idLabel)
+    {
+        // dd($idLabel);
+        $pdo = Database::getPDO();
+        $sql = "DELETE FROM `languages` WHERE `id` = $idLabel";
+        // dd($sql);
+        try {
+            $pdoStatement = $pdo->query($sql);
+            dd($pdoStatement);
+            dd($pdoStatement->delete(PDO::FETCH_CLASS, Languages::class));
+            return $pdoStatement->delete(PDO::FETCH_CLASS, Languages::class);
+
+        } catch (\Throwable $th) {
+            throw new Exception("Verifiez que le langage n'est pas utilisé par un projet");
+            // dd('error', $th);
         }
     }
 
