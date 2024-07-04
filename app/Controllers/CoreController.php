@@ -52,6 +52,7 @@ class CoreController
 
     public function boShow(string $pageName, array $data = []): void
     {
+        dump($pageName);
         $getNeededData = $this->getNeededDatas();
         // dump($getNeededData);
         // dump($data);

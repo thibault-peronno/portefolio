@@ -16,14 +16,14 @@ class Project
     public $url;
     public $organization_id;
 
-    public function getProject(): array
+    public function getProjects(): array
     {
         $pdo = Database::getPDO();
         $sql = "SELECT p.*, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
-FROM projects p
-LEFT JOIN projects_languages pl ON p.id = pl.project_id
-LEFT JOIN languages l ON pl.language_id = l.id
-GROUP BY p.id";
+        FROM projects p
+        LEFT JOIN projects_languages pl ON p.id = pl.project_id
+        LEFT JOIN languages l ON pl.language_id = l.id
+        GROUP BY p.id";
 
 
         $pdoStatement = $pdo->query($sql);
@@ -36,7 +36,7 @@ GROUP BY p.id";
         }
         unset($getProject);*/
 
-        $getProjects = array_map(function($getProject) {
+        $getProjects = array_map(function ($getProject) {
             return [
                 'id' => $getProject['id'],
                 'title' => $getProject['title'],
@@ -48,6 +48,24 @@ GROUP BY p.id";
             ];
         }, $getProjects);
         return $getProjects;
+    }
+
+    public function getProject($idProject): array
+    {
+        $pdo = Database::getPDO();
+        $sql ="SELECT p.*, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
+        FROM projects p
+        LEFT JOIN projects_languages pl ON p.id = pl.project_id
+        LEFT JOIN languages l ON pl.language_id = l.id
+        WHERE p.id = $idProject
+        GROUP BY p.id";
+
+        $pdoStatement = $pdo->query($sql);
+        $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+
+        $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
+        
+        return $getProject;
     }
 
     public function addProject(): bool

@@ -70,6 +70,15 @@ $router->addRoutes(
     ],
     [
       'GET',
+      '/bo-projet/[i:id]',
+      [
+        'controller' => 'ProjectController',
+        'method' => 'boProject',
+      ],
+      'bo-projet',
+    ],
+    [
+      'GET',
       '/bo-ajouter-projet',
       [
         'controller' => 'ProjectController',
