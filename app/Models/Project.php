@@ -9,32 +9,57 @@ use PDO;
 
 class Project
 {
-    private $id;
-    private $title;
-    private $description;
-    private $picture;
-    private $url;
-    private $organization_id;
+    public $id;
+    public $title;
+    public $description;
+    public $picture;
+    public $url;
+    public $organization_id;
 
-    public function getProject():object
+    public function getProject(): array
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `projects`";
+        $sql = "SELECT p.*, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
+FROM projects p
+LEFT JOIN projects_languages pl ON p.id = pl.project_id
+LEFT JOIN languages l ON pl.language_id = l.id
+GROUP BY p.id";
+
+
         $pdoStatement = $pdo->query($sql);
-        $currentProject= $pdoStatement->fetchObject(Project::class);
-        return $currentProject;
+        $getProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+        /* foreach($getProjects as &$getProject){
+            dump('foreach', $getProject['labels']);
+            $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
+            dump('foreach 2', $getProject['labels']);
+        }
+        unset($getProject);*/
+
+        $getProjects = array_map(function($getProject) {
+            return [
+                'id' => $getProject['id'],
+                'title' => $getProject['title'],
+                'description' => $getProject['description'],
+                'url' => $getProject['url'],
+                'picture' => $getProject['picture'],
+                'organization_id' => $getProject['organization_id'],
+                'labels' => json_decode('[' . $getProject['labels'] . ']', true),
+            ];
+        }, $getProjects);
+        return $getProjects;
     }
 
-    public function addProject():bool
+    public function addProject(): bool
     {
-        
+
         $pdo = Database::getPDO();
         $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :url, :organizationId)";
 
         try {
             /*  La méthode prepare() de PDO est utilisée pour préparer une requête SQL pour son exécution, en créant un objet PDOStatement qui permet de lier des valeurs aux placeholders de la requête et d'exécuter la requête de manière sécurisée, évitant ainsi les injections SQL
              */
-            $pdoStatement=$pdo->prepare($sql);
+            $pdoStatement = $pdo->prepare($sql);
 
             /*  La méthode bindValue() de l'objet PDOStatement est utilisée pour lier une valeur à un paramètre nommé dans une requête SQL préparée. Elle prend trois arguments : le nom du paramètre (avec un préfixe :), la valeur à lier, et optionnellement le type de données de la valeur. Cette méthode permet de sécuriser les requêtes en évitant les injections SQL, car elle assure que les valeurs sont correctement échappées et traitées par le système de gestion de base de données. De plus, en spécifiant le type de données attendu, elle peut améliorer les performances de la requête et éviter des erreurs de type de données
              */
@@ -52,67 +77,64 @@ class Project
                 $projectId = $pdo->lastInsertId();
                 $insertLanguages = $projectLanguageCtrl->addProjectLanguage($projectId);
 
-                if($insertLanguages){
+                if ($insertLanguages) {
                     // We return true, because the sql insert has worked.
                     return true;
                 }
-    
             }
-    
+
             // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
             return false;
-       
         } catch (\Throwable $error) {
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
-        
     }
 
-    public function getTitle():string
+    public function getTitle(): string
     {
         return $this->title;
     }
-    public function setTitle($title):self
+    public function setTitle($title): self
     {
         $this->title = $title;
         return $this;
     }
 
-    public function getDescription():string
+    public function getDescription(): string
     {
         return $this->description;
     }
-    public function setDescription($description):self
+    public function setDescription($description): self
     {
         $this->description = $description;
         return $this;
     }
 
-    public function getPicture():string
+    public function getPicture(): string
     {
         return $this->picture;
     }
-    public function setPicture($picture):self
+    public function setPicture($picture): self
     {
         $this->picture = $picture;
         return $this;
     }
 
-    public function getUrl():string
+    public function getUrl(): string
     {
         return $this->url;
     }
-    public function setUrl($url):self
+    public function setUrl($url): self
     {
         $this->url = $url;
         return $this;
     }
 
-    public function getOrganizationId():string
+    public function getOrganizationId(): string
     {
         return $this->organization_id;
     }
-    public function setOrganizationId($organizationId):self
+    public function setOrganizationId($organizationId): self
     {
         $this->organization_id = $organizationId;
         return $this;

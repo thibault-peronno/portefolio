@@ -24,7 +24,10 @@ class ProjectController extends CoreController
 
     public function boProjects(): void
     {
-        $this->boShow('bo-projects');
+        $projectModel = new Project();
+        $data = [];
+        $data["projects"] = $projectModel->getProject();
+        $this->boShow('bo-projects', $data);
     }
 
     public function addProjectPage(): void
