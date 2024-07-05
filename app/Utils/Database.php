@@ -16,7 +16,6 @@ class Database
          * sous forme d'un tableau associatif.
          */
         $configConnect = parse_ini_file(__DIR__ . '/../config.ini');
-        // dump($configConnect);
 
         try {
             $this->dbh = new PDO(
@@ -35,8 +34,6 @@ class Database
         {
             self::$_instance = new Database;
         }
-        // dump('instance de database', new Database);
-        // dump('self:: instance', self::$_instance->dbh);
         return self::$_instance->dbh;
     }
 }

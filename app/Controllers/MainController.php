@@ -19,8 +19,6 @@ class MainController extends CoreController {
     public function boHome(): void
     {
         $user = new User;
-        // dump('get user', $user->getUser());
-        // die;
         $this->boShow('bo-home');
     }
 };

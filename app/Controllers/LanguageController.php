@@ -87,7 +87,6 @@ class LanguageController extends CoreController
 
     public function boDeleteTechnos($labelId)
     {
-        dump("boDeleteTechnos", (int)$labelId['id']);
         $languagesModel = new Languages();
         $languagesModel->deleteLanguage((int)$labelId['id']);
 
