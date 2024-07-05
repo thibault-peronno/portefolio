@@ -17,10 +17,8 @@ class User
         $sql = "SELECT * FROM `users`";
 
         $pdoStatement = $pdo->query($sql);
-        dump('pdo', $pdoStatement);
 
         $currentUser= $pdoStatement->fetchObject(User::class);
-        dump('current user', $currentUser);
 
         return $currentUser;
 

@@ -32,7 +32,6 @@ class ProjectController extends CoreController
 
     public function boProject($idProject): void
     {
-        // dump('boProject', $idProject);
         $projectModel = new Project();
         $data = [];
         $data["project"] = $projectModel->getProject($idProject['id']);
