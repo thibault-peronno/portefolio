@@ -95,6 +95,15 @@ $router->addRoutes(
       ],
     ],
     [
+      'GET',
+      '/bo-editer-projet/[i:id]',
+      [
+        'controller' => 'ProjectController',
+        'method' => 'editProject',
+      ],
+      'bo-editer-projet'
+    ],
+    [
       'POST',
       '/connexion',
       [

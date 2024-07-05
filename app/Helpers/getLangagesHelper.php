@@ -8,9 +8,9 @@ class GetLangagesHelper
     public function getLanguages(): array
     {
         try {
-            $langagesModel = new Languages();
+            $languagesModel = new Languages();
 
-            return $langagesModel->getLanguages();
+            return $languagesModel->getLanguages();
         } catch (\Throwable $error) {
             dump($error);
         }

@@ -40,12 +40,12 @@ class ProjectController extends CoreController
 
     public function addProjectPage(): void
     {
-        $langagesHelper = new GetLangagesHelper();
+        $languagesHelper = new GetLangagesHelper();
         $organizationModel = new Organization();
 
         $data = [];
 
-        $data['langages'] = $langagesHelper->getLanguages();
+        $data['languages'] = $languagesHelper->getLanguages();
         $data['organizations'] = $organizationModel->getOrganizations();
 
         $this->boShow('bo-add-project', $data);
@@ -95,5 +95,20 @@ class ProjectController extends CoreController
             ];
             $this->boShow('bo-add-project', $data);
         }
+    }
+
+    public function editProject($idProject)
+    {
+        $languagesHelper = new GetLangagesHelper();
+        $organizationModel = new Organization();
+        $projectModel = new Project();
+
+        $data = [];
+
+        $data['languages'] = $languagesHelper->getLanguages();
+        $data['organizations'] = $organizationModel->getOrganizations();
+        $data['project'] = $projectModel->getProject($idProject['id']);
+
+        $this->boShow('bo-add-project', $data);
     }
 }

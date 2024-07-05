@@ -53,7 +53,7 @@ class Project
     public function getProject($idProject): array
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT p.*, o.title AS title_organozation, o.picture AS picture_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
+        $sql = "SELECT p.*, o.title AS title_organization, o.picture AS picture_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
         FROM projects p
         LEFT JOIN projects_languages pl ON p.id = pl.project_id
         LEFT JOIN languages l ON pl.language_id = l.id

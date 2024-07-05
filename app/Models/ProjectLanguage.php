@@ -15,7 +15,7 @@ class ProjectLanguage
     {
         try {
             $pdo = Database::getPDO();
-            // Préparation de la requête pour insérer les langages
+            // Préparation de la requête pour insérer les languages
             $sql = "INSERT INTO `projects_languages` (`project_id`, `language_id`) VALUES (:projectId, :languageId)";
             $pdoStatementLanguages = $pdo->prepare($sql);
     
