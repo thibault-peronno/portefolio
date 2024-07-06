@@ -34,14 +34,15 @@
             </div>
             <div class="mb-5 sm:w-6/12">
                 <?php if(isset($project)) :?>
-                    <div class="flex gap-2.5 items-center">
+                    <div id="updateImageTextDiv">
                         <img src="<?= "/assets/images/projects/" . $project['picture'] ?>" alt="Image du projet" class="w-14">
-                        <p class="font-bold text-white">Modifier le projet</p>
+                        <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
                     </div>
                 <?php endif ?>
-                <span class="<?= isset($project)? "hidden" : "" ?>">
-                    <label for="picture" class="text-primary text-xl <?= isset($project)? "hidden" : "" ?>">Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
+                <span id="updateImageInput" class="<?= isset($project)? "hidden" : "" ?>">
+                    <label for="picture" class="text-primary text-xl" >Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                     <input type="file" name="picture" id="picture" accept="image/png, image/jpeg" class="rounded bg-white h-12 w-full p-2" />
+                    <p id="cancelUpdateImageInput" class="font-bold text-white cursor-pointer <?= isset($project)? "block" : "hidden" ?>">Annuler</p>
                 </span>
             </div>
         </span>
