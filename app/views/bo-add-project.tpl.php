@@ -1,6 +1,6 @@
 <?php dump($project, $languages) ?>
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
-    Ajouter un projet
+<?= isset($project) ? "Modifier un projet" : "Ajouter un projet" ?>
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
     <?php if (isset($succeeded) && $succeeded == true) : ?>
@@ -13,7 +13,7 @@
             <p>L'ajout a échoué, réssayez plus tard</p>
         </div>
     <?php endif ?>
-    <form action="" id="project-form" method="<?php echo isset($project) ? "patch" : "post" ?>" enctype="multipart/form-data">
+    <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
             <input type="text" name="title" id="title" value="<?= isset($project) ? $project['title'] : " " ?>" class="rounded bg-white h-12 w-full p-2" />
@@ -24,8 +24,7 @@
             class="text-primary text-xl">
             Description<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
             <textarea 
-            name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?php echo isset($project) ? $project['description'] : " " ?>
-            </textarea>
+            name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?php echo isset($project) ? $project['description'] : " " ?></textarea>
         </div>
         <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
             <div class="mb-5 sm:w-6/12">
@@ -74,7 +73,7 @@
             <div class="mb-5 sm:w-6/12">
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
-                    <option value=""><?= isset($project) ? $project['title_organization'] : "Choisi l'organisation" ?> </option>
+                    <option value="<?= isset($project) ? $project['organization_id'] : "" ?>"><?= isset($project) ? $project['title_organization'] : "Choisi l'organisation" ?></option>
                     <?php foreach ($organizations as $organization) : ?>
                         <option 
                             value=<?= htmlspecialchars($organization->id) ?>>
@@ -88,5 +87,5 @@
 </section>
 <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl" type="submit" form="project-form">
     <img src="/assets/images/icons/add.svg" alt="" />
-    <p class="text-white">Ajouter</p>
+    <p class="text-white"><?= isset($project) ? "Modifier" : "Ajouter" ?></p>
 </button>

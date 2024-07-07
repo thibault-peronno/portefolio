@@ -63,8 +63,8 @@ class Languages
         // dd($sql);
         try {
             $pdoStatement = $pdo->query($sql);
-            dd($pdoStatement);
-            dd($pdoStatement->delete(PDO::FETCH_CLASS, Languages::class));
+            // dd($pdoStatement);
+            // dd($pdoStatement->delete(PDO::FETCH_CLASS, Languages::class));
             return $pdoStatement->delete(PDO::FETCH_CLASS, Languages::class);
 
         } catch (\Throwable $th) {

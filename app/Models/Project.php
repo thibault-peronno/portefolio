@@ -109,6 +109,57 @@ class Project
         }
     }
 
+    public function updateProject(): bool
+    {
+        dump('updateProject');
+        $pdo = Database::getPDO();
+        $sql = "UPDATE `projects` SET (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :url, :organizationId) WHERE id = $this->id ";
+        try {
+            $pdoStatement = $pdo->prepare($sql);
+            
+            dump('updateProject test', $this->id);
+            $pdoStatement->bindValue(':title', $this->title, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':description', $this->description, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':url', $this->url, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':url', $this->picture, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':organizationId', $this->organization_id, PDO::PARAM_INT);
+
+            $insertedRows = $pdoStatement->execute();
+            dump('$insertedRows', $insertedRows);
+
+            if ($insertedRows > 0) {
+                // We retrieve the last id.
+                $projectLanguageCtrl = new ProjectLanguageController;
+                $deleteLanguages = $projectLanguageCtrl->deleteProjetctLanguage($_POST['languages'], $this->id);
+                if($deleteLanguages){
+                    $insertLanguages = $projectLanguageCtrl->addProjectLanguage($this->id);
+                }
+
+                if ($insertLanguages) {
+                    // We return true, because the sql insert has worked.
+                    return true;
+                }
+            }
+
+            // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
+            return false;
+
+        } catch (\Throwable $th) {
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }
+        return true;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+    public function setId($id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
     public function getTitle(): string
     {
         return $this->title;
