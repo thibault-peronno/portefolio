@@ -3,7 +3,7 @@ const app = {
     init: function() {
         console.log('const app DOM loaded');
         menu.init();
-        if (window.location.pathname === "/bo-ajouter-projet") {
+        if (window.location.pathname.includes("bo-ajouter-projet") || window.location.pathname.includes("bo-editer-projet")) {
             form.init();
         }
         if (window.location.pathname === "/bo-technos") {

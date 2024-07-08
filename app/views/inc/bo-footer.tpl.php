@@ -9,7 +9,7 @@
     <?= dump($_SERVER['REQUEST_URI']) ?>
     <script src="/javascript/app.js"></script>
     <script src="/javascript/menu.js"></script>
-    <?php if($_SERVER['REQUEST_URI'] == "/bo-ajouter-projet") : ?>
+    <?php if(str_contains($_SERVER['REQUEST_URI'], "/bo-ajouter-projet") ||str_contains($_SERVER['REQUEST_URI'], "/bo-editer-projet") ) : ?>
     <script src="/javascript/form.js"></script>
     <?php endif ?>
     <?php if($_SERVER['REQUEST_URI'] == '/bo-technos') : ?>

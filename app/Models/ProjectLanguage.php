@@ -15,7 +15,7 @@ class ProjectLanguage
     {
         try {
             $pdo = Database::getPDO();
-            // Préparation de la requête pour insérer les langages
+            // Préparation de la requête pour insérer les languages
             $sql = "INSERT INTO `projects_languages` (`project_id`, `language_id`) VALUES (:projectId, :languageId)";
             $pdoStatementLanguages = $pdo->prepare($sql);
     
@@ -32,6 +32,21 @@ class ProjectLanguage
             return false;
 
         } catch (\Throwable $error) {
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }
+    }
+
+    public function deleteLanguagesProjects(): bool
+    {
+        try {
+            $pdo = Database::getPDO();
+            $sql = "DELETE FROM `projects_languages` WHERE project_id = ?";
+            $pdoStatement = $pdo->prepare($sql);
+            $resultDeleteProjectLanguages =  $pdoStatement->execute([$this->projectId]);
+            return $resultDeleteProjectLanguages;
+
+        } catch (\Throwable $error) {
+            dump($error);
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
     }

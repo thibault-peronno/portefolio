@@ -54,6 +54,18 @@ class ImageHelper
             throw $error;
         }
     }
+
+    public function isNoUpdateImage(): bool
+    {
+        try {
+            if (!isset($_FILES['picture'])) {
+                return false;
+            };
+            return true;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
     // To check if I have data in tmp_name and it is not empty. I call the method to check the extension file, and the method to check the sign of the picture.
     private function imageProcess():bool
     {

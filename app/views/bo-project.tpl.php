@@ -17,10 +17,10 @@
             <?php endforeach ?>
         </div>
         <img src="<?= "/assets/images/projects/" . $project['picture'] ?>" alt=" ">
-        <?php if (isset($project['title_organozation'], $project['picture_organization'])) : ?>
+        <?php if (isset($project['title_organization'], $project['picture_organization'])) : ?>
             <span class="flex flex-col gap-2.5 items-center mb-2">
                 <img src="<?php echo '/assets/images/organizations/' . $project['picture_organization'] ?>" alt="" class="w-9 h-9" />
-                <h3 class="text-xl font-bold text-btn-sec"><?= $project['title_organozation'] ?></h3>
+                <h3 class="text-xl font-bold text-btn-sec"><?= $project['title_organization'] ?></h3>
             </span>
         <?php endif ?>
         <?php if (isset($project['url'])) : ?>
