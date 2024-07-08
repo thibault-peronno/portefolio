@@ -113,19 +113,19 @@ class Project
     {
         dump('updateProject');
         $pdo = Database::getPDO();
-        $sql = "UPDATE `projects` SET (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :url, :organizationId) WHERE id = $this->id ";
+        $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
         try {
             $pdoStatement = $pdo->prepare($sql);
-            
-            dump('updateProject test', $this->id);
-            $pdoStatement->bindValue(':title', $this->title, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':description', $this->description, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':url', $this->url, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':url', $this->picture, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':organizationId', $this->organization_id, PDO::PARAM_INT);
+            // dd($this->title,$this->description, $this->url, $this->picture, $this->organization_id, $this->id);
+            $pdoStatement->bindParam(':title', $this->title, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':description', $this->description, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':url', $this->url, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':picture', $this->picture, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':organizationId', $this->organization_id, PDO::PARAM_INT);
+            $pdoStatement->bindParam(':projectId', $this->id, PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();
-            dump('$insertedRows', $insertedRows);
+
 
             if ($insertedRows > 0) {
                 // We retrieve the last id.
