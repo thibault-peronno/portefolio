@@ -20,18 +20,24 @@
           <td><?= $project['title'] ?></td>
           <td class="hidden sm:table-cell"><?= $project['description'] ?></td>
           <td class="text-end">
+          <a href="<?= "/bo-projet/" . $project['id'] ?>">
             <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
+          </a>
+            <a href="<?= "/bo-editer-projet/" . $project['id'] ?>">
             <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
+          </a>
             <img src="/assets/images/icons/trash.svg" alt="" class="inline cursor-pointer" />
           </td>
         </tr>
       <?php endforeach ?>
     </tbody>
   </table>
-  <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
-    <p class="text-white">Gérer les projets</p>
-    <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
-  </button>
+  <a href="/bo-projets">
+    <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
+      <p class="text-white">Gérer les projets</p>
+      <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
+    </button>
+  </a>
 </div>
 
 <h2 class="text-2xl text-white uppercase font-bold my-10 sm:w-6/12 sm:mt-12">
@@ -48,10 +54,12 @@
       </div>
     <?php endforeach ?>
   </div>
-  <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
-    <p class="text-white">Gérer les technos</p>
-    <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
-  </button>
+  <a href="/bo-technos">
+    <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
+      <p class="text-white">Gérer les technos</p>
+      <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
+    </button>
+  </a>
 </div>
 <h2 class="text-2xl text-white uppercase font-bold my-10 sm:w-6/12 sm:mt-12">
   Mes organisations
@@ -79,8 +87,10 @@
       <?php endforeach ?>
     </tbody>
   </table>
-  <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
-    <p class="text-white">Gérer les organisations</p>
-    <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
-  </button>
+  <a href="/bo-organisation">
+    <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
+      <p class="text-white">Gérer les organisations</p>
+      <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
+    </button>
+  </a>
 </div>
