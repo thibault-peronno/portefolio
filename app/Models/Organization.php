@@ -17,7 +17,7 @@ class Organization
     public function getOrganizations(): array
     {
         $pdo= Database::getPDO();
-        $sql= "SELECT id, title FROM `organizations`";
+        $sql= "SELECT * FROM `organizations`";
 
         try {
             $pdoStatement = $pdo->query($sql);

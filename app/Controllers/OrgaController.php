@@ -9,7 +9,15 @@ class OrgaController extends CoreController
 {
     public function organization(): void
     {
-        $this->boShow('bo-orga');
+        $organizationModel = new Organization();
+        $data = [];
+
+        try {
+            $data['organizations'] = $organizationModel->getOrganizations();
+            $this->boShow('bo-orga', $data);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     public function addOrgaPage(): void
@@ -52,5 +60,14 @@ class OrgaController extends CoreController
             ];
             $this->boShow('bo-add-orga', $data);
         }
+    }
+
+    public function editOrga($idOrga)
+    {
+        dump($idOrga);
+
+        $data = [];
+
+        $this->boShow('bo-add-orga', $data);
     }
 }
