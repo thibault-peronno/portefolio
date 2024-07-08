@@ -43,7 +43,6 @@ class ProjectLanguage
             $sql = "DELETE FROM `projects_languages` WHERE project_id = ?";
             $pdoStatement = $pdo->prepare($sql);
             $resultDeleteProjectLanguages =  $pdoStatement->execute([$this->projectId]);
-            dump($resultDeleteProjectLanguages);
             return $resultDeleteProjectLanguages;
 
         } catch (\Throwable $error) {

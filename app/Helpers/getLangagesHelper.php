@@ -12,7 +12,7 @@ class GetLangagesHelper
 
             return $languagesModel->getLanguages();
         } catch (\Throwable $error) {
-            dump($error);
+            dump('getLanguages', $error);
         }
     }
 }

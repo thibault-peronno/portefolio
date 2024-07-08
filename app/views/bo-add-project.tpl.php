@@ -1,4 +1,4 @@
-<?php dump($project, $languages) ?>
+<!-- <?php dump($project, $languages) ?> -->
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
 <?= isset($project) ? "Modifier un projet" : "Ajouter un projet" ?>
 </h1>
@@ -32,10 +32,11 @@
                 <input type="text" name="url" id="url" value=<?= isset($project) ? $project['url'] : " " ?> class="rounded bg-white h-12 w-full p-2" />
             </div>
             <div class="mb-5 sm:w-6/12">
-                <?php if(isset($project)) :?>
+                <?php if(isset($project) && isset($project['picture'])) :?>
                     <div id="updateImageTextDiv">
                         <img src="<?= "/assets/images/projects/" . $project['picture'] ?>" alt="Image du projet" class="w-14">
                         <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
+                        <input type="hidden" name="picture" value="<?= $project['picture'] ?>">
                     </div>
                 <?php endif ?>
                 <span id="updateImageInput" class="<?= isset($project)? "hidden" : "" ?>">

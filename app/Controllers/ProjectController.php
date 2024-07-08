@@ -114,8 +114,6 @@ class ProjectController extends CoreController
 
     public function updateProject($idProject)
     {
-        // dump('test', $_POST, $idProject);
-
         $projectModel = new Project();
         $imageHelper = new ImageHelper();
 
@@ -127,22 +125,22 @@ class ProjectController extends CoreController
             if(!$isNoUpdateImage){
                 $imageHelper->isInsertedProjectImage();
             }
-
             $id = intval($idProject['id']);
             $title = htmlspecialchars($_POST['title']);
             $description = htmlspecialchars($_POST['description']);
             $url = htmlspecialchars($_POST['url']);
             if(!$isNoUpdateImage){
             $picture = $_FILES["picture"]["name"];
+            }else{
+                $picture = htmlspecialchars($_POST['picture']);
             }
             $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);
+
             $projectModel->setId($id);
             $projectModel->setTitle($title);
             $projectModel->setDescription($description);
             $projectModel->setUrl($url);
-            if(!$isNoUpdateImage){
-                $projectModel->setPicture($picture);
-            }
+            $projectModel->setPicture($picture);
             $projectModel->setOrganizationId($organization_id);
 
             $insert = $projectModel->updateProject();

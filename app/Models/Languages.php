@@ -23,7 +23,7 @@ class Languages
             $pdoStatement =$pdo->query($sql);
             return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);
         } catch (\Throwable $error) {
-            dump($error);
+            dump('getLanguages model' , $error);
             throw new Exception("La récupération des langues de développement a échoué");
         }
     }

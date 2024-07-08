@@ -57,7 +57,6 @@ class ImageHelper
 
     public function isNoUpdateImage(): bool
     {
-        dump('isNoUpdateImage');
         try {
             if (!isset($_FILES['picture'])) {
                 return false;
