@@ -71,4 +71,43 @@ class OrgaController extends CoreController
         $data['organization'] = $organizationModel->getOrgaById();
         $this->boShow('bo-add-orga', $data);
     }
+
+    public function updateOrganization($idOrga)
+    {
+        $organizationModel = new Organization();
+        $imageHelper = new ImageHelper();
+
+        try {
+            $isNoUpdateImage = $imageHelper->isNoUpdateImage();
+            
+            if(!$isNoUpdateImage){
+                $imageHelper->isInsertedOrganizationImage();
+            }
+            
+            $id= intval($idOrga['id']);
+            $title = htmlspecialchars($_POST['title']);
+            $description = htmlspecialchars($_POST['description']);
+            if(!$isNoUpdateImage){
+                $picture = $_FILES["picture"]["name"];
+            }else{
+                $picture = htmlspecialchars($_POST['picture']);
+            }
+            
+            $organizationModel->setId($id);
+            $organizationModel->setTitle($title);
+            $organizationModel->setDescription($description);
+            $organizationModel->setPicture($picture);
+
+            $insert = $organizationModel->updateOrganization();
+
+            if ($insert || !$insert) {
+                $data['succeeded'] = $insert;
+            }
+
+            $this->boShow('bo-add-orga', $data);
+
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
 }
