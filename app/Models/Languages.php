@@ -70,6 +70,27 @@ class Languages
         }
     }
 
+    public function updateLanguage()
+    {
+        $pdo = Database::getPDO();
+        $sql = "UPDATE `languages` SET label = :label, type = :type, picture = :picture WHERE id = :idLanguage";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindParam(':label', $this->label, PDO::PARAM_STR);
+        $pdoStatement->bindParam(':type', $this->type, PDO::PARAM_STR);
+        $pdoStatement->bindParam(':picture', $this->picture, PDO::PARAM_STR);
+        $pdoStatement->bindParam(':idLanguage', $this->id, PDO::PARAM_INT);
+
+        $insertedRows = $pdoStatement->execute();
+
+        if ($insertedRows > 0) {
+            // We retrieve the last id.
+            return true;
+        }
+
+    }
+
     public function deleteLanguage($idLabel)
     {
         // dd($idLabel);

@@ -23,7 +23,7 @@
             <div class="mb-5 sm:w-6/12">
                 <label for="type" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="type" id="type" class="block rounded bg-white h-12 w-full p-2">
-                    <option value=""><?= isset($language) ? $language['type'] : "Type" ?></option>
+                    <option value="<?= isset($language) ? $language['type'] : "" ?>"><?= isset($language) ? $language['type'] : "Type" ?></option>
                     <option value="Front-end">Front-end</option>
                     <option value="Back-end">Back-end</option>
                     <option value="DevOps">DevOps</option>
@@ -36,7 +36,7 @@
                     <input type="hidden" name="picture" value="<?= $language['picture'] ?>">
                 </div>
             <?php endif ?>
-            <div class="mb-5 sm:w-6/12 <?= isset($language) ? 'hidden' : "" ?>">
+            <div id="updateImageInput" class="mb-5 sm:w-6/12 <?= isset($language) ? 'hidden' : "" ?>">
                 <label for="picture" class="text-primary text-xl">Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <input type="file" name="picture" id="picture" accept="image/png, image/jpeg" class="rounded bg-white h-12 w-full p-2" />
                 <p id="cancelUpdateImageInput" class="font-bold text-white cursor-pointer <?= isset($language)? "block" : "hidden" ?>">Annuler</p>

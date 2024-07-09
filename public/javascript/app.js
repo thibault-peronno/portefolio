@@ -6,7 +6,7 @@ const app = {
         if (window.location.pathname.includes("bo-ajouter-projet") || window.location.pathname.includes("bo-editer-projet")) {
             selectTechnosForm.init();
         }
-        if (window.location.pathname.includes("bo-editer-projet") || window.location.pathname.includes("bo-editer-organisation")) {
+        if (window.location.pathname.includes("bo-editer-projet") || window.location.pathname.includes("bo-editer-organisation") || window.location.pathname.includes("bo-editer-technologie")) {
             form.init();
         }
         if (window.location.pathname === "/bo-technos") {
