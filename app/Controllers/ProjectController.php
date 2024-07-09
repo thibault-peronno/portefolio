@@ -34,7 +34,7 @@ class ProjectController extends CoreController
     {
         $projectModel = new Project();
         $data = [];
-        $data["project"] = $projectModel->getProject($idProject['id']);
+        $data["project"] = $projectModel->getProjectById($idProject['id']);
         $this->boShow('bo-project', $data);
     }
 
@@ -107,7 +107,7 @@ class ProjectController extends CoreController
 
         $data['languages'] = $languagesHelper->getLanguages();
         $data['organizations'] = $organizationModel->getOrganizations();
-        $data['project'] = $projectModel->getProject($idProject['id']);
+        $data['project'] = $projectModel->getProjectById($idProject['id']);
 
         $this->boShow('bo-add-project', $data);
     }

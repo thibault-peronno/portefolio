@@ -184,6 +184,24 @@ $router->addRoutes(
       'bo-ajouter-organisation',
     ],
     [
+      'GET',
+      '/bo-editer-organisation/[i:id]',
+      [
+        'controller' => 'OrgaController',
+        'method' => 'editOrga',
+      ],
+      'bo-editer-organisation'
+    ],
+    [
+      'POST',
+      '/bo-editer-organisation/[i:id]',
+      [
+        'controller' => 'OrgaController',
+        'method' => 'updateOrganization',
+      ],
+      'bo-update-organisation'
+    ],
+    [
       'POST',
       '/bo-ajouter-organisation',
       [
