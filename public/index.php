@@ -149,6 +149,24 @@ $router->addRoutes(
     ],
     [
       'GET',
+      '/bo-editer-technologie/[i:id]',
+      [
+        'controller' => 'LanguageController',
+        'method' => 'editTechno',
+      ],
+      'bo-editer-technologie'
+    ],
+    [
+      'POST',
+      '/bo-editer-technologie/[i:id]',
+      [
+        'controller' => 'LanguageController',
+        'method' => 'updateTechno',
+      ],
+      'bo-update-technologie'
+    ],
+    [
+      'GET',
       '/bo-technos',
       [
         'controller' => 'LanguageController',

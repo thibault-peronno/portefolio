@@ -85,6 +85,17 @@ class LanguageController extends CoreController
         }
     }
 
+    public function editTechno($idLanguage)
+    {
+        $languagesModel = new Languages();
+        $data = [];
+
+        $languagesModel->setId($idLanguage['id']);
+        $data['language'] = $languagesModel->getLanguageById();
+
+        $this->boShow('bo-add-techno', $data);
+    }
+
     public function boDeleteTechnos($labelId)
     {
         $languagesModel = new Languages();

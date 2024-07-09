@@ -28,6 +28,21 @@ class Languages
         }
     }
 
+    public function getLanguageById(): array | bool
+    {
+        $pdo =Database::getPDO();
+        $sql = "SELECT * FROM `languages` WHERE id = :idLanguage";
+        try {
+            $pdoStatement = $pdo->prepare($sql);
+            $pdoStatement->bindParam(':idLanguage', $this->id, PDO::PARAM_STR);
+            $pdoStatement->execute();
+            return $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
     public function addLanguages():bool | Error
     {
         $pdo = Database::getPDO();
