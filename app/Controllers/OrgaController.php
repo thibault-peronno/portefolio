@@ -64,10 +64,11 @@ class OrgaController extends CoreController
 
     public function editOrga($idOrga)
     {
-        dump($idOrga);
+        $organizationModel = new Organization();
 
         $data = [];
-
+        $organizationModel->setId(intval($idOrga['id']));
+        $data['organization'] = $organizationModel->getOrgaById();
         $this->boShow('bo-add-orga', $data);
     }
 }

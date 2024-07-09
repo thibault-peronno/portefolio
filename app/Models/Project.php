@@ -50,7 +50,7 @@ class Project
         return $getProjects;
     }
 
-    public function getProject($idProject): array
+    public function getProjectById($idProject): array
     {
         $pdo = Database::getPDO();
         $sql = "SELECT p.*, o.title AS title_organization, o.picture AS picture_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
