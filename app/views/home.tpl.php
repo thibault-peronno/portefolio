@@ -50,16 +50,19 @@
         </div>
         <?php endforeach ?>
     </div>
-    <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-64">
-        <p class="text-white">Voir toutes les projets</p>
-        <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
-    </button>
+    <a href="<?php echo "/projets" ?>">
+        <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-64">
+            <p class="text-white">Voir toutes les projets</p>
+            <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
+        </button>
+    </a>
 </section>
 <section>
     <h2 class="text-2xl text-secondary uppercase font-bold my-10 sm:w-6/12 sm:mt-12">
         Mes technos
     </h2>
     <div class="snap-x flex overflow-x-auto gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
+        <!-- surmement possible d'optimiser ça ! -->
         <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
@@ -71,7 +74,6 @@
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
         </div>
-       
         <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
@@ -94,11 +96,11 @@
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
         </div>
-        
-        
     </div>
-    <button class="bg-btn-sec rounded flex p-2.5 items-center  w-64 justify-between mt-5">
-        <p class="text-white">Voir toutes les technos</p>
-        <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
-    </button>
+    <a href="<?= "/technologies" ?>">
+        <button class="bg-btn-sec rounded flex p-2.5 items-center  w-64 justify-between mt-5">
+            <p class="text-white">Voir toutes les technos</p>
+            <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
+        </button>
+    </a>
 </section>
