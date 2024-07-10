@@ -14,7 +14,10 @@ class ProjectController extends CoreController
 
     public function projects(): void
     {
-        $this->show('projects');
+        $projectModel = new Project();
+        $data = [];
+        $data["projects"] = $projectModel->getProjects();
+        $this->show('projects', $data);
     }
 
     public function project(): void
