@@ -11,8 +11,19 @@ class MainController extends CoreController {
 
     public function home(): void
     {
+        $projectModel = new Project();
+        $languageModel = new Languages();
+
+        $data = [];
+
+        try {
+            $data['projects'] = $projectModel->getProjects();
+            $data['languages'] = $languageModel->getLanguages();
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
         // echo 'methode home dans MainController';
-        $this->show('home');
+        $this->show('home', $data);
     }
 
     public function cv(): void
