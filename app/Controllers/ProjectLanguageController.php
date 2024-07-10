@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 use App\Models\ProjectLanguage;
+use App\Utils\Database;
 
 class ProjectLanguageController extends CoreController
 {
@@ -26,6 +27,12 @@ class ProjectLanguageController extends CoreController
         return $result;
 
         
+    }
+
+    public function fetchAllLanguageId(): array
+    {
+        $projectLanguageModel = new ProjectLanguage();
+        return $projectLanguageModel->languageIdModel();
     }
 
     public function deleteProjetctLanguage(Array $languages, int $projectId)

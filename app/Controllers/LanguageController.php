@@ -4,14 +4,46 @@ namespace App\Controllers;
 
 use App\Models\Languages;
 use App\Helpers\ImageHelper;
-use App\Utils\Database;
 use Error;
 
 class LanguageController extends CoreController
 {
     public function technologies(): void
     {
-        $this->show('technos');
+        $languagesModel = new Languages();
+        $data = [];
+
+        $languages = $languagesModel->getLanguages();
+
+       foreach($languages as $language) {
+            if($language->type === 'Front-end'){
+                $data['languages']['front-end'][] = $language;
+            }elseif($language->type === 'Back-end'){
+                $data['languages']['back-end'][] = $language;
+            }else{
+                $data['languages']['DevOps'][] = $language;
+            }
+        };
+        $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
+
+        $this->show('technos', $data);
+    }
+
+    private static function numberOfProjectDevBylanguage($languages): array
+    {
+        $projectLanguageCtrl = new ProjectLanguageController();
+        $data = [];
+        $arrayAllLanguagesId = $projectLanguageCtrl->fetchAllLanguageId();
+        foreach($languages as $language){
+            
+            foreach($arrayAllLanguagesId as $arrayAllLanguages){
+               
+                if($language->label === $arrayAllLanguages['label']){
+                    $data[$language->label][] = + 1;
+                }
+            }
+        }
+        return $data;
     }
 
     public function boTechnos(): void

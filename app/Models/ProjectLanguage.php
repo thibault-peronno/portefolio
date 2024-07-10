@@ -36,6 +36,16 @@ class ProjectLanguage
         }
     }
 
+    public function languageIdModel(): array
+    {
+        $pdo = Database::getPDO();
+        $sql = "SELECT pl.language_id, l.label  FROM `projects_languages` pl 
+        LEFT JOIN `languages` l ON pl.language_id = l.id";
+
+        $pdoStatement = $pdo->query($sql);
+        return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    }
+
     public function deleteLanguagesProjects(): bool
     {
         try {
