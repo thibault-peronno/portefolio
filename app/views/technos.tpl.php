@@ -4,7 +4,7 @@
 </h1>
 
 <?php foreach($languages as $keyLanguage => $arrayLanguageByType) : ?>
-<h2 class="text-2xl text-secondary uppercase my-5"><?= $keyLanguage ?></h2>
+<h2 class="text-2xl text-secondary uppercase mt-14 mb-5"><?= $keyLanguage ?></h2>
 <div class="snap-x flex overflow-x-auto gap-5 p-2.5 sm:snap-none sm:gap-10 sm:flex-wrap">
 
 <?php foreach($arrayLanguageByType as $language) : ?>
