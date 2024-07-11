@@ -5,7 +5,7 @@
         <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
             Thibault PERONNO
         </h1>
-        <p>
+        <p class="text-lg">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
             blanditiis modi dolores reprehenderit tenetur repudiandae quaerat
             officia ad! Earum minima cumque veritatis repudiandae eaque, doloribus
@@ -13,15 +13,15 @@
         </p>
     </div>
 </section>
-<section>
+<section class="my-28">
     <h2 class="text-2xl text-secondary uppercase font-bold my-10 sm:w-6/12 sm:mt-12">
         Mes projets
     </h2>
     <!-- For scroll works, you need add flex and shrink=0. Shrink allow to keep the width like we ask. the class to use scroll with tailwind 
         is snap on parent and snap-position on child -->
-    <div class="snap-x flex overflow-x-auto gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
+    <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
         <?php foreach($projects as $project) : ?>
-        <div class="snap-start p-5 w-72 shrink-0 relative">
+        <div class="snap-start p-5  shrink-0 relative flex flex-col justify-between sm:w-80 sm:h-80">
             <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] animate-borderTop"></span>
             <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] origin-left rotate-90 animate-borderLeft"></span>
             <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block opacity-0 scale-50 animate-projectsScale"><?= $project['title'] ?></h3>
@@ -30,12 +30,12 @@
             </p>
             <div class="flex justify-around mb-2 text-secondary">
                 <a href="<?= $project['url'] ?>">
-                    <button class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary opacity-0 scale-20 animate-projectsScale">
+                    <button class="text-white bg-secondary rounded p-1 text-base hover:bg-primary hover:text-secondary opacity-0 scale-20 animate-projectsScale">
                         Aller sur le site
                     </button>
                 </a>
                 <a href="<?= "/projet/" . $project['id'] ?>">
-                    <button class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary opacity-0 scale-20 animate-projectsScale">
+                    <button class="text-white bg-secondary rounded p-1 text-base hover:bg-primary hover:text-secondary opacity-0 scale-20 animate-projectsScale">
                         En savoir plus
                     </button>
                 </a>
@@ -61,7 +61,7 @@
     <h2 class="text-2xl text-secondary uppercase font-bold my-10 sm:w-6/12 sm:mt-12">
         Mes technos
     </h2>
-    <div class="snap-x flex overflow-x-auto gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
+    <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
         <!-- surmement possible d'optimiser ça ! -->
         <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
