@@ -34,7 +34,7 @@
                         Aller sur le site
                     </button>
                 </a>
-                <a>
+                <a href="<?= "/projet/" . $project['id'] ?>">
                     <button class="text-white bg-secondary rounded p-1 text-sm hover:bg-primary hover:text-secondary opacity-0 scale-20 animate-projectsScale">
                         En savoir plus
                     </button>

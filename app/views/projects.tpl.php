@@ -18,15 +18,17 @@
               <p class="my-2">
               <?= $project['description'] ?>
               </p>
-              <button
-                class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-3 w-full sm:w-64"
-              >
-                <p class="text-white">En savori plus</p>
-                <img
-                  src="/assets/images/icons/arrow-right-circle.svg"
-                  alt=""
-                />
-              </button>
+              <a href="<?= "/projet/" . $project['id'] ?>">
+                <button
+                  class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-3 w-full sm:w-64"
+                >
+                  <p class="text-white">En savoir plus</p>
+                  <img
+                    src="/assets/images/icons/arrow-right-circle.svg"
+                    alt=""
+                  />
+                </button>
+              </a>
             </div>
             <?php endforeach ?>
         </div>

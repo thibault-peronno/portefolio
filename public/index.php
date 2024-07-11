@@ -52,7 +52,7 @@ $router->addRoutes(
     ],
     [
       'GET',
-      '/projet',
+      '/projet/[:id]',
       [
         'controller' => 'ProjectController',
         'method' => 'project',
