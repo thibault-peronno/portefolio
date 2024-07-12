@@ -1,5 +1,5 @@
 <!-- <?php dump($projects) ?> -->
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
+<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max mb-5 sm:mt-12 rounded">
   back office Projets
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
@@ -13,8 +13,8 @@
     <?php foreach ($projects as $project) : ?>
       <div class="bg-white rounded border-t-2 border-primary my-5 p-5 sm:w-80">
         <a href="<?= "/bo-editer-projet/" . $project['id'] ?>">
-          <div class="bg-primary rounded-full w-14 h-14 flex">
-            <img src="/assets/images/icons/edit.svg" alt="" class="m-auto w-10 h-10" />
+          <div class="bg-primary rounded-full p-2.5 w-max flex">
+            <img src="/assets/images/icons/edit.svg" alt="Button pour modifier le projet" class="m-auto w-9 h-9" />
           </div>
         </a>
         <h2 class="text-2xl text-secondary uppercase my-2">

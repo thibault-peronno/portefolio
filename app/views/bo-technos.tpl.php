@@ -1,5 +1,5 @@
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
-  back office Technologies
+<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
+  back office langages
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
   <a href="bo-ajouter-technologie">

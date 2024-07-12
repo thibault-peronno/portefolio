@@ -1,5 +1,5 @@
 <!-- <?php dump($project, $languages) ?> -->
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
+<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
 <?= isset($project) ? "Modifier un projet" : "Ajouter un projet" ?>
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
@@ -29,7 +29,7 @@
         <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
             <div class="mb-5 sm:w-6/12">
                 <label for="url" class="text-primary text-xl">URL</label>
-                <input type="text" name="url" id="url" value=<?= isset($project) ? $project['url'] : " " ?> class="rounded bg-white h-12 w-full p-2" />
+                <input type="text" name="url" id="url" value="<?= isset($project) ? $project['url'] : " " ?>" class="rounded bg-white h-12 w-full p-2" />
             </div>
             <div class="mb-5 sm:w-6/12">
                 <?php if(isset($project) && isset($project['picture'])) :?>
