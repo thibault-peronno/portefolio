@@ -1,5 +1,5 @@
 <main class="grow">
-    <div class="flex flex-row justify-around gap-10 flex-wrap">
+    <div class="flex flex-row justify-around my-14 gap-10 flex-wrap">
         <div class="flex flex-col animate-front opacity-0">
             <p class="font-bold text-lg">Front-end</p>
             <div class="flex flex-row gap-2.5">
@@ -53,17 +53,17 @@
     </div>
     <section>
         <div class="flex flex-row content-center mt-5">
-            <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[30%]">
+            <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase mb-5 font-bold p-2.5 sm:w-[30%]">
                 Mon parcours
             </h1>
             <img src="/assets/images/icons/linkedin.svg" alt="Link to linkedin profil" class="w-14 cursor-pointer" />
         </div>
-        <p class="my-5">
+        <p class="text-lg">
             Issue d'un parcours bac+5 en management du marketing et communication
             digital et après avoir travaillé quelques temps dans ce domaine, j'ai
             décidé de me reconvertir dans le développement web.
         </p>
-        <h2 class="text-2xl text-secondary uppercase mb-2 mt-5">Expériences</h2>
+        <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Expériences</h2>
         <div class="flex flex-wrap">
             <div class="sm:w-6/12">
                 <h3 class="text-xl font-bold text-btn-sec mt-5">
@@ -88,7 +88,7 @@
                 </p>
             </div>
         </div>
-        <h2 class="text-2xl text-secondary uppercase mb-2 mt-5">Formations</h2>
+        <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Formations</h2>
         <p class="font-bold">École O’Clock</p>
         <div class="flex flex-wrap">
             <div class="sm:w-6/12">
