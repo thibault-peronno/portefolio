@@ -113,13 +113,22 @@ $router->addRoutes(
       'bo-update-projet'
     ],
     [
-      'POST',
+      'GET',
       '/connexion',
       [
         'controller' => 'ConnectController',
         'method' => 'page',
       ],
       'connexion',
+    ],
+    [
+      'POST',
+      '/connexion',
+      [
+        'controller' => 'ConnectController',
+        'method' => 'page',
+      ],
+      'connexion-post',
     ],
     [
       'GET',
