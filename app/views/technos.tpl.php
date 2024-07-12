@@ -1,5 +1,5 @@
 <!-- <?php dump($languages, $arrayNumberOfProjectDevBylanguage); ?> -->
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 sm:mt:12">
+<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">
     Mes technos
 </h1>
 
@@ -13,7 +13,7 @@
             <img src="<?= "/assets/images/languages/" . $language->picture ?>" alt="" class="w-9 h-9" />
             <h3 class="text-xl font-bold text-btn-sec"><?= $language->label ?></h3>
         </span>
-        <p>Nombre de projet(s) réalisé(s) : <?= isset($arrayNumberOfProjectDevBylanguage[$language->label]) ? count($arrayNumberOfProjectDevBylanguage[$language->label]) : 0 ?></p>
+        <p class="text-lg">Nombre de projet(s) réalisé(s) : <?= isset($arrayNumberOfProjectDevBylanguage[$language->label]) ? count($arrayNumberOfProjectDevBylanguage[$language->label]) : 0 ?></p>
     </div>
     <?php endforeach ?>
 

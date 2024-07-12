@@ -18,11 +18,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <header>
         <!-- Our menu to diplay from tablet size -->
         <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex">
-            <a href="/" class="<?php echo $currentPage == 'index.php' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Accueil</a>
-            <a href="/projets" class="<?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
-            <a href="/technologies" class="<?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
-            <a href="/cv" class="<?php echo $currentPage == 'cv' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">CV</a>
-            <a href="/connexion" class="<?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
+            <a href="/" class="text-xl <?php echo $currentPage == 'index.php' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Accueil</a>
+            <a href="/projets" class="text-xl <?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
+            <a href="/technologies" class="text-xl <?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
+            <a href="/cv" class="text-xl <?php echo $currentPage == 'cv' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">CV</a>
+            <a href="/connexion" class="text-xl <?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
         </nav>
         <!-- Our menu to display for mobil size -->
         <img src="/assets/images/nav/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5" id="mobil-menu">

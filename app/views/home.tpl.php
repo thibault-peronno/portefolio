@@ -2,7 +2,7 @@
 <section class="flex flex-col sm:flex-row">
     <img src="/assets/images/face_co.jpg" alt="" class="w-52 h-52 rounded-full self-center sm:mr-2.5 sm:self-left" />
     <div class="flex flex-col">
-        <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
+        <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">
             Thibault PERONNO
         </h1>
         <p class="text-lg">
@@ -14,7 +14,7 @@
     </div>
 </section>
 <section class="my-28">
-    <h2 class="text-2xl text-secondary uppercase font-bold my-10 sm:w-6/12 sm:mt-12">
+    <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">
         Mes projets
     </h2>
     <!-- For scroll works, you need add flex and shrink=0. Shrink allow to keep the width like we ask. the class to use scroll with tailwind 
@@ -25,7 +25,7 @@
             <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] animate-borderTop"></span>
             <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] origin-left rotate-90 animate-borderLeft"></span>
             <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block opacity-0 scale-50 animate-projectsScale"><?= $project['title'] ?></h3>
-            <p class="mb-2 opacity-0 scale-20 animate-projectsScale">
+            <p class="mb-2 opacity-0 scale-20 animate-projectsScale class="text-lg"">
                 <?= $project['description'] ?>
             </p>
             <div class="flex justify-around mb-2 text-secondary">
@@ -42,7 +42,7 @@
             </div>
             <div class="flex justify-end gap-2">
                 <?php foreach($project['labels'] as $label) : ?>
-                <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-5 opacity-0 scale-20 animate-projectsScale" />
+                <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-9 h-9 opacity-0 scale-20 animate-projectsScale" />
                 <?php endforeach ?>
             </div>
             <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%] animate-borderRight"></span>
@@ -58,7 +58,7 @@
     </a>
 </section>
 <section>
-    <h2 class="text-2xl text-secondary uppercase font-bold my-10 sm:w-6/12 sm:mt-12">
+    <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">
         Mes technos
     </h2>
     <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">

@@ -1,10 +1,10 @@
 <!-- <?php dump($organizations) ?> -->
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
+<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
     back office Organisations
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
     <a href="bo-ajouter-organisation">
-        <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl">
+        <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 my-5 w-full sm:w-64 font-bold text-xl">
             <img src="/assets/images/icons/add.svg" alt="" />
             <p class="text-white">Ajouter</p>
         </button>
