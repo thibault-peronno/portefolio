@@ -11,6 +11,10 @@ class Register
     public $password;
     public $userId;
 
+    /* 
+    Verifier la longueur du mot de passe
+    Verifier que l'utilisateur n'est pas déja en base de donnée via son e-mail
+    */
     public function isRegister(): bool
     {
         $pdo = Database::getPDO();

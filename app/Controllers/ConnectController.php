@@ -18,6 +18,18 @@ class ConnectController extends CoreController
         $this->show('log-in');
     }
 
+    public function logToBackOffice()
+    {
+        dd($_POST);
+        // récupérer l'utilisateur qui se connecte par son email
+
+        // comparer le mot de passe de $_POST  avec le password stocké en base de données.
+
+        // si pas identique, envoyer un message et rester sur la page
+
+        // si identique, rediriger vers le page d'acceuil du back office
+    }
+
     /* Travailler un message de confirmation de création de compte */
     public function signIn()
     {
