@@ -126,7 +126,7 @@ $router->addRoutes(
       '/enregistrement',
       [
         'controller' => 'ConnectController',
-        'method' => 'signin',
+        'method' => 'signIn',
       ],
       'createAccount',
     ],

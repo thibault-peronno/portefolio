@@ -1,14 +1,16 @@
 <?php
 namespace App\Models;
 
+use App\Controllers\ConnectController;
 use App\Utils\Database;
+use PDO;
 
 class User
 {
     /* Proporties of User model */
-    private $firstname;
-    private $lastname;
-    private $role_id;
+    public $firstname;
+    public $lastname;
+    public $roleId;
 
     public function getUser():object
     {
@@ -22,6 +24,38 @@ class User
 
         return $currentUser;
 
+    }
+
+    public function isAddUser(): bool
+    {
+        $pdo = Database::getPDO();
+        $sql = "INSERT INTO `users` (`firstname`, `lastname`, `role_id`) VALUE(:firstname, :lastname, :roleId)";
+
+        try {
+            $pdoStatement = $pdo->prepare($sql);
+
+            $pdoStatement->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+            $pdoStatement->bindValue(':roleId', $this->roleId, PDO::PARAM_INT);
+
+            $insertedRows = $pdoStatement->execute();
+
+            if ($insertedRows > 0) {
+                // We retrieve the last id.
+                $connectCtrl = new ConnectController();
+                $usertId = $pdo->lastInsertId();
+                $insertRegister = $connectCtrl->IsRegister($usertId);
+
+                if ($insertRegister) {
+                    // We return true, because the sql insert has worked.
+                    return true;
+                }
+            }
+            return false;
+        } catch (\Throwable $th) {
+            dump($th);
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }
     }
 
     public function getFirstname():string
@@ -46,11 +80,11 @@ class User
 
     public function getRoleId():int
     {
-        return $this->role_id;
+        return $this->roleId;
     }
     public function setRoleId($roleId):self
     {
-        $this->role_id = $roleId;
+        $this->roleId = $roleId;
         return $this;
     }
 }
