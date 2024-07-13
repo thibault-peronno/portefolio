@@ -8,4 +8,14 @@ class ConnectController extends CoreController
     {
         $this->show('connect');
     }
+
+    public function loginPage():void
+    {
+        $this->show('log-in');
+    }
+
+    public function signin()
+    {
+        dd($_POST);
+    }
 }

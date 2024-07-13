@@ -114,6 +114,24 @@ $router->addRoutes(
     ],
     [
       'GET',
+      '/enregistrement',
+      [
+        'controller' => 'ConnectController',
+        'method' => 'loginPage',
+      ],
+      'enregistrement',
+    ],
+    [
+      'POST',
+      '/enregistrement',
+      [
+        'controller' => 'ConnectController',
+        'method' => 'signin',
+      ],
+      'createAccount',
+    ],
+    [
+      'GET',
       '/connexion',
       [
         'controller' => 'ConnectController',
