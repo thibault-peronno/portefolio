@@ -41,7 +41,6 @@ class Register
 
     public function isGetRegister(): bool
     {
-        dump('isGetRegister', $this->mail);
         $pdo = Database::getPDO();
         /* ici avec 'mail', cela ne fonctionnait pas  */
         $sql = "SELECT * FROM `registers` WHERE mail = :mail";
