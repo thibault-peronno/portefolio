@@ -44,7 +44,7 @@ class User
                 // We retrieve the last id.
                 $connectCtrl = new ConnectController();
                 $usertId = $pdo->lastInsertId();
-                $insertRegister = $connectCtrl->IsRegister($usertId);
+                $insertRegister = $connectCtrl->isAddRegister($usertId);
 
                 if ($insertRegister) {
                     // We return true, because the sql insert has worked.

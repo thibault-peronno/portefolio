@@ -14,7 +14,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <meta name="description" content="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent à progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif.">
 </head>
 <!-- header('location:/connexion') -->
-<body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen">
+<body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen text-lg">
     <header>
         <!-- Our menu to diplay from tablet size -->
         <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex">

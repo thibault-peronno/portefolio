@@ -1,33 +1,56 @@
 <?php
-
+/* partager entre user, register et auth */
 namespace App\Controllers;
 
 use App\Models\User;
 use App\Models\Register;
-use App\Utils\Database;
 
 class ConnectController extends CoreController
 {
-    public function page():void
+    public function page(): void
     {
         $this->show('connect');
     }
 
-    public function loginPage():void
+    public function loginPage(): void
     {
         $this->show('log-in');
     }
 
-    public function logToBackOffice()
+    public function logToBackOffice(): void
     {
-        dd($_POST);
-        // récupérer l'utilisateur qui se connecte par son email
+        $registerModel = new Register();
+        $registerModel->setMail($_POST['mail']);
 
-        // comparer le mot de passe de $_POST  avec le password stocké en base de données.
+        // récupérer l'utilisateur qui se connecte a un compte enregistré
+        $isGetRegister = $registerModel->isGetRegister();
+        if ($isGetRegister) {
+            // comparer le mot de passe de $_POST  avec le password stocké en base de données.
+            $isRegister = $this->isRegister($registerModel);
+            if ($isRegister) {
+                // si identique, rediriger vers le page d'acceuil du back office
+                $mainController = new MainController();
+                $mainController->boHome();
+            }
+            // si pas identique, envoyer un message et rester sur la page. Pour le moment false
+            $this->page();
+        }
 
-        // si pas identique, envoyer un message et rester sur la page
+        $this->page();
+    }
 
-        // si identique, rediriger vers le page d'acceuil du back office
+    public function isRegister(Register $registerModel): bool
+    {
+        try {
+            $isHashEqual =  hash_equals(hash('sha256', $_POST['password']), $registerModel->password);
+
+            if ($isHashEqual) {
+                return true;
+            }
+            return false;
+        } catch (\Throwable $error) {
+            dump($error);
+        }
     }
 
     /* Travailler un message de confirmation de création de compte */
@@ -38,18 +61,16 @@ class ConnectController extends CoreController
             $userModel->setFirstname(htmlspecialchars($_POST['firstname']));
             $userModel->setLastname(htmlspecialchars($_POST['lastname']));
             $userModel->setRoleId(2);
-    
+
             $addUser = $userModel->isAddUser();
 
             $this->page();
-           
-        } catch (\Throwable $th) {
-           dump($th);
+        } catch (\Throwable $error) {
+            dump($error);
         }
-
     }
     /* Attention, le password ne peut pas être null sur la méthode hash, il faut travailler ça */
-    public function IsRegister($userId): bool
+    public function isAddRegister($userId): bool
     {
         $registerModel = new Register();
         try {
@@ -57,11 +78,11 @@ class ConnectController extends CoreController
             $registerModel->setPassword(htmlspecialchars($_POST['password']));
             $registerModel->setUserId($userId);
 
-            $registerModel->isRegister();
-            
+            $registerModel->isAddRegister();
+
             return true;
-        } catch (\Throwable $th) {
-            dump($th);
+        } catch (\Throwable $error) {
+            dump($error);
         }
     }
 }

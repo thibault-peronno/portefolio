@@ -144,7 +144,7 @@ $router->addRoutes(
       '/connexion',
       [
         'controller' => 'ConnectController',
-        'method' => 'page',
+        'method' => 'logToBackOffice',
       ],
       'connexion-post',
     ],

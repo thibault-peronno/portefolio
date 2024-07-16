@@ -15,7 +15,7 @@ class Register
     Verifier la longueur du mot de passe
     Verifier que l'utilisateur n'est pas déja en base de donnée via son e-mail
     */
-    public function isRegister(): bool
+    public function isAddRegister(): bool
     {
         $pdo = Database::getPDO();
         $sql = "INSERT INTO `registers` (`mail`, `password`, `user_id`) VALUE(:mail, :password, :userId)";
@@ -35,6 +35,32 @@ class Register
             return false;
         } catch (\Throwable $th) {
             dump($th);
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }
+    }
+
+    public function isGetRegister(): bool
+    {
+        dump('isGetRegister', $this->mail);
+        $pdo = Database::getPDO();
+        /* ici avec 'mail', cela ne fonctionnait pas  */
+        $sql = "SELECT * FROM `registers` WHERE mail = :mail";
+
+        try {
+            $pdoStatement = $pdo->prepare($sql);
+            $pdoStatement->bindParam(':mail', $this->mail, PDO::PARAM_STR);
+            $pdoStatement->execute();
+
+            $getUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            
+            $this->setPassword($getUser['password']);
+            
+            if($getUser){
+                return true;
+            }
+            return false;
+        } catch (\Throwable $error) {
+            dump($error);
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
     }
