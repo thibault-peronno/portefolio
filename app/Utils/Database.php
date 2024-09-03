@@ -24,6 +24,7 @@ class Database
                 $configConnect['DB_PASSWORD']
             );
         } catch (\Exception $exception) {
+            dd('erreur', $exception);
             echo 'Exception reçue : ',  $exception->getMessage(), "\n";
         }
     }
