@@ -41,16 +41,28 @@ class Register
 
     public function isGetRegister(): bool
     {
+        // La méthodologie pour get un user devra etre mis autre part !!! 
         $pdo = Database::getPDO();
         /* ici avec 'mail', cela ne fonctionnait pas  */
-        $sql = "SELECT * FROM `registers` WHERE mail = :mail";
+        // $sql = "SELECT * FROM `registers` WHERE mail = :mail INNER JOIN `users` ON `registers.user_id` = `users.id`";
+        $sql = "SELECT * FROM `registers` INNER JOIN `users` ON registers.user_id = users.id WHERE mail = :mail";
 
+        
+        
         try {
             $pdoStatement = $pdo->prepare($sql);
             $pdoStatement->bindParam(':mail', $this->mail, PDO::PARAM_STR);
             $pdoStatement->execute();
-
+            
             $getUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            // dump($getUser);
+            // idem mettre ça dans un service
+            session_start();
+            $_SESSION['user_id'] = $getUser['user_id'];
+            $_SESSION['firstname'] = $getUser['firstname'];
+            $_SESSION['lastname'] = $getUser['lastname'];
+            $_SESSION['token'] = session_id();
+
             
             $this->setPassword($getUser['password']);
             
