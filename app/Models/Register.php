@@ -5,7 +5,6 @@ namespace App\Models;
 use App\Utils\Database;
 use PDO;
 // Dans Register.php
-require __DIR__ . '/../../bootstrap.php';
 
 class Register
 {
@@ -41,15 +40,13 @@ class Register
         }
     }
 
-    public function isGetRegister(): bool
+    public function getUser(): array | bool
     {
+
         // La méthodologie pour get un user devra etre mis autre part !!! 
         $pdo = Database::getPDO();
         /* ici avec 'mail', cela ne fonctionnait pas  */
-        // $sql = "SELECT * FROM `registers` WHERE mail = :mail INNER JOIN `users` ON `registers.user_id` = `users.id`";
         $sql = "SELECT * FROM `registers` INNER JOIN `users` ON registers.user_id = users.id WHERE mail = :mail";
-
-
 
         try {
             $pdoStatement = $pdo->prepare($sql);
@@ -57,22 +54,16 @@ class Register
             $pdoStatement->execute();
 
             $getUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-            // dump($getUser);
-            // idem mettre ça dans un service
-            // ini_set('session.save_path', __DIR__ . '/../temp');
-            // ini_set('session.gc_maxlifetime', 3600); // Durée de vie maximale de la session en secondes
-            // session_set_cookie_params(3600);
-            // session_start();
-            $_SESSION['user_id'] = $getUser['user_id'];
-            $_SESSION['firstname'] = $getUser['firstname'];
-            $_SESSION['lastname'] = $getUser['lastname'];
-            $_SESSION['token'] = session_id();
-            dump(isset($_SESSION['token']));
 
             $this->setPassword($getUser['password']);
 
             if ($getUser) {
-                return true;
+                return [
+                    'user' => true,
+                    'user_id' => $getUser['user_id'],
+                    'firstname' => $getUser['firstname'],
+                    'lastname' => $getUser['lastname'],
+                ];
             }
             return false;
         } catch (\Throwable $error) {

@@ -16,7 +16,6 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </head>
 
 <body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen bg-secondary text-lg">
-<!-- <?php session_start(); ?> -->
   <header>
     <!-- Our menu to diplay from tablet size -->
     <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex text-white">

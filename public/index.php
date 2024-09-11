@@ -1,16 +1,13 @@
 <?php
-
+session_start();
 // We ask to required a fil in vendro folder to use our routing
 
 use App\Controllers\CoreController;
-require __DIR__ . '/../bootstrap.php';
 require __DIR__ . '/../vendor/autoload.php';
 
 $router = new AltoRouter();
 // You can use setBatchPath method, to set the path. If your project needed. Here,we can not use it. I leave it for example.
 $router->setBasePath('');
-
-// echo 'test';
 
 $router->addRoutes(
   [
@@ -95,13 +92,16 @@ $router->addRoutes(
       ],
       'technologies',
     ],
-  ]
-);
-/* This routes are protected by session from PHP */
-if(isset($_SESSION['token'])){
-  $router->addRoutes(
-    [
+    ]
+  );
+
+  // require __DIR__ . '/../bootstrap.php';
+ 
+  /* This routes are protected by session from PHP */
+  if(isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']){
+    $router->addRoutes(
       [
+        [
         'GET',
         '/bo-accueil',
         [
@@ -273,7 +273,7 @@ if ($match !== false) {
   $method = $match['target']['method'];
   $params = $match['params'];
   $controller = new $controllerMatch($router);
-  // dump($controller);
+  
   $controller->$method($match['params']);
 } else {
   echo "Erreur 404, la page n'existe pas, contacte moi";

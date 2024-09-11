@@ -1,5 +1,6 @@
 <?php
 /* partager entre user, register et auth */
+
 namespace App\Controllers;
 
 use App\Models\User;
@@ -19,27 +20,35 @@ class ConnectController extends CoreController
 
     public function logToBackOffice(): void
     {
+
         $registerModel = new Register();
         $registerModel->setMail($_POST['mail']);
 
-        // récupérer l'utilisateur qui se connecte a un compte enregistré
-        $isGetRegister = $registerModel->isGetRegister();
-        if ($isGetRegister) {
-            // comparer le mot de passe de $_POST  avec le password stocké en base de données.
-            $isRegister = $this->isRegister($registerModel);
-            if ($isRegister) {
-                // si identique, rediriger vers le page d'acceuil du back office
-                $mainController = new MainController();
-                $mainController->boHome();
+        // récupérer l'utilisateur qui se connecte à un compte enregistré
+        $getUser = $registerModel->getUser();
+        if ($getUser['user']) {
+            // comparer le mot de passe de $_POST avec le password stocké en base de données
+            $isPasswordEqual = $this->isPasswordEqual($registerModel);
+
+            if ($isPasswordEqual) {
+                session_start();
+
+                $_SESSION['user_id'] = $getUser['user_id'];
+                $_SESSION['firstname'] = $getUser['firstname'];
+                $_SESSION['lastname'] = $getUser['lastname'];
+                header("Location: /bo-accueil");
+                exit();
             }
-            // si pas identique, envoyer un message et rester sur la page. Pour le moment false
+
+            // si pas identique, envoyer un message et rester sur la page
             $this->page();
         }
 
         $this->page();
     }
 
-    public function isRegister(Register $registerModel): bool
+
+    public function isPasswordEqual(Register $registerModel): bool
     {
         try {
             $isHashEqual =  hash_equals(hash('sha256', $_POST['password']), $registerModel->password);

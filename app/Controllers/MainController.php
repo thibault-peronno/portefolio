@@ -50,3 +50,5 @@ class MainController extends CoreController {
         }
     }
 };
+
+?>

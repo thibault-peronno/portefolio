@@ -1,5 +1,5 @@
 <!-- <?php dump($projects, $languages, $organizations) ?> -->
-<?php dump($_SESSION) ?>
+<?php dump('bo accueil') ?>
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max sm:mt-12">
   back office Accueil
 </h1>
