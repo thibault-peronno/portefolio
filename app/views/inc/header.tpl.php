@@ -1,4 +1,5 @@
 <?php
+session_start();
 $currentPage = basename($_SERVER['PHP_SELF']);
 // dump($currentPage);
 ?>
@@ -14,6 +15,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <meta name="description" content="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent à progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif.">
 </head>
 <!-- header('location:/connexion') -->
+
 <body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen text-lg">
     <header>
         <!-- Our menu to diplay from tablet size -->
@@ -22,7 +24,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <a href="/projets" class="text-xl <?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
             <a href="/technologies" class="text-xl <?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
             <a href="/cv" class="text-xl <?php echo $currentPage == 'cv' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">CV</a>
-            <a href="/connexion" class="text-xl <?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
+            <?php if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) : ?>
+                <a href="/bo-accueil">Dashboard</a>
+            <?php else : ?>
+                <a href="/connexion" class="text-xl <?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
+            <?php endif ?>
         </nav>
         <!-- Our menu to display for mobil size -->
         <img src="/assets/images/nav/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5" id="mobil-menu">
