@@ -44,7 +44,7 @@ class ProjectLanguageController extends CoreController
             $projectLanguageModel->setLanguageId($valueLanguage);
 
             $result = $projectLanguageModel->deleteLanguagesProjects();
-            dump('deleteProjetctLanguage', $result);
+
             return $result;
         }
     }

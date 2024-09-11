@@ -111,7 +111,6 @@ class Project
 
     public function updateProject(): bool
     {
-        dump('updateProject');
         $pdo = Database::getPDO();
         $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
         try {
@@ -131,7 +130,7 @@ class Project
                 // We retrieve the last id.
                 $projectLanguageCtrl = new ProjectLanguageController;
                 $deleteLanguages = $projectLanguageCtrl->deleteProjetctLanguage($_POST['languages'], $this->id);
-                if($deleteLanguages){
+                if ($deleteLanguages) {
                     $insertLanguages = $projectLanguageCtrl->addProjectLanguage($this->id);
                 }
 
@@ -143,7 +142,6 @@ class Project
 
             // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
             return false;
-
         } catch (\Throwable $th) {
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
