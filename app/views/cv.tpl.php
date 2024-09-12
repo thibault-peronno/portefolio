@@ -67,8 +67,8 @@
             décidé de me reconvertir dans le développement web.
         </p>
         <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Expériences</h2>
-        <div class="flex flex-wrap">
-            <div class="sm:w-6/12">
+        <div class="flex flex-wrap justify-between">
+            <div class="sm:w-[45%]">
                 <h3 class="text-xl font-bold text-btn-sec my-5">
                     Développeur Front-end iSelection (août 22 - fév 24)
                 </h3>
@@ -81,7 +81,7 @@
                     place de tests unitaires et de la sécurité.
                 </p>
             </div>
-            <div class="sm:w-6/12">
+            <div class="sm:w-[45%]">
                 <h3 class="text-xl font-bold text-btn-sec my-5">
                     Développeur fullstack O’Clock (déc 21- mai 22)
                 </h3>
@@ -93,15 +93,15 @@
         </div>
         <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Formations</h2>
         <p class="font-bold">École O’Clock</p>
-        <div class="flex flex-wrap">
-            <div class="sm:w-6/12">
+        <div class="flex flex-wrap justify-between">
+            <div class="sm:w-[45%]">
                 <h3 class="text-xl font-bold text-btn-sec my-5">Titre de concepteur et développeur d’application (août 22 - fév 24)</h3>
                 <p class="text-lg">PHP, Javascript, VueJS, Dockers, Laravel, NodeJs, ExpressJS et Flutter… sécurité et les tests unitaires.
                     Titre de développeur web et web mobile (déc 21 - juin 22)
                     HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
                     challenge : exercices tous les jours après les cours.</p>
             </div>
-            <div class="sm:w-6/12">
+            <div class="sm:w-[45%]">
                 <h3 class="text-xl font-bold text-btn-sec my-5">Titre de développeur web et web mobile (déc 21 - juin 22)</h3>
                 <p class="text-lg">HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
                     challenge : exercices tous les jours après les cours.</p>

@@ -37,4 +37,12 @@ By following these best practices, you can effectively organize your PHP project
 
 ## Tailwind
 To lunch tailwind
-npx tailwindcss -i ./style/input.css -o ./style/output.css --watch
+
+```bash
+npm install -D tailwindcss
+npx tailwindcss init
+```
+
+```bash
+npx tailwindcss -i public/assets/style/input.css -o public/assets/style/output.css --watch
+```
