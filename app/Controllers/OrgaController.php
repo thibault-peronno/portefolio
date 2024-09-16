@@ -7,16 +7,31 @@ use App\Models\Organization;
 
 class OrgaController extends CoreController
 {
-    public function organization(): void
+    public function organization($idOrganization): void
+    {
+        $organizationModel = new Organization();
+        $data = [];
+        $organizationModel->setId($idOrganization["id"]);
+
+        try {
+            $data['organization'] = $organizationModel->getOrgaById();
+            $this->boShow('bo-orga', $data);
+        } catch (\Throwable $th) {
+            //throw $th;
+            dump($th);
+        }
+    }
+    public function organizations(): void
     {
         $organizationModel = new Organization();
         $data = [];
 
         try {
             $data['organizations'] = $organizationModel->getOrganizations();
-            $this->boShow('bo-orga', $data);
+            $this->boShow('bo-orgas', $data);
         } catch (\Throwable $th) {
             //throw $th;
+            dump($th);
         }
     }
 

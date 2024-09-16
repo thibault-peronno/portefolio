@@ -3,6 +3,7 @@ session_start();
 // We ask to required a fil in vendro folder to use our routing
 
 use App\Controllers\CoreController;
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $router = new AltoRouter();
@@ -92,16 +93,16 @@ $router->addRoutes(
       ],
       'technologies',
     ],
-    ]
-  );
+  ]
+);
 
-  // require __DIR__ . '/../bootstrap.php';
- 
-  /* This routes are protected by session from PHP */
-  if(isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']){
-    $router->addRoutes(
+// require __DIR__ . '/../bootstrap.php';
+
+/* This routes are protected by session from PHP */
+if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) {
+  $router->addRoutes(
+    [
       [
-        [
         'GET',
         '/bo-accueil',
         [
@@ -218,7 +219,16 @@ $router->addRoutes(
       ],
       [
         'GET',
-        '/bo-organisation',
+        '/bo-organisations',
+        [
+          'controller' => 'OrgaController',
+          'method' => 'organizations',
+        ],
+        'bo-organisations',
+      ],
+      [
+        'GET',
+        '/bo-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
           'method' => 'organization',
@@ -263,6 +273,7 @@ $router->addRoutes(
     ]
   );
 }
+
 // var_dump('router', $router);
 $match = $router->match();
 // var_dump('match', $match);
@@ -273,7 +284,7 @@ if ($match !== false) {
   $method = $match['target']['method'];
   $params = $match['params'];
   $controller = new $controllerMatch($router);
-  
+
   $controller->$method($match['params']);
 } else {
   echo "Erreur 404, la page n'existe pas, contacte moi";

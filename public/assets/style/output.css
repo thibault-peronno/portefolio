@@ -634,6 +634,10 @@ video {
   float: right;
 }
 
+.m-5 {
+  margin: 1.25rem;
+}
+
 .m-auto {
   margin: auto;
 }
@@ -1259,20 +1263,16 @@ video {
   padding: 0.625rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .p-5 {
   padding: 1.25rem;
 }
 
 .p-7 {
   padding: 1.75rem;
-}
-
-.p-3\.5 {
-  padding: 0.875rem;
-}
-
-.p-4 {
-  padding: 1rem;
 }
 
 .px-2 {
@@ -1526,12 +1526,12 @@ video {
     gap: 1.25rem;
   }
 
-  .sm\:p-14 {
-    padding: 3.5rem;
-  }
-
   .sm\:p-0 {
     padding: 0px;
+  }
+
+  .sm\:p-14 {
+    padding: 3.5rem;
   }
 
   .sm\:py-5 {
