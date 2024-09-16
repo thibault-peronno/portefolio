@@ -80,8 +80,13 @@
           <td><?= $organization->title ?></td>
           <td class="hidden sm:table-cell"><?= $organization->description ?></td>
           <td class="text-end">
-            <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
-            <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
+          <a href="<?= "/bo-organisation/" . $organization->id ?>">
+          <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
+
+          </a>
+          <a href="<?= "/bo-editer-organisation/" . $organization->id ?>">
+          <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
+          </a>
             <img src="/assets/images/icons/trash.svg" alt="" class="inline cursor-pointer" />
           </td>
         </tr>

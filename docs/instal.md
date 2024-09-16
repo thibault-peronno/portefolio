@@ -46,3 +46,9 @@ npx tailwindcss init
 ```bash
 npx tailwindcss -i public/assets/style/input.css -o public/assets/style/output.css --watch
 ```
+
+## Lancer le projet
+
+```bash
+php -S localhost:8000 -t public 
+```

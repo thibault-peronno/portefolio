@@ -1267,6 +1267,14 @@ video {
   padding: 1.75rem;
 }
 
+.p-3\.5 {
+  padding: 0.875rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+
 .px-2 {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -1520,6 +1528,10 @@ video {
 
   .sm\:p-14 {
     padding: 3.5rem;
+  }
+
+  .sm\:p-0 {
+    padding: 0px;
   }
 
   .sm\:py-5 {

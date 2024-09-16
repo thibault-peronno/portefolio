@@ -43,7 +43,7 @@
                         Docker
                     </p>
                 </span>
-                <span><img src="/assets/images/icons/docker_mono.svg" alt="" class="w-9 h-9 mb-5" />
+                <span><img src="/assets/images/icons/nginx_mono.svg" alt="" class="w-9 h-9 mb-5" />
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         Nginx
                     </p>
