@@ -33,6 +33,7 @@ module.exports = {
         white: "#ffffff",
         black: "#000000",
         "btn-sec": "#293241",
+        "fade-grey" : "#f2f3f5",
       },
       padding: {
         dpc: "10%",
