@@ -2,9 +2,11 @@
 session_start();
 // We ask to required a fil in vendro folder to use our routing
 
+
 use App\Controllers\CoreController;
 
 require __DIR__ . '/../vendor/autoload.php';
+require './php.ini';
 
 $router = new AltoRouter();
 // You can use setBatchPath method, to set the path. If your project needed. Here,we can not use it. I leave it for example.
