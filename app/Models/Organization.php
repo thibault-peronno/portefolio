@@ -33,11 +33,12 @@ class Organization
             $pdo = Database::getPDO();
             $sql = "SELECT * FROM `organizations` WHERE id = :idOrga";
             $pdoStatement = $pdo->prepare($sql);
-
+            
             $pdoStatement->bindParam(':idOrga', $this->id, PDO::PARAM_INT);
+            
             $pdoStatement->execute();
             $organization = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-
+            
             return $organization;
         } catch (\Throwable $erro) {
             throw new Error("La récupération de l'organisation a échoué");

@@ -93,7 +93,7 @@
       <?php endforeach ?>
     </tbody>
   </table>
-  <a href="/bo-organisation">
+  <a href="/bo-organisations">
     <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-10 w-full sm:w-64">
       <p class="text-white">Gérer les organisations</p>
       <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
