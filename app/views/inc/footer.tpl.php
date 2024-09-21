@@ -1,5 +1,5 @@
 </main>
-    <footer class="border-secondary border-t-2 mt-10 mb-2.5 pt-1">
+    <footer class="border-secondary border-t-2 mb-2.5 pt-1  bg-white">
       <p class="text-center">Portefolio Thibault PERONNO</p>
       <div class="flex justify-center gap-5">
       <a href="https://www.linkedin.com/in/thibault-peronno/" target="_blank">

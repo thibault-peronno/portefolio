@@ -8,7 +8,7 @@
 <div class="snap-x flex overflow-x-auto gap-5 p-2.5 sm:snap-none sm:p-0 sm:gap-10 sm:flex-wrap">
 
 <?php foreach($arrayLanguageByType as $language) : ?>
-    <div class="rounded p-4 shadow-card w-max bg-primary shrink-0 snap-start">
+    <div class="rounded p-4 shadow-card w-max bg-fade-grey shrink-0 snap-start">
         <span class="flex gap-2.5 items-center mb-2">
             <img src="<?= "/assets/images/languages/" . $language->picture ?>" alt="" class="w-9 h-9" />
             <h3 class="text-xl font-bold text-btn-sec"><?= $language->label ?></h3>
