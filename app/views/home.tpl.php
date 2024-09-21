@@ -1,6 +1,6 @@
 <!-- <?php dump($projects, $languages) ?> -->
-<section class="flex flex-col h-[80vh] sm:p-6 sm:items-center sm:justify-center sm:flex-row bg-white">
-    <div class="sm:ml-8">
+<section class="flex flex-col h-[80vh] sm:p-14 sm:items-center sm:justify-center sm:flex-row bg-white">
+    <div>
         <p class="text-7xl font-bold">Conception</p>
         <p class="text-7xl my-4 font-bold">Développement</p>
         <p class="text-7xl font-bold text-secondary">Applications & sites web</p>
