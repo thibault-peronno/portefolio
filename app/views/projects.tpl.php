@@ -1,10 +1,10 @@
 <!-- <?php dump($projects); ?> -->
 <main class="grow">
-      <section>
+      <section class="sm:p-14">
         <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">Mes projets</h1>
         <div class="sm:flex sm:gap-10 sm:flex-wrap">
             <?php foreach($projects as $project) : ?>
-            <div class="border-2 border-primary flex flex-col justify-between my-14 p-5 sm:w-80 rounded">
+            <div class="border-2 border-primary bg-white flex flex-col justify-between my-14 p-5 sm:w-96 sm:h-96 rounded">
               <h2 class="text-2xl text-secondary uppercase mb-10"><?= $project['title'] ?></h2>
               <div class="flex justify-start gap-2">
               <?php foreach($project['labels'] as $label) : ?>
@@ -15,7 +15,7 @@
                 />
                 <?php endforeach ?>
               </div>
-              <p class="my-5 text-lg">
+              <p class="my-5 text-clip overflow-hidden text-lg">
               <?= $project['description'] ?>
               </p>
               <a href="<?= "/projet/" . $project['id'] ?>">
