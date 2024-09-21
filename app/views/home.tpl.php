@@ -1,9 +1,9 @@
 <!-- <?php dump($projects, $languages) ?> -->
-<section class="flex flex-col h-[75vh] sm:p-6 sm:items-center sm:justify-center sm:flex-row bg-white">
+<section class="flex flex-col h-[80vh] sm:p-6 sm:items-center sm:justify-center sm:flex-row bg-white">
     <div class="sm:ml-8">
         <p class="text-7xl font-bold">Conception</p>
-        <p class="text-7xl font-bold">Développement</p>
-        <p class="text-7xl font-bold">Application & sites web</p>
+        <p class="text-7xl my-4 font-bold">Développement</p>
+        <p class="text-7xl font-bold text-secondary">Applications & sites web</p>
     </div>
     <div class="flex flex-col sm:w-6/12">
         <!-- <img src="/assets/images/face_co.jpg" alt="" class="w-52 h-52 rounded-full self-center sm:mr-2.5 sm:self-start" /> -->
@@ -11,9 +11,9 @@
             Thibault PERONNO
         </h1>
         <div class="flex flex-row">
-        <img src="/assets/images/icons/react_mono.png" alt="" class="w-9 h-9" />
-        <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9" />
-        <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9" />
+        <img src="/assets/images/icons/react_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
+        <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200 mx-5" />
+        <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
         </div>
         <p class="text-3xl my-7 text-secondary">Spécialité Front-end, avec du back-end</p>
         <p class="text-lg">Anciennement dans le marketing digital à cotoyer des développeurs, j'ai fini par me reconvertir.</p>
@@ -21,7 +21,7 @@
     </div>
 </section>
 <section class="py-28 bg-primary sm:p-14">
-    <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">
+    <h2 class="text-3xl text-secondary uppercase mb-5">
         Mes projets
     </h2>
     <!-- For scroll works, you need add flex and shrink=0. Shrink allow to keep the width like we ask. the class to use scroll with tailwind 
@@ -32,7 +32,7 @@
                 <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] animate-borderTop"></span>
                 <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] origin-left rotate-90 animate-borderLeft"></span>
                 <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block opacity-0 scale-50 animate-projectsScale"><?= $project['title'] ?></h3>
-                <p class="mb-2 opacity-0 scale-20 animate-projectsScale h-20 truncate ... text-lg">
+                <p class="mb-2 opacity-0 scale-20 animate-projectsScale h-20 text-clip overflow-hidden ... text-lg">
                     <?= $project['description'] ?>
                 </p>
 
@@ -68,7 +68,7 @@
     </a>
 </section>
 <section class="bg-white sm:p-14">
-    <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">
+    <h2 class="text-2xl text-secondary uppercase mb-5">
         Mes technos
     </h2>
     <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">

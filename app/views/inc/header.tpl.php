@@ -17,9 +17,9 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 <!-- header('location:/connexion') -->
 <!-- px-2 md:px-dpc  -->
 <body class="3xl:px-dpc flex flex-col min-h-screen text-lg bg-body-fade-grey">
-    <header class="bg-white sm:p-2.5">
+    <header class="bg-white sm:p-5">
         <!-- Our menu to diplay from tablet size -->
-        <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex">
+        <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end hidden sm:flex">
             <a href="/" class="text-xl <?php echo $currentPage == 'index.php' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Accueil</a>
             <a href="/projets" class="text-xl <?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
             <a href="/technologies" class="text-xl <?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
