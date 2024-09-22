@@ -2,7 +2,7 @@ const selectTechnosForm = {
     init: function () {
         let selectTechno = document.getElementById('selectTechnos');
         console.log(selectTechno);
-        selectTechno.addEventListener('click', form.handleSelectTechno);
+        selectTechno.addEventListener('click', selectTechnosForm.handleSelectTechno);
     },
 
     handleSelectTechno: function () {
