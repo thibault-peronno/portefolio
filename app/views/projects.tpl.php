@@ -1,97 +1,21 @@
+<!-- <?php dump($projects); ?> -->
 <main class="grow">
-      <section>
-        <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 sm:w-[30%] sm:mt-12">Mes projets</h1>
-        <div class="sm:flex sm:gap-10 sm:justify-between sm:flex-wrap">
-            <div class="border-t-2 border-primary my-5 py-5 sm:w-80">
-              <h2 class="text-2xl text-secondary uppercase mb-2">Nom du projet</h2>
+      <section class="sm:p-14">
+        <h1 class="text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">Mes projets</h1>
+        <div class="sm:flex sm:gap-10 sm:flex-wrap">
+            <?php foreach($projects as $project) : ?>
+            <div class="border-2 border-primary bg-white flex flex-col justify-between my-14 p-5 sm:w-96 sm:h-96 rounded">
+              <h2 class="text-3xl text-secondary uppercase mb-10"><?= $project['title'] ?></h2>
               <div class="flex justify-start gap-2">
+              <?php foreach($project['labels'] as $label) : ?>
                 <img
-                  src="/assets/images/icons/react_mono.png"
-                  alt=""
-                  class="w-5"
+                  src="<?= "/assets/images/languages/" . $label['picture'] ?>"
+                  alt="<?= "icon " . $label['label'] ?>"
+                  class="w-9 h-9"
                 />
-                <img
-                  src="/assets/images/icons/javascript_mono.svg"
-                  alt=""
-                  class="w-5"
-                />
-                <img
-                  src="/assets/images/icons/docker_mono.svg"
-                  alt=""
-                  class="w-5"
-                />
+                <?php endforeach ?>
               </div>
-              <p class="my-2">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-                tempora aut et, nesciunt, dolore, debitis deserunt expedita officia
-                ad nam quos qui minima consequuntur illo quasi odio cumque.
-                Voluptatem, tenetur.
-              </p>
-              <button
-                class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-3 w-full sm:w-64"
-              >
-                <p class="text-white">En savori plus</p>
-                <img
-                  src="/assets/images/icons/arrow-right-circle.svg"
-                  alt=""
-                />
-              </button>
-            </div>
-            <div class="border-t-2 border-primary my-5 py-5 sm:w-80">
-              <h2 class="text-2xl text-secondary uppercase mb-2">Nom du projet</h2>
-              <div class="flex justify-start gap-2">
-                <img
-                  src="/assets/images/icons/react_mono.png"
-                  alt=""
-                  class="w-5"
-                />
-                <img
-                  src="/assets/images/icons/javascript_mono.svg"
-                  alt=""
-                  class="w-5"
-                />
-                <img
-                  src="/assets/images/icons/docker_mono.svg"
-                  alt=""
-                  class="w-5"
-                />
-              </div>
-              <p class="my-2">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorem
-                tempora aut et, nesciunt, dolore, debitis deserunt expedita officia
-                ad nam quos qui minima consequuntur illo quasi odio cumque.
-                Voluptatem, tenetur.
-              </p>
-              <button
-                class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-3 w-full sm:w-64"
-              >
-                <p class="text-white">En savori plus</p>
-                <img
-                  src="/assets/images/icons/arrow-right-circle.svg"
-                  alt=""
-                />
-              </button>
-            </div>
-            <div class="border-t-2 border-primary my-5 py-5 sm:w-80">
-              <h2 class="text-2xl text-secondary uppercase mb-2">Nom du projet</h2>
-              <div class="flex justify-start gap-2">
-                <img
-                  src="/assets/images/icons/react_mono.png"
-                  alt=""
-                  class="w-5"
-                />
-                <img
-                  src="/assets/images/icons/javascript_mono.svg"
-                  alt=""
-                  class="w-5"
-                />
-                <img
-                  src="/assets/images/icons/docker_mono.svg"
-                  alt=""
-                  class="w-5"
-                />
-              </div>
-              <p class="my-5 text-clip overflow-hidden text-lg h-20">
+              <p class="my-5 text-clip overflow-hidden text-lg">
               <?= $project['description'] ?>
               </p>
               <a href="<?= "/projet/" . $project['id'] ?>">
@@ -106,6 +30,7 @@
                 </button>
               </a>
             </div>
+            <?php endforeach ?>
         </div>
       </section>
     </main>

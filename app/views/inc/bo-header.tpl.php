@@ -22,7 +22,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <a href="/bo-accueil" class="<?php echo $currentPage == 'bo-accueil' ? 'underline underline-offset-8' : ''; ?>">Dashboard</a>
       <a href="/bo-projets" class="<?php echo $currentPage == 'bo-projets' ? 'underline underline-offset-8' : ''; ?>">Projets</a>
       <a href="/bo-technos" class="<?php echo $currentPage == 'bo-technos' ? 'underline underline-offset-8' : ''; ?>">Technologies</a>
-      <a href="/bo-organisation" class="<?php echo $currentPage == 'bo-organisation' ? 'underline underline-offset-8' : ''; ?>">Organisations</a>
+      <a href="/bo-organisations" class="<?php echo $currentPage == 'bo-organisations' ? 'underline underline-offset-8' : ''; ?>">Organisations</a>
       <a href="/" class="<?php echo $currentPage == 'index.php' ? 'underline underline-offset-8' : ''; ?>">Portefolio</a>
     </nav>
     <!-- Our menu to display for mobil size -->

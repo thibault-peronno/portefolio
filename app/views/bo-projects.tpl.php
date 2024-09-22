@@ -1,4 +1,5 @@
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
+<!-- <?php dump($projects) ?> -->
+<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max mb-5 sm:mt-12 rounded">
   back office Projets
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
@@ -10,7 +11,7 @@
   </a>
   <div class="sm:flex sm:gap-5 sm:flex-wrap">
     <?php foreach ($projects as $project) : ?>
-      <div class="bg-white rounded border-t-2 border-primary flex flex-col justify-between my-14 p-5 sm:w-96 sm:h-96 rounded">
+      <div class="bg-white rounded border-t-2 border-primary my-5 p-5 sm:w-80">
         <a href="<?= "/bo-editer-projet/" . $project['id'] ?>">
           <div class="bg-primary rounded-full p-2.5 w-max flex">
             <img src="/assets/images/icons/edit.svg" alt="Button pour modifier le projet" class="m-auto w-9 h-9" />
@@ -27,8 +28,8 @@
         <p class="my-2 h-20">
           <?= $project['description'] ?>
         </p>
-        <a href="<?= "bo-projet/" . $project['id'] ?>" >
-          <button  class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-3 w-full">
+        <a href="<?= "/bo-projet/" . $project['id'] ?>">
+          <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-3 w-full">
             <p class="text-white">En savoir plus</p>
             <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
           </button>

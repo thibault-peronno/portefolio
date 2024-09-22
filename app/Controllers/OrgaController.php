@@ -7,9 +7,32 @@ use App\Models\Organization;
 
 class OrgaController extends CoreController
 {
-    public function organization(): void
+    public function organization($idOrganization): void
     {
-        $this->boShow('bo-orga');
+        $organizationModel = new Organization();
+        $data = [];
+        $organizationModel->setId($idOrganization["id"]);
+
+        try {
+            $data['organization'] = $organizationModel->getOrgaById();
+            $this->boShow('bo-orga', $data);
+        } catch (\Throwable $th) {
+            //throw $th;
+            dump($th);
+        }
+    }
+    public function organizations(): void
+    {
+        $organizationModel = new Organization();
+        $data = [];
+
+        try {
+            $data['organizations'] = $organizationModel->getOrganizations();
+            $this->boShow('bo-orgas', $data);
+        } catch (\Throwable $th) {
+            //throw $th;
+            dump($th);
+        }
     }
 
     public function addOrgaPage(): void
@@ -51,6 +74,55 @@ class OrgaController extends CoreController
                 "succeeded" => false,
             ];
             $this->boShow('bo-add-orga', $data);
+        }
+    }
+
+    public function editOrga($idOrga)
+    {
+        $organizationModel = new Organization();
+
+        $data = [];
+        $organizationModel->setId(intval($idOrga['id']));
+        $data['organization'] = $organizationModel->getOrgaById();
+        $this->boShow('bo-add-orga', $data);
+    }
+
+    public function updateOrganization($idOrga)
+    {
+        $organizationModel = new Organization();
+        $imageHelper = new ImageHelper();
+
+        try {
+            $isNoUpdateImage = $imageHelper->isNoUpdateImage();
+            
+            if(!$isNoUpdateImage){
+                $imageHelper->isInsertedOrganizationImage();
+            }
+            
+            $id= intval($idOrga['id']);
+            $title = htmlspecialchars($_POST['title']);
+            $description = htmlspecialchars($_POST['description']);
+            if(!$isNoUpdateImage){
+                $picture = $_FILES["picture"]["name"];
+            }else{
+                $picture = htmlspecialchars($_POST['picture']);
+            }
+            
+            $organizationModel->setId($id);
+            $organizationModel->setTitle($title);
+            $organizationModel->setDescription($description);
+            $organizationModel->setPicture($picture);
+
+            $insert = $organizationModel->updateOrganization();
+
+            if ($insert || !$insert) {
+                $data['succeeded'] = $insert;
+            }
+
+            $this->boShow('bo-add-orga', $data);
+
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
 }

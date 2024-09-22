@@ -50,10 +50,10 @@ class Project
         return $getProjects;
     }
 
-    public function getProject($idProject): array
+    public function getProjectById($idProject): array
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT p.*, o.title AS title_organozation, o.picture AS picture_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
+        $sql = "SELECT p.*, o.title AS title_organization, o.picture AS picture_organization, o.description AS description_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
         FROM projects p
         LEFT JOIN projects_languages pl ON p.id = pl.project_id
         LEFT JOIN languages l ON pl.language_id = l.id
@@ -107,6 +107,55 @@ class Project
         } catch (\Throwable $error) {
             $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         }
+    }
+
+    public function updateProject(): bool
+    {
+        $pdo = Database::getPDO();
+        $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
+        try {
+            $pdoStatement = $pdo->prepare($sql);
+            // dd($this->title,$this->description, $this->url, $this->picture, $this->organization_id, $this->id);
+            $pdoStatement->bindParam(':title', $this->title, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':description', $this->description, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':url', $this->url, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':picture', $this->picture, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':organizationId', $this->organization_id, PDO::PARAM_INT);
+            $pdoStatement->bindParam(':projectId', $this->id, PDO::PARAM_INT);
+
+            $insertedRows = $pdoStatement->execute();
+
+
+            if ($insertedRows > 0) {
+                // We retrieve the last id.
+                $projectLanguageCtrl = new ProjectLanguageController;
+                $deleteLanguages = $projectLanguageCtrl->deleteProjetctLanguage($_POST['languages'], $this->id);
+                if ($deleteLanguages) {
+                    $insertLanguages = $projectLanguageCtrl->addProjectLanguage($this->id);
+                }
+
+                if ($insertLanguages) {
+                    // We return true, because the sql insert has worked.
+                    return true;
+                }
+            }
+
+            // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
+            return false;
+        } catch (\Throwable $th) {
+            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        }
+        return true;
+    }
+
+    public function getId(): string
+    {
+        return $this->id;
+    }
+    public function setId($id): self
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getTitle(): string

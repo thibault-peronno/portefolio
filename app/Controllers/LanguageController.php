@@ -10,7 +10,40 @@ class LanguageController extends CoreController
 {
     public function technologies(): void
     {
-        $this->show('technos');
+        $languagesModel = new Languages();
+        $data = [];
+
+        $languages = $languagesModel->getLanguages();
+
+       foreach($languages as $language) {
+            if($language->type === 'Front-end'){
+                $data['languages']['front-end'][] = $language;
+            }elseif($language->type === 'Back-end'){
+                $data['languages']['back-end'][] = $language;
+            }else{
+                $data['languages']['DevOps'][] = $language;
+            }
+        };
+        $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
+
+        $this->show('technos', $data);
+    }
+
+    private static function numberOfProjectDevBylanguage($languages): array
+    {
+        $projectLanguageCtrl = new ProjectLanguageController();
+        $data = [];
+        $arrayAllLanguagesId = $projectLanguageCtrl->fetchAllLanguageId();
+        foreach($languages as $language){
+            
+            foreach($arrayAllLanguagesId as $arrayAllLanguages){
+               
+                if($language->label === $arrayAllLanguages['label']){
+                    $data[$language->label][] = + 1;
+                }
+            }
+        }
+        return $data;
     }
 
     public function boTechnos(): void
@@ -85,10 +118,55 @@ class LanguageController extends CoreController
         }
     }
 
+    public function editTechno($idLanguage)
+    {
+        $languagesModel = new Languages();
+        $data = [];
+
+        $languagesModel->setId($idLanguage['id']);
+        $data['language'] = $languagesModel->getLanguageById();
+
+        $this->boShow('bo-add-techno', $data);
+    }
+
+    public function updateTechno($idLanguage)
+    {
+        $languagesModel = new Languages();
+        $imageHelper = new ImageHelper();
+
+        try {
+            $isNoUpdateImage = $imageHelper->isNoUpdateImage();
+
+            if (!$isNoUpdateImage) {
+                $imageHelper->isInsertedLanguageImage();
+            }
+
+            if (!$isNoUpdateImage) {
+                $picture = $_FILES["picture"]["name"];
+            } else {
+                $picture = htmlspecialchars($_POST['picture']);
+            }
+
+            $languagesModel->setId(intval($idLanguage['id']));
+            $languagesModel->setLabel(htmlspecialchars($_POST['label']));
+            $languagesModel->setPicture($picture);
+            $languagesModel->setType(htmlspecialchars($_POST['type']));
+
+            $insert = $languagesModel->updateLanguage();
+
+            if ($insert || !$insert) {
+                $data['succeeded'] = $insert;
+            }
+
+            $this->boShow('bo-add-techno', $data);
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
     public function boDeleteTechnos($labelId)
     {
         $languagesModel = new Languages();
         $languagesModel->deleteLanguage((int)$labelId['id']);
-
     }
 }

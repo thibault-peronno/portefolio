@@ -23,8 +23,23 @@ class Languages
             $pdoStatement =$pdo->query($sql);
             return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);
         } catch (\Throwable $error) {
-            dump($error);
+            dump('getLanguages model' , $error);
             throw new Exception("La récupération des langues de développement a échoué");
+        }
+    }
+
+    public function getLanguageById(): array | bool
+    {
+        $pdo =Database::getPDO();
+        $sql = "SELECT * FROM `languages` WHERE id = :idLanguage";
+        try {
+            $pdoStatement = $pdo->prepare($sql);
+            $pdoStatement->bindParam(':idLanguage', $this->id, PDO::PARAM_STR);
+            $pdoStatement->execute();
+            return $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
 
@@ -55,6 +70,27 @@ class Languages
         }
     }
 
+    public function updateLanguage()
+    {
+        $pdo = Database::getPDO();
+        $sql = "UPDATE `languages` SET label = :label, type = :type, picture = :picture WHERE id = :idLanguage";
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindParam(':label', $this->label, PDO::PARAM_STR);
+        $pdoStatement->bindParam(':type', $this->type, PDO::PARAM_STR);
+        $pdoStatement->bindParam(':picture', $this->picture, PDO::PARAM_STR);
+        $pdoStatement->bindParam(':idLanguage', $this->id, PDO::PARAM_INT);
+
+        $insertedRows = $pdoStatement->execute();
+
+        if ($insertedRows > 0) {
+            // We retrieve the last id.
+            return true;
+        }
+
+    }
+
     public function deleteLanguage($idLabel)
     {
         // dd($idLabel);
@@ -63,8 +99,8 @@ class Languages
         // dd($sql);
         try {
             $pdoStatement = $pdo->query($sql);
-            dd($pdoStatement);
-            dd($pdoStatement->delete(PDO::FETCH_CLASS, Languages::class));
+            // dd($pdoStatement);
+            // dd($pdoStatement->delete(PDO::FETCH_CLASS, Languages::class));
             return $pdoStatement->delete(PDO::FETCH_CLASS, Languages::class);
 
         } catch (\Throwable $th) {

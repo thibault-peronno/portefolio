@@ -1,5 +1,6 @@
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
-    Ajouter un projet
+<!-- <?php dump($project, $languages) ?> -->
+<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
+<?= isset($project) ? "Modifier un projet" : "Ajouter un projet" ?>
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
     <?php if (isset($succeeded) && $succeeded == true) : ?>
@@ -15,20 +16,34 @@
     <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <input type="text" name="title" id="title" class="rounded bg-white h-12 w-full p-2" />
+            <input type="text" name="title" id="title" value="<?= isset($project) ? $project['title'] : " " ?>" class="rounded bg-white h-12 w-full p-2" />
         </div>
         <div class="mb-5">
-            <label for="description" class="text-primary text-xl">Description<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <textarea name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"></textarea>
+            <label 
+            for="description" 
+            class="text-primary text-xl">
+            Description<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
+            <textarea 
+            name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?php echo isset($project) ? $project['description'] : " " ?></textarea>
         </div>
         <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
             <div class="mb-5 sm:w-6/12">
                 <label for="url" class="text-primary text-xl">URL</label>
-                <input type="text" name="url" id="url" class="rounded bg-white h-12 w-full p-2" />
+                <input type="text" name="url" id="url" value="<?= isset($project) ? $project['url'] : " " ?>" class="rounded bg-white h-12 w-full p-2" />
             </div>
             <div class="mb-5 sm:w-6/12">
-                <label for="picture" class="text-primary text-xl">Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-                <input type="file" name="picture" id="picture" accept="image/png, image/jpeg" class="rounded bg-white h-12 w-full p-2" />
+                <?php if(isset($project) && isset($project['picture'])) :?>
+                    <div id="updateImageTextDiv">
+                        <img src="<?= "/assets/images/projects/" . $project['picture'] ?>" alt="Image du projet" class="w-14">
+                        <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
+                        <input type="hidden" name="picture" value="<?= $project['picture'] ?>">
+                    </div>
+                <?php endif ?>
+                <span id="updateImageInput" class="<?= isset($project)? "hidden" : "" ?>">
+                    <label for="picture" class="text-primary text-xl" >Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
+                    <input type="file" name="picture" id="picture" accept="image/png, image/jpeg" class="rounded bg-white h-12 w-full p-2" />
+                    <p id="cancelUpdateImageInput" class="font-bold text-white cursor-pointer <?= isset($project)? "block" : "hidden" ?>">Annuler</p>
+                </span>
             </div>
         </span>
         <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
@@ -37,16 +52,20 @@
                 <div class="block rounded bg-white h-12 w-full p-2 relative">
                     <div id="selectTechnos" class="h-full">
                         <div class="block bg-white h-full h-12 w-full flex flex-row items-center justify-between">
-                            <p>Choisi les langages</p>
+                            <p>Choisi les languages</p>
                             <p class="cursor-default">+</p>
                         </div>
                         <div class="hidden"></div>
                     </div>
                     <div id="checklanguages" class="hidden absolute flex flex-col gap-2 bg-white left-0 p-2 w-full rounded h-28 overflow-y-auto">
-                        <?php foreach ($langages as $langage) : ?>
+                        <?php foreach ($languages as $language) : ?>
                             <span>
-                                <input type="checkbox" id="<?= htmlspecialchars($langage->id) ?>" value="<?= htmlspecialchars($langage->id) ?>" name="languages[]" />
-                                <label for="<?= htmlspecialchars($langage->id) ?>"><?= htmlspecialchars($langage->label) ?></label>
+                                <input type="checkbox" id="<?= htmlspecialchars($language->id) ?>" value="<?= htmlspecialchars($language->id) ?>" 
+                                <?php foreach($project['labels'] as $label){
+                                   echo $label['label'] == $language->label ? "checked" : "";
+                                } ?>
+                                name="languages[]" />
+                                <label for="<?= htmlspecialchars($language->id) ?>"><?= htmlspecialchars($language->label) ?></label>
                             </span>
                         <?php endforeach; ?>
                     </div>
@@ -55,9 +74,12 @@
             <div class="mb-5 sm:w-6/12">
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
-                    <option value="">Choisi l'organisation'</option>
+                    <option value="<?= isset($project) ? $project['organization_id'] : "" ?>"><?= isset($project) ? $project['title_organization'] : "Choisi l'organisation" ?></option>
                     <?php foreach ($organizations as $organization) : ?>
-                        <option value=<?= htmlspecialchars($organization->id) ?>><?= htmlspecialchars($organization->title) ?></option>
+                        <option 
+                            value=<?= htmlspecialchars($organization->id) ?>>
+                            <?= htmlspecialchars($organization->title) ?>
+                        </option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -66,5 +88,5 @@
 </section>
 <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl" type="submit" form="project-form">
     <img src="/assets/images/icons/add.svg" alt="" />
-    <p class="text-white">Ajouter</p>
+    <p class="text-white"><?= isset($project) ? "Modifier" : "Ajouter" ?></p>
 </button>
