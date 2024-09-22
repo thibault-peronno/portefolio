@@ -11,10 +11,10 @@
   </a>
   <div class="sm:flex sm:gap-5 sm:flex-wrap">
     <?php foreach ($projects as $project) : ?>
-      <div class="bg-white rounded border-t-2 border-primary my-5 p-5 sm:w-80">
-        <a href="<?= "/bo-editer-projet/" . $project['id'] ?>">
-          <div class="bg-primary rounded-full p-2.5 w-max flex">
-            <img src="/assets/images/icons/edit.svg" alt="Button pour modifier le projet" class="m-auto w-9 h-9" />
+      <div class="bg-white rounded border-t-2 border-primary relative flex flex-col justify-between my-14 p-5 sm:w-96 sm:h-96 rounded">
+        <a href="<?= "/bo-editer-projet/" . $project['id'] ?>" class="absolute right-2.5">
+          <div class="bg-primary rounded p-2.5 w-max flex">
+            <img src="/assets/images/icons/edit.svg" alt="Button pour modifier le projet" class="m-auto w-7 h-7" />
           </div>
         </a>
         <h2 class="text-2xl text-secondary uppercase my-2">
@@ -25,7 +25,7 @@
             <img src="<?= '/assets/images/languages/' . $label['picture'] ?>" alt="" class="w-5" />
           <?php endforeach ?>
         </div>
-        <p class="my-2">
+        <p class="my-2 text-clip overflow-hidden text-lg h-20">
           <?= $project['description'] ?>
         </p>
         <a href="<?= "/bo-projet/" . $project['id'] ?>">
