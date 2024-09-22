@@ -4,12 +4,14 @@
         <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
             Thibault PERONNO
         </h1>
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt
-            blanditiis modi dolores reprehenderit tenetur repudiandae quaerat
-            officia ad! Earum minima cumque veritatis repudiandae eaque, doloribus
-            blanditiis dolor quibusdam autem hic.
-        </p>
+        <div class="flex flex-row">
+        <img src="/assets/images/icons/react_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
+        <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200 mx-5" />
+        <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
+        </div>
+        <p class="text-3xl my-7 text-secondary">Spécialité Front-end, avec du back-end</p>
+        <p class="text-lg">Anciennement dans le marketing digital à cotoyer des développeurs, j'ai fini par me reconvertir.</p>
+        <p>Grâce à mon parcours, j'ai acquis des compétences en gestion de projets, ce qui me permet d'aller au-delà de simplement écrire des lignes de codes.</p>
     </div>
 </section>
 <section>
