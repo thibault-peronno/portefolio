@@ -56,4 +56,4 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </span>
         </nav>
     </header>
-    <main class="grow">
+    <main class="grow <?php echo $currentPage == 'connexion' ? 'content-center' : ''; ?>">
