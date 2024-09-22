@@ -626,6 +626,10 @@ video {
   top: 45%;
 }
 
+.right-2\.5 {
+  right: 0.625rem;
+}
+
 .z-10 {
   z-index: 10;
 }
@@ -820,6 +824,10 @@ video {
   height: 100vh;
 }
 
+.h-7 {
+  height: 1.75rem;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -911,6 +919,10 @@ video {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-7 {
+  width: 1.75rem;
 }
 
 .shrink {
@@ -1335,6 +1347,11 @@ video {
 .py-28 {
   padding-top: 7rem;
   padding-bottom: 7rem;
+}
+
+.py-5 {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
 }
 
 .pl-0\.5 {
