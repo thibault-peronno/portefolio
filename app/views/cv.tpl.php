@@ -1,19 +1,28 @@
-<main class="grow">
-    <div class="flex flex-row justify-around my-14 gap-10 flex-wrap">
+<section>
+    <div class="flex flex-row justify-around gap-10 flex-wrap bg-primary sm:p-14">
         <div class="flex flex-col animate-front opacity-0">
             <p class="font-bold text-lg">Front-end</p>
             <div class="flex flex-row gap-5">
-                <span><img src="/assets/images/icons/react_mono.png" alt="" class="w-9 h-9 mb-5" />
+                <span>
+                    <div class="bg-white rounded w-max m-auto">
+                        <img src="/assets/images/icons/react_mono.png" alt="" class="w-12 h-12 m-2" />
+                    </div>
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         React
                     </p>
                 </span>
-                <span><img src="/assets/images/icons/vuejs_mono.svg" alt="" class="w-9 h-9 mb-5" />
+                <span>
+                    <div class="bg-white rounded w-max m-auto">
+                        <img src="/assets/images/icons/vuejs_mono.svg" alt="" class="w-12 h-12 m-2" />
+                    </div>
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         Vue.js
                     </p>
                 </span>
-                <span><img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9 mb-5" />
+                <span>
+                    <div class="bg-white rounded w-max m-auto">
+                        <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-12 h-12 m-2" />
+                    </div>
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         Flutter
                     </p>
@@ -23,12 +32,18 @@
         <div class="flex flex-col animate-back opacity-0">
             <p class="font-bold text-lg">Back-end</p>
             <div class="flex flex-row gap-5">
-                <span><img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9 mb-5" />
+                <span>
+                    <div class="bg-white rounded w-max m-auto">
+                        <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-12 h-12 m-2" />
+                    </div>
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         Laravel
                     </p>
                 </span>
-                <span><img src="/assets/images/icons/nodejs_mono.png" alt="" class="w-9 h-9 mb-5" />
+                <span>
+                    <div class="bg-white rounded w-max m-auto">
+                        <img src="/assets/images/icons/nodejs_mono.png" alt="" class="w-12 h-12 m-2" />
+                    </div>
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         Node.js
                     </p>
@@ -38,12 +53,18 @@
         <div class="flex flex-col animate-devops opacity-0">
             <p class="font-bold text-lg">DevOps</p>
             <div class="flex flex-row gap-5">
-                <span><img src="/assets/images/icons/docker_mono.svg" alt="" class="w-9 h-9 mb-5" />
+                <span>
+                    <div class="bg-white rounded w-max m-auto">
+                        <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-12 h-12 m-2" />
+                    </div>
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         Docker
                     </p>
                 </span>
-                <span><img src="/assets/images/icons/nginx_mono.svg" alt="" class="w-9 h-9 mb-5" />
+                <span>
+                    <div class="bg-white rounded w-max m-auto">
+                        <img src="/assets/images/icons/nginx_mono.svg" alt="" class="w-12 h-12 m-2" />
+                    </div>
                     <p class="text-center rounded-full bg-secondary text-white p-2.5">
                         Nginx
                     </p>
@@ -51,12 +72,12 @@
             </div>
         </div>
     </div>
-    <section>
+    <section class="sm:p-14">
         <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
             <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded">
                 Mon parcours
             </h1>
-            <a href="https://www.linkedin.com/in/thibault-peronno/ target="_blank">
+            <a href="https://www.linkedin.com/in/thibault-peronno/ target=" _blank">
                 <img src="/assets/images/icons/linkedin.svg" alt="Link to linkedin profil" class="w-9 h-9 ml-5 cursor-pointer" />
 
             </a>
@@ -108,4 +129,4 @@
             </div>
         </div>
     </section>
-</main>
+</section>

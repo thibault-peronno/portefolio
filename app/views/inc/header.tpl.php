@@ -15,11 +15,11 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <meta name="description" content="Retrouvez mon travail de concepteur et développeur d'application. Je présente des projets qui me servent à progresser dans ma connaissance des bonnes pratiques et des languages que j'apprécie. Ceci me permet de rester à l'écoute des évolutions. Et ainsi rester compétitif.">
 </head>
 <!-- header('location:/connexion') -->
-
-<body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen text-lg">
-    <header>
+<!-- px-2 md:px-dpc  -->
+<body class="3xl:px-dpc flex flex-col min-h-screen text-lg bg-body-fade-grey">
+    <header class="bg-white sm:p-5">
         <!-- Our menu to diplay from tablet size -->
-        <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex">
+        <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end hidden sm:flex">
             <a href="/" class="text-xl <?php echo $currentPage == 'index.php' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Accueil</a>
             <a href="/projets" class="text-xl <?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
             <a href="/technologies" class="text-xl <?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
@@ -56,4 +56,4 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             </span>
         </nav>
     </header>
-    <main class="grow">
+    <main class="grow <?php echo $currentPage == 'connexion' ? 'content-center' : ''; ?>">
