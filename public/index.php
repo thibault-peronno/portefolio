@@ -37,7 +37,7 @@ $router->addRoutes(
       '/projets',
       [
         'controller' => 'ProjectController',
-        'method' => 'projects',
+        'method' => 'getProjects',
       ],
       'projets',
     ],
@@ -46,7 +46,7 @@ $router->addRoutes(
       '/projet/[:id]',
       [
         'controller' => 'ProjectController',
-        'method' => 'project',
+        'method' => 'getProject',
       ],
       'projet',
     ],
@@ -106,43 +106,43 @@ if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) {
     [
       [
         'GET',
-        '/bo-accueil',
+        '/admin-accueil',
         [
           'controller' => 'MainController',
           'method' => 'boHome',
         ],
-        'bo-accueil',
+        'admin-accueil',
       ],
       [
         'GET',
-        '/bo-projets',
+        '/admin-projets',
         [
           'controller' => 'ProjectController',
-          'method' => 'boProjects',
+          'method' => 'adminGetProjects',
         ],
-        'bo-projets',
+        'admin-projets',
       ],
       [
         'GET',
-        '/bo-projet/[i:id]',
+        '/admin-projet/[i:id]',
         [
           'controller' => 'ProjectController',
-          'method' => 'boProject',
+          'method' => 'adminGetProject',
         ],
-        'bo-projet',
+        'admin-projet',
       ],
       [
         'GET',
-        '/bo-ajouter-projet',
+        '/admin-ajouter-projet',
         [
           'controller' => 'ProjectController',
           'method' => 'addProjectPage',
         ],
-        'bo-ajouter-projet',
+        'admin-ajouter-projet',
       ],
       [
         'POST',
-        '/bo-ajouter-projet',
+        '/admin-ajouter-projet',
         [
           'controller' => 'ProjectController',
           'method' => 'addProject',
@@ -150,34 +150,34 @@ if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) {
       ],
       [
         'GET',
-        '/bo-editer-projet/[i:id]',
+        '/admin-editer-projet/[i:id]',
         [
           'controller' => 'ProjectController',
           'method' => 'editProject',
         ],
-        'bo-editer-projet'
+        'admin-editer-projet'
       ],
       [
         'POST',
-        '/bo-editer-projet/[i:id]',
+        '/admin-editer-projet/[i:id]',
         [
           'controller' => 'ProjectController',
           'method' => 'updateProject',
         ],
-        'bo-update-projet'
+        'admin-update-projet'
       ],
       [
         'GET',
-        '/bo-ajouter-technologie',
+        '/admin-ajouter-technologie',
         [
           'controller' => 'LanguageController',
           'method' => 'addTechnoPage',
         ],
-        'bo-ajouter-technologie',
+        'admin-ajouter-technologie',
       ],
       [
         'POST',
-        '/bo-ajouter-technologie',
+        '/admin-ajouter-technologie',
         [
           'controller' => 'LanguageController',
           'method' => 'addTechno',
@@ -185,88 +185,88 @@ if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) {
       ],
       [
         'GET',
-        '/bo-editer-technologie/[i:id]',
+        '/admin-editer-technologie/[i:id]',
         [
           'controller' => 'LanguageController',
           'method' => 'editTechno',
         ],
-        'bo-editer-technologie'
+        'admin-editer-technologie'
       ],
       [
         'POST',
-        '/bo-editer-technologie/[i:id]',
+        '/admin-editer-technologie/[i:id]',
         [
           'controller' => 'LanguageController',
           'method' => 'updateTechno',
         ],
-        'bo-update-technologie'
+        'admin-update-technologie'
       ],
       [
         'GET',
-        '/bo-technos',
+        '/admin-technos',
         [
           'controller' => 'LanguageController',
           'method' => 'boTechnos',
         ],
-        'bo-technos',
+        'admin-technos',
       ],
       [
         'DELETE',
-        '/bo-delete--technos/[i:id]',
+        '/admin-delete--technos/[i:id]',
         [
           'controller' => 'LanguageController',
           'method' => 'boDeleteTechnos',
         ],
-        'bo-delete-technos',
+        'admin-delete-technos',
       ],
       [
         'GET',
-        '/bo-organisations',
+        '/admin-organisations',
         [
           'controller' => 'OrgaController',
           'method' => 'organizations',
         ],
-        'bo-organisations',
+        'admin-organisations',
       ],
       [
         'GET',
-        '/bo-organisation/[i:id]',
+        '/admin-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
           'method' => 'organization',
         ],
-        'bo-organisation',
+        'admin-organisation',
       ],
       [
         'GET',
-        '/bo-ajouter-organisation',
+        '/admin-ajouter-organisation',
         [
           'controller' => 'OrgaController',
           'method' => 'addOrgaPage',
         ],
-        'bo-ajouter-organisation',
+        'admin-ajouter-organisation',
       ],
       [
         'GET',
-        '/bo-editer-organisation/[i:id]',
+        '/admin-editer-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
           'method' => 'editOrga',
         ],
-        'bo-editer-organisation'
+        'admin-editer-organisation'
       ],
       [
         'POST',
-        '/bo-editer-organisation/[i:id]',
+        '/admin-editer-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
           'method' => 'updateOrganization',
         ],
-        'bo-update-organisation'
+        'admin-update-organisation'
       ],
       [
         'POST',
-        '/bo-ajouter-organisation',
+        '/admin-ajouter-organisation',
         [
           'controller' => 'OrgaController',
           'method' => 'addOrga',

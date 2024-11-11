@@ -4,46 +4,60 @@ namespace App\Controllers;
 
 use App\Controllers\CoreController;
 use App\Models\Project;
-use App\Models\ProjectLanguage;
+use App\Repositories\ProjectRepository;
 use App\Helpers\GetLangagesHelper;
 use App\Helpers\ImageHelper;
 use App\Models\Organization;
 
+/* Le controller est le chef d'orchestre, donc je fais parler les models et les repositories depuis chaque
+méthode
+
+J'instancie le project model et je set mes valeurs
+*/
+
 class ProjectController extends CoreController
 {
 
-    public function projects(): void
+    public function getProjects(): void
     {
-        $projectModel = new Project();
+        $projectRepository = new projectRepository();
         $data = [];
-        $data["projects"] = $projectModel->getProjects();
+        $data["projects"] = $projectRepository->getProjects();
         $this->show('projects', $data);
     }
 
-    public function project($idProject): void
+    public function getProject($idProject): void
     {
         $projectModel = new Project();
+        $projectRepository = new projectRepository();
+
+        $projectModel->setId($idProject['id']);
+
         $data = [];
 
-        $data['project'] = $projectModel->getProjectById($idProject['id']);
+        $data['project'] = $projectRepository->getProjectById();
 
         $this->show('project', $data);
     }
 
-    public function boProjects(): void
+    public function adminGetProjects(): void
     {
-        $projectModel = new Project();
+        $projectRepository = new projectRepository();
         $data = [];
-        $data["projects"] = $projectModel->getProjects();
-        $this->boShow('bo-projects', $data);
+        $data["projects"] = $projectRepository->getProjects();
+        $this->boShow('admin-projects', $data);
     }
 
-    public function boProject($idProject): void
+    public function adminGetProject($idProject): void
     {
         $projectModel = new Project();
+        $projectRepository = new projectRepository();
+
+        $projectModel->setId($idProject['id']);
+
         $data = [];
-        $data["project"] = $projectModel->getProjectById($idProject['id']);
-        $this->boShow('bo-project', $data);
+        $data["project"] = $projectRepository->getProjectById();
+        $this->boShow('admin-project', $data);
     }
 
     public function addProjectPage(): void
@@ -56,12 +70,13 @@ class ProjectController extends CoreController
         $data['languages'] = $languagesHelper->getLanguages();
         $data['organizations'] = $organizationModel->getOrganizations();
 
-        $this->boShow('bo-add-project', $data);
+        $this->boShow('admin-add-project', $data);
     }
 
     public function addProject(): void
     {
         $projectModel = new Project();
+        $projectRepository = new ProjectRepository();
         $imageHelper = new ImageHelper();
 
         $data = [];
@@ -89,19 +104,19 @@ class ProjectController extends CoreController
             $projectModel->setPicture($picture);
             $projectModel->setOrganizationId($organization_id);
 
-            $insert = $projectModel->addProject();
+            $insert = $projectRepository->addProject();
 
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('bo-add-project', $data);
+            $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('bo-add-project', $data);
+            $this->boShow('admin-add-project', $data);
         }
     }
 
@@ -110,19 +125,23 @@ class ProjectController extends CoreController
         $languagesHelper = new GetLangagesHelper();
         $organizationModel = new Organization();
         $projectModel = new Project();
+        $projectRepository = new ProjectRepository();
+
+        $projectModel->setId($idProject['id']);
 
         $data = [];
 
         $data['languages'] = $languagesHelper->getLanguages();
         $data['organizations'] = $organizationModel->getOrganizations();
-        $data['project'] = $projectModel->getProjectById($idProject['id']);
+        $data['project'] = $projectRepository->getProjectById();
 
-        $this->boShow('bo-add-project', $data);
+        $this->boShow('admin-add-project', $data);
     }
 
     public function updateProject($idProject)
     {
         $projectModel = new Project();
+        $projectRepository = new ProjectRepository;
         $imageHelper = new ImageHelper();
 
         $data = [];
@@ -151,13 +170,13 @@ class ProjectController extends CoreController
             $projectModel->setPicture($picture);
             $projectModel->setOrganizationId($organization_id);
 
-            $insert = $projectModel->updateProject();
+            $insert = $projectRepository->updateProject();
 
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('bo-add-project', $data);
+            $this->boShow('admin-add-project', $data);
         } catch (\Throwable $th) {
             //throw $th;
         }
