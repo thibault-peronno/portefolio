@@ -1,4 +1,4 @@
-<?php dump($projects, $languages) ?>
+<!-- <?php dump($projects, $languages) ?> -->
 <section class="flex flex-col h-[80vh] sm:p-14 sm:items-center sm:justify-center sm:flex-row bg-white">
     <div>
         <p class="text-7xl font-bold">Conception</p>

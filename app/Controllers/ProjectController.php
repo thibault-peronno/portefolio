@@ -24,21 +24,20 @@ class ProjectController extends CoreController
             $projectRepository = new projectRepository();
             $data = [];
             $allProjects = $projectRepository->getProjects();
-                
-                $data['projects']  = array_map(function ($getProject) {
-                    $projectModel = new Project();
-    
-                    $projectModel->setId($getProject['id']);
-                    $projectModel->setTitle($getProject['title']);
-                    $projectModel->setDescription($getProject['description']);
-                    $projectModel->setUrl($getProject['url']);
-                    $projectModel->setPicture($getProject['picture']);
-                    $projectModel->setOrganizationId($getProject['organization_id']);
-                    $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
-                    
-                    return $projectModel;
-                    
-                }, $allProjects);
+
+            $data['projects']  = array_map(function ($getProject) {
+                $projectModel = new Project();
+
+                $projectModel->setId($getProject['id']);
+                $projectModel->setTitle($getProject['title']);
+                $projectModel->setDescription($getProject['description']);
+                $projectModel->setUrl($getProject['url']);
+                $projectModel->setPicture($getProject['picture']);
+                $projectModel->setOrganizationId($getProject['organization_id']);
+                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+
+                return $projectModel;
+            }, $allProjects);
             $this->show('projects', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -51,13 +50,26 @@ class ProjectController extends CoreController
 
     public function getProject($idProject): void
     {
-        $projectModel = new Project();
         $projectRepository = new projectRepository();
-
-
+        
         $data = [];
+        
+        $project = $projectRepository->getProjectById($idProject['id']);
+        
+        $projectModel = new Project();
+        
+        $projectModel->setId($project['id']);
+        $projectModel->setTitle($project['title']);
+        $projectModel->setDescription($project['description']);
+        $projectModel->setUrl($project['url']);
+        $projectModel->setPicture($project['picture']);
+        $projectModel->setOrganizationId($project['organization_id']);
+        $projectModel->setTitleOrganization($project['title_organization']);
+        $projectModel->setPictureOrganization($project['picture_organization']);
+        $projectModel->setDescriptionOrganization($project['description_organization']);
+        $projectModel->setLabels(json_decode('[' . $project['labels'] . ']', true));
 
-        $data['project'] = $projectRepository->getProjectById($idProject['id']);
+        $data['project'] = $projectModel;
 
         $this->show('project', $data);
     }
@@ -167,16 +179,16 @@ class ProjectController extends CoreController
         try {
             $isNoUpdateImage = $imageHelper->isNoUpdateImage();
 
-            if(!$isNoUpdateImage){
+            if (!$isNoUpdateImage) {
                 $imageHelper->isInsertedProjectImage();
             }
             $id = intval($idProject['id']);
             $title = htmlspecialchars($_POST['title']);
             $description = htmlspecialchars($_POST['description']);
             $url = htmlspecialchars($_POST['url']);
-            if(!$isNoUpdateImage){
-            $picture = $_FILES["picture"]["name"];
-            }else{
+            if (!$isNoUpdateImage) {
+                $picture = $_FILES["picture"]["name"];
+            } else {
                 $picture = htmlspecialchars($_POST['picture']);
             }
             $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);

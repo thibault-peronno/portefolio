@@ -16,6 +16,9 @@ class Project
     public $url;
     public $organization_id;
     public $labels;
+    public $title_organization;
+    public $picture_organization;
+    public $description_organization;
 
 
     public function getId(): string
@@ -85,6 +88,36 @@ class Project
     public function setLabels($labels): self
     {
         $this->labels = $labels;
+        return $this;
+    }
+
+    public function getTitleOrganization(): string
+    {
+        return $this->title_organization;
+    }
+    public function setTitleOrganization($titleOrganization): self
+    {
+        $this->title_organization = $titleOrganization;
+        return $this;
+    }
+
+    public function getPictureOrganization(): string
+    {
+        return $this->picture_organization;
+    }
+    public function setPictureOrganization($pictureOrganization): self
+    {
+        $this->picture_organization = $pictureOrganization;
+        return $this;
+    }
+
+    public function getDescriptionOrganization(): string
+    {
+        return $this->description_organization;
+    }
+    public function setDescriptionOrganization($descriptionOrganization): self
+    {
+        $this->description_organization = $descriptionOrganization;
         return $this;
     }
 }

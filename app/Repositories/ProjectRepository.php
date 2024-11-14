@@ -50,7 +50,7 @@ class ProjectRepository
         $pdoStatement = $pdo->query($sql);
         $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
 
-        $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
+        // $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
 
         return $getProject;
     }
