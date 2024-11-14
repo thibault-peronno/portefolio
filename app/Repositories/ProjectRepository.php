@@ -11,43 +11,33 @@ class ProjectRepository
 {
     public function getProjects(): array
     {
-        $pdo = Database::getPDO();
-        $sql = "SELECT p.*, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
-        FROM projects p
-        LEFT JOIN projects_languages pl ON p.id = pl.project_id
-        LEFT JOIN languages l ON pl.language_id = l.id
-        GROUP BY p.id";
-
-
-        $pdoStatement = $pdo->query($sql);
-        $getProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
-        /* foreach($getProjects as &$getProject){
-            dump('foreach', $getProject['labels']);
-            $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
-            dump('foreach 2', $getProject['labels']);
+        try {
+            $pdo = Database::getPDO();
+            $sql = "SELECT p.*, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
+            FROM projects p
+            LEFT JOIN projects_languages pl ON p.id = pl.project_id
+            LEFT JOIN languages l ON pl.language_id = l.id
+            GROUP BY p.id";
+    
+    
+            $pdoStatement = $pdo->query($sql);
+            $getProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    
+            /* foreach($getProjects as &$getProject){
+                dump('foreach', $getProject['labels']);
+                $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
+                dump('foreach 2', $getProject['labels']);
+            }
+            unset($getProject);*/
+    
+            return $getProjects;
+        } catch (\Throwable $error) {
+            throw $error;
         }
-        unset($getProject);*/
-
-        $getProjects = array_map(function ($getProject) {
-            return [
-                'id' => $getProject['id'],
-                'title' => $getProject['title'],
-                'description' => $getProject['description'],
-                'url' => $getProject['url'],
-                'picture' => $getProject['picture'],
-                'organization_id' => $getProject['organization_id'],
-                'labels' => json_decode('[' . $getProject['labels'] . ']', true),
-            ];
-        }, $getProjects);
-        return $getProjects;
     }
 
-    public function getProjectById(): array
+    public function getProjectById($idProject): array
     {
-        $projectModel = new Project();
-        $idProject = $projectModel->getId();
-
         $pdo = Database::getPDO();
         $sql = "SELECT p.*, o.title AS title_organization, o.picture AS picture_organization, o.description AS description_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
         FROM projects p
@@ -102,7 +92,7 @@ class ProjectRepository
             // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
             return false;
         } catch (\Throwable $error) {
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+            throw $error;
         }
     }
 

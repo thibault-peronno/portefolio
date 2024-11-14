@@ -15,6 +15,7 @@ class Project
     public $picture;
     public $url;
     public $organization_id;
+    public $labels;
 
 
     public function getId(): string
@@ -74,6 +75,16 @@ class Project
     public function setOrganizationId($organizationId): self
     {
         $this->organization_id = $organizationId;
+        return $this;
+    }
+
+    public function getLables(): string
+    {
+        return $this->labels;
+    }
+    public function setLabels($labels): self
+    {
+        $this->labels = $labels;
         return $this;
     }
 }

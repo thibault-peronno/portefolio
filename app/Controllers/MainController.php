@@ -6,18 +6,34 @@ use App\Models\Languages;
 use App\Models\Organization;
 use App\Models\Project;
 use App\Models\User;
+use App\Repositories\ProjectRepository;
 
 class MainController extends CoreController {
 
     public function home(): void
     {
-        $projectModel = new Project();
-        $languageModel = new Languages();
-
-        $data = [];
-
         try {
-            $data['projects'] = $projectModel->getProjects();
+            $projectRepository = new ProjectRepository();
+            $languageModel = new Languages();
+            
+            $data = [];
+            
+            $allProjects = $projectRepository->getProjects();
+            
+            $data['projects']  = array_map(function ($getProject) {
+                $projectModel = new Project();
+
+                $projectModel->setId($getProject['id']);
+                $projectModel->setTitle($getProject['title']);
+                $projectModel->setDescription($getProject['description']);
+                $projectModel->setUrl($getProject['url']);
+                $projectModel->setPicture($getProject['picture']);
+                $projectModel->setOrganizationId($getProject['organization_id']);
+                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+                
+                return $projectModel;
+                
+            }, $allProjects);
             $data['languages'] = $languageModel->getLanguages();
         } catch (\Throwable $th) {
             //throw $th;
@@ -35,12 +51,13 @@ class MainController extends CoreController {
     {
         $user = new User;
         $projectModel = new Project();
+        $projectRepository = new ProjectRepository();
         $languageModel = new Languages();
         $organizationModel = new Organization();
 
         $data=[];
         try {
-            $data['projects'] = $projectModel->getProjects();
+            $data['projects'] = $projectRepository->getProjects();
             $data['languages'] = $languageModel->getLanguages();
             $data['organizations'] = $organizationModel->getOrganizations();
             
