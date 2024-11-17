@@ -49,7 +49,7 @@ class OrgaController extends CoreController
         try {
 
             /* Inserte image : return true or an trow error */
-            $imageHelper->isInsertedOrganizationImage();
+            $imageHelper->insertedOrganizationImage();
 
             // échapper nos données pour éviter les failles XSS
             $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
@@ -96,7 +96,7 @@ class OrgaController extends CoreController
             $isNoUpdateImage = $imageHelper->isNoUpdateImage();
             
             if(!$isNoUpdateImage){
-                $imageHelper->isInsertedOrganizationImage();
+                $imageHelper->insertedOrganizationImage();
             }
             
             $id= intval($idOrga['id']);

@@ -118,53 +118,69 @@ class ProjectController extends CoreController
 
     public function adminGetProject($idProject): void
     {
-        $projectRepository = new projectRepository();
+        try {
+            $projectRepository = new projectRepository();
 
-        $data = [];
+            $data = [];
 
-        $project = $projectRepository->getProjectById($idProject['id']);
+            $project = $projectRepository->getProjectById($idProject['id']);
 
-        $projectModel = new Project();
+            $projectModel = new Project();
 
-        $projectModel->setId($project['id']);
-        $projectModel->setTitle($project['title']);
-        $projectModel->setDescription($project['description']);
-        $projectModel->setUrl($project['url']);
-        $projectModel->setPicture($project['picture']);
-        $projectModel->setOrganizationId($project['organization_id']);
-        $projectModel->setTitleOrganization($project['title_organization']);
-        $projectModel->setPictureOrganization($project['picture_organization']);
-        $projectModel->setDescriptionOrganization($project['description_organization']);
-        $projectModel->setLabels(json_decode('[' . $project['labels'] . ']', true));
+            $projectModel->setId($project['id']);
+            $projectModel->setTitle($project['title']);
+            $projectModel->setDescription($project['description']);
+            $projectModel->setUrl($project['url']);
+            $projectModel->setPicture($project['picture']);
+            $projectModel->setOrganizationId($project['organization_id']);
+            $projectModel->setTitleOrganization($project['title_organization']);
+            $projectModel->setPictureOrganization($project['picture_organization']);
+            $projectModel->setDescriptionOrganization($project['description_organization']);
+            $projectModel->setLabels(json_decode('[' . $project['labels'] . ']', true));
 
-        $data['project'] = $projectModel;
+            $data['project'] = $projectModel;
 
-        $this->boShow('admin-project', $data);
+            $this->boShow('admin-project', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->show('error', $data);
+        }
     }
 
     public function addProjectPage(): void
     {
-        $languagesHelper = new GetLangagesHelper();
-        $organizationModel = new Organization();
+        try {
+            $languagesHelper = new GetLangagesHelper();
+            $organizationModel = new Organization();
 
-        $data = [];
+            $data = [];
 
-        $data['languages'] = $languagesHelper->getLanguages();
-        $data['organizations'] = $organizationModel->getOrganizations();
+            $data['languages'] = $languagesHelper->getLanguages();
+            $data['organizations'] = $organizationModel->getOrganizations();
 
-        $this->boShow('admin-add-project', $data);
+            $this->boShow('admin-add-project', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->show('error', $data);
+        }
     }
 
     public function addProject(): void
     {
-        $projectModel = new Project();
-        $projectRepository = new ProjectRepository();
-        $imageHelper = new ImageHelper();
-
-        $data = [];
         try {
-            /* Inserte image : return true or an trow error */
-            $imageHelper->isInsertedProjectImage();
+            $projectModel = new Project();
+            $projectRepository = new ProjectRepository();
+            $imageHelper = new ImageHelper();
+
+            $data = [];
+            /* Inserte image : return true or an throw error */
+            $imageHelper->insertedProjectImage();
 
             /*  With FILTER_SANITIZE_STRING that is deprecated as of PHP 8.1.0
             $title = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
@@ -179,7 +195,7 @@ class ProjectController extends CoreController
 
             /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;
-        */
+            */
             $projectModel->setTitle($title);
             $projectModel->setDescription($description);
             $projectModel->setUrl($url);
@@ -188,9 +204,7 @@ class ProjectController extends CoreController
 
             $insert = $projectRepository->addProject();
 
-            if ($insert || !$insert) {
-                $data['succeeded'] = $insert;
-            }
+            $data['succeeded'] = $insert;
 
             $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
@@ -204,33 +218,55 @@ class ProjectController extends CoreController
 
     public function editProject($idProject)
     {
-        $languagesHelper = new GetLangagesHelper();
-        $organizationModel = new Organization();
-        $projectModel = new Project();
-        $projectRepository = new ProjectRepository();
+        try {
+            $languagesHelper = new GetLangagesHelper();
+            $organizationModel = new Organization();
+            $projectRepository = new ProjectRepository();
 
-        $data = [];
+            $data = [];
 
-        $data['languages'] = $languagesHelper->getLanguages();
-        $data['organizations'] = $organizationModel->getOrganizations();
-        $data['project'] = $projectRepository->getProjectById($idProject['id']);
+            $data['languages'] = $languagesHelper->getLanguages();
+            $data['organizations'] = $organizationModel->getOrganizations();
+            $project = $projectRepository->getProjectById($idProject['id']);
 
-        $this->boShow('admin-add-project', $data);
+            $projectModel = new Project();
+
+            $projectModel->setId($project['id']);
+            $projectModel->setTitle($project['title']);
+            $projectModel->setDescription($project['description']);
+            $projectModel->setUrl($project['url']);
+            $projectModel->setPicture($project['picture']);
+            $projectModel->setOrganizationId($project['organization_id']);
+            $projectModel->setTitleOrganization($project['title_organization']);
+            $projectModel->setPictureOrganization($project['picture_organization']);
+            $projectModel->setDescriptionOrganization($project['description_organization']);
+            $projectModel->setLabels(json_decode('[' . $project['labels'] . ']', true));
+
+            $data['project'] = $projectModel;
+
+            $this->boShow('admin-add-project', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('admin-add-project', $data);
+        }
     }
 
     public function updateProject($idProject)
     {
-        $projectModel = new Project();
-        $projectRepository = new ProjectRepository;
-        $imageHelper = new ImageHelper();
-
-        $data = [];
 
         try {
+            $projectModel = new Project();
+            $projectRepository = new ProjectRepository;
+            $imageHelper = new ImageHelper();
+
+            $data = [];
             $isNoUpdateImage = $imageHelper->isNoUpdateImage();
 
             if (!$isNoUpdateImage) {
-                $imageHelper->isInsertedProjectImage();
+                $imageHelper->insertedProjectImage();
             }
             $id = intval($idProject['id']);
             $title = htmlspecialchars($_POST['title']);
@@ -252,13 +288,15 @@ class ProjectController extends CoreController
 
             $insert = $projectRepository->updateProject();
 
-            if ($insert || !$insert) {
-                $data['succeeded'] = $insert;
-            }
+            $data['succeeded'] = $insert;
 
             $this->boShow('admin-add-project', $data);
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('admin-add-project', $data);
         }
     }
 }

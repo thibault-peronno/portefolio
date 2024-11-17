@@ -8,7 +8,7 @@ class ImageHelper
 {
     private $IMAGE_TYPES = ['image/jpeg', 'image/png'];
 
-    public function isInsertedLanguageImage():bool | Exception
+    public function insertedLanguageImage():bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
@@ -25,7 +25,7 @@ class ImageHelper
         }
     }
 
-    public function isInsertedOrganizationImage():bool | Exception
+    public function insertedOrganizationImage():bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
@@ -40,7 +40,7 @@ class ImageHelper
         }
     }
 
-    public function isInsertedProjectImage():bool | Exception
+    public function insertedProjectImage():bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
@@ -55,7 +55,7 @@ class ImageHelper
         }
     }
 
-    public function isNoUpdateImage(): bool
+    public function isNoUpdateImage(): bool | Exception
     {
         try {
             if (!isset($_FILES['picture'])) {
@@ -67,19 +67,31 @@ class ImageHelper
         }
     }
     // To check if I have data in tmp_name and it is not empty. I call the method to check the extension file, and the method to check the sign of the picture.
-    private function imageProcess():bool
+    private function imageProcess():bool | Exception
     {
-        return !empty($_FILES['picture']['name']) || $this->checkExtension() || $this->checkSign();
+        try {
+            return !empty($_FILES['picture']['name']) || $this->checkExtension() || $this->checkSign();
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
     // To check the extension file.
-    private function  checkExtension():bool
+    private function  checkExtension():bool | Exception
     {
-        return in_array($_FILES['picture']['type'], $this->IMAGE_TYPES);
+        try {
+            return in_array($_FILES['picture']['type'], $this->IMAGE_TYPES);
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
     // To check the sign of the picture. One more security.
-    private function checkSign():bool
+    private function checkSign():bool | Exception
     {
-        return in_array(exif_imagetype($_FILES['picture']['tmp_name']), [IMAGETYPE_JPEG, IMAGETYPE_PNG], true);
+        try {
+            return in_array(exif_imagetype($_FILES['picture']['tmp_name']), [IMAGETYPE_JPEG, IMAGETYPE_PNG], true);
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
 }

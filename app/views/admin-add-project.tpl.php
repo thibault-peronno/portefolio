@@ -1,4 +1,4 @@
-<!-- <?php dump($project, $languages) ?> -->
+<!-- <?php dump($organizations, $languages) ?> -->
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
 <?= isset($project) ? "Modifier un projet" : "Ajouter un projet" ?>
 </h1>
