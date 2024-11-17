@@ -2,7 +2,7 @@
   back office langages
 </h1>
 <section class="rounded p-2 bg-white/[0.15] sm:p-14">
-  <a href="bo-ajouter-technologie">
+  <a href="admin-ajouter-technologie">
     <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl">
       <img src="/assets/images/icons/add.svg" alt="" />
       <p class="text-white">Ajouter</p>
@@ -17,7 +17,7 @@
           <h3 class="text-xl font-bold text-btn-sec"><?= $language->label ?></h3>
         </span>
         <span class="flex gap-5 sm:flex-nowrap">
-          <a href="<?= "/bo-editer-technologie/" . $language->id ?>">
+          <a href="<?= "/admin-editer-technologie/" . $language->id ?>">
             <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
               Editer
             </button>
@@ -38,7 +38,7 @@
           <h3 class="text-xl font-bold text-btn-sec"><?= $language->label ?></h3>
         </span>
         <span class="flex gap-5 sm:flex-nowrap">
-          <a href="<?= "/bo-editer-technologie/" . $language->id ?>">
+          <a href="<?= "/admin-editer-technologie/" . $language->id ?>">
             <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
               Editer
             </button>
@@ -73,7 +73,7 @@
           <h3 class="text-xl font-bold text-btn-sec"><?= $language->label ?></h3>
         </span>
         <span class="flex gap-5 sm:flex-nowrap">
-          <a href="<?= "/bo-editer-technologie/" . $language->id ?>">
+          <a href="<?= "/admin-editer-technologie/" . $language->id ?>">
             <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
               Editer
             </button>

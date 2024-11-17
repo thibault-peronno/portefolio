@@ -19,10 +19,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <header>
     <!-- Our menu to diplay from tablet size -->
     <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex text-white">
-      <a href="/bo-accueil" class="<?php echo $currentPage == 'bo-accueil' ? 'underline underline-offset-8' : ''; ?>">Dashboard</a>
-      <a href="/bo-projets" class="<?php echo $currentPage == 'bo-projets' ? 'underline underline-offset-8' : ''; ?>">Projets</a>
-      <a href="/bo-technos" class="<?php echo $currentPage == 'bo-technos' ? 'underline underline-offset-8' : ''; ?>">Technologies</a>
-      <a href="/bo-organisations" class="<?php echo $currentPage == 'bo-organisations' ? 'underline underline-offset-8' : ''; ?>">Organisations</a>
+      <a href="/admin-accueil" class="<?php echo $currentPage == 'admin-accueil' ? 'underline underline-offset-8' : ''; ?>">Dashboard</a>
+      <a href="/admin-projets" class="<?php echo $currentPage == 'admin-projets' ? 'underline underline-offset-8' : ''; ?>">Projets</a>
+      <a href="/admin-technos" class="<?php echo $currentPage == 'admin-technos' ? 'underline underline-offset-8' : ''; ?>">Technologies</a>
+      <a href="/admin-organisations" class="<?php echo $currentPage == 'admin-organisations' ? 'underline underline-offset-8' : ''; ?>">Organisations</a>
       <a href="/" class="<?php echo $currentPage == 'index.php' ? 'underline underline-offset-8' : ''; ?>">Portefolio</a>
     </nav>
     <!-- Our menu to display for mobil size -->

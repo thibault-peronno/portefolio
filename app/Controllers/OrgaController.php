@@ -15,7 +15,7 @@ class OrgaController extends CoreController
 
         try {
             $data['organization'] = $organizationModel->getOrgaById();
-            $this->boShow('bo-orga', $data);
+            $this->boShow('admin-orga', $data);
         } catch (\Throwable $th) {
             //throw $th;
             dump($th);
@@ -28,7 +28,7 @@ class OrgaController extends CoreController
 
         try {
             $data['organizations'] = $organizationModel->getOrganizations();
-            $this->boShow('bo-orgas', $data);
+            $this->boShow('admin-orgas', $data);
         } catch (\Throwable $th) {
             //throw $th;
             dump($th);
@@ -37,7 +37,7 @@ class OrgaController extends CoreController
 
     public function addOrgaPage(): void
     {
-        $this->boShow('bo-add-orga');
+        $this->boShow('admin-add-orga');
     }
 
     public function addOrga(): void
@@ -67,13 +67,13 @@ class OrgaController extends CoreController
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('bo-add-orga', $data);
+            $this->boShow('admin-add-orga', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('bo-add-orga', $data);
+            $this->boShow('admin-add-orga', $data);
         }
     }
 
@@ -84,7 +84,7 @@ class OrgaController extends CoreController
         $data = [];
         $organizationModel->setId(intval($idOrga['id']));
         $data['organization'] = $organizationModel->getOrgaById();
-        $this->boShow('bo-add-orga', $data);
+        $this->boShow('admin-add-orga', $data);
     }
 
     public function updateOrganization($idOrga)
@@ -119,7 +119,7 @@ class OrgaController extends CoreController
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('bo-add-orga', $data);
+            $this->boShow('admin-add-orga', $data);
 
         } catch (\Throwable $th) {
             //throw $th;

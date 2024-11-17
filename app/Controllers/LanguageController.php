@@ -66,12 +66,12 @@ class LanguageController extends CoreController
                 continue;
             }
         }
-        $this->boShow('bo-technos', $data);
+        $this->boShow('admin-technos', $data);
     }
 
     public function addTechnoPage(): void
     {
-        $this->boShow('bo-add-techno');
+        $this->boShow('admin-add-techno');
     }
 
     public function addTechno(): void
@@ -108,13 +108,13 @@ class LanguageController extends CoreController
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('bo-add-techno', $data);
+            $this->boShow('admin-add-techno', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('bo-add-techno', $data);
+            $this->boShow('admin-add-techno', $data);
         }
     }
 
@@ -126,7 +126,7 @@ class LanguageController extends CoreController
         $languagesModel->setId($idLanguage['id']);
         $data['language'] = $languagesModel->getLanguageById();
 
-        $this->boShow('bo-add-techno', $data);
+        $this->boShow('admin-add-techno', $data);
     }
 
     public function updateTechno($idLanguage)
@@ -158,7 +158,7 @@ class LanguageController extends CoreController
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('bo-add-techno', $data);
+            $this->boShow('admin-add-techno', $data);
         } catch (\Throwable $th) {
             //throw $th;
         }

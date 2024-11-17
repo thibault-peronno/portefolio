@@ -61,9 +61,9 @@ class MainController extends CoreController {
             $data['languages'] = $languageModel->getLanguages();
             $data['organizations'] = $organizationModel->getOrganizations();
             
-            $this->boShow('bo-home', $data);
+            $this->boShow('admin-home', $data);
         } catch (\Throwable $error) {
-            dump('bo-home', $error);
+            dump('admin-home', $error);
         }
     }
 };

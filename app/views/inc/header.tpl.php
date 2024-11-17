@@ -25,7 +25,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <a href="/technologies" class="text-xl <?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
             <a href="/cv" class="text-xl <?php echo $currentPage == 'cv' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">CV</a>
             <?php if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) : ?>
-                <a href="/bo-accueil">Dashboard</a>
+                <a href="/admin-accueil">Dashboard</a>
             <?php else : ?>
                 <a href="/connexion" class="text-xl <?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
             <?php endif ?>

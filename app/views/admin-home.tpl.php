@@ -1,5 +1,5 @@
 <!-- <?php dump($projects, $languages, $organizations) ?> -->
-<?php dump('bo accueil') ?>
+<?php dump('admin accueil') ?>
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max sm:mt-12">
   back office Accueil
 </h1>
@@ -21,10 +21,10 @@
           <td><?= $project['title'] ?></td>
           <td class="hidden sm:table-cell"><?= $project['description'] ?></td>
           <td class="text-end">
-          <a href="<?= "/bo-projet/" . $project['id'] ?>">
+          <a href="<?= "/admin-projet/" . $project['id'] ?>">
             <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
           </a>
-            <a href="<?= "/bo-editer-projet/" . $project['id'] ?>">
+            <a href="<?= "/admin-editer-projet/" . $project['id'] ?>">
             <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
           </a>
             <img src="/assets/images/icons/trash.svg" alt="" class="inline cursor-pointer" />
@@ -33,7 +33,7 @@
       <?php endforeach ?>
     </tbody>
   </table>
-  <a href="/bo-projets">
+  <a href="/admin-projets">
     <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-10 w-full sm:w-64">
       <p class="text-white">Gérer les projets</p>
       <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
@@ -55,7 +55,7 @@
       </div>
     <?php endforeach ?>
   </div>
-  <a href="/bo-technos">
+  <a href="/admin-technos">
     <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-10 w-full sm:w-64">
       <p class="text-white">Gérer les technos</p>
       <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
@@ -80,11 +80,11 @@
           <td><?= $organization->title ?></td>
           <td class="hidden sm:table-cell"><?= $organization->description ?></td>
           <td class="text-end">
-          <a href="<?= "/bo-organisation/" . $organization->id ?>">
+          <a href="<?= "/admin-organisation/" . $organization->id ?>">
           <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
 
           </a>
-          <a href="<?= "/bo-editer-organisation/" . $organization->id ?>">
+          <a href="<?= "/admin-editer-organisation/" . $organization->id ?>">
           <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
           </a>
             <img src="/assets/images/icons/trash.svg" alt="" class="inline cursor-pointer" />
@@ -93,7 +93,7 @@
       <?php endforeach ?>
     </tbody>
   </table>
-  <a href="/bo-organisations">
+  <a href="/admin-organisations">
     <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-10 w-full sm:w-64">
       <p class="text-white">Gérer les organisations</p>
       <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />

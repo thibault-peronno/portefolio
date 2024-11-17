@@ -36,7 +36,7 @@ class ConnectController extends CoreController
                 $_SESSION['user_id'] = $getUser['user_id'];
                 $_SESSION['firstname'] = $getUser['firstname'];
                 $_SESSION['lastname'] = $getUser['lastname'];
-                header("Location: /bo-accueil");
+                header("Location: /admin-accueil");
                 exit();
             }
 

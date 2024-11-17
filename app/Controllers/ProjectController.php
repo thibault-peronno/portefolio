@@ -76,10 +76,36 @@ class ProjectController extends CoreController
 
     public function adminGetProjects(): void
     {
-        $projectRepository = new projectRepository();
-        $data = [];
-        $data["projects"] = $projectRepository->getProjects();
-        $this->boShow('admin-projects', $data);
+        try {
+            $projectRepository = new projectRepository();
+            $data = [];
+            $allProjects = $projectRepository->getProjects();
+
+            
+            $data["projects"] = array_map(function ($getProject) {
+                
+                $projectModel = new Project();
+
+                $projectModel->setId($getProject['id']);
+                $projectModel->setTitle($getProject['title']);
+                $projectModel->setDescription($getProject['description']);
+                $projectModel->setUrl($getProject['url']);
+                $projectModel->setPicture($getProject['picture']);
+                $projectModel->setOrganizationId($getProject['organization_id']);
+                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+
+                return $projectModel;
+            }, $allProjects);
+
+
+            $this->boShow('admin-projects', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->show('error', $data);
+        }
     }
 
     public function adminGetProject($idProject): void

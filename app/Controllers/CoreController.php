@@ -54,9 +54,9 @@ class CoreController
         $getNeededData = $this->getNeededDatas();
         extract($data);
         try {
-            require_once __DIR__ . '/../views/inc/bo-header.tpl.php';
+            require_once __DIR__ . '/../views/inc/admin-header.tpl.php';
             require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';
-            require_once __DIR__ . '/../views/inc/bo-footer.tpl.php';
+            require_once __DIR__ . '/../views/inc/admin-footer.tpl.php';
         } catch (\Throwable $th) {
             header('location: /html/error.htm');
             die;
