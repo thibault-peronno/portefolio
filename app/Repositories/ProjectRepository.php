@@ -38,21 +38,25 @@ class ProjectRepository
 
     public function getProjectById($idProject): array
     {
-        $pdo = Database::getPDO();
-        $sql = "SELECT p.*, o.title AS title_organization, o.picture AS picture_organization, o.description AS description_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
-        FROM projects p
-        LEFT JOIN projects_languages pl ON p.id = pl.project_id
-        LEFT JOIN languages l ON pl.language_id = l.id
-        LEFT JOIN organizations o ON p.organization_id = o.id
-        WHERE p.id = $idProject
-        GROUP BY p.id";
-
-        $pdoStatement = $pdo->query($sql);
-        $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-
-        // $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
-
-        return $getProject;
+        try {
+            $pdo = Database::getPDO();
+            $sql = "SELECT p.*, o.title AS title_organization, o.picture AS picture_organization, o.description AS description_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
+            FROM projects p
+            LEFT JOIN projects_languages pl ON p.id = pl.project_id
+            LEFT JOIN languages l ON pl.language_id = l.id
+            LEFT JOIN organizations o ON p.organization_id = o.id
+            WHERE p.id = $idProject
+            GROUP BY p.id";
+    
+            $pdoStatement = $pdo->query($sql);
+            $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+    
+            // $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
+    
+            return $getProject;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
     public function addProject(): bool
