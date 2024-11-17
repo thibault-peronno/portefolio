@@ -81,7 +81,7 @@ class LanguageController extends CoreController
         $data = [];
         try {
 
-            $imageHelper->isInsertedLanguageImage();
+            $imageHelper->insertedLanguageImage();
 
             // if(!$insertedImage){
             //     throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
@@ -138,7 +138,7 @@ class LanguageController extends CoreController
             $isNoUpdateImage = $imageHelper->isNoUpdateImage();
 
             if (!$isNoUpdateImage) {
-                $imageHelper->isInsertedLanguageImage();
+                $imageHelper->insertedLanguageImage();
             }
 
             if (!$isNoUpdateImage) {

@@ -16,14 +16,13 @@ class Languages
 
     public function getLanguages(): array
     {
-        $pdo= Database::getPDO();
-        $sql = "SELECT * FROM `languages`";
-
+        
         try {
+            $pdo= Database::getPDO();
+            $sql = "SELECT * FROM `languages`";
             $pdoStatement =$pdo->query($sql);
             return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);
         } catch (\Throwable $error) {
-            dump('getLanguages model' , $error);
             throw new Exception("La récupération des langues de développement a échoué");
         }
     }
