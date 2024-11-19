@@ -22,7 +22,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
         <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end hidden sm:flex">
             <a href="/" class="text-xl <?php echo $currentPage == 'index.php' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Accueil</a>
             <a href="/projets" class="text-xl <?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
-            <a href="/technologies" class="text-xl <?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
+            <a href="/languages" class="text-xl <?php echo $currentPage == 'languages' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
             <a href="/cv" class="text-xl <?php echo $currentPage == 'cv' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">CV</a>
             <?php if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) : ?>
                 <a href="/admin-accueil">Dashboard</a>

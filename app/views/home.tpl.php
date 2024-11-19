@@ -107,7 +107,7 @@
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
         </div>
     </div>
-    <a href="<?= "/technologies" ?>">
+    <a href="<?= "/languages" ?>">
         <button class="bg-btn-sec rounded flex p-2.5 items-center  w-64 justify-between mt-5">
             <p class="text-white">Voir toutes les technos</p>
             <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />

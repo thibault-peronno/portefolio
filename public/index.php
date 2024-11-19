@@ -88,12 +88,12 @@ $router->addRoutes(
     ],
     [
       'GET',
-      '/technologies',
+      '/languages',
       [
         'controller' => 'LanguageController',
-        'method' => 'technologies',
+        'method' => 'languages',
       ],
-      'technologies',
+      'languages',
     ],
   ]
 );
