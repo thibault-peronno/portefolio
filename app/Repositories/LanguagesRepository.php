@@ -17,7 +17,12 @@ class LanguagesRepository {
             $pdo= Database::getPDO();
             $sql = "SELECT * FROM `languages`";
             $pdoStatement =$pdo->query($sql);
-            return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);
+            /* cette façon va directement créer un objet depuis le model language ?
+               return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);*/
+
+            $getLanguages = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            
+            return $getLanguages;
         } catch (\Throwable $error) {
             throw new Exception("La récupération des langues de développement a échoué");
         }

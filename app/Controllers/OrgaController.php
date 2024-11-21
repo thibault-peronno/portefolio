@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\ImageHelper;
 use App\Models\Organization;
+use App\Repositories\OrganizationsRepository;
 
 class OrgaController extends CoreController
 {
@@ -42,11 +43,12 @@ class OrgaController extends CoreController
 
     public function addOrga(): void
     {
-        $organizationModel = new Organization();
-        $imageHelper = new ImageHelper();
-
-        $data = [];
         try {
+            $organizationsRepository = new OrganizationsRepository();
+            $organizationModel = new Organization();
+            $imageHelper = new ImageHelper();
+    
+            $data = [];
 
             /* Inserte image : return true or an trow error */
             $imageHelper->insertedOrganizationImage();
@@ -61,8 +63,8 @@ class OrgaController extends CoreController
             $organizationModel->setDescription($description);
             $organizationModel->setPicture($picture);
 
-            // aller faire la requête dans notre model
-            $insert = $organizationModel->addOrganization();
+            // aller faire la requête dans notre repository
+            $insert = $organizationsRepository->addOrganization();
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }

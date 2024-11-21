@@ -18,13 +18,13 @@
     <tbody>
       <?php foreach ($projects as $project) : ?>
         <tr class="mt-5 h-14 border-b-2 border-primary">
-          <td><?= $project['title'] ?></td>
-          <td class="hidden sm:table-cell"><?= $project['description'] ?></td>
+          <td><?= $project->title ?></td>
+          <td class="hidden sm:table-cell"><?= $project->description ?></td>
           <td class="text-end">
-          <a href="<?= "/admin-projet/" . $project['id'] ?>">
+          <a href="<?= "/admin-projet/" . $project->id ?>">
             <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
           </a>
-            <a href="<?= "/admin-editer-projet/" . $project['id'] ?>">
+            <a href="<?= "/admin-editer-projet/" . $project->id ?>">
             <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
           </a>
             <img src="/assets/images/icons/trash.svg" alt="" class="inline cursor-pointer" />
