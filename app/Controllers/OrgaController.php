@@ -8,33 +8,57 @@ use App\Repositories\OrganizationsRepository;
 
 class OrgaController extends CoreController
 {
-    public function organization($idOrganization): void
-    {
-        $organizationModel = new Organization();
-        $data = [];
-        $organizationModel->setId($idOrganization["id"]);
-
-        try {
-            $data['organization'] = $organizationModel->getOrgaById();
-            $this->boShow('admin-orga', $data);
-        } catch (\Throwable $th) {
-            //throw $th;
-            dump($th);
-        }
-    }
     public function organizations(): void
     {
-        $organizationModel = new Organization();
-        $data = [];
 
         try {
-            $data['organizations'] = $organizationModel->getOrganizations();
+            $organizationsRepository = new OrganizationsRepository();
+            $data = [];
+            
+            $allOrganizations = $organizationsRepository->getOrganizations();
+            
+            $data['organizations'] = array_map(function($getOrganization) {
+                $organizationModel = new Organization();
+
+                $organizationModel->setId($getOrganization['id']);
+                $organizationModel->setTitle($getOrganization['title']);
+                $organizationModel->setDescription($getOrganization['description']);
+                $organizationModel->setPicture($getOrganization['picture']);
+
+                return $organizationModel;
+            }, $allOrganizations);
+            
             $this->boShow('admin-orgas', $data);
-        } catch (\Throwable $th) {
-            //throw $th;
-            dump($th);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('error', $data);
         }
     }
+
+    public function organization($idOrganization): void
+    {
+
+        try {
+            $organizationsRepository = new OrganizationsRepository();
+            $organizationModel = new Organization();
+            $data = [];
+            $organizationModel->setId($idOrganization["id"]);
+
+            $data['organization'] = $organizationsRepository->getOrgaById();
+
+            $this->boShow('admin-orga', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('error', $data);
+        }
+    }
+
 
     public function addOrgaPage(): void
     {
@@ -47,7 +71,7 @@ class OrgaController extends CoreController
             $organizationsRepository = new OrganizationsRepository();
             $organizationModel = new Organization();
             $imageHelper = new ImageHelper();
-    
+
             $data = [];
 
             /* Inserte image : return true or an trow error */
@@ -75,41 +99,49 @@ class OrgaController extends CoreController
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-orga', $data);
+            $this->boShow('error', $data);
         }
     }
 
     public function editOrga($idOrga)
     {
-        $organizationModel = new Organization();
+        try {
+            $organizationModel = new Organization();
 
-        $data = [];
-        $organizationModel->setId(intval($idOrga['id']));
-        $data['organization'] = $organizationModel->getOrgaById();
-        $this->boShow('admin-add-orga', $data);
+            $data = [];
+            $organizationModel->setId(intval($idOrga['id']));
+            $data['organization'] = $organizationModel->getOrgaById();
+            $this->boShow('admin-add-orga', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('error', $data);
+        }
     }
 
     public function updateOrganization($idOrga)
     {
-        $organizationModel = new Organization();
-        $imageHelper = new ImageHelper();
 
         try {
+            $organizationModel = new Organization();
+            $imageHelper = new ImageHelper();
             $isNoUpdateImage = $imageHelper->isNoUpdateImage();
-            
-            if(!$isNoUpdateImage){
+
+            if (!$isNoUpdateImage) {
                 $imageHelper->insertedOrganizationImage();
             }
-            
-            $id= intval($idOrga['id']);
+
+            $id = intval($idOrga['id']);
             $title = htmlspecialchars($_POST['title']);
             $description = htmlspecialchars($_POST['description']);
-            if(!$isNoUpdateImage){
+            if (!$isNoUpdateImage) {
                 $picture = $_FILES["picture"]["name"];
-            }else{
+            } else {
                 $picture = htmlspecialchars($_POST['picture']);
             }
-            
+
             $organizationModel->setId($id);
             $organizationModel->setTitle($title);
             $organizationModel->setDescription($description);
@@ -122,9 +154,12 @@ class OrgaController extends CoreController
             }
 
             $this->boShow('admin-add-orga', $data);
-
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('error', $data);
         }
     }
 }

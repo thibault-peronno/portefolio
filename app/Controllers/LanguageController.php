@@ -16,31 +16,32 @@ class LanguageController extends CoreController
             $data = [];
 
             $languages = $languagesRepository->getLanguages();
-
+            
             foreach ($languages as $language) {
+                // dump($language);
                 $languagesModel = new Languages();
-                if ($language->type === 'Front-end') {
-                    $languagesModel->setId($language->id);
-                    $languagesModel->setLabel($language->label);
-                    $languagesModel->setPicture($language->picture);
-                    $languagesModel->setType($language->type);
+                if ($language['type'] === 'Front-end') {
+                    $languagesModel->setId($language['id']);
+                    $languagesModel->setLabel($language['label']);
+                    $languagesModel->setPicture($language['picture']);
+                    $languagesModel->setType($language['type']);
                     $data['languages']['front-end'][] = $languagesModel;
-                } elseif ($language->type === 'Back-end') {
-                    $languagesModel->setId($language->id);
-                    $languagesModel->setLabel($language->label);
-                    $languagesModel->setPicture($language->picture);
-                    $languagesModel->setType($language->type);
+                } elseif ($language['type'] === 'Back-end') {
+                    $languagesModel->setId($language['id']);
+                    $languagesModel->setLabel($language['label']);
+                    $languagesModel->setPicture($language['picture']);
+                    $languagesModel->setType($language['type']);
                     $data['languages']['back-end'][] = $languagesModel;
-                } else {
-                    $languagesModel->setId($language->id);
-                    $languagesModel->setLabel($language->label);
-                    $languagesModel->setPicture($language->picture);
-                    $languagesModel->setType($language->type);
+                } elseif ($language['type'] === 'DevOps') {
+                    $languagesModel->setId($language['id']);
+                    $languagesModel->setLabel($language['label']);
+                    $languagesModel->setPicture($language['picture']);
+                    $languagesModel->setType($language['type']);
                     $data['languages']['DevOps'][] = $languagesModel;
                 }
             };
             $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
-
+            
             $this->show('technos', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -62,8 +63,8 @@ class LanguageController extends CoreController
 
                 foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
 
-                    if ($language->label === $arrayAllLanguages['label']) {
-                        $data[$language->label][] = +1;
+                    if ($language['label'] === $arrayAllLanguages['label']) {
+                        $data[$language['label']][] = +1;
                     }
                 }
             }
@@ -82,19 +83,33 @@ class LanguageController extends CoreController
             $getLanguages = $languagesRepository->getLanguages();
 
             foreach ($getLanguages as $getLanguage) {
+                $languagesModel = new Languages();
                 if (in_array("Front-end", (array) $getLanguage)) {
-                    $data['languages']['frontend'][] = $getLanguage;
+                    $languagesModel->setId($getLanguage['id']);
+                    $languagesModel->setLabel($getLanguage['label']);
+                    $languagesModel->setPicture($getLanguage['picture']);
+                    $languagesModel->setType($getLanguage['type']);
+                    $data['languages']['frontend'][] = $languagesModel;
                     continue;
                 }
                 if (in_array("Back-end", (array) $getLanguage)) {
-                    $data['languages']['backend'][] = $getLanguage;
+                    $languagesModel->setId($getLanguage['id']);
+                    $languagesModel->setLabel($getLanguage['label']);
+                    $languagesModel->setPicture($getLanguage['picture']);
+                    $languagesModel->setType($getLanguage['type']);
+                    $data['languages']['backend'][] = $languagesModel;
                     continue;
                 }
                 if (in_array("DevOps", (array) $getLanguage)) {
-                    $data['languages']['devOps'][] = $getLanguage;
+                    $languagesModel->setId($getLanguage['id']);
+                    $languagesModel->setLabel($getLanguage['label']);
+                    $languagesModel->setPicture($getLanguage['picture']);
+                    $languagesModel->setType($getLanguage['type']);
+                    $data['languages']['devOps'][] = $languagesModel;
                     continue;
                 }
             }
+            
             $this->boShow('admin-technos', $data);
         } catch (\Throwable $error) {
             $data = [
