@@ -2,15 +2,16 @@
 
 namespace App\Helpers;
 use App\Models\Languages;
+use App\Repositories\LanguagesRepository;
 
 class GetLangagesHelper
 {
     public function getLanguages(): array
     {
         try {
-            $languagesModel = new Languages();
+            $languagesRepository = new LanguagesRepository();
 
-            return $languagesModel->getLanguages();
+            return $languagesRepository->getLanguages();
         } catch (\Throwable $error) {
             throw $error;
         }

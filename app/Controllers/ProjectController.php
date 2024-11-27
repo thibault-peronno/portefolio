@@ -7,7 +7,9 @@ use App\Models\Project;
 use App\Repositories\ProjectRepository;
 use App\Helpers\GetLangagesHelper;
 use App\Helpers\ImageHelper;
+use App\Models\Languages;
 use App\Models\Organization;
+use App\Repositories\OrganizationsRepository;
 
 /* Le controller est le chef d'orchestre, donc je fais parler les models et les repositories depuis chaque
 méthode
@@ -153,14 +155,35 @@ class ProjectController extends CoreController
     public function addProjectPage(): void
     {
         try {
+            $organizatiionRepository =  new OrganizationsRepository();
             $languagesHelper = new GetLangagesHelper();
-            $organizationModel = new Organization();
-
+            
             $data = [];
+            
+            $allLanguages = $languagesHelper->getLanguages();
+            $allOrganizations = $organizatiionRepository->getOrganizations();
+            
+            $data['organizations'] = array_map(function($getOrganizations) {
+                $organizationModel = new Organization();
 
-            $data['languages'] = $languagesHelper->getLanguages();
-            $data['organizations'] = $organizationModel->getOrganizations();
+                $organizationModel->setId($getOrganizations['id']);
+                $organizationModel->setTitle($getOrganizations['title']);
 
+                return $organizationModel;
+
+            }, $allOrganizations);
+
+            $data['languages'] = array_map(function($getLanguages) {
+                $languageModel = new Languages();
+
+                $languageModel->setId($getLanguages['id']);
+                $languageModel->setLabel($getLanguages['label']);
+
+                return $languageModel;
+
+            }, $allLanguages);
+            
+            
             $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -220,15 +243,35 @@ class ProjectController extends CoreController
     {
         try {
             $languagesHelper = new GetLangagesHelper();
-            $organizationModel = new Organization();
+            $organizatiionRepository = new OrganizationsRepository();
             $projectRepository = new ProjectRepository();
 
             $data = [];
 
-            $data['languages'] = $languagesHelper->getLanguages();
-            $data['organizations'] = $organizationModel->getOrganizations();
-            $project = $projectRepository->getProjectById($idProject['id']);
+            $allLanguages = $languagesHelper->getLanguages();
+            $allOrganizations = $organizatiionRepository->getOrganizations();
+            
+            $data['organizations'] = array_map(function($getOrganizations) {
+                $organizationModel = new Organization();
 
+                $organizationModel->setId($getOrganizations['id']);
+                $organizationModel->setTitle($getOrganizations['title']);
+
+                return $organizationModel;
+
+            }, $allOrganizations);
+
+            $data['languages'] = array_map(function($getLanguages) {
+                $languageModel = new Languages();
+
+                $languageModel->setId($getLanguages['id']);
+                $languageModel->setLabel($getLanguages['label']);
+
+                return $languageModel;
+
+            }, $allLanguages);
+            $project = $projectRepository->getProjectById($idProject['id']);
+    
             $projectModel = new Project();
 
             $projectModel->setId($project['id']);

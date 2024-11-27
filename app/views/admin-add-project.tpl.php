@@ -16,7 +16,7 @@
     <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <input type="text" name="title" id="title" value="<?= isset($project) ? $project['title'] : " " ?>" class="rounded bg-white h-12 w-full p-2" />
+            <input type="text" name="title" id="title" value="<?= isset($project) ? $project->title : " " ?>" class="rounded bg-white h-12 w-full p-2" />
         </div>
         <div class="mb-5">
             <label 
@@ -24,19 +24,19 @@
             class="text-primary text-xl">
             Description<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
             <textarea 
-            name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?php echo isset($project) ? $project['description'] : " " ?></textarea>
+            name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?php echo isset($project) ? $project->description : " " ?></textarea>
         </div>
         <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
             <div class="mb-5 sm:w-6/12">
                 <label for="url" class="text-primary text-xl">URL</label>
-                <input type="text" name="url" id="url" value="<?= isset($project) ? $project['url'] : " " ?>" class="rounded bg-white h-12 w-full p-2" />
+                <input type="text" name="url" id="url" value="<?= isset($project) ? $project->url : " " ?>" class="rounded bg-white h-12 w-full p-2" />
             </div>
             <div class="mb-5 sm:w-6/12">
-                <?php if(isset($project) && isset($project['picture'])) :?>
+                <?php if(isset($project) && isset($project->picture)) :?>
                     <div id="updateImageTextDiv">
-                        <img src="<?= "/assets/images/projects/" . $project['picture'] ?>" alt="Image du projet" class="w-14">
+                        <img src="<?= "/assets/images/projects/" . $project->picture ?>" alt="Image du projet" class="w-14">
                         <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
-                        <input type="hidden" name="picture" value="<?= $project['picture'] ?>">
+                        <input type="hidden" name="picture" value="<?= $project->picture ?>">
                     </div>
                 <?php endif ?>
                 <span id="updateImageInput" class="<?= isset($project)? "hidden" : "" ?>">
@@ -77,8 +77,8 @@
                     <option value="<?= isset($project) ? $project['organization_id'] : "" ?>"><?= isset($project) ? $project['title_organization'] : "Choisi l'organisation" ?></option>
                     <?php foreach ($organizations as $organization) : ?>
                         <option 
-                            value=<?= htmlspecialchars($organization->id) ?>>
-                            <?= htmlspecialchars($organization->title) ?>
+                            value=<?= $organization->id ?>>
+                            <?= $organization->title ?>
                         </option>
                     <?php endforeach; ?>
                 </select>
