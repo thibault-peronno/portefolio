@@ -7,34 +7,36 @@ use App\Utils\Database;
 use PDO;
 use Error;
 
-class OrganizationsRepository {
+class OrganizationsRepository
+{
 
     public function getOrganizations(): array
     {
-        
+
         try {
             $pdo = Database::getPDO();
             $sql = "SELECT * FROM `organizations`";
             $pdoStatement = $pdo->query($sql);
             // return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Organization::class);
-            return$pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
         } catch (\Throwable $error) {
             throw new Error("La récupération des langues de développemen a échoué");
         }
     }
 
-    public function getOrgaById(): array | bool
+    public function getOrgaById($id): array | bool
     {
         try {
+            $organizationModel = new Organization();
             $pdo = Database::getPDO();
             $sql = "SELECT * FROM `organizations` WHERE id = :idOrga";
             $pdoStatement = $pdo->prepare($sql);
-            
-            $pdoStatement->bindParam(':idOrga', $this->id, PDO::PARAM_INT);
-            
+
+            $pdoStatement->bindParam(':idOrga', $id, PDO::PARAM_INT);
+
             $pdoStatement->execute();
             $organization = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-            
+
             return $organization;
         } catch (\Throwable $erro) {
             throw new Error("La récupération de l'organisation a échouée");
@@ -43,7 +45,7 @@ class OrganizationsRepository {
 
     public function addOrganization(): bool
     {
-        
+
         try {
             $organizationModel = new Organization();
             $pdo = Database::getPDO();
@@ -65,18 +67,19 @@ class OrganizationsRepository {
         }
     }
 
-    public function updateOrganization()
+    public function updateOrganization($id)
     {
-        $pdo = Database::getPDO();
-        $sql = "UPDATE `organizations` SET `title` = :title, `description` = :description, `picture` = :picture WHERE id = :idOrganization";
 
         try {
+            $organizationModel = new Organization();
+            $pdo = Database::getPDO();
+            $sql = "UPDATE `organizations` SET `title` = :title, `description` = :description, `picture` = :picture WHERE id = :id";
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindParam(':title', $this->title, PDO::PARAM_STR);
-            $pdoStatement->bindParam(':description', $this->description, PDO::PARAM_STR);
-            $pdoStatement->bindParam(':picture', $this->picture, PDO::PARAM_STR);
-            $pdoStatement->bindParam(':idOrganization', $this->id, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':title', $organizationModel->getTitle(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':description', $organizationModel->getDescription(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':picture', $organizationModel->getPicture(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':id', $id, PDO::PARAM_STR);
 
             $insertedRows = $pdoStatement->execute();
 
@@ -84,8 +87,8 @@ class OrganizationsRepository {
                 // We retrieve the last id.
                 return true;
             }
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable $error) {
+            throw $error;
         }
     }
 }

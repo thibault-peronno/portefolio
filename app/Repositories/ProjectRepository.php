@@ -18,18 +18,18 @@ class ProjectRepository
             LEFT JOIN projects_languages pl ON p.id = pl.project_id
             LEFT JOIN languages l ON pl.language_id = l.id
             GROUP BY p.id";
-    
-    
+
+
             $pdoStatement = $pdo->query($sql);
             $getProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-    
+
             /* foreach($getProjects as &$getProject){
                 dump('foreach', $getProject['labels']);
                 $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
                 dump('foreach 2', $getProject['labels']);
             }
             unset($getProject);*/
-    
+
             return $getProjects;
         } catch (\Throwable $error) {
             throw $error;
@@ -47,12 +47,12 @@ class ProjectRepository
             LEFT JOIN organizations o ON p.organization_id = o.id
             WHERE p.id = $idProject
             GROUP BY p.id";
-    
+
             $pdoStatement = $pdo->query($sql);
             $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-    
+
             // $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
-    
+
             return $getProject;
         } catch (\Throwable $error) {
             throw $error;

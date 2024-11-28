@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 use App\Controllers\ConnectController;
@@ -12,7 +13,7 @@ class User
     public $lastname;
     public $roleId;
 
-    public function getUser():object
+    public function getUser(): object
     {
         $pdo = Database::getPDO();
 
@@ -20,10 +21,9 @@ class User
 
         $pdoStatement = $pdo->query($sql);
 
-        $currentUser= $pdoStatement->fetchObject(User::class);
+        $currentUser = $pdoStatement->fetchObject(User::class);
 
         return $currentUser;
-
     }
 
     public function isAddUser(): bool
@@ -58,31 +58,31 @@ class User
         }
     }
 
-    public function getFirstname():string
+    public function getFirstname(): string
     {
         return $this->firstname;
     }
-    public function setFirstname($firstname):self
+    public function setFirstname($firstname): self
     {
         $this->firstname = $firstname;
         return $this;
     }
 
-    public function getLastname():string
+    public function getLastname(): string
     {
         return $this->lastname;
     }
-    public function setLastname($lastname):self
+    public function setLastname($lastname): self
     {
         $this->lastname = $lastname;
         return $this;
     }
 
-    public function getRoleId():int
+    public function getRoleId(): int
     {
         return $this->roleId;
     }
-    public function setRoleId($roleId):self
+    public function setRoleId($roleId): self
     {
         $this->roleId = $roleId;
         return $this;

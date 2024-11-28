@@ -8,7 +8,7 @@ class ImageHelper
 {
     private $IMAGE_TYPES = ['image/jpeg', 'image/png'];
 
-    public function insertedLanguageImage():bool | Exception
+    public function insertedLanguageImage(): bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
@@ -25,7 +25,7 @@ class ImageHelper
         }
     }
 
-    public function insertedOrganizationImage():bool | Exception
+    public function insertedOrganizationImage(): bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
@@ -40,7 +40,7 @@ class ImageHelper
         }
     }
 
-    public function insertedProjectImage():bool | Exception
+    public function insertedProjectImage(): bool | Exception
     {
         try {
             if (!$this->imageProcess()) {
@@ -67,7 +67,7 @@ class ImageHelper
         }
     }
     // To check if I have data in tmp_name and it is not empty. I call the method to check the extension file, and the method to check the sign of the picture.
-    private function imageProcess():bool | Exception
+    private function imageProcess(): bool | Exception
     {
         try {
             return !empty($_FILES['picture']['name']) || $this->checkExtension() || $this->checkSign();
@@ -76,7 +76,7 @@ class ImageHelper
         }
     }
     // To check the extension file.
-    private function  checkExtension():bool | Exception
+    private function  checkExtension(): bool | Exception
     {
         try {
             return in_array($_FILES['picture']['type'], $this->IMAGE_TYPES);
@@ -85,7 +85,7 @@ class ImageHelper
         }
     }
     // To check the sign of the picture. One more security.
-    private function checkSign():bool | Exception
+    private function checkSign(): bool | Exception
     {
         try {
             return in_array(exif_imagetype($_FILES['picture']['tmp_name']), [IMAGETYPE_JPEG, IMAGETYPE_PNG], true);
@@ -93,5 +93,4 @@ class ImageHelper
             throw $error;
         }
     }
-
 }

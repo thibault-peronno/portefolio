@@ -157,33 +157,31 @@ class ProjectController extends CoreController
         try {
             $organizatiionRepository =  new OrganizationsRepository();
             $languagesHelper = new GetLangagesHelper();
-            
+
             $data = [];
-            
+
             $allLanguages = $languagesHelper->getLanguages();
             $allOrganizations = $organizatiionRepository->getOrganizations();
-            
-            $data['organizations'] = array_map(function($getOrganizations) {
+
+            $data['organizations'] = array_map(function ($getOrganizations) {
                 $organizationModel = new Organization();
 
                 $organizationModel->setId($getOrganizations['id']);
                 $organizationModel->setTitle($getOrganizations['title']);
 
                 return $organizationModel;
-
             }, $allOrganizations);
 
-            $data['languages'] = array_map(function($getLanguages) {
+            $data['languages'] = array_map(function ($getLanguages) {
                 $languageModel = new Languages();
 
                 $languageModel->setId($getLanguages['id']);
                 $languageModel->setLabel($getLanguages['label']);
 
                 return $languageModel;
-
             }, $allLanguages);
-            
-            
+
+
             $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -250,28 +248,26 @@ class ProjectController extends CoreController
 
             $allLanguages = $languagesHelper->getLanguages();
             $allOrganizations = $organizatiionRepository->getOrganizations();
-            
-            $data['organizations'] = array_map(function($getOrganizations) {
+
+            $data['organizations'] = array_map(function ($getOrganizations) {
                 $organizationModel = new Organization();
 
                 $organizationModel->setId($getOrganizations['id']);
                 $organizationModel->setTitle($getOrganizations['title']);
 
                 return $organizationModel;
-
             }, $allOrganizations);
 
-            $data['languages'] = array_map(function($getLanguages) {
+            $data['languages'] = array_map(function ($getLanguages) {
                 $languageModel = new Languages();
 
                 $languageModel->setId($getLanguages['id']);
                 $languageModel->setLabel($getLanguages['label']);
 
                 return $languageModel;
-
             }, $allLanguages);
             $project = $projectRepository->getProjectById($idProject['id']);
-    
+
             $projectModel = new Project();
 
             $projectModel->setId($project['id']);

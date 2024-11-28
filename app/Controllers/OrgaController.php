@@ -14,10 +14,10 @@ class OrgaController extends CoreController
         try {
             $organizationsRepository = new OrganizationsRepository();
             $data = [];
-            
+
             $allOrganizations = $organizationsRepository->getOrganizations();
-            
-            $data['organizations'] = array_map(function($getOrganization) {
+
+            $data['organizations'] = array_map(function ($getOrganization) {
                 $organizationModel = new Organization();
 
                 $organizationModel->setId($getOrganization['id']);
@@ -27,7 +27,7 @@ class OrgaController extends CoreController
 
                 return $organizationModel;
             }, $allOrganizations);
-            
+
             $this->boShow('admin-orgas', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -45,9 +45,15 @@ class OrgaController extends CoreController
             $organizationsRepository = new OrganizationsRepository();
             $organizationModel = new Organization();
             $data = [];
-            $organizationModel->setId($idOrganization["id"]);
 
-            $data['organization'] = $organizationsRepository->getOrgaById();
+            $organization = $organizationsRepository->getOrgaById($idOrganization);
+
+            $organizationModel->setId($organization['id']);
+            $organizationModel->setTitle($organization['title']);
+            $organizationModel->setDescription($organization['description']);
+            $organizationModel->setPicture($organization['picture']);
+
+            $data['organization'] = $organizationModel;
 
             $this->boShow('admin-orga', $data);
         } catch (\Throwable $error) {
@@ -106,11 +112,28 @@ class OrgaController extends CoreController
     public function editOrga($idOrga)
     {
         try {
+            $organizationsRepository = new OrganizationsRepository();
             $organizationModel = new Organization();
+            $imageHelper = new ImageHelper();
+
+            /* mettre un if pour tester si l'image est présente */
+            $imageHelper->insertedOrganizationImage();
+
+            // échapper nos données pour éviter les failles XSS
+            $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
+            $description = htmlspecialchars($_POST['description'], ENT_QUOTES);
+            $picture = $_FILES["picture"]["name"];
 
             $data = [];
-            $organizationModel->setId(intval($idOrga['id']));
-            $data['organization'] = $organizationModel->getOrgaById();
+
+            $organizationModel->setTitle($title);
+            $organizationModel->setDescription($description);
+            $organizationModel->setPicture($picture);
+
+            $data['organization'] = $organizationsRepository->updateOrganization($idOrga['id']);
+
+
+
             $this->boShow('admin-add-orga', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -125,6 +148,7 @@ class OrgaController extends CoreController
     {
 
         try {
+            $organizationsRepository = new OrganizationsRepository();
             $organizationModel = new Organization();
             $imageHelper = new ImageHelper();
             $isNoUpdateImage = $imageHelper->isNoUpdateImage();
@@ -133,7 +157,7 @@ class OrgaController extends CoreController
                 $imageHelper->insertedOrganizationImage();
             }
 
-            $id = intval($idOrga['id']);
+            $id = intval($_POST['id']);
             $title = htmlspecialchars($_POST['title']);
             $description = htmlspecialchars($_POST['description']);
             if (!$isNoUpdateImage) {
@@ -142,16 +166,13 @@ class OrgaController extends CoreController
                 $picture = htmlspecialchars($_POST['picture']);
             }
 
-            $organizationModel->setId($id);
             $organizationModel->setTitle($title);
             $organizationModel->setDescription($description);
             $organizationModel->setPicture($picture);
 
-            $insert = $organizationModel->updateOrganization();
+            $insert = $organizationsRepository->updateOrganization($id);
 
-            if ($insert || !$insert) {
-                $data['succeeded'] = $insert;
-            }
+            $data['succeeded'] = $insert;
 
             $this->boShow('admin-add-orga', $data);
         } catch (\Throwable $error) {

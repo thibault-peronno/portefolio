@@ -16,7 +16,7 @@ class LanguageController extends CoreController
             $data = [];
 
             $languages = $languagesRepository->getLanguages();
-            
+
             foreach ($languages as $language) {
                 // dump($language);
                 $languagesModel = new Languages();
@@ -41,7 +41,7 @@ class LanguageController extends CoreController
                 }
             };
             $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
-            
+
             $this->show('technos', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -109,7 +109,7 @@ class LanguageController extends CoreController
                     continue;
                 }
             }
-            
+
             $this->boShow('admin-technos', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -215,12 +215,11 @@ class LanguageController extends CoreController
                 $picture = htmlspecialchars($_POST['picture']);
             }
 
-            $languagesModel->setId(intval($idLanguage['id']));
             $languagesModel->setLabel(htmlspecialchars($_POST['label']));
             $languagesModel->setPicture($picture);
             $languagesModel->setType(htmlspecialchars($_POST['type']));
 
-            $insert = $languagesRepository->updateLanguage();
+            $insert = $languagesRepository->updateLanguage($idLanguage);
 
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;

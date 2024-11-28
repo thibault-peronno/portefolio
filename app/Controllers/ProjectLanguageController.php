@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\ProjectLanguage;
 use App\Utils\Database;
 
@@ -25,8 +26,6 @@ class ProjectLanguageController extends CoreController
             $result = $projectLanguageModel->addLanguagesProjects();
         }
         return $result;
-
-        
     }
 
     public function fetchAllLanguageId(): array
@@ -35,11 +34,11 @@ class ProjectLanguageController extends CoreController
         return $projectLanguageModel->languageIdModel();
     }
 
-    public function deleteProjetctLanguage(Array $languages, int $projectId)
+    public function deleteProjetctLanguage(array $languages, int $projectId)
     {
         /* a optimiser */
         $projectLanguageModel = new ProjectLanguage;
-        foreach($languages as $keyLanguage => $valueLanguage) {
+        foreach ($languages as $keyLanguage => $valueLanguage) {
             $projectLanguageModel->setProjectId($projectId);
             $projectLanguageModel->setLanguageId($valueLanguage);
 

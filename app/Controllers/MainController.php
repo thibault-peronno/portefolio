@@ -10,21 +10,22 @@ use App\Repositories\LanguagesRepository;
 use App\Repositories\OrganizationsRepository;
 use App\Repositories\ProjectRepository;
 
-class MainController extends CoreController {
+class MainController extends CoreController
+{
 
     public function home(): void
     {
         try {
             $projectRepository = new ProjectRepository();
             $LanguageRepository = new LanguagesRepository();
-            
+
             $data = [];
-            
+
             $allProjects = $projectRepository->getProjects();
-            
+
             $data['projects']  = array_map(function ($getProject) {
                 $projectModel = new Project();
-                
+
                 $projectModel->setId($getProject['id']);
                 $projectModel->setTitle($getProject['title']);
                 $projectModel->setDescription($getProject['description']);
@@ -32,9 +33,8 @@ class MainController extends CoreController {
                 $projectModel->setPicture($getProject['picture']);
                 $projectModel->setOrganizationId($getProject['organization_id']);
                 $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
-                
+
                 return $projectModel;
-                
             }, $allProjects);
 
             $allLanguages = $LanguageRepository->getLanguages();
@@ -48,9 +48,8 @@ class MainController extends CoreController {
                 $languageModel->setType($getLanguage['type']);
 
                 return $languageModel;
-                
             }, $allLanguages);
-        
+
             $this->show('home', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -73,14 +72,14 @@ class MainController extends CoreController {
         $projectRepository = new ProjectRepository();
         $LanguageRepository = new LanguagesRepository();
         $organizationRepository = new OrganizationsRepository();
-        
-        $data=[];
+
+        $data = [];
         try {
             $allProject = $projectRepository->getProjects();
-            
+
             $data['projects'] = array_map(function ($getProject) {
                 $projectModel = new Project();
-                
+
                 $projectModel->setId($getProject['id']);
                 $projectModel->setTitle($getProject['title']);
                 $projectModel->setDescription($getProject['description']);
@@ -88,25 +87,23 @@ class MainController extends CoreController {
                 $projectModel->setPicture($getProject['picture']);
                 $projectModel->setOrganizationId($getProject['organization_id']);
                 $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
-                
+
                 return $projectModel;
-                
             }, $allProject);
-            
+
             $allLanguages = $LanguageRepository->getLanguages();
-            
+
             $data['languages'] = array_map(function ($getLanguage) {
                 $languageModel = new Languages();
-                
+
                 $languageModel->setId($getLanguage['id']);
                 $languageModel->setLabel($getLanguage['label']);
                 $languageModel->setPicture($getLanguage['picture']);
                 $languageModel->setType($getLanguage['type']);
-                
+
                 return $languageModel;
-                
             }, $allLanguages);
-            
+
             $allOrganizations = $organizationRepository->getOrganizations();
             dump($allOrganizations);
             $data['organizations'] = array_map(function ($getOrganization) {
@@ -118,11 +115,10 @@ class MainController extends CoreController {
                 $organizationModel->setPicture($getOrganization['picture']);
 
                 return $organizationModel;
-                
             }, $allOrganizations);
 
             dump($data);
-            
+
             $this->boShow('admin-home', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -133,5 +129,3 @@ class MainController extends CoreController {
         }
     }
 };
-
-?>

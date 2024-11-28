@@ -7,7 +7,7 @@ class CoreController
 
     protected $router;
 
-    public function __construct($router=[])
+    public function __construct($router = [])
     {
         $this->router = $router;
     }
@@ -31,7 +31,7 @@ class CoreController
     {
         $getNeededData = $this->getNeededDatas();
 
-       
+
         // include : ask to include, but does not allow a fatal error
         // require : the content is required, ans if does not exist, there is a fatal error.
         /**
