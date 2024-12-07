@@ -2,7 +2,6 @@
 
 namespace App\Helpers;
 
-use App\Models\Languages;
 use App\Repositories\LanguagesRepository;
 
 class GetLangagesHelper

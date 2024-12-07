@@ -71,7 +71,7 @@ class ConnectController extends CoreController
             $userModel->setLastname(htmlspecialchars($_POST['lastname']));
             $userModel->setRoleId(2);
 
-            $addUser = $userModel->isAddUser();
+            $addUser = $userModel->addUser();
 
             $this->page();
         } catch (\Throwable $error) {

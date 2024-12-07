@@ -169,7 +169,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function editTechno($idLanguage)
+    public function editTechno($idLanguage): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
@@ -196,7 +196,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function updateTechno($idLanguage)
+    public function updateTechno($idLanguage): void
     {
 
         try {
@@ -235,7 +235,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function boDeleteTechnos($labelId)
+    public function boDeleteTechnos($labelId): void
     {
         try {
             $languagesRepository = new LanguagesRepository();

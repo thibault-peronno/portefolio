@@ -2,11 +2,6 @@
 
 namespace App\Models;
 
-use App\Utils\Database;
-use PDO;
-use Error;
-use Exception;
-
 class Languages
 {
     public $id;

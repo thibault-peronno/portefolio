@@ -2,11 +2,6 @@
 
 namespace App\Models;
 
-
-use App\Controllers\ProjectLanguageController;
-use App\Utils\Database;
-use PDO;
-
 class Project
 {
     public $id;
