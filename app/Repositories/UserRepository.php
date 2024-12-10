@@ -8,7 +8,7 @@ use App\Utils\Database;
 use PDO;
 
 class UserRepository {
-    public function getUser(): object
+    public function getUsers(): object
     {
         $pdo = Database::getPDO();
 

@@ -3,7 +3,6 @@ namespace App\Controllers;
 
 use App\Models\User;
 use App\Repositories\UserRepository;
-use App\Utils\Database;
 
 class UserController extends CoreController {
 
@@ -12,7 +11,7 @@ class UserController extends CoreController {
         try {
             $userRepository = new UserRepository();
 
-            $user = $userRepository->getUser();
+            $user = $userRepository->getUsers();
             $data = [];
 
             $userModel = new User();
