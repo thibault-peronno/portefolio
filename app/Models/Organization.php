@@ -4,10 +4,10 @@ namespace App\Models;
 
 class Organization
 {
-    public $id;
-    public $title;
-    public $description;
-    public $picture;
+    private $id;
+    private $title;
+    private $description;
+    private $picture;
 
 
     public function getId(): int
