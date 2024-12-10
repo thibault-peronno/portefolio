@@ -21,7 +21,7 @@ class ProjectRepository
 
 
             $pdoStatement = $pdo->query($sql);
-            $getProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            $allProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
             /* foreach($getProjects as &$getProject){
                 dump('foreach', $getProject['labels']);
@@ -29,6 +29,20 @@ class ProjectRepository
                 dump('foreach 2', $getProject['labels']);
             }
             unset($getProject);*/
+
+            $getProjects  = array_map(function ($getProject) {
+                $projectModel = new Project();
+
+                $projectModel->setId($getProject['id']);
+                $projectModel->setTitle($getProject['title']);
+                $projectModel->setDescription($getProject['description']);
+                $projectModel->setUrl($getProject['url']);
+                $projectModel->setPicture($getProject['picture']);
+                $projectModel->setOrganizationId($getProject['organization_id']);
+                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+
+                return $projectModel;
+            }, $allProjects);
 
             return $getProjects;
         } catch (\Throwable $error) {

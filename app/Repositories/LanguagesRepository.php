@@ -21,7 +21,18 @@ class LanguagesRepository
             /* cette façon va directement créer un objet depuis le model language ?
                return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);*/
 
-            $getLanguages = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            $allLanguages = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+            $getLanguages = array_map(function ($getLanguage) {
+                $languageModel = new Languages();
+
+                $languageModel->setId($getLanguage['id']);
+                $languageModel->setLabel($getLanguage['label']);
+                $languageModel->setPicture($getLanguage['picture']);
+                $languageModel->setType($getLanguage['type']);
+
+                return $languageModel;
+            }, $allLanguages);
 
             return $getLanguages;
         } catch (\Throwable $error) {

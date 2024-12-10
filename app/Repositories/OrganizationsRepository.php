@@ -18,7 +18,20 @@ class OrganizationsRepository
             $sql = "SELECT * FROM `organizations`";
             $pdoStatement = $pdo->query($sql);
             // return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Organization::class);
-            return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            $allOrganizations = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+            $getOrganizations = array_map(function ($getOrganization) {
+                $organizationModel = new Organization();
+
+                $organizationModel->setId($getOrganization['id']);
+                $organizationModel->setTitle($getOrganization['title']);
+                $organizationModel->setDescription($getOrganization['description']);
+                $organizationModel->setPicture($getOrganization['picture']);
+
+                return $organizationModel;
+            }, $allOrganizations);
+
+            return $getOrganizations;
         } catch (\Throwable $error) {
             throw new Error("La récupération des langues de développemen a échoué");
         }
