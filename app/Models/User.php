@@ -5,10 +5,10 @@ namespace App\Models;
 class User
 {
     /* Proporties of User model */
-    private $id;
-    private $firstname;
-    private $lastname;
-    private $roleId;
+    public $id;
+    public $firstname;
+    public $lastname;
+    public $roleId;
 
     public function getId(): int
     {

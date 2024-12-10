@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Models\ProjectLanguage;
 use App\Repositories\ProjectLanguageRepository;
-use App\Utils\Database;
 
 class ProjectLanguageController extends CoreController
 {

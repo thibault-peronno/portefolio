@@ -6,9 +6,9 @@ namespace App\Models;
 
 class Register
 {
-    private $mail;
-    private $password;
-    private $userId;
+    public $mail;
+    public $password;
+    public $userId;
 
     public function getMail(): string
     {

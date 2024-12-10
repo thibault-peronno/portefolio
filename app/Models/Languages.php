@@ -4,10 +4,10 @@ namespace App\Models;
 
 class Languages
 {
-    private $id;
-    private $label;
-    private $picture;
-    private $type;
+    public $id;
+    public $label;
+    public $picture;
+    public $type;
 
     public function getId(): int
     {
