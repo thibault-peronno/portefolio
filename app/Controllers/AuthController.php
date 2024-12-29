@@ -8,7 +8,7 @@ use App\Models\Auth;
 use App\Repositories\AuthRepository;
 use App\Repositories\UserRepository;
 
-class AuthController extends CoreController
+class AuthController extends MainController
 {
 
     public function page(): void
@@ -34,14 +34,13 @@ class AuthController extends CoreController
                 // comparer le mot de passe de $_POST avec le password stocké en base de données
                 $isPasswordEqual = $this->isPasswordEqual($authModel->getPassword());
                 if ($isPasswordEqual) {
-                    dump("isPasswordEqual");
                     session_start();
                     $_SESSION['user_id'] = $userModel->getId();
                     $_SESSION['firstname'] = $userModel->getFirstname();
                     $_SESSION['lastname'] = $userModel->getLastname();
 
-                    // Utiliser generate() pour créer l'URL de redirection
-                    $this->show('admin-home');
+                    
+                    $this->boHome();
                     exit();
                 }
 
