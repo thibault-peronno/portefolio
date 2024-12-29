@@ -17,7 +17,7 @@ class User
     public function setId($id): self
     {
         $this->id = $id;
-        return $id;
+        return $this;
     }
 
     public function getFirstname(): string

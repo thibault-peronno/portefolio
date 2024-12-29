@@ -4,7 +4,7 @@ namespace App\Models;
 
 // Dans Register.php
 
-class Register
+class Auth
 {
     public $mail;
     public $password;

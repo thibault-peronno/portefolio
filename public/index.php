@@ -2,9 +2,6 @@
 session_start();
 // We ask to required a fil in vendro folder to use our routing
 
-
-use App\Controllers\CoreController;
-
 require __DIR__ . '/../vendor/autoload.php';
 require './php.ini';
 
@@ -54,7 +51,7 @@ $router->addRoutes(
       'GET',
       '/enregistrement',
       [
-        'controller' => 'ConnectController',
+        'controller' => 'AuthController',
         'method' => 'loginPage',
       ],
       'enregistrement',
@@ -63,7 +60,7 @@ $router->addRoutes(
       'POST',
       '/enregistrement',
       [
-        'controller' => 'ConnectController',
+        'controller' => 'AuthController',
         'method' => 'signIn',
       ],
       'createAccount',
@@ -72,19 +69,19 @@ $router->addRoutes(
       'GET',
       '/connexion',
       [
-        'controller' => 'ConnectController',
+        'controller' => 'AuthController',
         'method' => 'page',
       ],
       'connexion',
     ],
     [
       'POST',
-      '/connexion',
+      '/admin-accueil',
       [
-        'controller' => 'ConnectController',
+        'controller' => 'AuthController',
         'method' => 'logToBackOffice',
       ],
-      'connexion-post',
+      'admin-connexion',
     ],
     [
       'GET',
@@ -101,7 +98,8 @@ $router->addRoutes(
 // require __DIR__ . '/../bootstrap.php';
 
 /* This routes are protected by session from PHP */
-if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) {
+dump('3', $_SESSION);
+if (isset($_COOKIE['PHPSESSID'])) {
   $router->addRoutes(
     [
       [

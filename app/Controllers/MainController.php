@@ -2,9 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Languages;
-use App\Models\Organization;
-use App\Models\Project;
 use App\Models\User;
 use App\Repositories\LanguagesRepository;
 use App\Repositories\OrganizationsRepository;

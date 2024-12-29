@@ -3,7 +3,7 @@
         <span class="absolute w-2/4 h-0.5 bg-secondary top-0 left-0 "></span>
         <span class="absolute w-2/4 rotate-90 origin-left h-0.5 bg-secondary top-0 left-0"></span>
         <img src="/assets/images/face_co.jpg" alt="" class="w-28 h-28 rounded-full">
-        <form action="" method="post" class="flex flex-col w-full mt-10 sm:w-max">
+        <form action="<?php echo $router->generate('admin-accueil'); ?>" method="post" class="flex flex-col w-full mt-10 sm:w-max">
             <label for="mail">mail</label>
             <input type="email" name="mail" id="" class="mt-2.5 mb-5 h-14 rounded border-primary border-2 p-2 sm:w-80">
             <label for="password">Mot de passe</label>

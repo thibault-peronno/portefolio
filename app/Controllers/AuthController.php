@@ -4,12 +4,13 @@
 namespace App\Controllers;
 
 use App\Models\User;
-use App\Models\Register;
-use App\Repositories\RegisterRepository;
+use App\Models\Auth;
+use App\Repositories\AuthRepository;
 use App\Repositories\UserRepository;
 
-class ConnectController extends CoreController
+class AuthController extends CoreController
 {
+
     public function page(): void
     {
         $this->show('connect');
@@ -23,31 +24,31 @@ class ConnectController extends CoreController
     public function logToBackOffice(): void
     {
         try {
-            $registerModel = new Register();
-            $registerRepository = new RegisterRepository();
-            dump($_POST['mail']);
-            $registerModel->setMail($_POST['mail']);
-    
+            $authModel = new Auth();
+            $userModel = new User();
+            $AuthRepository = new AuthRepository();
+
             // récupérer l'utilisateur qui se connecte à un compte enregistré
-            $getUser = $registerRepository->getUser();
-            if ($getUser['user']) {
+            $getUser = $AuthRepository->getUser($_POST['mail'], $authModel, $userModel);
+            if ($getUser) {
                 // comparer le mot de passe de $_POST avec le password stocké en base de données
-                $isPasswordEqual = $this->isPasswordEqual($registerModel);
-    
+                $isPasswordEqual = $this->isPasswordEqual($authModel->getPassword());
                 if ($isPasswordEqual) {
+                    dump("isPasswordEqual");
                     session_start();
-    
-                    $_SESSION['user_id'] = $getUser['user_id'];
-                    $_SESSION['firstname'] = $getUser['firstname'];
-                    $_SESSION['lastname'] = $getUser['lastname'];
-                    header("Location: /admin-accueil");
+                    $_SESSION['user_id'] = $userModel->getId();
+                    $_SESSION['firstname'] = $userModel->getFirstname();
+                    $_SESSION['lastname'] = $userModel->getLastname();
+
+                    // Utiliser generate() pour créer l'URL de redirection
+                    $this->show('admin-home');
                     exit();
                 }
-    
+
                 // si pas identique, envoyer un message et rester sur la page
                 $this->page();
             }
-    
+
             $this->page();
         } catch (\Throwable $error) {
             throw $error;
@@ -55,10 +56,10 @@ class ConnectController extends CoreController
     }
 
 
-    public function isPasswordEqual(Register $registerModel): bool
+    public function isPasswordEqual($password): bool
     {
         try {
-            $isHashEqual =  hash_equals(hash('sha256', $_POST['password']), $registerModel->password);
+            $isHashEqual =  hash_equals(hash('sha256', $_POST['password']), $password);
 
             if ($isHashEqual) {
                 return true;
@@ -75,7 +76,7 @@ class ConnectController extends CoreController
         try {
             $userModel = new User();
             $userRepository = new UserRepository();
-            
+
             $userModel->setFirstname(htmlspecialchars($_POST['firstname']));
             $userModel->setLastname(htmlspecialchars($_POST['lastname']));
             $userModel->setRoleId(2);
@@ -91,14 +92,14 @@ class ConnectController extends CoreController
     public function isAddRegister($userId): bool
     {
         try {
-            $registerModel = new Register();
-            $registerRepository = new RegisterRepository();
+            $authModel = new Auth();
+            $AuthRepository = new AuthRepository();
 
-            $registerModel->setMail(htmlspecialchars($_POST['mail']));
-            $registerModel->setPassword(htmlspecialchars($_POST['password']));
-            $registerModel->setUserId($userId);
+            $authModel->setMail(htmlspecialchars($_POST['mail']));
+            $authModel->setPassword(htmlspecialchars($_POST['password']));
+            $authModel->setUserId($userId);
 
-            $registerRepository->isAddRegister();
+            $AuthRepository->isAddRegister();
 
             return true;
         } catch (\Throwable $error) {

@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-use App\Controllers\ConnectController;
+use App\Controllers\AuthController;
 use App\Models\User;
 use App\Utils\Database;
 use PDO;
@@ -39,7 +39,7 @@ class UserRepository {
 
             if ($insertedRows > 0) {
                 // We retrieve the last id.
-                $connectCtrl = new ConnectController();
+                $connectCtrl = new AuthController();
                 $usertId = $pdo->lastInsertId();
                 $insertRegister = $connectCtrl->isAddRegister($usertId);
 
