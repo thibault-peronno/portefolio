@@ -98,7 +98,7 @@ $router->addRoutes(
 // require __DIR__ . '/../bootstrap.php';
 
 /* This routes are protected by session from PHP */
-dump('3', $_SESSION);
+// dump('3', $_SESSION);
 if (isset($_COOKIE['PHPSESSID'])) {
   $router->addRoutes(
     [

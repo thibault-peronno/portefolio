@@ -14,7 +14,7 @@
                  <img src="<?= "/assets/images/languages/" . $language->picture ?>" alt="" class="w-9 h-9" />
                  <h3 class="text-2xl font-bold text-btn-sec"><?= $language->label ?></h3>
              </span>
-             <p class="text-lg">Nombre de projet(s) réalisé(s) : <?= isset($arrayNumberOfProjectDevBylanguage[$language->label]) ? count($arrayNumberOfProjectDevBylanguage[$language->label]) : 0 ?></p>
+             <p class="text-lg">Nombre de projet(s) réalisé(s) : <?= isset($arrayNumberOfProjectDevBylanguage[$language->label]) ? $arrayNumberOfProjectDevBylanguage[$language->label][0] : 0 ?></p>
          </div>
          <?php endforeach ?>
      </div>

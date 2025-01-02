@@ -19,29 +19,16 @@ class LanguageController extends CoreController
 
             foreach ($languages as $language) {
                 // dump($language);
-                $languagesModel = new Languages();
-                if ($language['type'] === 'Front-end') {
-                    $languagesModel->setId($language['id']);
-                    $languagesModel->setLabel($language['label']);
-                    $languagesModel->setPicture($language['picture']);
-                    $languagesModel->setType($language['type']);
-                    $data['languages']['front-end'][] = $languagesModel;
-                } elseif ($language['type'] === 'Back-end') {
-                    $languagesModel->setId($language['id']);
-                    $languagesModel->setLabel($language['label']);
-                    $languagesModel->setPicture($language['picture']);
-                    $languagesModel->setType($language['type']);
-                    $data['languages']['back-end'][] = $languagesModel;
-                } elseif ($language['type'] === 'DevOps') {
-                    $languagesModel->setId($language['id']);
-                    $languagesModel->setLabel($language['label']);
-                    $languagesModel->setPicture($language['picture']);
-                    $languagesModel->setType($language['type']);
-                    $data['languages']['DevOps'][] = $languagesModel;
+                if ($language->type === 'Front-end') {
+                    $data['languages']['Front-end'][] = $language;
+                } elseif ($language->type === 'Back-end') {
+                    $data['languages']['Back-end'][] = $language;
+                } elseif ($language->type === 'DevOps') {
+                    $data['languages']['DevOps'][] = $language;
                 }
             };
             $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
-
+            
             $this->show('technos', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -55,19 +42,21 @@ class LanguageController extends CoreController
     // possibilité de le mettre dans un service à la place.
     private static function numberOfProjectDevBylanguage($languages): array
     {
+ 
         try {
             $projectLanguageCtrl = new ProjectLanguageController();
             $data = [];
             $arrayAllLanguagesId = $projectLanguageCtrl->fetchAllLanguageId();
             foreach ($languages as $language) {
-
+                
                 foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
-
-                    if ($language['label'] === $arrayAllLanguages['label']) {
-                        $data[$language['label']][] = +1;
+                    
+                    if ($language->label === $arrayAllLanguages['label']) {
+                        $data[$language->label][0] = $data[$language->label][0] +1;
                     }
                 }
             }
+
             return $data;
         } catch (\Throwable $error) {
             throw $error;

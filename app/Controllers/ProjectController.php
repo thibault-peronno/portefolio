@@ -25,21 +25,9 @@ class ProjectController extends CoreController
         try {
             $projectRepository = new projectRepository();
             $data = [];
-            $allProjects = $projectRepository->getProjects();
-
-            $data['projects']  = array_map(function ($getProject) {
-                $projectModel = new Project();
-
-                $projectModel->setId($getProject['id']);
-                $projectModel->setTitle($getProject['title']);
-                $projectModel->setDescription($getProject['description']);
-                $projectModel->setUrl($getProject['url']);
-                $projectModel->setPicture($getProject['picture']);
-                $projectModel->setOrganizationId($getProject['organization_id']);
-                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
-
-                return $projectModel;
-            }, $allProjects);
+            
+            $data['projects'] = $projectRepository->getProjects();
+            
             $this->show('projects', $data);
         } catch (\Throwable $error) {
             $data = [

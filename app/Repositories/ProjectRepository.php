@@ -97,7 +97,7 @@ class ProjectRepository
 
             if ($insertedRows > 0) {
                 // We retrieve the last id.
-                $projectLanguageCtrl = new ProjectLanguageController;
+                $projectLanguageCtrl = new ProjectLanguageController();
                 $projectId = $pdo->lastInsertId();
                 $insertLanguages = $projectLanguageCtrl->addProjectLanguage($projectId);
 
