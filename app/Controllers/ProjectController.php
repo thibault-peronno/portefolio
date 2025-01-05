@@ -45,22 +45,7 @@ class ProjectController extends CoreController
 
             $data = [];
 
-            $project = $projectRepository->getProjectById($idProject['id']);
-
-            $projectModel = new Project();
-
-            $projectModel->setId($project['id']);
-            $projectModel->setTitle($project['title']);
-            $projectModel->setDescription($project['description']);
-            $projectModel->setUrl($project['url']);
-            $projectModel->setPicture($project['picture']);
-            $projectModel->setOrganizationId($project['organization_id']);
-            $projectModel->setTitleOrganization($project['title_organization']);
-            $projectModel->setPictureOrganization($project['picture_organization']);
-            $projectModel->setDescriptionOrganization($project['description_organization']);
-            $projectModel->setLabels(json_decode('[' . $project['labels'] . ']', true));
-
-            $data['project'] = $projectModel;
+            $data['project'] = $projectRepository->getProjectById($idProject['id']);
 
             $this->show('project', $data);
         } catch (\Throwable $error) {
@@ -77,24 +62,7 @@ class ProjectController extends CoreController
         try {
             $projectRepository = new projectRepository();
             $data = [];
-            $allProjects = $projectRepository->getProjects();
-
-
-            $data["projects"] = array_map(function ($getProject) {
-
-                $projectModel = new Project();
-
-                $projectModel->setId($getProject['id']);
-                $projectModel->setTitle($getProject['title']);
-                $projectModel->setDescription($getProject['description']);
-                $projectModel->setUrl($getProject['url']);
-                $projectModel->setPicture($getProject['picture']);
-                $projectModel->setOrganizationId($getProject['organization_id']);
-                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
-
-                return $projectModel;
-            }, $allProjects);
-
+            $data['projects'] = $projectRepository->getProjects();
 
             $this->boShow('admin-projects', $data);
         } catch (\Throwable $error) {
@@ -113,22 +81,7 @@ class ProjectController extends CoreController
 
             $data = [];
 
-            $project = $projectRepository->getProjectById($idProject['id']);
-
-            $projectModel = new Project();
-
-            $projectModel->setId($project['id']);
-            $projectModel->setTitle($project['title']);
-            $projectModel->setDescription($project['description']);
-            $projectModel->setUrl($project['url']);
-            $projectModel->setPicture($project['picture']);
-            $projectModel->setOrganizationId($project['organization_id']);
-            $projectModel->setTitleOrganization($project['title_organization']);
-            $projectModel->setPictureOrganization($project['picture_organization']);
-            $projectModel->setDescriptionOrganization($project['description_organization']);
-            $projectModel->setLabels(json_decode('[' . $project['labels'] . ']', true));
-
-            $data['project'] = $projectModel;
+            $data['project'] = $projectRepository->getProjectById($idProject['id']);
 
             $this->boShow('admin-project', $data);
         } catch (\Throwable $error) {
