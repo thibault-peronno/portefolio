@@ -174,12 +174,13 @@ class ProjectController extends CoreController
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-project', $data);
+            $this->show('error', $data);
         }
     }
 
     public function editProject($idProject)
     {
+        dump("editProject");
         try {
             $languagesHelper = new GetLangagesHelper();
             $organizatiionRepository = new OrganizationsRepository();
@@ -187,50 +188,17 @@ class ProjectController extends CoreController
 
             $data = [];
 
-            $allLanguages = $languagesHelper->getLanguages();
-            $allOrganizations = $organizatiionRepository->getOrganizations();
-
-            $data['organizations'] = array_map(function ($getOrganizations) {
-                $organizationModel = new Organization();
-
-                $organizationModel->setId($getOrganizations['id']);
-                $organizationModel->setTitle($getOrganizations['title']);
-
-                return $organizationModel;
-            }, $allOrganizations);
-
-            $data['languages'] = array_map(function ($getLanguages) {
-                $languageModel = new Languages();
-
-                $languageModel->setId($getLanguages['id']);
-                $languageModel->setLabel($getLanguages['label']);
-
-                return $languageModel;
-            }, $allLanguages);
-            $project = $projectRepository->getProjectById($idProject['id']);
-
-            $projectModel = new Project();
-
-            $projectModel->setId($project['id']);
-            $projectModel->setTitle($project['title']);
-            $projectModel->setDescription($project['description']);
-            $projectModel->setUrl($project['url']);
-            $projectModel->setPicture($project['picture']);
-            $projectModel->setOrganizationId($project['organization_id']);
-            $projectModel->setTitleOrganization($project['title_organization']);
-            $projectModel->setPictureOrganization($project['picture_organization']);
-            $projectModel->setDescriptionOrganization($project['description_organization']);
-            $projectModel->setLabels(json_decode('[' . $project['labels'] . ']', true));
-
-            $data['project'] = $projectModel;
-
+            $data['languages'] = $languagesHelper->getLanguages();
+            $data['organizations'] = $organizatiionRepository->getOrganizations();
+            $data['project'] = $projectRepository->getProjectById($idProject['id']);
+            
             $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-project', $data);
+            $this->show('error', $data);
         }
     }
 
