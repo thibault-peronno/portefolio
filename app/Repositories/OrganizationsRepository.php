@@ -37,20 +37,27 @@ class OrganizationsRepository
         }
     }
 
-    public function getOrgaById($id): array | bool
+    public function getOrgaById($id)
     {
+        
         try {
             $organizationModel = new Organization();
             $pdo = Database::getPDO();
-            $sql = "SELECT * FROM `organizations` WHERE id = :idOrga";
+            
+            $sql = "SELECT * FROM `organizations` WHERE id = :idOrganizations";
             $pdoStatement = $pdo->prepare($sql);
-
-            $pdoStatement->bindParam(':idOrga', $id, PDO::PARAM_INT);
+            
+            $pdoStatement->bindParam(':idOrganizations', $id["id"], PDO::PARAM_STR);
 
             $pdoStatement->execute();
             $organization = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            
+            $organizationModel->setId($organization['id']);
+            $organizationModel->setTitle($organization['title']);
+            $organizationModel->setDescription($organization['description']);
+            $organizationModel->setPicture($organization['picture']);
 
-            return $organization;
+            return $organizationModel;
         } catch (\Throwable $erro) {
             throw new Error("La récupération de l'organisation a échouée");
         }

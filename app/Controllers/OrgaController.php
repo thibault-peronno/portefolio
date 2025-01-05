@@ -15,18 +15,7 @@ class OrgaController extends CoreController
             $organizationsRepository = new OrganizationsRepository();
             $data = [];
 
-            $allOrganizations = $organizationsRepository->getOrganizations();
-
-            $data['organizations'] = array_map(function ($getOrganization) {
-                $organizationModel = new Organization();
-
-                $organizationModel->setId($getOrganization['id']);
-                $organizationModel->setTitle($getOrganization['title']);
-                $organizationModel->setDescription($getOrganization['description']);
-                $organizationModel->setPicture($getOrganization['picture']);
-
-                return $organizationModel;
-            }, $allOrganizations);
+            $data['organizations'] = $organizationsRepository->getOrganizations();
 
             $this->boShow('admin-orgas', $data);
         } catch (\Throwable $error) {
@@ -40,20 +29,11 @@ class OrgaController extends CoreController
 
     public function organization($idOrganization): void
     {
-
         try {
             $organizationsRepository = new OrganizationsRepository();
-            $organizationModel = new Organization();
             $data = [];
 
-            $organization = $organizationsRepository->getOrgaById($idOrganization);
-
-            $organizationModel->setId($organization['id']);
-            $organizationModel->setTitle($organization['title']);
-            $organizationModel->setDescription($organization['description']);
-            $organizationModel->setPicture($organization['picture']);
-
-            $data['organization'] = $organizationModel;
+            $data['organization'] = $organizationsRepository->getOrgaById($idOrganization);
 
             $this->boShow('admin-orga', $data);
         } catch (\Throwable $error) {
@@ -109,30 +89,13 @@ class OrgaController extends CoreController
         }
     }
 
-    public function editOrga($idOrga)
+    public function editOrga($idOrganization)
     {
         try {
             $organizationsRepository = new OrganizationsRepository();
-            $organizationModel = new Organization();
-            $imageHelper = new ImageHelper();
-
-            /* mettre un if pour tester si l'image est présente */
-            $imageHelper->insertedOrganizationImage();
-
-            // échapper nos données pour éviter les failles XSS
-            $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
-            $description = htmlspecialchars($_POST['description'], ENT_QUOTES);
-            $picture = $_FILES["picture"]["name"];
-
             $data = [];
 
-            $organizationModel->setTitle($title);
-            $organizationModel->setDescription($description);
-            $organizationModel->setPicture($picture);
-
-            $data['organization'] = $organizationsRepository->updateOrganization($idOrga['id']);
-
-
+            $data['organization'] = $organizationsRepository->getOrgaById($idOrganization);
 
             $this->boShow('admin-add-orga', $data);
         } catch (\Throwable $error) {
