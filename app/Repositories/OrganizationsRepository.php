@@ -58,7 +58,7 @@ class OrganizationsRepository
             $organizationModel->setPicture($organization['picture']);
 
             return $organizationModel;
-        } catch (\Throwable $erro) {
+        } catch (\Throwable $error) {
             throw new Error("La récupération de l'organisation a échouée");
         }
     }

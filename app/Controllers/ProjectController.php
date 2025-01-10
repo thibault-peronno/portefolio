@@ -5,10 +5,8 @@ namespace App\Controllers;
 use App\Controllers\CoreController;
 use App\Models\Project;
 use App\Repositories\ProjectRepository;
-use App\Helpers\GetLangagesHelper;
+use App\Helpers\languagesHelper;
 use App\Helpers\ImageHelper;
-use App\Models\Languages;
-use App\Models\Organization;
 use App\Repositories\OrganizationsRepository;
 
 /* Le controller est le chef d'orchestre, donc je fais parler les models et les repositories depuis chaque
@@ -97,7 +95,7 @@ class ProjectController extends CoreController
     {
         try {
             $organizatiionRepository =  new OrganizationsRepository();
-            $languagesHelper = new GetLangagesHelper();
+            $languagesHelper = new languagesHelper();
 
             $data = [];
 
@@ -161,9 +159,8 @@ class ProjectController extends CoreController
 
     public function editProject($idProject)
     {
-        dump("editProject");
         try {
-            $languagesHelper = new GetLangagesHelper();
+            $languagesHelper = new languagesHelper();
             $organizatiionRepository = new OrganizationsRepository();
             $projectRepository = new ProjectRepository();
 
@@ -225,7 +222,7 @@ class ProjectController extends CoreController
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-project', $data);
+            $this->boShow('error', $data);
         }
     }
 }

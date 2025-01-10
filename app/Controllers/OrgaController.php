@@ -107,7 +107,7 @@ class OrgaController extends CoreController
         }
     }
 
-    public function updateOrganization($idOrga)
+    public function updateOrganization()
     {
 
         try {

@@ -112,12 +112,9 @@ class LanguagesRepository
             $pdo = Database::getPDO();
             $sql = "DELETE FROM `languages` WHERE `id` = $id";
             $pdoStatement = $pdo->query($sql);
-            // dd($pdoStatement);
-            // dd($pdoStatement->delete(PDO::FETCH_CLASS, Languages::class));
             return $pdoStatement->delete(PDO::FETCH_CLASS, Languages::class);
         } catch (\Throwable $th) {
             throw new Exception("Verifiez que le langage n'est pas utilisé par un projet");
-            // dd('error', $th);
         }
     }
 }

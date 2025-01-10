@@ -1,4 +1,4 @@
-<?php dump($projects) ?>
+<!-- <?php dump($projects) ?> -->
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max mb-5 sm:mt-12 rounded">
   back office Projets
 </h1>
