@@ -25,9 +25,9 @@ class ProjectController extends CoreController
         try {
             $projectRepository = new projectRepository();
             $data = [];
-            
+
             $data['projects'] = $projectRepository->getProjects();
-            
+
             $this->show('projects', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -101,27 +101,8 @@ class ProjectController extends CoreController
 
             $data = [];
 
-            $allLanguages = $languagesHelper->getLanguages();
-            $allOrganizations = $organizatiionRepository->getOrganizations();
-
-            $data['organizations'] = array_map(function ($getOrganizations) {
-                $organizationModel = new Organization();
-
-                $organizationModel->setId($getOrganizations['id']);
-                $organizationModel->setTitle($getOrganizations['title']);
-
-                return $organizationModel;
-            }, $allOrganizations);
-
-            $data['languages'] = array_map(function ($getLanguages) {
-                $languageModel = new Languages();
-
-                $languageModel->setId($getLanguages['id']);
-                $languageModel->setLabel($getLanguages['label']);
-
-                return $languageModel;
-            }, $allLanguages);
-
+            $data['languages'] = $languagesHelper->getLanguages();
+            $data['organizations'] = $organizatiionRepository->getOrganizations();
 
             $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
@@ -191,7 +172,7 @@ class ProjectController extends CoreController
             $data['languages'] = $languagesHelper->getLanguages();
             $data['organizations'] = $organizatiionRepository->getOrganizations();
             $data['project'] = $projectRepository->getProjectById($idProject['id']);
-            
+
             $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
