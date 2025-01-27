@@ -4,16 +4,16 @@ namespace App\Models;
 
 class Project
 {
-    public $id;
-    public $title;
-    public $description;
-    public $picture;
-    public $url;
-    public $organization_id;
-    public $labels;
-    public $title_organization;
-    public $picture_organization;
-    public $description_organization;
+    private $id;
+    private $title;
+    private $description;
+    private $picture;
+    private $url;
+    private $organization_id;
+    private $labels;
+    private $title_organization;
+    private $picture_organization;
+    private $description_organization;
 
 
     public function getId(): string
@@ -76,7 +76,7 @@ class Project
         return $this;
     }
 
-    public function getLables(): string
+    public function getLabels(): array
     {
         return $this->labels;
     }

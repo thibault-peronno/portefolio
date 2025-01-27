@@ -31,25 +31,25 @@
             <div class="snap-start p-5  shrink-0 relative flex flex-col justify-between sm:w-80 sm:h-80">
                 <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] animate-borderTop"></span>
                 <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] origin-left rotate-90 animate-borderLeft"></span>
-                <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block opacity-0 scale-50 animate-projectsScale"><?= $project->title ?></h3>
+                <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block opacity-0 scale-50 animate-projectsScale"><?= $project->getTitle() ?></h3>
                 <p class="mb-2 opacity-0 scale-20 animate-projectsScale h-20 text-clip overflow-hidden ... text-lg">
-                    <?= $project->description ?>
+                    <?= $project->getDescription() ?>
                 </p>
 
                 <div class="flex justify-start gap-2">
-                    <?php foreach ($project->labels as $label) : ?>
+                    <?php foreach ($project->getLabels() as $label) : ?>
                         <div class="bg-white rounded opacity-0 animate-projectsScale">
                             <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-8 h-8 m-2 opacity-0 scale-20 animate-projectsScale" />
                         </div>
                     <?php endforeach ?>
                 </div>
                 <div class="flex justify-around mt-2 text-secondary">
-                    <a href="<?= $project->url ?>">
+                    <a href="<?= $project->getUrl() ?>">
                         <button class="text-white bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary opacity-0 scale-20 animate-projectsScale">
                             Aller sur le site
                         </button>
                     </a>
-                    <a href="<?= "/projet/" . $project->id ?>">
+                    <a href="<?= "/projet/" . $project->getId() ?>">
                         <button class="text-white bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary opacity-0 scale-20 animate-projectsScale">
                             En savoir plus
                         </button>

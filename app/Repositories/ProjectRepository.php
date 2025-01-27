@@ -43,7 +43,7 @@ class ProjectRepository
 
                 return $projectModel;
             }, $allProjects);
-
+            
             return $getProjects;
         } catch (\Throwable $error) {
             throw $error;
