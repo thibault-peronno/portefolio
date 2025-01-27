@@ -22,7 +22,7 @@ class LanguagesRepository
                return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);*/
 
             $allLanguages = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
+    
             $getLanguages = array_map(function ($getLanguage) {
                 $languageModel = new Languages();
 
@@ -33,7 +33,7 @@ class LanguagesRepository
 
                 return $languageModel;
             }, $allLanguages);
-
+            
             return $getLanguages;
         } catch (\Throwable $error) {
             throw new Exception("La récupération des langues de développement a échoué");

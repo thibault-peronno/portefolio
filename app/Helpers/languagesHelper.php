@@ -21,7 +21,7 @@ class languagesHelper
     {
         $data = [];
         foreach ($languages as $language) {
-            if ($language->type === 'Front-end') {
+            if ($language->getType() === 'Front-end') {
                 $data[] = $language;
             } 
         };
@@ -31,7 +31,7 @@ class languagesHelper
     {
         $data = [];
         foreach ($languages as $language) {
-            if ($language->type === 'Back-end') {
+            if ($language->getType() === 'Back-end') {
                 $data[] = $language;
             }
         };
@@ -41,7 +41,7 @@ class languagesHelper
     {
         $data = [];
         foreach ($languages as $language) {
-            if ($language->type === 'DevOps') {
+            if ($language->getType() === 'DevOps') {
                 $data[] = $language;
             }
         };

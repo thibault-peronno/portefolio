@@ -77,8 +77,8 @@
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
             <?php foreach ($languages as $language) : ?>
-                <?php if ($language->type === 'Front-end') : ?>
-                    <img src="<?= "/assets/images/languages/" . $language->picture ?>" alt="<?= "icon " . $language->label ?>" class="w-20 h-20" />
+                <?php if ($language->getType() === 'Front-end') : ?>
+                    <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20" />
                 <?php endif ?>
             <?php endforeach ?>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
@@ -88,8 +88,8 @@
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
             <?php foreach ($languages as $language) : ?>
-                <?php if ($language->type === 'Back-end') : ?>
-                    <img src="<?= "/assets/images/languages/" . $language->picture ?>" alt="<?= "icon " . $language->label ?>" class="w-20 h-20" />
+                <?php if ($language->getType() === 'Back-end') : ?>
+                    <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20" />
                 <?php endif ?>
             <?php endforeach ?>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
@@ -99,8 +99,8 @@
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
             <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
             <?php foreach ($languages as $language) : ?>
-                <?php if ($language->type === 'DevOps') : ?>
-                    <img src="<?= "/assets/images/languages/" . $language->picture ?>" alt="<?= "icon " . $language->label ?>" class="w-20 h-20" />
+                <?php if ($language->getType() === 'DevOps') : ?>
+                    <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20" />
                 <?php endif ?>
             <?php endforeach ?>
             <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>

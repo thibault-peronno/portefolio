@@ -4,10 +4,10 @@ namespace App\Models;
 
 class Languages
 {
-    public $id;
-    public $label;
-    public $picture;
-    public $type;
+    private $id;
+    private $label;
+    private $picture;
+    private $type;
 
     public function getId(): int
     {
@@ -19,7 +19,7 @@ class Languages
         return $this;
     }
 
-    public function getLabel(): int
+    public function getLabel(): String
     {
         return $this->label;
     }
@@ -29,7 +29,7 @@ class Languages
         return $this;
     }
 
-    public function getPicture(): int
+    public function getPicture(): String
     {
         return $this->picture;
     }
@@ -39,7 +39,7 @@ class Languages
         return $this;
     }
 
-    public function getType(): int
+    public function getType(): String
     {
         return $this->type;
     }

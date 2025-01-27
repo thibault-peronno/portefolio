@@ -18,7 +18,6 @@ class LanguageController extends CoreController
             $data = [];
 
             $languages = $languagesRepository->getLanguages();
-
             $data['languages']['Front-end'] = $languagesHelper->sortLangageByFrontType($languages);
             $data['languages']['Back-end'] = $languagesHelper->sortLangageByBackType($languages);
             $data['languages']['DevOps'] = $languagesHelper->sortLangageByDevopsType($languages);
@@ -55,8 +54,8 @@ class LanguageController extends CoreController
                 
                 foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
                     
-                    if ($language->label === $arrayAllLanguages['label']) {
-                        $data[$language->label][0] = $data[$language->label][0] +1;
+                    if ($language->getLabel() === $arrayAllLanguages['label']) {
+                        $data[$language->getLabel()][0] = $data[$language->getLabel()][0] +1;
                     }
                 }
             }
