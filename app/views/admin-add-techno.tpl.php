@@ -17,13 +17,13 @@
     <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="label" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <input type="text" name="label" id="label" value="<?= isset($language) ? $language->label : " " ?>" class="rounded bg-white h-12 w-full p-2" />
+            <input type="text" name="label" id="label" value="<?= isset($language) ? $language->getLabel() : " " ?>" class="rounded bg-white h-12 w-full p-2" />
         </div>
         <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
             <div class="mb-5 sm:w-6/12">
                 <label for="type" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="type" id="type" class="block rounded bg-white h-12 w-full p-2">
-                    <option value="<?= isset($language) ? $language->type : "" ?>"><?= isset($language) ? $language->type : "Type" ?></option>
+                    <option value="<?= isset($language) ? $language->getType() : "" ?>"><?= isset($language) ? $language->getType() : "Type" ?></option>
                     <option value="Front-end">Front-end</option>
                     <option value="Back-end">Back-end</option>
                     <option value="DevOps">DevOps</option>
@@ -31,9 +31,9 @@
             </div>
             <?php if (isset($language)) : ?>
                 <div id="updateImageTextDiv">
-                    <img class="p-2.5 bg-white w-14" src="<?= "/assets/images/languages/" . $language->picture ?>" alt="Image du projet" class="w-14">
+                    <img class="p-2.5 bg-white w-14" src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="Image du projet" class="w-14">
                     <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
-                    <input type="hidden" name="picture" value="<?= $language->picture ?>">
+                    <input type="hidden" name="picture" value="<?= $language->getPicture() ?>">
                 </div>
             <?php endif ?>
             <div id="updateImageInput" class="mb-5 sm:w-6/12 <?= isset($language) ? 'hidden' : "" ?>">

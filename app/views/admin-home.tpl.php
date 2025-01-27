@@ -18,13 +18,13 @@
     <tbody>
       <?php foreach ($projects as $project) : ?>
         <tr class="mt-5 h-14 border-b-2 border-primary">
-          <td><?= $project->title ?></td>
-          <td class="hidden sm:table-cell"><?= $project->description ?></td>
+          <td><?= $project->getTitle() ?></td>
+          <td class="hidden sm:table-cell"><?= $project->getDescription() ?></td>
           <td class="text-end">
-          <a href="<?= "/admin-projet/" . $project->id ?>">
+          <a href="<?= "/admin-projet/" . $project->getId() ?>">
             <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
           </a>
-            <a href="<?= "/admin-editer-projet/" . $project->id ?>">
+            <a href="<?= "/admin-editer-projet/" . $project->getId() ?>">
             <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
           </a>
             <img src="/assets/images/icons/trash.svg" alt="" class="inline cursor-pointer" />
@@ -48,9 +48,9 @@
   <div class="flex flex-row flex-wrap justify-evenly gap-5">
     <?php foreach ($languages as $language) : ?>
       <div class="flex flex-col gap-5">
-        <img src="<?php echo "/assets/images/languages/" . $language->picture ?>" alt="" class="w-12 h-12 m-auto" />
+        <img src="<?php echo "/assets/images/languages/" . $language->getPicture() ?>" alt="" class="w-12 h-12 m-auto" />
         <p class="text-center rounded-full bg-secondary text-white px-2.5">
-          <?= $language->label ?>
+          <?= $language->getLabel() ?>
         </p>
       </div>
     <?php endforeach ?>
@@ -77,14 +77,14 @@
     <tbody>
       <?php foreach ($organizations as $organization) : ?>
         <tr class="mt-5 h-14 border-b-2 border-primary">
-          <td><?= $organization->title ?></td>
-          <td class="hidden sm:table-cell"><?= $organization->description ?></td>
+          <td><?= $organization->getTitle() ?></td>
+          <td class="hidden sm:table-cell"><?= $organization->getDescription() ?></td>
           <td class="text-end">
-          <a href="<?= "/admin-organisation/" . $organization->id ?>">
+          <a href="<?= "/admin-organisation/" . $organization->getId() ?>">
           <img src="/assets/images/icons/view.svg" alt="" class="inline cursor-pointer " />
 
           </a>
-          <a href="<?= "/admin-editer-organisation/" . $organization->id ?>">
+          <a href="<?= "/admin-editer-organisation/" . $organization->getId() ?>">
           <img src="/assets/images/icons/edit.svg" alt="" class="inline cursor-pointer " />
           </a>
             <img src="/assets/images/icons/trash.svg" alt="" class="inline cursor-pointer" />
