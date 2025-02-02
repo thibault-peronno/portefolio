@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\validateSetterData;
+
 class Project
 {
     private $id;
@@ -32,8 +34,13 @@ class Project
     }
     public function setTitle($title): self
     {
-        $this->title = $title;
-        return $this;
+        try{
+            $this->validateString($title, 100, "title");
+            $this->title = $title;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getDescription(): string
@@ -42,8 +49,13 @@ class Project
     }
     public function setDescription($description): self
     {
-        $this->description = $description;
-        return $this;
+        try{
+            $this->validateString($description, 255, "description");
+            $this->description = $description;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getPicture(): string
@@ -52,8 +64,13 @@ class Project
     }
     public function setPicture($picture): self
     {
-        $this->picture = $picture;
-        return $this;
+        try{
+            $this->validateString($picture, 100, "picture");
+            $this->picture = $picture;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getUrl(): string
@@ -62,8 +79,13 @@ class Project
     }
     public function setUrl($url): self
     {
-        $this->url = $url;
-        return $this;
+        try{
+            $this->validateString($url, 100, "url");
+            $this->url = $url;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getOrganizationId(): string
@@ -72,8 +94,8 @@ class Project
     }
     public function setOrganizationId($organizationId): self
     {
-        $this->organization_id = $organizationId;
-        return $this;
+            $this->organization_id = $organizationId;
+            return $this;
     }
 
     public function getLabels(): array
@@ -82,8 +104,13 @@ class Project
     }
     public function setLabels($labels): self
     {
-        $this->labels = $labels;
-        return $this;
+        try{
+            $this->validateString($labels, 100, "labels");
+            $this->labels = $labels;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getTitleOrganization(): string
@@ -92,8 +119,13 @@ class Project
     }
     public function setTitleOrganization($titleOrganization): self
     {
-        $this->title_organization = $titleOrganization;
-        return $this;
+        try{
+            $this->validateString($titleOrganization, 100, "titleOrganization");
+            $this->title_organization = $titleOrganization;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getPictureOrganization(): string
@@ -102,8 +134,13 @@ class Project
     }
     public function setPictureOrganization($pictureOrganization): self
     {
-        $this->picture_organization = $pictureOrganization;
-        return $this;
+        try{
+            $this->validateString($pictureOrganization, 100, "pictureOrganization");
+            $this->picture_organization = $pictureOrganization;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getDescriptionOrganization(): string
@@ -112,7 +149,18 @@ class Project
     }
     public function setDescriptionOrganization($descriptionOrganization): self
     {
-        $this->description_organization = $descriptionOrganization;
-        return $this;
+        try{
+            $this->validateString($descriptionOrganization, 100, "descriptionOrganization");
+            $this->description_organization = $descriptionOrganization;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
+    }
+
+    private function validateString($valeur, $length, $field)
+    {
+        $validateSetterData = new validateSetterData;
+        return $validateSetterData->validateString($valeur, $length, $field);
     }
 }

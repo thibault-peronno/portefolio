@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\validateSetterData;
+
 class Languages
 {
     private $id;
@@ -25,8 +27,13 @@ class Languages
     }
     public function setLabel($label): self
     {
-        $this->label = $label;
-        return $this;
+        try {
+            $this->validateString($label, 100, "label");
+            $this->label = $label;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
     public function getPicture(): String
@@ -35,8 +42,13 @@ class Languages
     }
     public function setPicture($picture): self
     {
-        $this->picture = $picture;
-        return $this;
+        try {
+            $this->validateString($picture, 100, "picture");
+            $this->picture = $picture;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
     public function getType(): String
@@ -45,7 +57,18 @@ class Languages
     }
     public function setType($type): self
     {
-        $this->type = $type;
-        return $this;
+        try {
+            $this->validateString($type, 100, "type");
+            $this->type = $type;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    private function validateString($valeur, $length, $field)
+    {
+        $validateSetterData = new validateSetterData;
+        return $validateSetterData->validateString($valeur, $length, $field);
     }
 }

@@ -11,11 +11,11 @@ class ProjectLanguage
 
     public function getId(): int
     {
-        return $this->projectId;
+        return $this->id;
     }
     public function setId($id): self
     {
-        $this->projectId = $id;
+        $this->id = $id;
         return $this;
     }
 

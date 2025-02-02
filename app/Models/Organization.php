@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Helpers\validateSetterData;
+
 class Organization
 {
     private $id;
@@ -26,8 +28,14 @@ class Organization
     }
     public function setTitle($title): self
     {
-        $this->title = $title;
-        return $this;
+        try {
+            $this->validateString($title, 100, "title");
+            $this->title = $title;
+            return $this;
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     public function getDescription(): string
@@ -36,8 +44,13 @@ class Organization
     }
     public function setDescription($description): self
     {
-        $this->description = $description;
-        return $this;
+        try {
+            $this->validateString($description, 255, "description");
+            $this->description = $description;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
     public function getPicture(): string
@@ -46,7 +59,18 @@ class Organization
     }
     public function setPicture($picture): self
     {
-        $this->picture = $picture;
-        return $this;
+        try {
+            $this->validateString($picture, 100, "picture");
+            $this->picture = $picture;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    private function validateString($valeur, $length, $field)
+    {
+        $validateSetterData = new validateSetterData;
+        return $validateSetterData->validateString($valeur, $length, $field);
     }
 }

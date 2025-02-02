@@ -153,7 +153,7 @@ class ProjectController extends CoreController
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->boShow('admin-add-project', $data);
         }
     }
 
@@ -176,7 +176,7 @@ class ProjectController extends CoreController
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->boShow('admin-add-project', $data);
         }
     }
 

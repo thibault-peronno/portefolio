@@ -100,7 +100,16 @@ class LanguageController extends CoreController
 
     public function addTechnoPage(): void
     {
-        $this->boShow('admin-add-techno');
+        try {
+            $this->boShow('admin-add-techno');
+            
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('admin-add-techno', $data);
+        }
     }
 
     public function addTechno(): void
