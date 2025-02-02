@@ -105,7 +105,6 @@ class Project
     public function setLabels($labels): self
     {
         try{
-            $this->validateString($labels, 100, "labels");
             $this->labels = $labels;
             return $this;
         }catch(\Throwable $error){
