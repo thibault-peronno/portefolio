@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Auth;
 use App\Utils\Database;
+use Exception;
 use PDO;
 
 class AuthRepository
@@ -49,6 +50,12 @@ class AuthRepository
             $pdoStatement->execute();
 
             $getUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            if (!$getUser) {
+                return [
+                    "message" => "Votre e-mail ou mot de passe n'est pas valide",
+                    "succeeded" => false,
+                ];
+            }
             $authModel->setPassword($getUser['password']);
 
             if ($getUser) {

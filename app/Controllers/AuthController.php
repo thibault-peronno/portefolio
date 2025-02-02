@@ -11,9 +11,9 @@ use App\Repositories\UserRepository;
 class AuthController extends MainController
 {
 
-    public function page(): void
+    public function page($data = []): void
     {
-        $this->show('connect');
+        $this->show('connect', $data);
     }
 
     public function loginPage(): void
@@ -30,22 +30,22 @@ class AuthController extends MainController
 
             // récupérer l'utilisateur qui se connecte à un compte enregistré
             $getUser = $AuthRepository->getUser($_POST['mail'], $authModel, $userModel);
-            if ($getUser) {
-                // comparer le mot de passe de $_POST avec le password stocké en base de données
-                $isPasswordEqual = $this->isPasswordEqual($authModel->getPassword());
-                if ($isPasswordEqual) {
-                    session_start();
-                    $_SESSION['user_id'] = $userModel->getId();
-                    $_SESSION['firstname'] = $userModel->getFirstname();
-                    $_SESSION['lastname'] = $userModel->getLastname();
-
-                    
-                    $this->boHome();
-                    exit();
-                }
-
+            if ($getUser["succeeded"] === false) {
                 // si pas identique, envoyer un message et rester sur la page
-                $this->page();
+                $this->page($getUser);
+                exit();
+            }
+            // comparer le mot de passe de $_POST avec le password stocké en base de données
+            $isPasswordEqual = $this->isPasswordEqual($authModel->getPassword());
+            if ($isPasswordEqual) {
+                session_start();
+                $_SESSION['user_id'] = $userModel->getId();
+                $_SESSION['firstname'] = $userModel->getFirstname();
+                $_SESSION['lastname'] = $userModel->getLastname();
+
+
+                $this->boHome();
+                exit();
             }
 
             $this->page();
@@ -58,7 +58,9 @@ class AuthController extends MainController
     public function isPasswordEqual($password): bool
     {
         try {
-            $isHashEqual =  hash_equals(hash('sha256', $_POST['password']), $password);
+            if ($password) {
+                $isHashEqual =  hash_equals(hash('sha256', $_POST['password']), $password);
+            }
 
             if ($isHashEqual) {
                 return true;

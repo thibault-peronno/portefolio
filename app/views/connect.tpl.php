@@ -1,4 +1,9 @@
 <div class="flex justify-center items-center">
+<?php if (isset($succeeded) && !$succeeded) : ?>
+        <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-orange-600 animate-notif">
+            <p><?= $message ?></p>
+        </div>
+    <?php endif ?>
     <section class="w-9/12 flex flex-col items-center rounded p-14 relative sm:w-max">
         <span class="absolute w-2/4 h-0.5 bg-secondary top-0 left-0 "></span>
         <span class="absolute w-2/4 rotate-90 origin-left h-0.5 bg-secondary top-0 left-0"></span>
