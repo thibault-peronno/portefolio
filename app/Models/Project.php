@@ -149,7 +149,7 @@ class Project
     public function setDescriptionOrganization($descriptionOrganization): self
     {
         try{
-            $this->validateString($descriptionOrganization, 100, "descriptionOrganization");
+            $this->validateString($descriptionOrganization, 255, "descriptionOrganization");
             $this->description_organization = $descriptionOrganization;
             return $this;
         }catch(\Throwable $error){

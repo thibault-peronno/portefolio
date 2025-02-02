@@ -44,7 +44,7 @@ class ProjectController extends CoreController
             $data = [];
 
             $data['project'] = $projectRepository->getProjectById($idProject['id']);
-
+            
             $this->show('project', $data);
         } catch (\Throwable $error) {
             $data = [
