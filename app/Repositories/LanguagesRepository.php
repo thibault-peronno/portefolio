@@ -3,10 +3,10 @@
 namespace App\Repositories;
 
 use App\Utils\Database;
+use App\Models\Languages;
 use PDO;
 use Error;
 use Exception;
-use App\Models\Languages;
 
 class LanguagesRepository
 {

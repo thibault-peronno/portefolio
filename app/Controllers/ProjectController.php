@@ -5,9 +5,9 @@ namespace App\Controllers;
 use App\Controllers\CoreController;
 use App\Models\Project;
 use App\Repositories\ProjectRepository;
+use App\Repositories\OrganizationsRepository;
 use App\Helpers\languagesHelper;
 use App\Helpers\ImageHelper;
-use App\Repositories\OrganizationsRepository;
 
 /* Le controller est le chef d'orchestre, donc je fais parler les models et les repositories depuis chaque
 méthode
