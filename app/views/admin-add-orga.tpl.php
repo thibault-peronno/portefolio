@@ -16,18 +16,18 @@
     <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <input type="text" name="title" id="title" class="rounded bg-white h-12 w-full p-2" value="<?php echo isset($organization) ? $organization['title'] : "" ?>" />
+            <input type="text" name="title" id="title" class="rounded bg-white h-12 w-full p-2" value="<?php echo isset($organization) ? $organization->title : "" ?>" />
         </div>
         <div class="mb-5">
             <label for="description" class="text-primary text-xl">Description<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <textarea name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?= isset($organization) ? $organization['description'] : "" ?></textarea>
+            <textarea name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?= isset($organization) ? $organization->getDescription() : "" ?></textarea>
         </div>
         <div class="mb-5 sm:w-6/12">
-            <?php if (isset($organization) && isset($organization['picture'])) : ?>
+            <?php if (isset($organization) && $organization->getPicture() !== null) : ?>
                 <div id="updateImageTextDiv">
-                    <img src="<?= "/assets/images/organizations/" . $organization['picture'] ?>" alt="Image du projet" class="w-14">
+                    <img src="<?= "/assets/images/organizations/" . $organization->getPicture() ?>" alt="Image du projet" class="w-14">
                     <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
-                    <input type="hidden" name="picture" value="<?= $organization['picture'] ?>">
+                    <input type="hidden" name="picture" value="<?= $organization->getPicture() ?>">
                 </div>
                 <?php endif ?>
                 <span id="updateImageInput" class="<?php echo isset($organization) ? 'hidden' : ""  ?>">

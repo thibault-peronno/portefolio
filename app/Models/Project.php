@@ -2,23 +2,20 @@
 
 namespace App\Models;
 
-
-use App\Controllers\ProjectLanguageController;
-use App\Utils\Database;
-use PDO;
+use App\Helpers\validateSetterData;
 
 class Project
 {
-    public $id;
-    public $title;
-    public $description;
-    public $picture;
-    public $url;
-    public $organization_id;
-    public $labels;
-    public $title_organization;
-    public $picture_organization;
-    public $description_organization;
+    private $id;
+    private $title;
+    private $description;
+    private $picture;
+    private $url;
+    private $organization_id;
+    private $labels;
+    private $title_organization;
+    private $picture_organization;
+    private $description_organization;
 
 
     public function getId(): string
@@ -37,8 +34,13 @@ class Project
     }
     public function setTitle($title): self
     {
-        $this->title = $title;
-        return $this;
+        try{
+            $this->validateString($title, 100, "title");
+            $this->title = $title;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getDescription(): string
@@ -47,8 +49,13 @@ class Project
     }
     public function setDescription($description): self
     {
-        $this->description = $description;
-        return $this;
+        try{
+            $this->validateString($description, 255, "description");
+            $this->description = $description;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getPicture(): string
@@ -57,8 +64,13 @@ class Project
     }
     public function setPicture($picture): self
     {
-        $this->picture = $picture;
-        return $this;
+        try{
+            $this->validateString($picture, 100, "picture");
+            $this->picture = $picture;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getUrl(): string
@@ -67,8 +79,13 @@ class Project
     }
     public function setUrl($url): self
     {
-        $this->url = $url;
-        return $this;
+        try{
+            $this->validateString($url, 100, "url");
+            $this->url = $url;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getOrganizationId(): string
@@ -77,18 +94,22 @@ class Project
     }
     public function setOrganizationId($organizationId): self
     {
-        $this->organization_id = $organizationId;
-        return $this;
+            $this->organization_id = $organizationId;
+            return $this;
     }
 
-    public function getLables(): string
+    public function getLabels(): array
     {
         return $this->labels;
     }
     public function setLabels($labels): self
     {
-        $this->labels = $labels;
-        return $this;
+        try{
+            $this->labels = $labels;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getTitleOrganization(): string
@@ -97,8 +118,13 @@ class Project
     }
     public function setTitleOrganization($titleOrganization): self
     {
-        $this->title_organization = $titleOrganization;
-        return $this;
+        try{
+            $this->validateString($titleOrganization, 100, "titleOrganization");
+            $this->title_organization = $titleOrganization;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getPictureOrganization(): string
@@ -107,8 +133,13 @@ class Project
     }
     public function setPictureOrganization($pictureOrganization): self
     {
-        $this->picture_organization = $pictureOrganization;
-        return $this;
+        try{
+            $this->validateString($pictureOrganization, 100, "pictureOrganization");
+            $this->picture_organization = $pictureOrganization;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
     }
 
     public function getDescriptionOrganization(): string
@@ -117,7 +148,18 @@ class Project
     }
     public function setDescriptionOrganization($descriptionOrganization): self
     {
-        $this->description_organization = $descriptionOrganization;
-        return $this;
+        try{
+            $this->validateString($descriptionOrganization, 255, "descriptionOrganization");
+            $this->description_organization = $descriptionOrganization;
+            return $this;
+        }catch(\Throwable $error){
+            throw $error;
+        }
+    }
+
+    private function validateString($valeur, $length, $field)
+    {
+        $validateSetterData = new validateSetterData;
+        return $validateSetterData->validateString($valeur, $length, $field);
     }
 }

@@ -3,10 +3,10 @@
 namespace App\Repositories;
 
 use App\Utils\Database;
+use App\Models\Languages;
 use PDO;
 use Error;
 use Exception;
-use App\Models\Languages;
 
 class LanguagesRepository
 {
@@ -21,8 +21,19 @@ class LanguagesRepository
             /* cette façon va directement créer un objet depuis le model language ?
                return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Languages::class);*/
 
-            $getLanguages = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            $allLanguages = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+    
+            $getLanguages = array_map(function ($getLanguage) {
+                $languageModel = new Languages();
 
+                $languageModel->setId($getLanguage['id']);
+                $languageModel->setLabel($getLanguage['label']);
+                $languageModel->setPicture($getLanguage['picture']);
+                $languageModel->setType($getLanguage['type']);
+
+                return $languageModel;
+            }, $allLanguages);
+            
             return $getLanguages;
         } catch (\Throwable $error) {
             throw new Exception("La récupération des langues de développement a échoué");
@@ -101,12 +112,9 @@ class LanguagesRepository
             $pdo = Database::getPDO();
             $sql = "DELETE FROM `languages` WHERE `id` = $id";
             $pdoStatement = $pdo->query($sql);
-            // dd($pdoStatement);
-            // dd($pdoStatement->delete(PDO::FETCH_CLASS, Languages::class));
             return $pdoStatement->delete(PDO::FETCH_CLASS, Languages::class);
         } catch (\Throwable $th) {
             throw new Exception("Verifiez que le langage n'est pas utilisé par un projet");
-            // dd('error', $th);
         }
     }
 }

@@ -18,27 +18,47 @@ class OrganizationsRepository
             $sql = "SELECT * FROM `organizations`";
             $pdoStatement = $pdo->query($sql);
             // return $pdoStatement->fetchAll(PDO::FETCH_CLASS, Organization::class);
-            return $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            $allOrganizations = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+
+            $getOrganizations = array_map(function ($getOrganization) {
+                $organizationModel = new Organization();
+
+                $organizationModel->setId($getOrganization['id']);
+                $organizationModel->setTitle($getOrganization['title']);
+                $organizationModel->setDescription($getOrganization['description']);
+                $organizationModel->setPicture($getOrganization['picture']);
+
+                return $organizationModel;
+            }, $allOrganizations);
+
+            return $getOrganizations;
         } catch (\Throwable $error) {
             throw new Error("La récupération des langues de développemen a échoué");
         }
     }
 
-    public function getOrgaById($id): array | bool
+    public function getOrgaById($id)
     {
+        
         try {
             $organizationModel = new Organization();
             $pdo = Database::getPDO();
-            $sql = "SELECT * FROM `organizations` WHERE id = :idOrga";
+            
+            $sql = "SELECT * FROM `organizations` WHERE id = :idOrganizations";
             $pdoStatement = $pdo->prepare($sql);
-
-            $pdoStatement->bindParam(':idOrga', $id, PDO::PARAM_INT);
+            
+            $pdoStatement->bindParam(':idOrganizations', $id["id"], PDO::PARAM_STR);
 
             $pdoStatement->execute();
             $organization = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            
+            $organizationModel->setId($organization['id']);
+            $organizationModel->setTitle($organization['title']);
+            $organizationModel->setDescription($organization['description']);
+            $organizationModel->setPicture($organization['picture']);
 
-            return $organization;
-        } catch (\Throwable $erro) {
+            return $organizationModel;
+        } catch (\Throwable $error) {
             throw new Error("La récupération de l'organisation a échouée");
         }
     }

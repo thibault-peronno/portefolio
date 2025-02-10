@@ -2,9 +2,6 @@
 
 namespace App\Controllers;
 
-use App\Models\Languages;
-use App\Models\Organization;
-use App\Models\Project;
 use App\Models\User;
 use App\Repositories\LanguagesRepository;
 use App\Repositories\OrganizationsRepository;
@@ -20,35 +17,8 @@ class MainController extends CoreController
             $LanguageRepository = new LanguagesRepository();
 
             $data = [];
-
-            $allProjects = $projectRepository->getProjects();
-
-            $data['projects']  = array_map(function ($getProject) {
-                $projectModel = new Project();
-
-                $projectModel->setId($getProject['id']);
-                $projectModel->setTitle($getProject['title']);
-                $projectModel->setDescription($getProject['description']);
-                $projectModel->setUrl($getProject['url']);
-                $projectModel->setPicture($getProject['picture']);
-                $projectModel->setOrganizationId($getProject['organization_id']);
-                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
-
-                return $projectModel;
-            }, $allProjects);
-
-            $allLanguages = $LanguageRepository->getLanguages();
-
-            $data['languages'] = array_map(function ($getLanguage) {
-                $languageModel = new Languages();
-
-                $languageModel->setId($getLanguage['id']);
-                $languageModel->setLabel($getLanguage['label']);
-                $languageModel->setPicture($getLanguage['picture']);
-                $languageModel->setType($getLanguage['type']);
-
-                return $languageModel;
-            }, $allLanguages);
+            $data['projects'] = $projectRepository->getProjects();
+            $data['languages'] = $LanguageRepository->getLanguages();
 
             $this->show('home', $data);
         } catch (\Throwable $error) {
@@ -68,56 +38,28 @@ class MainController extends CoreController
 
     public function boHome(): void
     {
-        $user = new User;
-        $projectRepository = new ProjectRepository();
-        $LanguageRepository = new LanguagesRepository();
-        $organizationRepository = new OrganizationsRepository();
-
-        $data = [];
         try {
-            $allProject = $projectRepository->getProjects();
+            $user = new User;
+            $projectRepository = new ProjectRepository();
+            $LanguageRepository = new LanguagesRepository();
+            $organizationRepository = new OrganizationsRepository();
+    
+            $data = [];
+            $data['projects'] = $projectRepository->getProjects();
+            $data['languages'] = $LanguageRepository->getLanguages();
+            $data['organizations'] = $organizationRepository->getOrganizations();
 
-            $data['projects'] = array_map(function ($getProject) {
-                $projectModel = new Project();
+            // $allOrganizations = $organizationRepository->getOrganizations();
+            // $data['organizations'] = array_map(function ($getOrganization) {
+            //     $organizationModel = new Organization();
 
-                $projectModel->setId($getProject['id']);
-                $projectModel->setTitle($getProject['title']);
-                $projectModel->setDescription($getProject['description']);
-                $projectModel->setUrl($getProject['url']);
-                $projectModel->setPicture($getProject['picture']);
-                $projectModel->setOrganizationId($getProject['organization_id']);
-                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+            //     $organizationModel->setId($getOrganization['id']);
+            //     $organizationModel->setTitle($getOrganization['title']);
+            //     $organizationModel->setDescription($getOrganization['description']);
+            //     $organizationModel->setPicture($getOrganization['picture']);
 
-                return $projectModel;
-            }, $allProject);
-
-            $allLanguages = $LanguageRepository->getLanguages();
-
-            $data['languages'] = array_map(function ($getLanguage) {
-                $languageModel = new Languages();
-
-                $languageModel->setId($getLanguage['id']);
-                $languageModel->setLabel($getLanguage['label']);
-                $languageModel->setPicture($getLanguage['picture']);
-                $languageModel->setType($getLanguage['type']);
-
-                return $languageModel;
-            }, $allLanguages);
-
-            $allOrganizations = $organizationRepository->getOrganizations();
-            dump($allOrganizations);
-            $data['organizations'] = array_map(function ($getOrganization) {
-                $organizationModel = new Organization();
-
-                $organizationModel->setId($getOrganization['id']);
-                $organizationModel->setTitle($getOrganization['title']);
-                $organizationModel->setDescription($getOrganization['description']);
-                $organizationModel->setPicture($getOrganization['picture']);
-
-                return $organizationModel;
-            }, $allOrganizations);
-
-            dump($data);
+            //     return $organizationModel;
+            // }, $allOrganizations);
 
             $this->boShow('admin-home', $data);
         } catch (\Throwable $error) {

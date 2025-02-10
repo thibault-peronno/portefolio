@@ -21,7 +21,7 @@ class ProjectRepository
 
 
             $pdoStatement = $pdo->query($sql);
-            $getProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
+            $allProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
             /* foreach($getProjects as &$getProject){
                 dump('foreach', $getProject['labels']);
@@ -30,13 +30,27 @@ class ProjectRepository
             }
             unset($getProject);*/
 
+            $getProjects  = array_map(function ($getProject) {
+                $projectModel = new Project();
+
+                $projectModel->setId($getProject['id']);
+                $projectModel->setTitle($getProject['title']);
+                $projectModel->setDescription($getProject['description']);
+                $projectModel->setUrl($getProject['url']);
+                $projectModel->setPicture($getProject['picture']);
+                $projectModel->setOrganizationId($getProject['organization_id']);
+                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+
+                return $projectModel;
+            }, $allProjects);
+            
             return $getProjects;
         } catch (\Throwable $error) {
             throw $error;
         }
     }
 
-    public function getProjectById($idProject): array
+    public function getProjectById($idProject)
     {
         try {
             $pdo = Database::getPDO();
@@ -51,9 +65,22 @@ class ProjectRepository
             $pdoStatement = $pdo->query($sql);
             $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
 
+            $projectModel = new Project();
+
+            $projectModel->setId($getProject['id']);
+            $projectModel->setTitle($getProject['title']);
+            $projectModel->setDescription($getProject['description']);
+            $projectModel->setUrl($getProject['url']);
+            $projectModel->setPicture($getProject['picture']);
+            $projectModel->setOrganizationId($getProject['organization_id']);
+            $projectModel->setTitleOrganization($getProject['title_organization']);
+            $projectModel->setPictureOrganization($getProject['picture_organization']);
+            $projectModel->setDescriptionOrganization($getProject['description_organization']);
+            $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+
             // $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
 
-            return $getProject;
+            return $projectModel;
         } catch (\Throwable $error) {
             throw $error;
         }
@@ -83,7 +110,7 @@ class ProjectRepository
 
             if ($insertedRows > 0) {
                 // We retrieve the last id.
-                $projectLanguageCtrl = new ProjectLanguageController;
+                $projectLanguageCtrl = new ProjectLanguageController();
                 $projectId = $pdo->lastInsertId();
                 $insertLanguages = $projectLanguageCtrl->addProjectLanguage($projectId);
 

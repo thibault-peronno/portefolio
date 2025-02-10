@@ -11,10 +11,10 @@
      <?php foreach($arrayLanguageByType as $language) : ?>
          <div class="rounded p-4 shadow-card w-max bg-white shrink-0 snap-start hover:scale-105 transition ease-in-out delay-150 duration-200">
              <span class="flex gap-2.5 items-center mb-2">
-                 <img src="<?= "/assets/images/languages/" . $language->picture ?>" alt="" class="w-9 h-9" />
-                 <h3 class="text-2xl font-bold text-btn-sec"><?= $language->label ?></h3>
+                 <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="" class="w-9 h-9" />
+                 <h3 class="text-2xl font-bold text-btn-sec"><?= $language->getLabel() ?></h3>
              </span>
-             <p class="text-lg">Nombre de projet(s) réalisé(s) : <?= isset($arrayNumberOfProjectDevBylanguage[$language->label]) ? count($arrayNumberOfProjectDevBylanguage[$language->label]) : 0 ?></p>
+             <p class="text-lg">Nombre de projet(s) réalisé(s) : <?= isset($arrayNumberOfProjectDevBylanguage[$language->getLabel()]) ? $arrayNumberOfProjectDevBylanguage[$language->getLabel()][0] : 0 ?></p>
          </div>
          <?php endforeach ?>
      </div>

@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Languages;
 use App\Helpers\ImageHelper;
+use App\Helpers\languagesHelper;
 use App\Repositories\LanguagesRepository;
 use Error;
 
@@ -13,35 +14,24 @@ class LanguageController extends CoreController
     {
         try {
             $languagesRepository = new LanguagesRepository();
+            $languagesHelper = new languagesHelper();
             $data = [];
 
             $languages = $languagesRepository->getLanguages();
-
-            foreach ($languages as $language) {
-                // dump($language);
-                $languagesModel = new Languages();
-                if ($language['type'] === 'Front-end') {
-                    $languagesModel->setId($language['id']);
-                    $languagesModel->setLabel($language['label']);
-                    $languagesModel->setPicture($language['picture']);
-                    $languagesModel->setType($language['type']);
-                    $data['languages']['front-end'][] = $languagesModel;
-                } elseif ($language['type'] === 'Back-end') {
-                    $languagesModel->setId($language['id']);
-                    $languagesModel->setLabel($language['label']);
-                    $languagesModel->setPicture($language['picture']);
-                    $languagesModel->setType($language['type']);
-                    $data['languages']['back-end'][] = $languagesModel;
-                } elseif ($language['type'] === 'DevOps') {
-                    $languagesModel->setId($language['id']);
-                    $languagesModel->setLabel($language['label']);
-                    $languagesModel->setPicture($language['picture']);
-                    $languagesModel->setType($language['type']);
-                    $data['languages']['DevOps'][] = $languagesModel;
-                }
-            };
+            $data['languages']['Front-end'] = $languagesHelper->sortLangageByFrontType($languages);
+            $data['languages']['Back-end'] = $languagesHelper->sortLangageByBackType($languages);
+            $data['languages']['DevOps'] = $languagesHelper->sortLangageByDevopsType($languages);
+            // foreach ($languages as $language) {
+            //     if ($language->type === 'Front-end') {
+            //         $data['languages']['Front-end'][] = $language;
+            //     } elseif ($language->type === 'Back-end') {
+            //         $data['languages']['Back-end'][] = $language;
+            //     } elseif ($language->type === 'DevOps') {
+            //         $data['languages']['DevOps'][] = $language;
+            //     }
+            // };
             $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
-
+            
             $this->show('technos', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -55,19 +45,21 @@ class LanguageController extends CoreController
     // possibilité de le mettre dans un service à la place.
     private static function numberOfProjectDevBylanguage($languages): array
     {
+ 
         try {
             $projectLanguageCtrl = new ProjectLanguageController();
             $data = [];
             $arrayAllLanguagesId = $projectLanguageCtrl->fetchAllLanguageId();
             foreach ($languages as $language) {
-
+                
                 foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
-
-                    if ($language['label'] === $arrayAllLanguages['label']) {
-                        $data[$language['label']][] = +1;
+                    
+                    if ($language->getLabel() === $arrayAllLanguages['label']) {
+                        $data[$language->getLabel()][0] = $data[$language->getLabel()][0] +1;
                     }
                 }
             }
+
             return $data;
         } catch (\Throwable $error) {
             throw $error;
@@ -78,37 +70,23 @@ class LanguageController extends CoreController
     {
         try {
             $languagesRepository = new LanguagesRepository();
+            $languagesHelper = new languagesHelper();
             $data = [];
 
-            $getLanguages = $languagesRepository->getLanguages();
+            $languages = $languagesRepository->getLanguages();
 
-            foreach ($getLanguages as $getLanguage) {
-                $languagesModel = new Languages();
-                if (in_array("Front-end", (array) $getLanguage)) {
-                    $languagesModel->setId($getLanguage['id']);
-                    $languagesModel->setLabel($getLanguage['label']);
-                    $languagesModel->setPicture($getLanguage['picture']);
-                    $languagesModel->setType($getLanguage['type']);
-                    $data['languages']['frontend'][] = $languagesModel;
-                    continue;
-                }
-                if (in_array("Back-end", (array) $getLanguage)) {
-                    $languagesModel->setId($getLanguage['id']);
-                    $languagesModel->setLabel($getLanguage['label']);
-                    $languagesModel->setPicture($getLanguage['picture']);
-                    $languagesModel->setType($getLanguage['type']);
-                    $data['languages']['backend'][] = $languagesModel;
-                    continue;
-                }
-                if (in_array("DevOps", (array) $getLanguage)) {
-                    $languagesModel->setId($getLanguage['id']);
-                    $languagesModel->setLabel($getLanguage['label']);
-                    $languagesModel->setPicture($getLanguage['picture']);
-                    $languagesModel->setType($getLanguage['type']);
-                    $data['languages']['devOps'][] = $languagesModel;
-                    continue;
-                }
-            }
+            $data['languages']['Front-end'] = $languagesHelper->sortLangageByFrontType($languages);
+            $data['languages']['Back-end'] = $languagesHelper->sortLangageByBackType($languages);
+            $data['languages']['DevOps'] = $languagesHelper->sortLangageByDevopsType($languages);
+            // foreach ($languages as $language) {
+            //     if ($language->type === 'Front-end') {
+            //         $data['languages']['Front-end'][] = $language;
+            //     } elseif ($language->type === 'Back-end') {
+            //         $data['languages']['Back-end'][] = $language;
+            //     } elseif ($language->type === 'DevOps') {
+            //         $data['languages']['DevOps'][] = $language;
+            //     }
+            // };
 
             $this->boShow('admin-technos', $data);
         } catch (\Throwable $error) {
@@ -122,7 +100,16 @@ class LanguageController extends CoreController
 
     public function addTechnoPage(): void
     {
-        $this->boShow('admin-add-techno');
+        try {
+            $this->boShow('admin-add-techno');
+            
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('admin-add-techno', $data);
+        }
     }
 
     public function addTechno(): void
@@ -169,7 +156,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function editTechno($idLanguage)
+    public function editTechno($idLanguage): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
@@ -196,7 +183,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function updateTechno($idLanguage)
+    public function updateTechno($idLanguage): void
     {
 
         try {
@@ -235,7 +222,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function boDeleteTechnos($labelId)
+    public function boDeleteTechnos($labelId): void
     {
         try {
             $languagesRepository = new LanguagesRepository();

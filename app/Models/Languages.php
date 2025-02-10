@@ -2,17 +2,14 @@
 
 namespace App\Models;
 
-use App\Utils\Database;
-use PDO;
-use Error;
-use Exception;
+use App\Helpers\validateSetterData;
 
 class Languages
 {
-    public $id;
-    public $label;
-    public $picture;
-    public $type;
+    private $id;
+    private $label;
+    private $picture;
+    private $type;
 
     public function getId(): int
     {
@@ -24,33 +21,54 @@ class Languages
         return $this;
     }
 
-    public function getLabel(): int
+    public function getLabel(): String
     {
         return $this->label;
     }
     public function setLabel($label): self
     {
-        $this->label = $label;
-        return $this;
+        try {
+            $this->validateString($label, 100, "label");
+            $this->label = $label;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
-    public function getPicture(): int
+    public function getPicture(): String
     {
         return $this->picture;
     }
     public function setPicture($picture): self
     {
-        $this->picture = $picture;
-        return $this;
+        try {
+            $this->validateString($picture, 100, "picture");
+            $this->picture = $picture;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
-    public function getType(): int
+    public function getType(): String
     {
         return $this->type;
     }
     public function setType($type): self
     {
-        $this->type = $type;
-        return $this;
+        try {
+            $this->validateString($type, 100, "type");
+            $this->type = $type;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    private function validateString($valeur, $length, $field)
+    {
+        $validateSetterData = new validateSetterData;
+        return $validateSetterData->validateString($valeur, $length, $field);
     }
 }
