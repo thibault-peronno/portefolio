@@ -39,19 +39,19 @@ class OrganizationsRepository
 
     public function getOrgaById($id)
     {
-        
+
         try {
             $organizationModel = new Organization();
             $pdo = Database::getPDO();
-            
+
             $sql = "SELECT * FROM `organizations` WHERE id = :idOrganizations";
             $pdoStatement = $pdo->prepare($sql);
-            
+
             $pdoStatement->bindParam(':idOrganizations', $id["id"], PDO::PARAM_STR);
 
             $pdoStatement->execute();
             $organization = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-            
+
             $organizationModel->setId($organization['id']);
             $organizationModel->setTitle($organization['title']);
             $organizationModel->setDescription($organization['description']);
@@ -87,11 +87,10 @@ class OrganizationsRepository
         }
     }
 
-    public function updateOrganization($id)
+    public function updateOrganization(Organization $organizationModel)
     {
 
         try {
-            $organizationModel = new Organization();
             $pdo = Database::getPDO();
             $sql = "UPDATE `organizations` SET `title` = :title, `description` = :description, `picture` = :picture WHERE id = :id";
             $pdoStatement = $pdo->prepare($sql);
@@ -99,16 +98,15 @@ class OrganizationsRepository
             $pdoStatement->bindParam(':title', $organizationModel->getTitle(), PDO::PARAM_STR);
             $pdoStatement->bindParam(':description', $organizationModel->getDescription(), PDO::PARAM_STR);
             $pdoStatement->bindParam(':picture', $organizationModel->getPicture(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':id', $id, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':id', $organizationModel->getid(), PDO::PARAM_STR);
 
             $insertedRows = $pdoStatement->execute();
 
             if ($insertedRows > 0) {
-                // We retrieve the last id.
                 return true;
             }
         } catch (\Throwable $error) {
-            throw $error;
+            throw new Error("La mise à jour de l'organisation a échouée");
         }
     }
 }

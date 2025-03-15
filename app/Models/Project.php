@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Helpers\validateSetterData;
+use Error;
 
 class Project
 {
@@ -22,8 +23,12 @@ class Project
     {
         return $this->id;
     }
-    public function setId($id): self
+    public function setId(int $id): self
     {
+        if (!is_numeric($id)) {
+            throw new Error("id must be a number");
+        }
+
         $this->id = $id;
         return $this;
     }
@@ -34,11 +39,11 @@ class Project
     }
     public function setTitle($title): self
     {
-        try{
+        try {
             $this->validateString($title, 100, "title");
             $this->title = $title;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }
@@ -49,11 +54,11 @@ class Project
     }
     public function setDescription($description): self
     {
-        try{
+        try {
             $this->validateString($description, 255, "description");
             $this->description = $description;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }
@@ -64,11 +69,11 @@ class Project
     }
     public function setPicture($picture): self
     {
-        try{
+        try {
             $this->validateString($picture, 100, "picture");
             $this->picture = $picture;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }
@@ -79,11 +84,11 @@ class Project
     }
     public function setUrl($url): self
     {
-        try{
+        try {
             $this->validateString($url, 100, "url");
             $this->url = $url;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }
@@ -92,10 +97,13 @@ class Project
     {
         return $this->organization_id;
     }
-    public function setOrganizationId($organizationId): self
+    public function setOrganizationId(int $organizationId): self
     {
-            $this->organization_id = $organizationId;
-            return $this;
+        if (!is_numeric($organizationId)) {
+            throw new Error("organizationId must be a number");
+        }
+        $this->organization_id = $organizationId;
+        return $this;
     }
 
     public function getLabels(): array
@@ -104,10 +112,10 @@ class Project
     }
     public function setLabels($labels): self
     {
-        try{
+        try {
             $this->labels = $labels;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }
@@ -118,11 +126,11 @@ class Project
     }
     public function setTitleOrganization($titleOrganization): self
     {
-        try{
+        try {
             $this->validateString($titleOrganization, 100, "titleOrganization");
             $this->title_organization = $titleOrganization;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }
@@ -133,11 +141,11 @@ class Project
     }
     public function setPictureOrganization($pictureOrganization): self
     {
-        try{
+        try {
             $this->validateString($pictureOrganization, 100, "pictureOrganization");
             $this->picture_organization = $pictureOrganization;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }
@@ -148,11 +156,11 @@ class Project
     }
     public function setDescriptionOrganization($descriptionOrganization): self
     {
-        try{
+        try {
             $this->validateString($descriptionOrganization, 255, "descriptionOrganization");
             $this->description_organization = $descriptionOrganization;
             return $this;
-        }catch(\Throwable $error){
+        } catch (\Throwable $error) {
             throw $error;
         }
     }

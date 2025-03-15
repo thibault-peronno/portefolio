@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Error;
+
 class ProjectLanguage
 {
     private $id;
@@ -23,7 +25,7 @@ class ProjectLanguage
     {
         return $this->projectId;
     }
-    public function setProjectId($projectId): self
+    public function setProjectId(int $projectId): self
     {
         $this->projectId = $projectId;
         return $this;
@@ -33,8 +35,12 @@ class ProjectLanguage
     {
         return $this->languageId;
     }
-    public function setLanguageId($languageId): self
+    public function setLanguageId(int $languageId): self
     {
+        if (!is_numeric($languageId)) {
+            throw new Error("languageId must be numeric");
+        }
+
         $this->languageId = $languageId;
         return $this;
     }

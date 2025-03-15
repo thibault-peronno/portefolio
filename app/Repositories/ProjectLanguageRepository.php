@@ -9,10 +9,9 @@ use PDO;
 class ProjectLanguageRepository
 {
 
-    public function addLanguagesProjects(): bool
+    public function addLanguagesProjects(ProjectLanguage $projectLanguageModel): void
     {
         try {
-            $projectLanguageModel = new ProjectLanguage();
             $pdo = Database::getPDO();
             // Préparation de la requête pour insérer les languages
             $sql = "INSERT INTO `projects_languages` (`project_id`, `language_id`) VALUES (:projectId, :languageId)";
@@ -20,14 +19,7 @@ class ProjectLanguageRepository
 
             $pdoStatementLanguages->bindValue(':projectId', $projectLanguageModel->getProjectId(), PDO::PARAM_INT);
             $pdoStatementLanguages->bindValue(':languageId', $projectLanguageModel->getLanguageId(), PDO::PARAM_INT);
-            $insertedRows = $pdoStatementLanguages->execute();
-
-            if ($insertedRows > 0) {
-                // We return true, because the sql insert has worked.
-                return true;
-            }
-
-            return false;
+            $pdoStatementLanguages->execute();
         } catch (\Throwable $error) {
             throw $error;
         }
@@ -47,15 +39,27 @@ class ProjectLanguageRepository
         }
     }
 
-    public function deleteLanguagesProjects(): bool
+    public function deleteLanguagesProjects(int $id): bool
     {
         try {
             $projectLanguageModel = new ProjectLanguage();
             $pdo = Database::getPDO();
-            $sql = "DELETE FROM `projects_languages` WHERE project_id = ?";
+            $sql = "DELETE FROM `projects_languages` WHERE project_id = :id";
             $pdoStatement = $pdo->prepare($sql);
+
+            $pdoStatement->bindParam(':id', $id, PDO::PARAM_STR);
             $resultDeleteProjectLanguages =  $pdoStatement->execute([$projectLanguageModel->getProjectId()]);
             return $resultDeleteProjectLanguages;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    public function fetchAllLanguageId(): array
+    {
+        try {
+            $projectLanguageRepository = new ProjectLanguageRepository();
+            return $projectLanguageRepository->languageIdModel();
         } catch (\Throwable $error) {
             throw $error;
         }

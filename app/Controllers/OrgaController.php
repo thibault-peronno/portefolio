@@ -54,26 +54,21 @@ class OrgaController extends CoreController
     public function addOrga(): void
     {
         try {
-            $organizationsRepository = new OrganizationsRepository();
-            $organizationModel = new Organization();
-            $imageHelper = new ImageHelper();
 
             $data = [];
 
             /* Inserte image : return true or an trow error */
+            $imageHelper = new ImageHelper();
             $imageHelper->insertedOrganizationImage();
 
-            // échapper nos données pour éviter les failles XSS
-            $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
-            $description = htmlspecialchars($_POST['description'], ENT_QUOTES);
-            $picture = $_FILES["picture"]["name"];
-
             // assigner les valeurs à l'objet, pour les récuperer dans notre model.
-            $organizationModel->setTitle($title);
-            $organizationModel->setDescription($description);
-            $organizationModel->setPicture($picture);
+            $organizationModel = new Organization();
+            $organizationModel->setTitle($_POST['title']);
+            $organizationModel->setDescription($_POST['description']);
+            $organizationModel->setPicture($$_FILES["picture"]["name"]);
 
             // aller faire la requête dans notre repository
+            $organizationsRepository = new OrganizationsRepository();
             $insert = $organizationsRepository->addOrganization();
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
@@ -89,51 +84,29 @@ class OrgaController extends CoreController
         }
     }
 
-    public function editOrga($idOrganization)
-    {
-        try {
-            $organizationsRepository = new OrganizationsRepository();
-            $data = [];
-
-            $data['organization'] = $organizationsRepository->getOrgaById($idOrganization);
-
-            $this->boShow('admin-add-orga', $data);
-        } catch (\Throwable $error) {
-            $data = [
-                "message" => $error->getMessage(),
-                "succeeded" => false,
-            ];
-            $this->boShow('error', $data);
-        }
-    }
-
     public function updateOrganization()
     {
 
         try {
-            $organizationsRepository = new OrganizationsRepository();
-            $organizationModel = new Organization();
             $imageHelper = new ImageHelper();
             $isNoUpdateImage = $imageHelper->isNoUpdateImage();
-
+            
             if (!$isNoUpdateImage) {
                 $imageHelper->insertedOrganizationImage();
             }
-
-            $id = intval($_POST['id']);
-            $title = htmlspecialchars($_POST['title']);
-            $description = htmlspecialchars($_POST['description']);
+            
+            $organizationModel = new Organization();
+            $organizationModel->setId($_POST['id']);
+            $organizationModel->setTitle($$_POST['title']);
+            $organizationModel->setDescription($_POST['description']);
             if (!$isNoUpdateImage) {
-                $picture = $_FILES["picture"]["name"];
+            $organizationModel->setPicture($$_FILES["picture"]["name"]);
             } else {
-                $picture = htmlspecialchars($_POST['picture']);
+                $organizationModel->setPicture($_POST['picture']);
             }
-
-            $organizationModel->setTitle($title);
-            $organizationModel->setDescription($description);
-            $organizationModel->setPicture($picture);
-
-            $insert = $organizationsRepository->updateOrganization($id);
+            
+            $organizationsRepository = new OrganizationsRepository();
+            $insert = $organizationsRepository->updateOrganization($organizationModel);
 
             $data['succeeded'] = $insert;
 

@@ -23,7 +23,7 @@ class languagesHelper
         foreach ($languages as $language) {
             if ($language->getType() === 'Front-end') {
                 $data[] = $language;
-            } 
+            }
         };
         return $data;
     }

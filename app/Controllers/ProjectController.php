@@ -44,7 +44,7 @@ class ProjectController extends CoreController
             $data = [];
 
             $data['project'] = $projectRepository->getProjectById($idProject['id']);
-            
+
             $this->show('project', $data);
         } catch (\Throwable $error) {
             $data = [
@@ -115,60 +115,26 @@ class ProjectController extends CoreController
     public function addProject(): void
     {
         try {
-            $projectModel = new Project();
-            $projectRepository = new ProjectRepository();
+
+            /* Insert image : return true or an throw error */
             $imageHelper = new ImageHelper();
-
-            $data = [];
-            /* Inserte image : return true or an throw error */
             $imageHelper->insertedProjectImage();
-
-            /*  With FILTER_SANITIZE_STRING that is deprecated as of PHP 8.1.0
-            $title = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-            You could use this way : $title = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        */
-            $title = htmlspecialchars($_POST['title'], ENT_QUOTES);
-            $description = htmlspecialchars($_POST['description'], ENT_QUOTES);
-            $url = htmlspecialchars($_POST['url'], ENT_QUOTES);
-            $picture = $_FILES["picture"]["name"];
-            $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);
-
 
             /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;
             */
-            $projectModel->setTitle($title);
-            $projectModel->setDescription($description);
-            $projectModel->setUrl($url);
-            $projectModel->setPicture($picture);
-            $projectModel->setOrganizationId($organization_id);
+            $projectModel = new Project();
+            $projectModel->setTitle($_POST['title']);
+            $projectModel->setDescription($_POST['description']);
+            $projectModel->setUrl($_POST['url']);
+            $projectModel->setPicture($_FILES["picture"]["name"]);
+            $projectModel->setOrganizationId($_POST['organizationId']);
 
-            $insert = $projectRepository->addProject();
-
-            $data['succeeded'] = $insert;
-
-            $this->boShow('admin-add-project', $data);
-        } catch (\Throwable $error) {
-            $data = [
-                "message" => $error->getMessage(),
-                "succeeded" => false,
-            ];
-            $this->boShow('admin-add-project', $data);
-        }
-    }
-
-    public function editProject($idProject)
-    {
-        try {
-            $languagesHelper = new languagesHelper();
-            $organizatiionRepository = new OrganizationsRepository();
             $projectRepository = new ProjectRepository();
+            $insert = $projectRepository->addProject($projectModel, $_POST['languages']);
 
             $data = [];
-
-            $data['languages'] = $languagesHelper->getLanguages();
-            $data['organizations'] = $organizatiionRepository->getOrganizations();
-            $data['project'] = $projectRepository->getProjectById($idProject['id']);
+            $data['succeeded'] = $insert;
 
             $this->boShow('admin-add-project', $data);
         } catch (\Throwable $error) {
@@ -184,8 +150,6 @@ class ProjectController extends CoreController
     {
 
         try {
-            $projectModel = new Project();
-            $projectRepository = new ProjectRepository;
             $imageHelper = new ImageHelper();
 
             $data = [];
@@ -194,25 +158,21 @@ class ProjectController extends CoreController
             if (!$isNoUpdateImage) {
                 $imageHelper->insertedProjectImage();
             }
-            $id = intval($idProject['id']);
-            $title = htmlspecialchars($_POST['title']);
-            $description = htmlspecialchars($_POST['description']);
-            $url = htmlspecialchars($_POST['url']);
+
+            $projectModel = new Project();
+            $projectModel->setId($idProject['id']);
+            $projectModel->setTitle($_POST['title']);
+            $projectModel->setDescription($_POST['description']);
+            $projectModel->setUrl($_POST['url']);
             if (!$isNoUpdateImage) {
-                $picture = $_FILES["picture"]["name"];
+                $projectModel->setPicture($_FILES["picture"]["name"]);
             } else {
-                $picture = htmlspecialchars($_POST['picture']);
+                $projectModel->setPicture($_POST['picture']);
             }
-            $organization_id = filter_input(INPUT_POST, 'organizationId', FILTER_SANITIZE_NUMBER_INT);
+            $projectModel->setOrganizationId($_POST['organizationId']);
 
-            $projectModel->setId($id);
-            $projectModel->setTitle($title);
-            $projectModel->setDescription($description);
-            $projectModel->setUrl($url);
-            $projectModel->setPicture($picture);
-            $projectModel->setOrganizationId($organization_id);
-
-            $insert = $projectRepository->updateProject();
+            $projectRepository = new ProjectRepository;
+            $insert = $projectRepository->updateProject($projectModel, $_POST['languages']);
 
             $data['succeeded'] = $insert;
 

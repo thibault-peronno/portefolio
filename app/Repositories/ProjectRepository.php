@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Controllers\ProjectLanguageController;
+use App\Models\ProjectLanguage;
+use App\Repositories\ProjectLanguageRepository;
 use App\Models\Project;
 use App\Utils\Database;
 use PDO;
@@ -43,7 +45,7 @@ class ProjectRepository
 
                 return $projectModel;
             }, $allProjects);
-            
+
             return $getProjects;
         } catch (\Throwable $error) {
             throw $error;
@@ -86,10 +88,8 @@ class ProjectRepository
         }
     }
 
-    public function addProject(): bool
+    public function addProject(Project $projectModel, $languages): bool
     {
-        $projectModel = new Project();
-
         $pdo = Database::getPDO();
         $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :url, :organizationId)";
 
@@ -107,16 +107,19 @@ class ProjectRepository
             $pdoStatement->bindValue(':organizationId', $projectModel->getOrganizationId(), PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();
-
+            // le seul élément qui doit initier un controlleur est la route
             if ($insertedRows > 0) {
                 // We retrieve the last id.
-                $projectLanguageCtrl = new ProjectLanguageController();
                 $projectId = $pdo->lastInsertId();
-                $insertLanguages = $projectLanguageCtrl->addProjectLanguage($projectId);
 
-                if ($insertLanguages) {
-                    // We return true, because the sql insert has worked.
-                    return true;
+                foreach ($languages as $key => $value) {
+                    $projectLanguageModel = new ProjectLanguage();
+                    $projectLanguageModel->setProjectId($projectId);
+                    $projectLanguageModel->setLanguageId($value);
+
+                    // call the method to exect the sql request
+                    $projectLanguageRepository = new ProjectLanguageRepository();
+                    $projectLanguageRepository->addLanguagesProjects($projectLanguageModel);
                 }
             }
 
@@ -127,10 +130,9 @@ class ProjectRepository
         }
     }
 
-    public function updateProject(): bool
+    public function updateProject(Project $projectModel, $languages): bool
     {
         $pdo = Database::getPDO();
-        $projectModel = new Project();
         $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
         try {
             $pdoStatement = $pdo->prepare($sql);
@@ -144,13 +146,12 @@ class ProjectRepository
 
             $insertedRows = $pdoStatement->execute();
 
-
             if ($insertedRows > 0) {
                 // We retrieve the last id.
-                $projectLanguageCtrl = new ProjectLanguageController;
-                $deleteLanguages = $projectLanguageCtrl->deleteProjetctLanguage($_POST['languages'], $projectModel->getId());
+                $projectLanguageRepository = new ProjectLanguageRepository();
+                $deleteLanguages = $projectLanguageRepository->deleteLanguagesProjects($projectModel->getId());
                 if ($deleteLanguages) {
-                    $insertLanguages = $projectLanguageCtrl->addProjectLanguage($projectModel->getId());
+                    $insertLanguages = $projectLanguageRepository->addLanguagesProjects($languages);
                 }
 
                 if ($insertLanguages) {
