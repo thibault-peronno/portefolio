@@ -25,7 +25,7 @@ class ProjectLanguageRepository
         }
     }
 
-    public function languageIdModel(): array
+    public function getLabelLanguageFromProjectLanguagesId(): array
     {
         try {
             $pdo = Database::getPDO();
@@ -50,16 +50,6 @@ class ProjectLanguageRepository
             $pdoStatement->bindParam(':id', $id, PDO::PARAM_STR);
             $resultDeleteProjectLanguages =  $pdoStatement->execute([$projectLanguageModel->getProjectId()]);
             return $resultDeleteProjectLanguages;
-        } catch (\Throwable $error) {
-            throw $error;
-        }
-    }
-
-    public function fetchAllLanguageId(): array
-    {
-        try {
-            $projectLanguageRepository = new ProjectLanguageRepository();
-            return $projectLanguageRepository->languageIdModel();
         } catch (\Throwable $error) {
             throw $error;
         }

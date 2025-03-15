@@ -2,7 +2,6 @@
 
 namespace App\Repositories;
 
-use App\Controllers\ProjectLanguageController;
 use App\Models\ProjectLanguage;
 use App\Repositories\ProjectLanguageRepository;
 use App\Models\Project;

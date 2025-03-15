@@ -6,7 +6,7 @@ use App\Repositories\UserRepository;
 
 class UserController extends CoreController {
 
-    public function user(): array 
+    public function user()
     {
         try {
             $userRepository = new UserRepository();

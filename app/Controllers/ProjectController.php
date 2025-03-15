@@ -9,12 +9,6 @@ use App\Repositories\OrganizationsRepository;
 use App\Helpers\languagesHelper;
 use App\Helpers\ImageHelper;
 
-/* Le controller est le chef d'orchestre, donc je fais parler les models et les repositories depuis chaque
-méthode
-
-J'instancie le project model et je set mes valeurs
-*/
-
 class ProjectController extends CoreController
 {
 
@@ -118,7 +112,7 @@ class ProjectController extends CoreController
 
             /* Insert image : return true or an throw error */
             $imageHelper = new ImageHelper();
-            $imageHelper->insertedProjectImage();
+            $imageHelper->insertedProjectImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
 
             /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;
@@ -153,10 +147,10 @@ class ProjectController extends CoreController
             $imageHelper = new ImageHelper();
 
             $data = [];
-            $isNoUpdateImage = $imageHelper->isNoUpdateImage();
+            $isNoUpdateImage = $imageHelper->isNoUpdateImage($_FILES['picture']);
 
             if (!$isNoUpdateImage) {
-                $imageHelper->insertedProjectImage();
+                $imageHelper->insertedProjectImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
 
             $projectModel = new Project();

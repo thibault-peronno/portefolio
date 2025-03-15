@@ -76,13 +76,13 @@ class AuthController extends MainController
     {
         try {
             $userModel = new User();
-            $userRepository = new UserRepository();
-
+            
             $userModel->setFirstname(htmlspecialchars($_POST['firstname']));
             $userModel->setLastname(htmlspecialchars($_POST['lastname']));
             $userModel->setRoleId(2);
-
-            $addUser = $userRepository->addUser();
+            
+            $userRepository = new UserRepository();
+            $userRepository->addUser();
 
             $this->page();
         } catch (\Throwable $error) {
@@ -94,12 +94,12 @@ class AuthController extends MainController
     {
         try {
             $authModel = new Auth();
-            $AuthRepository = new AuthRepository();
-
+            
             $authModel->setMail(htmlspecialchars($_POST['mail']));
             $authModel->setPassword(htmlspecialchars($_POST['password']));
             $authModel->setUserId($userId);
-
+            
+            $AuthRepository = new AuthRepository();
             $AuthRepository->isAddRegister();
 
             return true;

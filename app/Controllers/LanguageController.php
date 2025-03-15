@@ -6,6 +6,7 @@ use App\Models\Languages;
 use App\Helpers\ImageHelper;
 use App\Helpers\languagesHelper;
 use App\Repositories\LanguagesRepository;
+use App\Repositories\ProjectLanguageRepository;
 use Error;
 
 class LanguageController extends CoreController
@@ -21,15 +22,7 @@ class LanguageController extends CoreController
             $data['languages']['Front-end'] = $languagesHelper->sortLangageByFrontType($languages);
             $data['languages']['Back-end'] = $languagesHelper->sortLangageByBackType($languages);
             $data['languages']['DevOps'] = $languagesHelper->sortLangageByDevopsType($languages);
-            // foreach ($languages as $language) {
-            //     if ($language->type === 'Front-end') {
-            //         $data['languages']['Front-end'][] = $language;
-            //     } elseif ($language->type === 'Back-end') {
-            //         $data['languages']['Back-end'][] = $language;
-            //     } elseif ($language->type === 'DevOps') {
-            //         $data['languages']['DevOps'][] = $language;
-            //     }
-            // };
+
             $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
             
             $this->show('technos', $data);
@@ -47,9 +40,9 @@ class LanguageController extends CoreController
     {
  
         try {
-            $projectLanguageCtrl = new ProjectLanguageController();
+            $projectLanguageRepository = new ProjectLanguageRepository();
             $data = [];
-            $arrayAllLanguagesId = $projectLanguageCtrl->fetchAllLanguageId();
+            $arrayAllLanguagesId = $projectLanguageRepository->getLabelLanguageFromProjectLanguagesId();
             foreach ($languages as $language) {
                 
                 foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
@@ -120,7 +113,7 @@ class LanguageController extends CoreController
             $imageHelper = new ImageHelper();
             $data = [];
 
-            $insertedImage = $imageHelper->insertedLanguageImage();
+            $insertedImage = $imageHelper->insertedLanguageImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
 
             if (!$insertedImage) {
                 throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
@@ -190,10 +183,10 @@ class LanguageController extends CoreController
             $languagesRepository = new LanguagesRepository();
             $languagesModel = new Languages();
             $imageHelper = new ImageHelper();
-            $isNoUpdateImage = $imageHelper->isNoUpdateImage();
+            $isNoUpdateImage = $imageHelper->isNoUpdateImage($_FILES['picture']);
 
             if (!$isNoUpdateImage) {
-                $imageHelper->insertedLanguageImage();
+                $imageHelper->insertedLanguageImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
 
             if (!$isNoUpdateImage) {

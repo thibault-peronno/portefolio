@@ -59,7 +59,7 @@ class OrgaController extends CoreController
 
             /* Inserte image : return true or an trow error */
             $imageHelper = new ImageHelper();
-            $imageHelper->insertedOrganizationImage();
+            $imageHelper->insertedOrganizationImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
 
             // assigner les valeurs à l'objet, pour les récuperer dans notre model.
             $organizationModel = new Organization();
@@ -89,10 +89,10 @@ class OrgaController extends CoreController
 
         try {
             $imageHelper = new ImageHelper();
-            $isNoUpdateImage = $imageHelper->isNoUpdateImage();
+            $isNoUpdateImage = $imageHelper->isNoUpdateImage($_FILES['picture']);
             
             if (!$isNoUpdateImage) {
-                $imageHelper->insertedOrganizationImage();
+                $imageHelper->insertedOrganizationImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
             
             $organizationModel = new Organization();
