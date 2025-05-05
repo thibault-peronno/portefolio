@@ -23,6 +23,7 @@ class AuthController extends MainController
 
     public function logToBackOffice(): void
     {
+        dump("logToBackOffice");
         try {
             $authModel = new Auth();
             $userModel = new User();
@@ -30,6 +31,7 @@ class AuthController extends MainController
 
             // récupérer l'utilisateur qui se connecte à un compte enregistré
             $getUser = $AuthRepository->getUser($_POST['mail'], $authModel, $userModel);
+            dump($getUser);
             if ($getUser["succeeded"] === false) {
                 // si pas identique, envoyer un message et rester sur la page
                 $this->page($getUser);
@@ -37,13 +39,14 @@ class AuthController extends MainController
             }
             // comparer le mot de passe de $_POST avec le password stocké en base de données
             $isPasswordEqual = $this->isPasswordEqual($authModel->getPassword());
+            dump($isPasswordEqual);
             if ($isPasswordEqual) {
                 session_start();
                 $_SESSION['user_id'] = $userModel->getId();
                 $_SESSION['firstname'] = $userModel->getFirstname();
                 $_SESSION['lastname'] = $userModel->getLastname();
 
-
+                dump("isPasswordEqual");
                 $this->boHome();
                 exit();
             }
