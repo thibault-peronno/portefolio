@@ -6,7 +6,7 @@ use App\Controllers\CoreController;
 use App\Models\Project;
 use App\Repositories\ProjectRepository;
 use App\Repositories\OrganizationsRepository;
-use App\Helpers\languagesHelper;
+use App\Helpers\LanguagesHelper;
 use App\Helpers\ImageHelper;
 
 class ProjectController extends CoreController
@@ -112,7 +112,9 @@ class ProjectController extends CoreController
 
             /* Insert image : return true or an throw error */
             $imageHelper = new ImageHelper();
+            // dd($_POST);
             $imageHelper->insertedProjectImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
+            // dump("test");
 
             /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;
@@ -126,7 +128,7 @@ class ProjectController extends CoreController
 
             $projectRepository = new ProjectRepository();
             $insert = $projectRepository->addProject($projectModel, $_POST['languages']);
-
+            dump($insert);
             $data = [];
             $data['succeeded'] = $insert;
 
@@ -138,6 +140,22 @@ class ProjectController extends CoreController
             ];
             $this->boShow('admin-add-project', $data);
         }
+    }
+
+    public function editProject($idProject)
+    {
+        // dd($idProject);
+        $languagesHelper = new LanguagesHelper();
+        $organizatiionRepository = new OrganizationsRepository();
+        $projectRepository = new ProjectRepository;
+
+        $data = [];
+
+        $data['languages'] = $languagesHelper->getLanguages();
+        $data['organizations'] = $organizatiionRepository->getOrganizations();
+        $data['project'] = $projectRepository->getProjectById($idProject['id']);
+
+        $this->boShow('admin-add-project', $data);
     }
 
     public function updateProject($idProject)

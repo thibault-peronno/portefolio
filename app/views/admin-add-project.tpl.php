@@ -1,4 +1,4 @@
-<!-- <?php dump($organizations, $languages) ?> -->
+<!-- <?php dump($organizations, $languages, $project) ?> -->
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
 <?= isset($project) ? "Modifier un projet" : "Ajouter un projet" ?>
 </h1>
@@ -52,7 +52,7 @@
                 <div class="block rounded bg-white h-12 w-full p-2 relative">
                     <div id="selectTechnos" class="h-full">
                         <div class="block bg-white h-full h-12 w-full flex flex-row items-center justify-between">
-                            <p>Choisi les languages</p>
+                            <p>Choisi les langages</p>
                             <p class="cursor-default">+</p>
                         </div>
                         <div class="hidden"></div>
@@ -60,12 +60,14 @@
                     <div id="checklanguages" class="hidden absolute flex flex-col gap-2 bg-white left-0 p-2 w-full rounded h-28 overflow-y-auto">
                         <?php foreach ($languages as $language) : ?>
                             <span>
-                                <input type="checkbox" id="<?= htmlspecialchars($language->id) ?>" value="<?= htmlspecialchars($language->id) ?>" 
-                                <?php foreach($project['labels'] as $label){
-                                   echo $label['label'] == $language->getLabel() ? "checked" : "";
-                                } ?>
-                                name="languages[]" />
-                                <label for="<?= htmlspecialchars($language->getId()) ?>"><?= htmlspecialchars($language->getLabel()) ?></label>
+                                <input type="checkbox" id="<?= $language->getId() ?>" value="<?= $language->getId() ?>" name="languages[]"
+                                    <?php if(isset($project)) :?>
+                                        <?php foreach($project->getLabels() as $label){
+                                        echo $label['label'] == $language->getLabel() ? "checked" : "";
+                                        } ?>
+                                    <?php endif ?>
+                                />
+                                <label for="<?= $language->getId() ?>"><?= $language->getLabel() ?></label>
                             </span>
                         <?php endforeach; ?>
                     </div>
@@ -74,7 +76,7 @@
             <div class="mb-5 sm:w-6/12">
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
-                    <option value="<?= isset($project) ? $project['organization_id'] : "" ?>"><?= isset($project) ? $project['title_organization'] : "Choisi l'organisation" ?></option>
+                    <option value="<?= isset($project) ? $project->getOrganizationId() : "" ?>"><?= isset($project) ? $project->getTitleOrganization() : "Choisi l'organisation" ?></option>
                     <?php foreach ($organizations as $organization) : ?>
                         <option 
                             value=<?= $organization->getId() ?>>

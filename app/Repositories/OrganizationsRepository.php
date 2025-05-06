@@ -39,18 +39,18 @@ class OrganizationsRepository
 
     public function getOrgaById($id)
     {
-
         try {
             $organizationModel = new Organization();
             $pdo = Database::getPDO();
-
+            
             $sql = "SELECT * FROM `organizations` WHERE id = :idOrganizations";
             $pdoStatement = $pdo->prepare($sql);
-
-            $pdoStatement->bindParam(':idOrganizations', $id["id"], PDO::PARAM_STR);
-
+            
+            $pdoStatement->bindParam(':idOrganizations', $id, PDO::PARAM_STR);
+            
             $pdoStatement->execute();
             $organization = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            // dd($organization);
 
             $organizationModel->setId($organization['id']);
             $organizationModel->setTitle($organization['title']);
@@ -63,21 +63,20 @@ class OrganizationsRepository
         }
     }
 
-    public function addOrganization(): bool
+    public function addOrganization(Organization $organizationModel): bool
     {
 
         try {
-            $organizationModel = new Organization();
+            // $organizationModel = new Organization();
             $pdo = Database::getPDO();
             $sql = "INSERT INTO `organizations` (`title`, `description`, `picture`) VALUES (:title, :description, :picture)";
             $pdoStatement = $pdo->prepare($sql);
-
             $pdoStatement->bindValue(':title',  $organizationModel->getTitle(), PDO::PARAM_STR);
             $pdoStatement->bindValue(':description',  $organizationModel->getDescription(), PDO::PARAM_STR);
             $pdoStatement->bindValue(':picture',  $organizationModel->getPicture(), PDO::PARAM_STR);
 
             $insertedRows = $pdoStatement->execute();
-
+        
             if ($insertedRows > 0) {
                 return true;
             }

@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use Exception;
 
-class validateSetterData {
+class ValidateSetterData {
     public function validateString(string $valeur, int $lengthMax, string $field): void
     {
         if (mb_strlen($valeur) > $lengthMax) {

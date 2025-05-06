@@ -90,7 +90,7 @@ class ProjectRepository
     public function addProject(Project $projectModel, $languages): bool
     {
         $pdo = Database::getPDO();
-        $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :url, :organizationId)";
+        $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :picture, :organizationId)";
 
         try {
             /*  La méthode prepare() de PDO est utilisée pour préparer une requête SQL pour son exécution, en créant un objet PDOStatement qui permet de lier des valeurs aux placeholders de la requête et d'exécuter la requête de manière sécurisée, évitant ainsi les injections SQL
@@ -102,24 +102,27 @@ class ProjectRepository
             $pdoStatement->bindValue(':title', $projectModel->getTitle(), PDO::PARAM_STR);
             $pdoStatement->bindValue(':description', $projectModel->getDescription(), PDO::PARAM_STR);
             $pdoStatement->bindValue(':url', $projectModel->getUrl(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':url', $projectModel->getPicture(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':picture', $projectModel->getPicture(), PDO::PARAM_STR);
             $pdoStatement->bindValue(':organizationId', $projectModel->getOrganizationId(), PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();
+            
             // le seul élément qui doit initier un controlleur est la route
-            if ($insertedRows > 0) {
+            if ($insertedRows) {
                 // We retrieve the last id.
                 $projectId = $pdo->lastInsertId();
-
+                
+                // dd("insertedRows");
                 foreach ($languages as $key => $value) {
                     $projectLanguageModel = new ProjectLanguage();
                     $projectLanguageModel->setProjectId($projectId);
                     $projectLanguageModel->setLanguageId($value);
-
+                    
                     // call the method to exect the sql request
                     $projectLanguageRepository = new ProjectLanguageRepository();
                     $projectLanguageRepository->addLanguagesProjects($projectLanguageModel);
                 }
+                return true;
             }
 
             // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX

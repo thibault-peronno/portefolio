@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Helpers\validateSetterData;
+use App\Helpers\ValidateSetterData;
 use Error;
 
 class Project

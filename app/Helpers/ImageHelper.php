@@ -46,7 +46,7 @@ class ImageHelper
             if (!$this->imageProcess($fileName, $fileTmpName, $fileType)) {
                 throw new Exception("L'image n'est pas valide");
             }
-            if (file_exists(__DIR__ . "/../../public/assets/images/projects/" . $$fileName)) {
+            if (file_exists(__DIR__ . "/../../public/assets/images/projects/" . $fileName)) {
                 throw new Exception("Le fichier existe déjà");
             };
             return copy($fileTmpName, "./assets/images/projects/" . $fileName);

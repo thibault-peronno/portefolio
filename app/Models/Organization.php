@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Helpers\validateSetterData;
+use App\Helpers\ValidateSetterData;
 
 class Organization
 {
@@ -32,9 +32,8 @@ class Organization
             $this->validateString($title, 100, "title");
             $this->title = $title;
             return $this;
-            //code...
-        } catch (\Throwable $th) {
-            //throw $th;
+        } catch (\Throwable $error) {
+            throw $error;
         }
     }
 

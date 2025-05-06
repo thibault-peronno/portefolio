@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 use App\Repositories\LanguagesRepository;
 
-class languagesHelper
+class LanguagesHelper
 {
     public function getLanguages(): array
     {

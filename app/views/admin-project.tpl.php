@@ -9,7 +9,7 @@
             <p><?= $project->getDescription() ?></p>
         </div>
         <div class="bg-white rounded p-2.5 col-start-2 row-start-2 col-span-3">
-            <h3 class="text-2xl uppercase font-bold text-btn-sec">Les languages ou frameworks</h3>
+            <h3 class="text-2xl uppercase font-bold text-btn-sec">Langages ou frameworks</h3>
             <div class="flex flex-row gap-2.5 my-2.5">
                 <?php foreach ($project->getLabels() as $label) : ?>
                     <span class="flex flex-col gap-2.5 items-center mb-2">

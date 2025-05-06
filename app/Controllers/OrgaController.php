@@ -65,16 +65,33 @@ class OrgaController extends CoreController
             $organizationModel = new Organization();
             $organizationModel->setTitle($_POST['title']);
             $organizationModel->setDescription($_POST['description']);
-            $organizationModel->setPicture($$_FILES["picture"]["name"]);
+            $organizationModel->setPicture($_FILES["picture"]["name"]);
 
             // aller faire la requête dans notre repository
             $organizationsRepository = new OrganizationsRepository();
-            $insert = $organizationsRepository->addOrganization();
+            $insert = $organizationsRepository->addOrganization($organizationModel);
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }
 
             $this->boShow('admin-add-orga', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->boShow('error', $data);
+        }
+    }
+
+    public function editOrga($idOrga)
+    {
+        try {
+            $organizationsRepository = new OrganizationsRepository();
+            $data = [];
+            $data['organization'] = $organizationsRepository->getOrgaById($idOrga['id']);
+            $this->boShow('admin-add-orga', $data);
+            
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),

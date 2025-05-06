@@ -16,7 +16,7 @@
     <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <input type="text" name="title" id="title" class="rounded bg-white h-12 w-full p-2" value="<?php echo isset($organization) ? $organization->title : "" ?>" />
+            <input type="text" name="title" id="title" class="rounded bg-white h-12 w-full p-2" value="<?php echo isset($organization) ? $organization->getTitle() : "" ?>" />
         </div>
         <div class="mb-5">
             <label for="description" class="text-primary text-xl">Description<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>

@@ -1,4 +1,4 @@
-<?php dump($language); ?>
+<!-- <?php dump($language); ?> -->
 <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
     <?= isset($language) ? "Modifier" : "Ajouter" ?> une technos
 </h1>
