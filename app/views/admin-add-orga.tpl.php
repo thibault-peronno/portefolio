@@ -1,8 +1,8 @@
 <!-- <?php dump($organization) ?> -->
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
-    <?= isset($organization) ? "Modifier" : "Ajouter" ?> une organisation
-</h1>
-<section class="rounded p-2 bg-white/[0.15] sm:p-14">
+<section class="p-2 sm:p-14">
+    <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
+        <?= isset($organization) ? "Modifier" : "Ajouter" ?> une organisation
+    </h1>
     <?php if (isset($succeeded) && $succeeded) : ?>
         <div class="p-2 text-center text-white font-bold fixed bg-lime-600 rounded animate-notif">
             <p>L'ajout a réussi</p>
@@ -29,16 +29,16 @@
                     <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
                     <input type="hidden" name="picture" value="<?= $organization->getPicture() ?>">
                 </div>
-                <?php endif ?>
-                <span id="updateImageInput" class="<?php echo isset($organization) ? 'hidden' : ""  ?>">
-                    <label for="picture" class="text-primary text-xl">Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-                    <input type="file" name="picture" id="picture" accept="image/png, image/jpeg" class="rounded bg-white h-12 w-full p-2" />
-                    <p id="cancelUpdateImageInput" class="font-bold text-white cursor-pointer <?= isset($organization)? "block" : "hidden" ?>">Annuler</p>
+            <?php endif ?>
+            <span id="updateImageInput" class="<?php echo isset($organization) ? 'hidden' : ""  ?>">
+                <label for="picture" class="text-primary text-xl">Image<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
+                <input type="file" name="picture" id="picture" accept="image/png, image/jpeg" class="rounded bg-white h-12 w-full p-2" />
+                <p id="cancelUpdateImageInput" class="font-bold text-white cursor-pointer <?= isset($organization) ? "block" : "hidden" ?>">Annuler</p>
             </span>
         </div>
     </form>
+    <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl" type="submit" form="project-form">
+        <img src="/assets/images/icons/add.svg" alt="" />
+        <p class="text-white"><?= isset($organization) ? "Modifier" : "Ajouter" ?></p>
+    </button>
 </section>
-<button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl" type="submit" form="project-form">
-    <img src="/assets/images/icons/add.svg" alt="" />
-    <p class="text-white"><?= isset($organization) ? "Modifier" : "Ajouter" ?></p>
-</button>

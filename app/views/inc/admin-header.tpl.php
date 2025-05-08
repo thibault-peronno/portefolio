@@ -15,10 +15,10 @@ $currentPage = basename($_SERVER['PHP_SELF']);
   <title>"Portefolio Thibault PERONNO"</title>
 </head>
 
-<body class="px-2 md:px-dpc xl:px-vpc flex flex-col min-h-screen bg-secondary text-lg">
+<body class="3xl:px-dpc flex flex-col min-h-screen bg-secondary text-lg">
   <header>
     <!-- Our menu to diplay from tablet size -->
-    <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:my-5 sm:py-5 hidden sm:flex text-white">
+    <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:p-5 hidden sm:flex text-white">
       <a href="/admin-accueil" class="<?php echo $currentPage == 'admin-accueil' ? 'underline underline-offset-8' : ''; ?>">Dashboard</a>
       <a href="/admin-projets" class="<?php echo $currentPage == 'admin-projets' ? 'underline underline-offset-8' : ''; ?>">Projets</a>
       <a href="/admin-technos" class="<?php echo $currentPage == 'admin-technos' ? 'underline underline-offset-8' : ''; ?>">Technologies</a>

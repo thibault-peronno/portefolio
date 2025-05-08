@@ -11,9 +11,9 @@
             Thibault PERONNO
         </h1>
         <div class="flex flex-row">
-        <img src="/assets/images/icons/react_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
-        <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200 mx-5" />
-        <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
+            <img src="/assets/images/icons/react_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
+            <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200 mx-5" />
+            <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
         </div>
         <p class="text-3xl my-7 text-secondary">Spécialité Front-end, avec du back-end</p>
         <p class="text-lg">Anciennement dans le marketing digital à cotoyer des développeurs, j'ai fini par me reconvertir.</p>
@@ -28,7 +28,41 @@
         is snap on parent and snap-position on child -->
     <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
         <?php foreach ($projects as $project) : ?>
-            <div class="snap-start p-5  shrink-0 relative flex flex-col justify-between sm:w-80 sm:h-80">
+            <div class="w-80">
+
+                <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block"><?= $project->getTitle() ?></h3>
+                <div class="flex justify-start gap-2">
+                    <?php foreach ($project->getLabels() as $label) : ?>
+                        <div class="bg-white rounded-full">
+                            <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-8 h-8 m-2 " />
+                        </div>
+                    <?php endforeach ?>
+                </div>
+                <div class="w-auto h-1/3 mb-3">
+                    <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full">
+                </div>
+                <p class="mb-2  h-20 text-clip overflow-hidden ... text-lg">
+                    <?= $project->getDescription() ?>
+                </p>
+                <a
+                    href="<?= $project->getUrl() ?>"
+                    class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
+                    role="button"
+                    aria-label="En savoir plus sur le projet">
+                    <p class="text-white">Aller sur le site</p>
+                    <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
+                </a>
+                <a
+                    href="<?= "/projet/" . $project->getId() ?>"
+                    class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
+                    role="button"
+                    aria-label="En savoir plus sur le projet">
+                    <p class="text-white">En savoir plus</p>
+                    <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
+                </a>
+
+            </div>
+            <!-- <div class="snap-start p-5  shrink-0 relative flex flex-col justify-between sm:w-80 sm:h-80">
                 <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] animate-borderTop"></span>
                 <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] origin-left rotate-90 animate-borderLeft"></span>
                 <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block opacity-0 scale-50 animate-projectsScale"><?= $project->getTitle() ?></h3>
@@ -57,7 +91,7 @@
                 </div>
                 <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%] animate-borderRight"></span>
                 <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%]  animate-borderBottom rotate-90 origin-right"></span>
-            </div>
+            </div> -->
         <?php endforeach ?>
     </div>
     <a href="<?php echo "/projets" ?>">

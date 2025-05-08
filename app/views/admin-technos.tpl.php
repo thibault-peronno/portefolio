@@ -1,8 +1,8 @@
 <!-- <?php dump($languages) ?> -->
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
-  back office langages
-</h1>
-<section class="rounded p-2 bg-white/[0.15] sm:p-14">
+<section class="rp-2 sm:p-14">
+  <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
+    back office langages
+  </h1>
   <a href="admin-ajouter-technologie">
     <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl">
       <img src="/assets/images/icons/add.svg" alt="" />

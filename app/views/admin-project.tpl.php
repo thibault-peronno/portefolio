@@ -1,8 +1,8 @@
 <!-- <?php dump($project) ?> -->
-<h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
-    <?= $project->getTitle() ?>
-</h1>
-<section class="rounded p-2 bg-white/[0.15] sm:p-14">
+<section class="p-2 sm:p-14">
+    <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
+        <?= $project->getTitle() ?>
+    </h1>
     <div class="rounded p-2.5 w-full grid grid-cols-4 gap-4 auto-rows-max">
         <div class="bg-white rounded p-2.5 col-span-3">
             <h3 class="text-2xl uppercase font-bold text-btn-sec">Description</h3>
@@ -16,7 +16,7 @@
                         <img src="<?php echo '/assets/images/languages/' . $label['picture'] ?>" alt="" class="w-9 h-9" />
                         <h3 class="text-xl font-bold text-btn-sec"><?= $label['label'] ?></h3>
                     </span>
-    
+
                 <?php endforeach ?>
             </div>
         </div>
