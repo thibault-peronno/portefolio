@@ -1,13 +1,13 @@
 <!-- <?php dump($projects, $languages) ?> -->
 <section class="flex flex-col h-[80vh] sm:p-14 sm:items-center sm:justify-center sm:flex-row bg-white">
     <div>
-        <p class="text-7xl font-bold">Conception</p>
-        <p class="text-7xl my-4 font-bold">Développement</p>
-        <p class="text-7xl font-bold text-secondary">Applications & sites web</p>
+        <p class="text-3xl sm:text-5xl lg:text-7xl font-bold">Conception</p>
+        <p class="text-3xl sm:text-5xl lg:text-7xl my-4 font-bold">Développement</p>
+        <p class="text-3xl sm:text-5xl lg:text-7xl font-bold text-secondary">Applications & sites web</p>
     </div>
     <div class="flex flex-col sm:w-6/12">
         <!-- <img src="/assets/images/face_co.jpg" alt="" class="w-52 h-52 rounded-full self-center sm:mr-2.5 sm:self-start" /> -->
-        <h1 class="text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">
+        <h1 class="text-2xl sm:text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">
             Thibault PERONNO
         </h1>
         <div class="flex flex-row">
@@ -15,8 +15,8 @@
             <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200 mx-5" />
             <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
         </div>
-        <p class="text-3xl my-7 text-secondary">Spécialité Front-end, avec du back-end</p>
-        <p class="text-lg">Anciennement dans le marketing digital à cotoyer des développeurs, j'ai fini par me reconvertir.</p>
+        <p class="text-xl my-7 text-secondary">Spécialité Front-end, avec du back-end</p>
+        <p class="text-base">Anciennement dans le marketing digital à cotoyer des développeurs, j'ai fini par me reconvertir.</p>
         <p>Grâce à mon parcours, j'ai acquis des compétences en gestion de projets, ce qui me permet d'aller au-delà du simplement écrire des lignes de codes.</p>
     </div>
 </section>
@@ -28,38 +28,41 @@
         is snap on parent and snap-position on child -->
     <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
         <?php foreach ($projects as $project) : ?>
-            <div class="w-80">
+            <div class="w-80 h-[450px] border rounded snap-start shrink-0">
 
-                <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block"><?= $project->getTitle() ?></h3>
-                <div class="flex justify-start gap-2">
-                    <?php foreach ($project->getLabels() as $label) : ?>
-                        <div class="bg-white rounded-full">
-                            <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-8 h-8 m-2 " />
-                        </div>
-                    <?php endforeach ?>
+                <div class="w-auto h-3/4 mb-3">
+                    <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
                 </div>
-                <div class="w-auto h-1/3 mb-3">
-                    <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full">
+                <div class="p-2">
+                    <p class="text-l font-bold text-btn-sec inline-block"><?= $project->getTitle() ?></p>
+                    <div class="flex justify-start gap-2">
+                        <?php foreach ($project->getLabels() as $label) : ?>
+                            <div class="bg-white rounded-full">
+                                <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-4 h-4 m-2 " />
+                            </div>
+                        <?php endforeach ?>
+                    </div>
+                    <!-- <p class="mb-2  h-20 text-clip overflow-hidden ... text-lg">
+                        <?= $project->getDescription() ?>
+                    </p> -->
+                    <!-- <a
+                        href="<?= $project->getUrl() ?>"
+                        class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
+                        role="button"
+                        aria-label="En savoir plus sur le projet">
+                        <p class="text-white">Aller sur le site</p>
+                        <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
+                    </a>
+                    <a
+                        href="<?= "/projet/" . $project->getId() ?>"
+                        class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
+                        role="button"
+                        aria-label="En savoir plus sur le projet">
+                        <p class="text-white">En savoir plus</p>
+                        <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
+                    </a> -->
+
                 </div>
-                <p class="mb-2  h-20 text-clip overflow-hidden ... text-lg">
-                    <?= $project->getDescription() ?>
-                </p>
-                <a
-                    href="<?= $project->getUrl() ?>"
-                    class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
-                    role="button"
-                    aria-label="En savoir plus sur le projet">
-                    <p class="text-white">Aller sur le site</p>
-                    <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
-                </a>
-                <a
-                    href="<?= "/projet/" . $project->getId() ?>"
-                    class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
-                    role="button"
-                    aria-label="En savoir plus sur le projet">
-                    <p class="text-white">En savoir plus</p>
-                    <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
-                </a>
 
             </div>
             <!-- <div class="snap-start p-5  shrink-0 relative flex flex-col justify-between sm:w-80 sm:h-80">
