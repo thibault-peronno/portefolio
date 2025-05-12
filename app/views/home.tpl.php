@@ -1,5 +1,5 @@
 <!-- <?php dump($projects, $languages) ?> -->
-<section class="flex flex-col h-[80vh] sm:p-14 sm:items-center sm:justify-center sm:flex-row bg-white">
+<section class="flex flex-col h-[80vh] p-2 sm:p-14 sm:items-center sm:justify-center sm:flex-row bg-white">
     <div>
         <p class="text-3xl sm:text-5xl lg:text-7xl font-bold">Conception</p>
         <p class="text-3xl sm:text-5xl lg:text-7xl my-4 font-bold">Développement</p>
@@ -20,132 +20,50 @@
         <p>Grâce à mon parcours, j'ai acquis des compétences en gestion de projets, ce qui me permet d'aller au-delà du simplement écrire des lignes de codes.</p>
     </div>
 </section>
-<section class="py-28 bg-primary sm:p-14">
+<section class="sm:py-28 bg-primary p-2 sm:p-14">
     <h2 class="text-3xl text-secondary uppercase mb-5">
         Mes projets
     </h2>
     <!-- For scroll works, you need add flex and shrink=0. Shrink allow to keep the width like we ask. the class to use scroll with tailwind 
         is snap on parent and snap-position on child -->
-    <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
+    <div class="snap-x flex overflow-x-auto sm:my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
         <?php foreach ($projects as $project) : ?>
-            <div class="w-80 h-[450px] border rounded snap-start shrink-0">
-
-                <div class="w-auto h-3/4 mb-3">
-                    <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
-                </div>
-                <div class="p-2">
-                    <p class="text-l font-bold text-btn-sec inline-block"><?= $project->getTitle() ?></p>
-                    <div class="flex justify-start gap-2">
-                        <?php foreach ($project->getLabels() as $label) : ?>
-                            <div class="bg-white rounded-full">
-                                <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-4 h-4 m-2 " />
-                            </div>
-                        <?php endforeach ?>
+            <a href="<?= "/projet/" . $project->getId() ?>">
+                <div class="h-96 w-[450px] border rounded snap-start shrink-0">
+                    <div class="w-auto h-3/4 mb-3">
+                        <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
                     </div>
-                    <!-- <p class="mb-2  h-20 text-clip overflow-hidden ... text-lg">
-                        <?= $project->getDescription() ?>
-                    </p> -->
-                    <!-- <a
-                        href="<?= $project->getUrl() ?>"
-                        class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
-                        role="button"
-                        aria-label="En savoir plus sur le projet">
-                        <p class="text-white">Aller sur le site</p>
-                        <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
-                    </a>
-                    <a
-                        href="<?= "/projet/" . $project->getId() ?>"
-                        class="bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary flex"
-                        role="button"
-                        aria-label="En savoir plus sur le projet">
-                        <p class="text-white">En savoir plus</p>
-                        <img src="/assets/images/icons/arrow-right-circle.svg" alt="Aller à la page suivante" />
-                    </a> -->
-
-                </div>
-
-            </div>
-            <!-- <div class="snap-start p-5  shrink-0 relative flex flex-col justify-between sm:w-80 sm:h-80">
-                <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] animate-borderTop"></span>
-                <span class="absolute w-3/12 h-0.5 bg-secondary top-[45%] left-[45%] origin-left rotate-90 animate-borderLeft"></span>
-                <h3 class="text-xl font-bold text-btn-sec mb-2 inline-block opacity-0 scale-50 animate-projectsScale"><?= $project->getTitle() ?></h3>
-                <p class="mb-2 opacity-0 scale-20 animate-projectsScale h-20 text-clip overflow-hidden ... text-lg">
-                    <?= $project->getDescription() ?>
-                </p>
-
-                <div class="flex justify-start gap-2">
-                    <?php foreach ($project->getLabels() as $label) : ?>
-                        <div class="bg-white rounded opacity-0 animate-projectsScale">
-                            <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-8 h-8 m-2 opacity-0 scale-20 animate-projectsScale" />
+                    <div class="p-2">
+                        <p class="text-l font-bold text-btn-sec inline-block"><?= $project->getTitle() ?></p>
+                        <div class="flex justify-start gap-2">
+                            <?php foreach ($project->getLabels() as $label) : ?>
+                                <div class="bg-white rounded-full">
+                                    <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-4 h-4 m-2 " />
+                                </div>
+                            <?php endforeach ?>
                         </div>
-                    <?php endforeach ?>
+                    </div>
                 </div>
-                <div class="flex justify-around mt-2 text-secondary">
-                    <a href="<?= $project->getUrl() ?>">
-                        <button class="text-white bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary opacity-0 scale-20 animate-projectsScale">
-                            Aller sur le site
-                        </button>
-                    </a>
-                    <a href="<?= "/projet/" . $project->getId() ?>">
-                        <button class="text-white bg-secondary rounded p-1 text-base hover:bg-white hover:text-secondary opacity-0 scale-20 animate-projectsScale">
-                            En savoir plus
-                        </button>
-                    </a>
-                </div>
-                <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%] animate-borderRight"></span>
-                <span class="absolute w-3/12 h-0.5 bg-secondary bottom-[45%] right-[45%]  animate-borderBottom rotate-90 origin-right"></span>
-            </div> -->
+            </a>
         <?php endforeach ?>
     </div>
     <a href="<?php echo "/projets" ?>">
-        <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-64">
+        <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
             <p class="text-white">Voir toutes les projets</p>
             <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
         </button>
     </a>
 </section>
-<section class="bg-white sm:p-14">
-    <h2 class="text-2xl text-secondary uppercase mb-5">
-        Mes technos
-    </h2>
-    <div class="snap-x flex overflow-x-auto my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
-        <!-- surmement possible d'optimiser ça ! -->
-        <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
-            <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
-            <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
-            <?php foreach ($languages as $language) : ?>
-                <?php if ($language->getType() === 'Front-end') : ?>
-                    <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20" />
-                <?php endif ?>
-            <?php endforeach ?>
-            <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
-            <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
-        </div>
-        <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
-            <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
-            <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
-            <?php foreach ($languages as $language) : ?>
-                <?php if ($language->getType() === 'Back-end') : ?>
-                    <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20" />
-                <?php endif ?>
-            <?php endforeach ?>
-            <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
-            <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
-        </div>
-        <div class="relative w-72 h-72 flex flex-wrap justify-between gap-7 snap-start shrink-0 p-7">
-            <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0"></span>
-            <span class="absolute w-6/12 h-0.5 bg-secondary top-0 left-0 origin-top-left rotate-90"></span>
-            <?php foreach ($languages as $language) : ?>
-                <?php if ($language->getType() === 'DevOps') : ?>
-                    <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20" />
-                <?php endif ?>
-            <?php endforeach ?>
-            <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0"></span>
-            <span class="absolute w-6/12 h-0.5 bg-secondary bottom-0 right-0 origin-top-right rotate-90"></span>
-        </div>
-    </div>
+<section class="bg-white p-2 sm:p-14">
+    <span class="snap-x flex overflow-x-auto gap-5 sm:snap-none sm:gap-14 sm:flex-wrap my-11">
+        <?php foreach ($languages as $language) : ?>
+            <div class="bg-white rounded-full border snap-start shrink-0">
+                <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20 p-5" />
+            </div>
+        <?php endforeach ?>
+    </span>
     <a href="<?= "/languages" ?>">
-        <button class="bg-btn-sec rounded flex p-2.5 items-center  w-64 justify-between mt-5">
+        <button class="bg-btn-sec rounded flex p-2.5 items-center  w-full sm:w-64 justify-between mt-5">
             <p class="text-white">Voir toutes les technos</p>
             <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
         </button>

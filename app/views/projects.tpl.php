@@ -3,34 +3,25 @@
       <section class="sm:p-14">
         <h1 class="text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">Mes projets</h1>
         <div class="sm:flex sm:gap-10 sm:flex-wrap">
-            <?php foreach($projects as $project) : ?>
-            <div class="border-2 border-primary bg-white flex flex-col justify-between my-14 p-5 sm:w-96 sm:h-96 rounded">
-              <h2 class="text-3xl text-secondary uppercase mb-10"><?= $project->getTitle() ?></h2>
-              <div class="flex justify-start gap-2">
-              <?php foreach($project->getLabels() as $label) : ?>
-                <img
-                  src="<?= "/assets/images/languages/" . $label['picture'] ?>"
-                  alt="<?= "icon " . $label['label'] ?>"
-                  class="w-9 h-9"
-                />
-                <?php endforeach ?>
-              </div>
-              <p class="my-5 text-clip overflow-hidden text-lg">
-              <?= $project->getDescription() ?>
-              </p>
-              <a href="<?= "/projet/" . $project->getId() ?>">
-                <button
-                  class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-3 w-full "
-                >
-                  <p class="text-white">En savoir plus</p>
-                  <img
-                    src="/assets/images/icons/arrow-right-circle.svg"
-                    alt=""
-                  />
-                </button>
-              </a>
-            </div>
-            <?php endforeach ?>
+        <?php foreach ($projects as $project) : ?>
+            <a href="<?= "/projet/" . $project->getId() ?>">
+                <div class="h-96 w-[450px] border rounded snap-start shrink-0">
+                    <div class="w-auto h-3/4 mb-3">
+                        <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
+                    </div>
+                    <div class="p-2">
+                        <p class="text-l font-bold text-btn-sec inline-block"><?= $project->getTitle() ?></p>
+                        <div class="flex justify-start gap-2">
+                            <?php foreach ($project->getLabels() as $label) : ?>
+                                <div class="bg-white rounded-full">
+                                    <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-4 h-4 m-2 " />
+                                </div>
+                            <?php endforeach ?>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        <?php endforeach ?>
         </div>
       </section>
     </main>
