@@ -19,6 +19,9 @@ const app = {
     if (window.location.pathname === "/admin-technos") {
       deleteLanguage.init();
     }
+    if (window.location.pathname === "/cv") {
+      observer.init();
+    }
   },
 };
 

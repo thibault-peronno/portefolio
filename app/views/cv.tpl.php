@@ -73,8 +73,8 @@
         </div>
     </div>
     <section class="sm:p-14">
-        <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
-            <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded">
+    <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
+            <h1 class="text-3xl text-secondary bg-primary uppercase font-bold p-2.5 w-max rounded">
                 Mon parcours
             </h1>
             <a href="https://www.linkedin.com/in/thibault-peronno/ target=" _blank">
@@ -87,7 +87,129 @@
             digital et après avoir travaillé quelques temps dans ce domaine, j'ai
             décidé de me reconvertir dans le développement web.
         </p>
-        <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Expériences</h2>
+        <div class="timeline mx-auto my-12 px-6">
+            <div class="relative max-w-max">
+                <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-secondary translate-x-[-50%]"></div>
+
+                <div class="space-y-8">
+                <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
+                        <div class="relative">
+                            <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
+                            <div class="relative w-[550px]">
+                                <h3 class="text-xl font-bold text-btn-sec my-5">
+                                    Développeur fullstack SmartGlobal Governance
+                                </h3>
+                                <p class="text-lg">
+                                    Au sein d'une 3 personnes, j'étais en charge du développement de nouvelles fonctionnalités en Lua : 
+                                    connexion web service, migration de script N8N. Développement low-code sur un logiciel modifié de Corteza.
+                                    Enrichissement de la documentation par des diagrammes de conception technique ou fonctionnelle.
+                                    Compréhension du besoin métier pour développer les fonctionnalités en fonction de la demande.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group">
+                    <span class="relative flex gap-6 row justify-center mb-28">
+                        <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
+                            <div>
+                                <div class="relative w-[550px]">
+                                    <h3 class="text-xl font-bold text-btn-sec">
+                                        Développeur Front-end iSelection (août 22 - fév 24)
+                                    </h3>
+                                    <p class="text-lg">
+                                        Au sein d’une équipe de 8 personnes, j’étais en charge de la
+                                        maintenance, des corrections de bugs et du développement de
+                                        nouvelles fonctionnalités. Sur un site en Angular. Réalisation
+                                        d’un site en preuve de conception. Base de données en SQL, API en
+                                        Laravel, Interface en Vue.Js3 avec Pinia. Ainsi que la mise en
+                                        place de tests unitaires et de la sécurité.
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="relative w-[550px]">
+                                    <h3 class="text-xl font-bold text-btn-sec">Bac+3/4 Titre de concepteur et développeur d’application (août 22 - fév 24)</h3>
+                                    <p class="text-lg">PHP, Javascript, VueJS, Dockers, Laravel, NodeJs, ExpressJS et Flutter… sécurité et les tests unitaires.
+                                        Titre de développeur web et web mobile (déc 21 - juin 22)
+                                        HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
+                                        challenge : exercices tous les jours après les cours.</p>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+
+                    <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group">
+                    <span class="relative flex gap-6 row justify-center">
+                        <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
+                            <div>
+                                <div class="relative w-[550px]">
+                                    <h3 class="text-xl font-bold text-btn-sec">
+                                    Développeur fullstack O’Clock (déc 21- mai 22)
+                                    </h3>
+                                    <p class="text-lg">
+                                    Simulation de 4 semaines : API Rest avec Laravel et un back-office
+                                    avec REACT.
+                                    </p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="relative w-[550px]">
+                                    <h3 class="text-xl font-bold text-btn-sec">Bac+2 Titre de développeur web et web mobile (déc 21 - juin 22)</h3>
+                                    <p class="text-lg">HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
+                                    challenge : exercices tous les jours après les cours.</p>
+                                </div>
+                            </div>
+                        </span>
+
+                        <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
+                        <div class="relative">
+                            <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
+                            <div class="relative w-[550px]">
+                                <h3 class="text-xl font-bold text-btn-sec my-5">
+                                Chargé de marketing digital Enfants d’Asie (juin 21-sept 22)
+                                </h3>
+                                <p class="text-lg">
+                                    Refonte du site wordpress, mise en place de la stratégie digitale. Changement de l'emaileur afin de faire économiser l'asscociation, 
+                                    tout en répondant au besoin.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
+                        <div class="relative">
+                            <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
+                            <div class="relative w-[550px]">
+                                <h3 class="text-xl font-bold text-btn-sec my-5">
+                                Bac+5 Management du marketing & communication digitale École Pégase (sept 17 - juin 19)
+                                </h3>
+                                <p class="text-lg">
+                                    Deux années d'alternance, la première au sein d'HSBC et la seconde au sein de B-Reputation.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                    
+            </div>
+        </div>
+        </div>
+        <!-- <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
+            <h1 class="text-3xl text-secondary bg-primary uppercase font-bold p-2.5 w-max rounded">
+                Mon parcours
+            </h1>
+            <a href="https://www.linkedin.com/in/thibault-peronno/ target=" _blank">
+                <img src="/assets/images/icons/linkedin.svg" alt="Link to linkedin profil" class="w-9 h-9 ml-5 cursor-pointer" />
+
+            </a>
+        </div>
+        <p class="text-lg">
+            Issue d'un parcours bac+5 en management du marketing et communication
+            digital et après avoir travaillé quelques temps dans ce domaine, j'ai
+            décidé de me reconvertir dans le développement web.
+        </p> -->
+        <!-- <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Expériences</h2>
         <div class="flex flex-wrap justify-between">
             <div class="sm:w-[45%]">
                 <h3 class="text-xl font-bold text-btn-sec my-5">
@@ -127,6 +249,6 @@
                 <p class="text-lg">HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
                     challenge : exercices tous les jours après les cours.</p>
             </div>
-        </div>
+        </div> -->
     </section>
 </section>

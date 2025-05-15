@@ -13,5 +13,6 @@
     <script src="/javascript/app.js"></script>
     <script src="/javascript/menu.js"></script>
     <script src="/javascript/form.js"></script>
+    <script src="/javascript/observer.js"></script>
   </body>
 </html>
