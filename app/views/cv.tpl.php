@@ -1,5 +1,5 @@
-<section>
-    <div class="flex flex-row justify-around gap-10 flex-wrap bg-primary sm:p-14">
+<div>
+    <section class="p-2 flex flex-row gap-10 flex-wrap bg-primary sm:p-14 lg;justify-around">
         <div class="flex flex-col animate-front opacity-0">
             <p class="font-bold text-lg">Front-end</p>
             <div class="flex flex-row gap-5">
@@ -71,10 +71,10 @@
                 </span>
             </div>
         </div>
-    </div>
-    <section class="sm:p-14">
-    <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
-            <h1 class="text-3xl text-secondary bg-primary uppercase font-bold p-2.5 w-max rounded">
+    </section>
+    <section class="p-2 sm:p-14">
+        <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
+            <h1 class="text-3xl text-secondary bg-primary uppercase font-bold p-2.5 lg:w-max rounded">
                 Mon parcours
             </h1>
             <a href="https://www.linkedin.com/in/thibault-peronno/ target=" _blank">
@@ -87,20 +87,20 @@
             digital et après avoir travaillé quelques temps dans ce domaine, j'ai
             décidé de me reconvertir dans le développement web.
         </p>
-        <div class="timeline mx-auto my-12 px-6">
+        <div class="timeline mx-auto my-12 lg:px-6 lg:w-max">
             <div class="relative max-w-max">
-                <div class="absolute left-1/2 top-0 bottom-0 w-0.5 bg-secondary translate-x-[-50%]"></div>
+                <div class="hidden lg:block lg:absolute lg:left-1/2 lg:top-0 lg:bottom-0 lg:w-0.5 lg:bg-secondary lg:translate-x-[-50%]"></div>
 
-                <div class="space-y-8">
-                <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
+                <div class="lg:space-y-8">
+                    <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
                         <div class="relative">
-                            <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
-                            <div class="relative w-[550px]">
+                            <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
+                            <div class="relative lg:w-[550px]">
                                 <h3 class="text-xl font-bold text-btn-sec my-5">
                                     Développeur fullstack SmartGlobal Governance
                                 </h3>
                                 <p class="text-lg">
-                                    Au sein d'une 3 personnes, j'étais en charge du développement de nouvelles fonctionnalités en Lua : 
+                                    Au sein d'une 3 personnes, j'étais en charge du développement de nouvelles fonctionnalités en Lua :
                                     connexion web service, migration de script N8N. Développement low-code sur un logiciel modifié de Corteza.
                                     Enrichissement de la documentation par des diagrammes de conception technique ou fonctionnelle.
                                     Compréhension du besoin métier pour développer les fonctionnalités en fonction de la demande.
@@ -108,12 +108,12 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group">
-                    <span class="relative flex gap-6 row justify-center mb-28">
-                        <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
+                        <span class="relative flex gap-6 row mb-28 flex-wrap lg:justify-center">
+                            <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                             <div>
-                                <div class="relative w-[550px]">
+                                <div class="relative lg:w-[550px]">
                                     <h3 class="text-xl font-bold text-btn-sec">
                                         Développeur Front-end iSelection (août 22 - fév 24)
                                     </h3>
@@ -128,7 +128,7 @@
                                 </div>
                             </div>
                             <div>
-                                <div class="relative w-[550px]">
+                                <div class="relative lg:w-[550px]">
                                     <h3 class="text-xl font-bold text-btn-sec">Bac+3/4 Titre de concepteur et développeur d’application (août 22 - fév 24)</h3>
                                     <p class="text-lg">PHP, Javascript, VueJS, Dockers, Laravel, NodeJs, ExpressJS et Flutter… sécurité et les tests unitaires.
                                         Titre de développeur web et web mobile (déc 21 - juin 22)
@@ -140,62 +140,62 @@
                     </div>
 
                     <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group">
-                    <span class="relative flex gap-6 row justify-center">
-                        <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
+                        <span class="relative flex gap-6 row flex-wrap lg:justify-center">
+                            <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                             <div>
-                                <div class="relative w-[550px]">
+                                <div class="relative lg:w-[550px]">
                                     <h3 class="text-xl font-bold text-btn-sec">
-                                    Développeur fullstack O’Clock (déc 21- mai 22)
+                                        Développeur fullstack O’Clock (déc 21- mai 22)
                                     </h3>
                                     <p class="text-lg">
-                                    Simulation de 4 semaines : API Rest avec Laravel et un back-office
-                                    avec REACT.
+                                        Simulation de 4 semaines : API Rest avec Laravel et un back-office
+                                        avec REACT.
                                     </p>
                                 </div>
                             </div>
                             <div>
-                                <div class="relative w-[550px]">
+                                <div class="relative lg:w-[550px]">
                                     <h3 class="text-xl font-bold text-btn-sec">Bac+2 Titre de développeur web et web mobile (déc 21 - juin 22)</h3>
                                     <p class="text-lg">HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
-                                    challenge : exercices tous les jours après les cours.</p>
+                                        challenge : exercices tous les jours après les cours.</p>
                                 </div>
                             </div>
                         </span>
 
                         <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
-                        <div class="relative">
-                            <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
-                            <div class="relative w-[550px]">
-                                <h3 class="text-xl font-bold text-btn-sec my-5">
-                                Chargé de marketing digital Enfants d’Asie (juin 21-sept 22)
-                                </h3>
-                                <p class="text-lg">
-                                    Refonte du site wordpress, mise en place de la stratégie digitale. Changement de l'emaileur afin de faire économiser l'asscociation, 
-                                    tout en répondant au besoin.
-                                </p>
+                            <div class="relative">
+                                <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
+                                <div class="relative lg:w-[550px]">
+                                    <h3 class="text-xl font-bold text-btn-sec my-5">
+                                        Chargé de marketing digital Enfants d’Asie (juin 21-sept 22)
+                                    </h3>
+                                    <p class="text-lg">
+                                        Refonte du site wordpress, mise en place de la stratégie digitale. Changement de l'emaileur afin de faire économiser l'asscociation,
+                                        tout en répondant au besoin.
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
+                                <div class="relative">
+                                    <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
+                                    <div class="relative lg:w-[550px]">
+                                        <h3 class="text-xl font-bold text-btn-sec my-5">
+                                            Bac+5 Management du marketing & communication digitale École Pégase (sept 17 - juin 19)
+                                        </h3>
+                                        <p class="text-lg">
+                                            Deux années d'alternance, la première au sein d'HSBC et la seconde au sein de B-Reputation.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
-                        <div class="relative">
-                            <div class="absolute top-0 left-1/2 w-5 h-5 bg-white border-2 border-gray-800 rounded-full translate-x-[-50%] z-10"></div>
-                            <div class="relative w-[550px]">
-                                <h3 class="text-xl font-bold text-btn-sec my-5">
-                                Bac+5 Management du marketing & communication digitale École Pégase (sept 17 - juin 19)
-                                </h3>
-                                <p class="text-lg">
-                                    Deux années d'alternance, la première au sein d'HSBC et la seconde au sein de B-Reputation.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
 
-                    
+                    </div>
+                </div>
             </div>
-        </div>
-        </div>
-        <!-- <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
+            <!-- <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
             <h1 class="text-3xl text-secondary bg-primary uppercase font-bold p-2.5 w-max rounded">
                 Mon parcours
             </h1>
@@ -209,7 +209,7 @@
             digital et après avoir travaillé quelques temps dans ce domaine, j'ai
             décidé de me reconvertir dans le développement web.
         </p> -->
-        <!-- <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Expériences</h2>
+            <!-- <h2 class="text-2xl text-secondary uppercase mt-14 mb-5">Expériences</h2>
         <div class="flex flex-wrap justify-between">
             <div class="sm:w-[45%]">
                 <h3 class="text-xl font-bold text-btn-sec my-5">
@@ -251,4 +251,4 @@
             </div>
         </div> -->
     </section>
-</section>
+</div>
