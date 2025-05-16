@@ -134,6 +134,7 @@ class ProjectRepository
 
     public function updateProject(Project $projectModel, $languages): bool
     {
+        
         $pdo = Database::getPDO();
         $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
         try {
@@ -147,13 +148,24 @@ class ProjectRepository
             $pdoStatement->bindParam(':projectId', $projectModel->getId(), PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();
-
-            if ($insertedRows > 0) {
+            
+            if ($insertedRows) {
+                
                 // We retrieve the last id.
                 $projectLanguageRepository = new ProjectLanguageRepository();
                 $deleteLanguages = $projectLanguageRepository->deleteLanguagesProjects($projectModel->getId());
+                dump($deleteLanguages);
+                $insertLanguages = false;
                 if ($deleteLanguages) {
-                    $insertLanguages = $projectLanguageRepository->addLanguagesProjects($languages);
+                    foreach ($languages as $key => $value) {
+                        $projectLanguageModel = new ProjectLanguage();
+                        $projectLanguageModel->setProjectId($projectModel->getId());
+                        $projectLanguageModel->setLanguageId($value);
+                        
+                        // call the method to exect the sql request
+                        $projectLanguageRepository = new ProjectLanguageRepository();
+                        $insertLanguages = $projectLanguageRepository->addLanguagesProjects($projectLanguageModel);
+                    }
                 }
 
                 if ($insertLanguages) {

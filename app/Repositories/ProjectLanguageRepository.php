@@ -9,7 +9,7 @@ use PDO;
 class ProjectLanguageRepository
 {
 
-    public function addLanguagesProjects(ProjectLanguage $projectLanguageModel): void
+    public function addLanguagesProjects(ProjectLanguage $projectLanguageModel): bool 
     {
         try {
             $pdo = Database::getPDO();
@@ -19,7 +19,8 @@ class ProjectLanguageRepository
 
             $pdoStatementLanguages->bindValue(':projectId', $projectLanguageModel->getProjectId(), PDO::PARAM_INT);
             $pdoStatementLanguages->bindValue(':languageId', $projectLanguageModel->getLanguageId(), PDO::PARAM_INT);
-            $pdoStatementLanguages->execute();
+            $insertedRows = $pdoStatementLanguages->execute();
+            return $insertedRows;
         } catch (\Throwable $error) {
             throw $error;
         }
@@ -41,14 +42,17 @@ class ProjectLanguageRepository
 
     public function deleteLanguagesProjects(int $id): bool
     {
+        
         try {
-            $projectLanguageModel = new ProjectLanguage();
+            // $projectLanguageModel = new ProjectLanguage();
             $pdo = Database::getPDO();
             $sql = "DELETE FROM `projects_languages` WHERE project_id = :id";
             $pdoStatement = $pdo->prepare($sql);
-
+            
             $pdoStatement->bindParam(':id', $id, PDO::PARAM_STR);
-            $resultDeleteProjectLanguages =  $pdoStatement->execute([$projectLanguageModel->getProjectId()]);
+            
+            $resultDeleteProjectLanguages =  $pdoStatement->execute();
+            
             return $resultDeleteProjectLanguages;
         } catch (\Throwable $error) {
             throw $error;

@@ -15,8 +15,8 @@
             <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200 mx-5" />
             <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-9 h-9 hover:translate-x-1.5 transition ease-in-out delay-150 duration-200" />
         </div>
-        <p class="text-xl my-7 text-secondary">Spécialité Front-end, avec du back-end</p>
-        <p class="text-base">Anciennement dans le marketing digital à cotoyer des développeurs, j'ai fini par me reconvertir.</p>
+        <p class="text-xl my-7 text-secondary">Spécialité front-end, avec du back-end</p>
+        <p>Anciennement dans le marketing digital à cotoyer des développeurs, j'ai fini par me reconvertir.</p>
         <p>Grâce à mon parcours, j'ai acquis des compétences en gestion de projets, ce qui me permet d'aller au-delà du simplement écrire des lignes de codes.</p>
     </div>
 </section>
