@@ -1,5 +1,5 @@
 <div>
-    <section class="p-2 flex flex-row gap-10 flex-wrap bg-primary sm:p-14 lg;justify-around">
+    <section class="p-2 flex flex-row gap-10 flex-wrap bg-primary sm:p-14 lg:justify-around">
         <div class="flex flex-col animate-front opacity-0">
             <p class="font-bold text-lg">Front-end</p>
             <div class="flex flex-row gap-5">
