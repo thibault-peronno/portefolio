@@ -4,7 +4,7 @@
             <p><?= $message ?></p>
         </div>
     <?php endif ?>
-    <section class="w-9/12 flex flex-col items-center rounded p-14 relative sm:w-max">
+    <section class="bg-white p-2 w-10/12 flex flex-col items-center rounded relative sm:p-14 sm:w-max">
         <span class="absolute w-2/4 h-0.5 bg-secondary top-0 left-0 "></span>
         <span class="absolute w-2/4 rotate-90 origin-left h-0.5 bg-secondary top-0 left-0"></span>
         <img src="/assets/images/face_co.jpg" alt="" class="w-28 h-28 rounded-full">

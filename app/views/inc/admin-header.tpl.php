@@ -21,7 +21,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
     <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:p-5 hidden sm:flex text-white">
       <a href="/admin-accueil" class="<?php echo $currentPage == 'admin-accueil' ? 'underline underline-offset-8' : ''; ?>">Dashboard</a>
       <a href="/admin-projets" class="<?php echo $currentPage == 'admin-projets' ? 'underline underline-offset-8' : ''; ?>">Projets</a>
-      <a href="/admin-technos" class="<?php echo $currentPage == 'admin-technos' ? 'underline underline-offset-8' : ''; ?>">Technologies</a>
+      <a href="/admin-technos" class="<?php echo $currentPage == 'admin-technos' ? 'underline underline-offset-8' : ''; ?>">Langages</a>
       <a href="/admin-organisations" class="<?php echo $currentPage == 'admin-organisations' ? 'underline underline-offset-8' : ''; ?>">Organisations</a>
       <a href="/" class="<?php echo $currentPage == 'index.php' ? 'underline underline-offset-8' : ''; ?>">Portefolio</a>
     </nav>
@@ -31,23 +31,23 @@ $currentPage = basename($_SERVER['PHP_SELF']);
       <img src="/assets/images/icons/x.svg" alt="close the menu" class="w-12 self-end" id="close-menu" />
       <span class="flex flex-row">
         <img src="/assets/images/icons/home.svg" alt="" class="mr-2.5" />
-        <a href="/BO-home.htm">Dashboard</a>
+        <a href="/admin-accueil">Dashboard</a>
       </span>
       <span class="flex flex-row">
         <img src="/assets/images/icons/cup.svg" alt="" class="mr-2.5" />
-        <a href="/BO-projects.htm">Projets</a>
+        <a href="/admin-projets">Projets</a>
       </span>
       <span class="flex flex-row">
         <img src="/assets/images/icons/techs.svg" alt="" class="mr-2.5" />
-        <a href="/BO-technos.htm">Technologies</a>
+        <a href="/admin-technos">Langages</a>
       </span>
       <span class="flex flex-row">
         <img src="/assets/images/icons/file-text.svg" alt="" class="mr-2.5" />
-        <a href="/BO-orga.htm">Organisations</a>
+        <a href="/admin-organisations">Organisations</a>
       </span>
       <span class="flex flex-row">
         <img src="/assets/images/icons/sliders.svg" alt="" class="mr-2.5" />
-        <a href="/home.htm">Portefolio</a>
+        <a href="/">Portefolio</a>
       </span>
     </nav>
   </header>

@@ -26,10 +26,10 @@
     </h2>
     <!-- For scroll works, you need add flex and shrink=0. Shrink allow to keep the width like we ask. the class to use scroll with tailwind 
         is snap on parent and snap-position on child -->
-    <div class="snap-x flex overflow-x-auto sm:my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap">
+    <div class="snap-x flex overflow-x-auto sm:my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap sm:pt-3">
         <?php foreach ($projects as $project) : ?>
             <a href="<?= "/projet/" . $project->getId() ?>">
-                <div class="h-96 w-[450px] border rounded snap-start shrink-0">
+                <div class="h-96 w-[450px] border rounded snap-start shrink-0 lg:hover:-translate-y-1.5 transition ease-in-out duration-200">
                     <div class="w-auto h-3/4 mb-3">
                         <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
                     </div>

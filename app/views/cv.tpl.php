@@ -92,7 +92,7 @@
                 <div class="hidden lg:block lg:absolute lg:left-1/2 lg:top-0 lg:bottom-0 lg:w-0.5 lg:bg-secondary lg:translate-x-[-50%]"></div>
 
                 <div class="lg:space-y-8">
-                    <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
+                    <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-16">
                         <div class="relative">
                             <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                             <div class="relative lg:w-[550px]">
@@ -110,7 +110,7 @@
                     </div>
 
                     <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group">
-                        <span class="relative flex gap-6 row mb-28 flex-wrap lg:justify-center">
+                        <span class="relative flex gap-6 row mb-16 flex-wrap lg:justify-center">
                             <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                             <div>
                                 <div class="relative lg:w-[550px]">
@@ -140,7 +140,7 @@
                     </div>
 
                     <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group">
-                        <span class="relative flex gap-6 row flex-wrap lg:justify-center">
+                        <span class="relative flex gap-6 row flex-wrap lg:justify-center mb-16">
                             <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                             <div>
                                 <div class="relative lg:w-[550px]">
@@ -162,8 +162,8 @@
                             </div>
                         </span>
 
-                        <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
-                            <div class="relative">
+                        <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-16">
+                            <div class="relative mb-16">
                                 <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                                 <div class="relative lg:w-[550px]">
                                     <h3 class="text-xl font-bold text-btn-sec my-5">
@@ -176,7 +176,7 @@
                                 </div>
                             </div>
 
-                            <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-28">
+                            <div class="timeline-item opacity-0 translate-y-4 transition-all duration-500 ease-in-out group mb-16">
                                 <div class="relative">
                                     <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                                     <div class="relative lg:w-[550px]">

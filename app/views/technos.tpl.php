@@ -1,7 +1,7 @@
 <!-- <?php dump($languages, $arrayNumberOfProjectDevBylanguage); ?> -->
- <section class="sm:p-14">
-     <h1 class="text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">
-         Mes technos
+ <section class="p-2 sm:p-14">
+     <h1 class="text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 sm:w-max sm:mt-12 rounded">
+         Mes langages ou framworks
      </h1>
      
      <?php foreach($languages as $keyLanguage => $arrayLanguageByType) : ?>
@@ -9,7 +9,7 @@
      <div class="snap-x flex overflow-x-auto gap-5 p-2.5 sm:snap-none sm:p-0 sm:gap-10 sm:flex-wrap">
      
      <?php foreach($arrayLanguageByType as $language) : ?>
-         <div class="rounded p-4 shadow-card w-max bg-white shrink-0 snap-start hover:scale-105 transition ease-in-out delay-150 duration-200">
+         <div class="rounded p-4 shadow-card w-max bg-white shrink-0 snap-start lg:hover:scale-105 transition ease-in-out delay-150 duration-200">
              <span class="flex gap-2.5 items-center mb-2">
                  <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="" class="w-9 h-9" />
                  <h3 class="text-2xl font-bold text-btn-sec"><?= $language->getLabel() ?></h3>

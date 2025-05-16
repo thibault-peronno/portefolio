@@ -1,7 +1,7 @@
 <!-- <?php dump($project) ?> -->
 <div class="sm:flex w-full">
   <section class="p-2 sm:p-14 sm:w-6/12">
-    <h1 class="text-4xl bg-primary text-secondary uppercase font-bold p-2.5 my-5 sm:my-0 rounded w-max">
+    <h1 class="text-4xl bg-primary text-secondary uppercase font-bold p-2.5 my-5 rounded leading-relaxed sm:my-0 sm:w-max">
       <?= $project->getTitle() ?>
     </h1>
     <p class="my-8 text-lg">
