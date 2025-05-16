@@ -3,27 +3,27 @@
         <div class="flex flex-col animate-front opacity-0">
             <p class="font-bold text-lg">Front-end</p>
             <div class="flex flex-row gap-5">
-                <span>
-                    <div class="bg-white rounded w-max m-auto">
-                        <img src="/assets/images/icons/react_mono.png" alt="" class="w-12 h-12 m-2" />
+                <span class="flex flex-row flex-wrap gap-1 rounded-sm bg-secondary p-2 w-max h-max">
+                    <div class="bg-white rounded-full w-max h-max p-1">
+                        <img src="/assets/images/icons/react_mono.png" alt="" class="w-4 h-4" />
                     </div>
-                    <p class="text-center rounded-full bg-secondary text-white p-2.5">
+                    <p class="text-center text-white">
                         React
                     </p>
                 </span>
-                <span>
-                    <div class="bg-white rounded w-max m-auto">
-                        <img src="/assets/images/icons/vuejs_mono.svg" alt="" class="w-12 h-12 m-2" />
+                <span class="flex flex-row flex-wrap gap-1 rounded-sm bg-secondary p-2 w-max h-max">
+                    <div class="bg-white rounded-full w-max h-max p-1">
+                        <img src="/assets/images/icons/vuejs_mono.svg" alt="" class="w-4 h-4" />
                     </div>
-                    <p class="text-center rounded-full bg-secondary text-white p-2.5">
+                    <p class="text-center text-white">
                         Vue.js
                     </p>
                 </span>
-                <span>
-                    <div class="bg-white rounded w-max m-auto">
-                        <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-12 h-12 m-2" />
+                <span class="flex flex-row flex-wrap gap-1 rounded-sm bg-secondary p-2 w-max h-max">
+                    <div class="bg-white rounded-full w-max h-max p-1">
+                        <img src="/assets/images/icons/flutter_mono.svg" alt="" class="w-4 h-4" />
                     </div>
-                    <p class="text-center rounded-full bg-secondary text-white p-2.5">
+                    <p class="text-center text-white">
                         Flutter
                     </p>
                 </span>
@@ -32,19 +32,19 @@
         <div class="flex flex-col animate-back opacity-0">
             <p class="font-bold text-lg">Back-end</p>
             <div class="flex flex-row gap-5">
-                <span>
-                    <div class="bg-white rounded w-max m-auto">
-                        <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-12 h-12 m-2" />
+                <span class="flex flex-row flex-wrap gap-1 rounded-sm bg-secondary p-2 w-max h-max">
+                    <div class="bg-white rounded-full w-max h-max p-1">
+                        <img src="/assets/images/icons/laravel_mono.png" alt="" class="w-4 h-4" />
                     </div>
-                    <p class="text-center rounded-full bg-secondary text-white p-2.5">
+                    <p class="text-center text-white">
                         Laravel
                     </p>
                 </span>
-                <span>
-                    <div class="bg-white rounded w-max m-auto">
-                        <img src="/assets/images/icons/nodejs_mono.png" alt="" class="w-12 h-12 m-2" />
+                <span class="flex flex-row flex-wrap gap-1 rounded-sm bg-secondary p-2 w-max h-max">
+                    <div class="bg-white rounded-full w-max h-max p-1">
+                        <img src="/assets/images/icons/nodejs_mono.png" alt="" class="w-4 h-4" />
                     </div>
-                    <p class="text-center rounded-full bg-secondary text-white p-2.5">
+                    <p class="text-center text-white">
                         Node.js
                     </p>
                 </span>
@@ -53,19 +53,19 @@
         <div class="flex flex-col animate-devops opacity-0">
             <p class="font-bold text-lg">DevOps</p>
             <div class="flex flex-row gap-5">
-                <span>
-                    <div class="bg-white rounded w-max m-auto">
-                        <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-12 h-12 m-2" />
+                <span class="flex flex-row flex-wrap gap-1 rounded-sm bg-secondary p-2 w-max h-max">
+                    <div class="bg-white rounded-full w-max h-max p-1">
+                        <img src="/assets/images/icons/docker_mono.svg" alt="" class="w-4 h-4" />
                     </div>
-                    <p class="text-center rounded-full bg-secondary text-white p-2.5">
+                    <p class="text-center text-white">
                         Docker
                     </p>
                 </span>
-                <span>
-                    <div class="bg-white rounded w-max m-auto">
-                        <img src="/assets/images/icons/nginx_mono.svg" alt="" class="w-12 h-12 m-2" />
+                <span class="flex flex-row flex-wrap gap-1 rounded-sm bg-secondary p-2 w-max h-max">
+                    <div class="bg-white rounded-full w-max h-max p-1">
+                        <img src="/assets/images/icons/nginx_mono.svg" alt="" class="w-4 h-4" />
                     </div>
-                    <p class="text-center rounded-full bg-secondary text-white p-2.5">
+                    <p class="text-center text-white">
                         Nginx
                     </p>
                 </span>
@@ -99,6 +99,11 @@
                                 <h3 class="text-xl font-bold text-btn-sec my-5">
                                     Développeur fullstack SmartGlobal Governance
                                 </h3>
+                                <span class="flex flex-row flex-wrap gap-1 mb-2">
+                                    <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Lua</p>
+                                    <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">N8N</p>
+                                    <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Roadmap</p>
+                                </span>
                                 <p class="text-lg">
                                     Au sein d'une 3 personnes, j'étais en charge du développement de nouvelles fonctionnalités en Lua :
                                     connexion web service, migration de script N8N. Développement low-code sur un logiciel modifié de Corteza.
@@ -114,9 +119,16 @@
                             <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                             <div>
                                 <div class="relative lg:w-[550px]">
-                                    <h3 class="text-xl font-bold text-btn-sec">
+                                    <h3 class="text-xl font-bold text-btn-sec my-5">
                                         Développeur Front-end iSelection (août 22 - fév 24)
                                     </h3>
+                                    <span class="flex flex-row flex-wrap gap-1 mb-2">
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Angular</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Vue.Js</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Jira</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                    </span>
                                     <p class="text-lg">
                                         Au sein d’une équipe de 8 personnes, j’étais en charge de la
                                         maintenance, des corrections de bugs et du développement de
@@ -129,7 +141,18 @@
                             </div>
                             <div>
                                 <div class="relative lg:w-[550px]">
-                                    <h3 class="text-xl font-bold text-btn-sec">Bac+3/4 Titre de concepteur et développeur d’application (août 22 - fév 24)</h3>
+                                    <h3 class="text-xl font-bold text-btn-sec my-5">Bac+3/4 Titre de concepteur et développeur d’application (août 22 - fév 24)</h3>
+                                    <span class="flex flex-row flex-wrap gap-1 mb-2">
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">PHP</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Javascript</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Vue.Js</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">React</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Flutter</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">NodeJs</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Jira</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                    </span>
                                     <p class="text-lg">PHP, Javascript, VueJS, Dockers, Laravel, NodeJs, ExpressJS et Flutter… sécurité et les tests unitaires.
                                         Titre de développeur web et web mobile (déc 21 - juin 22)
                                         HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
@@ -144,9 +167,14 @@
                             <div class="hidden lg:block lg:absolute lg:top-0 lg:left-1/2 lg:w-5 lg:h-5 lg:bg-white lg:border-2 lg:border-gray-800 lg:rounded-full lg:translate-x-[-50%] lg:z-10"></div>
                             <div>
                                 <div class="relative lg:w-[550px]">
-                                    <h3 class="text-xl font-bold text-btn-sec">
+                                    <h3 class="text-xl font-bold text-btn-sec my-5">
                                         Développeur fullstack O’Clock (déc 21- mai 22)
                                     </h3>
+                                    <span class="flex flex-row flex-wrap gap-1 mb-2">
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">React</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                    </span>
                                     <p class="text-lg">
                                         Simulation de 4 semaines : API Rest avec Laravel et un back-office
                                         avec REACT.
@@ -155,7 +183,15 @@
                             </div>
                             <div>
                                 <div class="relative lg:w-[550px]">
-                                    <h3 class="text-xl font-bold text-btn-sec">Bac+2 Titre de développeur web et web mobile (déc 21 - juin 22)</h3>
+                                    <h3 class="text-xl font-bold text-btn-sec my-5">Bac+2 Titre de développeur web et web mobile (déc 21 - juin 22)</h3>
+                                    <span class="flex flex-row flex-wrap gap-1 mb-2">
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">PHP</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Javascript</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">React</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">WordPress</p>
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                    </span>
                                     <p class="text-lg">HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
                                         challenge : exercices tous les jours après les cours.</p>
                                 </div>
@@ -169,6 +205,9 @@
                                     <h3 class="text-xl font-bold text-btn-sec my-5">
                                         Chargé de marketing digital Enfants d’Asie (juin 21-sept 22)
                                     </h3>
+                                    <span class="flex flex-row flex-wrap gap-1 mb-2">
+                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">WordPress</p>
+                                    </span>
                                     <p class="text-lg">
                                         Refonte du site wordpress, mise en place de la stratégie digitale. Changement de l'emaileur afin de faire économiser l'asscociation,
                                         tout en répondant au besoin.
@@ -183,6 +222,7 @@
                                         <h3 class="text-xl font-bold text-btn-sec my-5">
                                             Bac+5 Management du marketing & communication digitale École Pégase (sept 17 - juin 19)
                                         </h3>
+
                                         <p class="text-lg">
                                             Deux années d'alternance, la première au sein d'HSBC et la seconde au sein de B-Reputation.
                                         </p>
