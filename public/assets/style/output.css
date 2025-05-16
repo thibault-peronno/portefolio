@@ -1760,6 +1760,10 @@ video {
     top: 0px;
   }
 
+  .lg\:left-\[51\%\] {
+    left: 51%;
+  }
+
   .lg\:z-10 {
     z-index: 10;
   }
