@@ -28,15 +28,15 @@
         is snap on parent and snap-position on child -->
     <div class="snap-x flex overflow-x-auto sm:my-11 gap-5 pl-0.5 sm:snap-none sm:gap-14 sm:flex-wrap sm:pt-3">
         <?php foreach ($projects as $project) : ?>
-            <a href="<?= "/projet/" . $project->getId() ?>">
+            <a href="<?= "/projet/" . $project->get_id() ?>">
                 <div class="bg-white h-96 w-[450px] border rounded snap-start shrink-0 lg:hover:-translate-y-1.5 transition ease-in-out duration-200">
                     <div class="w-auto h-3/4 mb-3">
-                        <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
+                        <img src="<?= "/assets/images/projects/" . $project->get_picture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
                     </div>
                     <div class="p-2">
-                        <p class="text-l font-bold text-btn-sec inline-block"><?= $project->getTitle() ?></p>
+                        <p class="text-l font-bold text-btn-sec inline-block"><?= $project->get_title() ?></p>
                         <div class="flex justify-start gap-2">
-                            <?php foreach ($project->getLabels() as $label) : ?>
+                            <?php foreach ($project->get_labels() as $label) : ?>
                                 <div class="bg-white border rounded-full">
                                     <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-4 h-4 m-2 " />
                                 </div>
@@ -58,7 +58,7 @@
     <span class="snap-x flex overflow-x-auto gap-5 sm:snap-none sm:gap-14 sm:flex-wrap my-11">
         <?php foreach ($languages as $language) : ?>
             <div class="bg-white rounded-full border snap-start shrink-0">
-                <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="<?= "icon " . $language->getLabel() ?>" class="w-20 h-20 p-5" />
+                <img src="<?= "/assets/images/languages/" . $language->get_picture() ?>" alt="<?= "icon " . $language->get_label() ?>" class="w-20 h-20 p-5" />
             </div>
         <?php endforeach ?>
     </span>

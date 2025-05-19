@@ -11,24 +11,24 @@ class Languages
     private $picture;
     private $type;
 
-    public function getId(): int
+    public function get_id(): int
     {
         return $this->id;
     }
-    public function setId($id): self
+    public function set_id($id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    public function getLabel(): String
+    public function get_label(): String
     {
         return $this->label;
     }
-    public function setLabel($label): self
+    public function set_label($label): self
     {
         try {
-            $this->validateString($label, 100, "label");
+            $this->validate_string($label, 100, "label");
             $this->label = $label;
             return $this;
         } catch (\Throwable $error) {
@@ -36,14 +36,14 @@ class Languages
         }
     }
 
-    public function getPicture(): String
+    public function get_picture(): String
     {
         return $this->picture;
     }
-    public function setPicture($picture): self
+    public function set_picture($picture): self
     {
         try {
-            $this->validateString($picture, 100, "picture");
+            $this->validate_string($picture, 100, "picture");
             $this->picture = $picture;
             return $this;
         } catch (\Throwable $error) {
@@ -51,14 +51,14 @@ class Languages
         }
     }
 
-    public function getType(): String
+    public function get_type(): String
     {
         return $this->type;
     }
-    public function setType($type): self
+    public function set_type($type): self
     {
         try {
-            $this->validateString($type, 100, "type");
+            $this->validate_string($type, 100, "type");
             $this->type = $type;
             return $this;
         } catch (\Throwable $error) {
@@ -66,9 +66,9 @@ class Languages
         }
     }
 
-    private function validateString($valeur, $length, $field)
+    private function validate_string($valeur, $length, $field)
     {
         $validateSetterData = new validateSetterData;
-        return $validateSetterData->validateString($valeur, $length, $field);
+        return $validateSetterData->validate_string($valeur, $length, $field);
     }
 }

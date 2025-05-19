@@ -10,33 +10,33 @@ use App\Repositories\ProjectRepository;
 class MainController extends CoreController
 {
 
-    public function home(): void
+    public function display_home_page(): void
     {
         try {
             $projectRepository = new ProjectRepository();
             $LanguageRepository = new LanguagesRepository();
 
             $data = [];
-            $data['projects'] = $projectRepository->getProjects();
-            $data['languages'] = $LanguageRepository->getLanguages();
+            $data['projects'] = $projectRepository->get_projects();
+            $data['languages'] = $LanguageRepository->get_languages();
 
-            $this->show('home', $data);
+            $this->page_to_display('home', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
         // echo 'methode home dans MainController';
     }
 
-    public function cv(): void
+    public function display_cv_page(): void
     {
-        $this->show('cv');
+        $this->page_to_display('cv');
     }
 
-    public function boHome(): void
+    public function display_admin_home_page(): void
     {
         try {
             $user = new User;
@@ -45,29 +45,29 @@ class MainController extends CoreController
             $organizationRepository = new OrganizationsRepository();
     
             $data = [];
-            $data['projects'] = $projectRepository->getProjects();
-            $data['languages'] = $LanguageRepository->getLanguages();
-            $data['organizations'] = $organizationRepository->getOrganizations();
+            $data['projects'] = $projectRepository->get_projects();
+            $data['languages'] = $LanguageRepository->get_languages();
+            $data['organizations'] = $organizationRepository->get_organizations();
 
-            // $allOrganizations = $organizationRepository->getOrganizations();
+            // $allOrganizations = $organizationRepository->get_organizations();
             // $data['organizations'] = array_map(function ($getOrganization) {
             //     $organizationModel = new Organization();
 
-            //     $organizationModel->setId($getOrganization['id']);
-            //     $organizationModel->setTitle($getOrganization['title']);
-            //     $organizationModel->setDescription($getOrganization['description']);
-            //     $organizationModel->setPicture($getOrganization['picture']);
+            //     $organizationModel->set_id($getOrganization['id']);
+            //     $organizationModel->set_title($getOrganization['title']);
+            //     $organizationModel->set_description($getOrganization['description']);
+            //     $organizationModel->set_picture($getOrganization['picture']);
 
             //     return $organizationModel;
             // }, $allOrganizations);
 
-            $this->boShow('admin-home', $data);
+            $this->admin_page_to_display('admin-home', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
     }
 };

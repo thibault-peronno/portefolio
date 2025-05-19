@@ -11,32 +11,32 @@ use Error;
 
 class LanguageController extends CoreController
 {
-    public function languages(): void
+    public function display_languages_page(): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
             $languagesHelper = new languagesHelper();
             $data = [];
 
-            $languages = $languagesRepository->getLanguages();
-            $data['languages']['Front-end'] = $languagesHelper->sortLangageByFrontType($languages);
+            $languages = $languagesRepository->get_languages();
+            $data['languages']['Front-end'] = $languagesHelper->sort_langages_by_type($languages);
             $data['languages']['Back-end'] = $languagesHelper->sortLangageByBackType($languages);
             $data['languages']['DevOps'] = $languagesHelper->sortLangageByDevopsType($languages);
 
-            $data['arrayNumberOfProjectDevBylanguage'] = self::numberOfProjectDevBylanguage($languages);
+            $data['arrayNumberOfProjectDevBylanguage'] = self::count_number_of_project_dev_by_language($languages);
             
-            $this->show('technos', $data);
+            $this->page_to_display('technos', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
     }
 
     // possibilité de le mettre dans un service à la place.
-    private static function numberOfProjectDevBylanguage($languages): array
+    private static function count_number_of_project_dev_by_language($languages): array
     {
  
         try {
@@ -47,8 +47,8 @@ class LanguageController extends CoreController
                 
                 foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
                     
-                    if ($language->getLabel() === $arrayAllLanguages['label']) {
-                        $data[$language->getLabel()][0] = $data[$language->getLabel()][0] +1;
+                    if ($language->get_label() === $arrayAllLanguages['label']) {
+                        $data[$language->get_label()][0] = $data[$language->get_label()][0] +1;
                     }
                 }
             }
@@ -59,16 +59,16 @@ class LanguageController extends CoreController
         }
     }
 
-    public function boTechnos(): void
+    public function display_admin_languages_page(): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
             $languagesHelper = new languagesHelper();
             $data = [];
 
-            $languages = $languagesRepository->getLanguages();
+            $languages = $languagesRepository->get_languages();
 
-            $data['languages']['Front-end'] = $languagesHelper->sortLangageByFrontType($languages);
+            $data['languages']['Front-end'] = $languagesHelper->sort_langages_by_type($languages);
             $data['languages']['Back-end'] = $languagesHelper->sortLangageByBackType($languages);
             $data['languages']['DevOps'] = $languagesHelper->sortLangageByDevopsType($languages);
             // foreach ($languages as $language) {
@@ -81,31 +81,31 @@ class LanguageController extends CoreController
             //     }
             // };
 
-            $this->boShow('admin-technos', $data);
+            $this->admin_page_to_display('admin-technos', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
     }
 
-    public function addTechnoPage(): void
+    public function display_add_languages_page(): void
     {
         try {
-            $this->boShow('admin-add-techno');
+            $this->admin_page_to_display('admin-add-techno');
             
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         }
     }
 
-    public function addTechno(): void
+    public function add_a_languages(): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
@@ -113,7 +113,7 @@ class LanguageController extends CoreController
             $imageHelper = new ImageHelper();
             $data = [];
 
-            $insertedImage = $imageHelper->insertedLanguageImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
+            $insertedImage = $imageHelper->inserted_language_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
 
             if (!$insertedImage) {
                 throw new Error("Ajout échouée. Le fichier n'a pas pu être sauvegardé");
@@ -129,64 +129,64 @@ class LanguageController extends CoreController
                 throw new Error("Les données ne sont pas correctes");
             }
 
-            $languagesModel->setLabel($label);
-            $languagesModel->setPicture($picture);
-            $languagesModel->setType($type);
+            $languagesModel->set_label($label);
+            $languagesModel->set_picture($picture);
+            $languagesModel->set_type($type);
 
-            $insert = $languagesRepository->addLanguages();
+            $insert = $languagesRepository->add_an_language();
 
             if (isset($insert)) {
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         }
     }
 
-    public function editTechno($idLanguage): void
+    public function display_edit_languages_page($idLanguage): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
             $languagesModel = new Languages();
             $data = [];
 
-            // $languagesModel->setId($idLanguage['id']);
-            $language = $languagesRepository->getLanguageById($idLanguage['id']);
+            // $languagesModel->set_id($idLanguage['id']);
+            $language = $languagesRepository->get_language_by_id($idLanguage['id']);
 
-            $languagesModel->setId($language['id']);
-            $languagesModel->setLabel($language['label']);
-            $languagesModel->setPicture($language['picture']);
-            $languagesModel->setType($language['type']);
+            $languagesModel->set_id($language['id']);
+            $languagesModel->set_label($language['label']);
+            $languagesModel->set_picture($language['picture']);
+            $languagesModel->set_type($language['type']);
 
             $data['language'] = $languagesModel;
 
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         }
     }
 
-    public function updateTechno($idLanguage): void
+    public function update_a_language($idLanguage): void
     {
 
         try {
             $languagesRepository = new LanguagesRepository();
             $languagesModel = new Languages();
             $imageHelper = new ImageHelper();
-            $isNoUpdateImage = $imageHelper->isNoUpdateImage($_FILES['picture']);
+            $isNoUpdateImage = $imageHelper->is_update_image($_FILES['picture']);
 
             if (!$isNoUpdateImage) {
-                $imageHelper->insertedLanguageImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
+                $imageHelper->inserted_language_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
 
             if (!$isNoUpdateImage) {
@@ -195,9 +195,9 @@ class LanguageController extends CoreController
                 $picture = htmlspecialchars($_POST['picture']);
             }
 
-            $languagesModel->setLabel(htmlspecialchars($_POST['label']));
-            $languagesModel->setPicture($picture);
-            $languagesModel->setType(htmlspecialchars($_POST['type']));
+            $languagesModel->set_label(htmlspecialchars($_POST['label']));
+            $languagesModel->set_picture($picture);
+            $languagesModel->set_type(htmlspecialchars($_POST['type']));
 
             $insert = $languagesRepository->updateLanguage($idLanguage);
 
@@ -205,17 +205,17 @@ class LanguageController extends CoreController
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         }
     }
 
-    public function boDeleteTechnos($labelId): void
+    public function admin_delete_languages($labelId): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
@@ -225,7 +225,7 @@ class LanguageController extends CoreController
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-techno', $data);
+            $this->admin_page_to_display('admin-add-techno', $data);
         }
     }
 }

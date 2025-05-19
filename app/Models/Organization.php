@@ -12,24 +12,24 @@ class Organization
     private $picture;
 
 
-    public function getId(): int
+    public function get_id(): int
     {
         return $this->id;
     }
-    public function setId($id): self
+    public function set_id($id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    public function getTitle(): string
+    public function get_title(): string
     {
         return $this->title;
     }
-    public function setTitle($title): self
+    public function set_title($title): self
     {
         try {
-            $this->validateString($title, 100, "title");
+            $this->validate_string($title, 100, "title");
             $this->title = $title;
             return $this;
         } catch (\Throwable $error) {
@@ -37,14 +37,14 @@ class Organization
         }
     }
 
-    public function getDescription(): string
+    public function get_description(): string
     {
         return $this->description;
     }
-    public function setDescription($description): self
+    public function set_description($description): self
     {
         try {
-            $this->validateString($description, 255, "description");
+            $this->validate_string($description, 255, "description");
             $this->description = $description;
             return $this;
         } catch (\Throwable $error) {
@@ -52,14 +52,14 @@ class Organization
         }
     }
 
-    public function getPicture(): string
+    public function get_picture(): string
     {
         return $this->picture;
     }
-    public function setPicture($picture): self
+    public function set_picture($picture): self
     {
         try {
-            $this->validateString($picture, 100, "picture");
+            $this->validate_string($picture, 100, "picture");
             $this->picture = $picture;
             return $this;
         } catch (\Throwable $error) {
@@ -67,9 +67,9 @@ class Organization
         }
     }
 
-    private function validateString($valeur, $length, $field)
+    private function validate_string($valeur, $length, $field)
     {
         $validateSetterData = new validateSetterData;
-        return $validateSetterData->validateString($valeur, $length, $field);
+        return $validateSetterData->validate_string($valeur, $length, $field);
     }
 }

@@ -6,22 +6,22 @@ use App\Repositories\LanguagesRepository;
 
 class LanguagesHelper
 {
-    public function getLanguages(): array
+    public function get_languages_helper(): array
     {
         try {
             $languagesRepository = new LanguagesRepository();
 
-            return $languagesRepository->getLanguages();
+            return $languagesRepository->get_languages();
         } catch (\Throwable $error) {
             throw $error;
         }
     }
 
-    public function sortLangageByFrontType($languages)
+    public function sort_langages_by_type($languages)
     {
         $data = [];
         foreach ($languages as $language) {
-            if ($language->getType() === 'Front-end') {
+            if ($language->get_type() === 'Front-end') {
                 $data[] = $language;
             }
         };
@@ -31,7 +31,7 @@ class LanguagesHelper
     {
         $data = [];
         foreach ($languages as $language) {
-            if ($language->getType() === 'Back-end') {
+            if ($language->get_type() === 'Back-end') {
                 $data[] = $language;
             }
         };
@@ -41,7 +41,7 @@ class LanguagesHelper
     {
         $data = [];
         foreach ($languages as $language) {
-            if ($language->getType() === 'DevOps') {
+            if ($language->get_type() === 'DevOps') {
                 $data[] = $language;
             }
         };

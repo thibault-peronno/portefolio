@@ -12,7 +12,7 @@ class CoreController
         $this->router = $router;
     }
 
-    private function getNeededDatas(): array
+    private function get_needed_datas(): array
     {
         return [
             // 'baseURL' => $_SERVER['BASE_URI'],
@@ -27,13 +27,13 @@ class CoreController
      * @param array $data array with needed datas
      * @return void
      */
-    public function show(string $pageName, array $data = []): void
+    public function page_to_display(string $pageName, array $data = []): void
     {
-        $getNeededData = $this->getNeededDatas();
+        $getNeededData = $this->get_needed_datas();
 
 
         // include : ask to include, but does not allow a fatal error
-        // require : the content is required, ans if does not exist, there is a fatal error.
+        // require : the content is required, and if does not exist, there is a fatal error.
         /**
          * We added try catch to manage the fatal error
          */
@@ -50,9 +50,9 @@ class CoreController
         }
     }
 
-    public function boShow(string $pageName, array $data = []): void
+    public function admin_page_to_display(string $pageName, array $data = []): void
     {
-        $getNeededData = $this->getNeededDatas();
+        $getNeededData = $this->get_needed_datas();
         extract($data);
         extract($getNeededData);
         try {

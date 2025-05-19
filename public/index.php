@@ -16,25 +16,25 @@ $router->addRoutes(
       '/',
       [
         'controller' => 'MainController',
-        'method' => 'home',
+        'method' => 'display_home_page',
       ],
-      'home',
+      'display_home_page',
     ],
     [
       'GET',
       '/cv',
       [
         'controller' => 'MainController',
-        'method' => 'cv',
+        'method' => 'display_cv_page',
       ],
-      'cv',
+      'display_cv_page',
     ],
     [
       'GET',
       '/projets',
       [
         'controller' => 'ProjectController',
-        'method' => 'getProjects',
+        'method' => 'display_projects_page',
       ],
       'projets',
     ],
@@ -43,7 +43,7 @@ $router->addRoutes(
       '/projet/[:id]',
       [
         'controller' => 'ProjectController',
-        'method' => 'getProject',
+        'method' => 'display_project_page',
       ],
       'projet',
     ],
@@ -52,7 +52,7 @@ $router->addRoutes(
       '/enregistrement',
       [
         'controller' => 'AuthController',
-        'method' => 'loginPage',
+        'method' => 'display_login_page',
       ],
       'enregistrement',
     ],
@@ -61,7 +61,7 @@ $router->addRoutes(
       '/enregistrement',
       [
         'controller' => 'AuthController',
-        'method' => 'signIn',
+        'method' => 'create_new_account',
       ],
       'createAccount',
     ],
@@ -70,7 +70,7 @@ $router->addRoutes(
       '/connexion',
       [
         'controller' => 'AuthController',
-        'method' => 'page',
+        'method' => 'connect_page',
       ],
       'connexion',
     ],
@@ -79,7 +79,7 @@ $router->addRoutes(
       '/admin-accueil',
       [
         'controller' => 'AuthController',
-        'method' => 'logToBackOffice',
+        'method' => 'sign_in_back_office',
       ],
       'admin-connexion',
     ],
@@ -88,7 +88,7 @@ $router->addRoutes(
       '/languages',
       [
         'controller' => 'LanguageController',
-        'method' => 'languages',
+        'method' => 'display_languages_page',
       ],
       'languages',
     ],
@@ -107,7 +107,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-accueil',
         [
           'controller' => 'MainController',
-          'method' => 'boHome',
+          'method' => 'display_admin_home_page',
         ],
         'admin-accueil',
       ],
@@ -116,7 +116,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-projets',
         [
           'controller' => 'ProjectController',
-          'method' => 'adminGetProjects',
+          'method' => 'display_admin_projects',
         ],
         'admin-projets',
       ],
@@ -125,7 +125,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-projet/[i:id]',
         [
           'controller' => 'ProjectController',
-          'method' => 'adminGetProject',
+          'method' => 'display_admin_project',
         ],
         'admin-projet',
       ],
@@ -134,7 +134,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-ajouter-projet',
         [
           'controller' => 'ProjectController',
-          'method' => 'addProjectPage',
+          'method' => 'display_admin_add_project_page',
         ],
         'admin-ajouter-projet',
       ],
@@ -143,7 +143,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-ajouter-projet',
         [
           'controller' => 'ProjectController',
-          'method' => 'addProject',
+          'method' => 'add_a_project',
         ],
       ],
       [
@@ -151,7 +151,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-editer-projet/[i:id]',
         [
           'controller' => 'ProjectController',
-          'method' => 'editProject',
+          'method' => 'display_admin_edit_project_page',
         ],
         'admin-editer-projet'
       ],
@@ -160,7 +160,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-editer-projet/[i:id]',
         [
           'controller' => 'ProjectController',
-          'method' => 'updateProject',
+          'method' => 'update_a_project',
         ],
         'admin-update-projet'
       ],
@@ -169,7 +169,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-ajouter-technologie',
         [
           'controller' => 'LanguageController',
-          'method' => 'addTechnoPage',
+          'method' => 'display_add_languages_page',
         ],
         'admin-ajouter-technologie',
       ],
@@ -178,7 +178,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-ajouter-technologie',
         [
           'controller' => 'LanguageController',
-          'method' => 'addTechno',
+          'method' => 'add_a_languages',
         ],
       ],
       [
@@ -186,7 +186,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-editer-technologie/[i:id]',
         [
           'controller' => 'LanguageController',
-          'method' => 'editTechno',
+          'method' => 'display_edit_languages_page',
         ],
         'admin-editer-technologie'
       ],
@@ -195,7 +195,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-editer-technologie/[i:id]',
         [
           'controller' => 'LanguageController',
-          'method' => 'updateTechno',
+          'method' => 'update_a_language',
         ],
         'admin-update-technologie'
       ],
@@ -204,7 +204,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-technos',
         [
           'controller' => 'LanguageController',
-          'method' => 'boTechnos',
+          'method' => 'display_admin_languages_page',
         ],
         'admin-technos',
       ],
@@ -213,7 +213,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-delete--technos/[i:id]',
         [
           'controller' => 'LanguageController',
-          'method' => 'boDeleteTechnos',
+          'method' => 'admin_delete_languages',
         ],
         'admin-delete-technos',
       ],
@@ -222,7 +222,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-organisations',
         [
           'controller' => 'OrgaController',
-          'method' => 'organizations',
+          'method' => 'display_organizations_page',
         ],
         'admin-organisations',
       ],
@@ -231,7 +231,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
-          'method' => 'organization',
+          'method' => 'display_organization_page',
         ],
         'admin-organisation',
       ],
@@ -240,7 +240,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-ajouter-organisation',
         [
           'controller' => 'OrgaController',
-          'method' => 'addOrgaPage',
+          'method' => 'display_add_organization_page',
         ],
         'admin-ajouter-organisation',
       ],
@@ -249,7 +249,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-editer-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
-          'method' => 'editOrga',
+          'method' => 'display_edit_an_organization_page',
         ],
         'admin-editer-organisation'
       ],
@@ -258,7 +258,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-editer-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
-          'method' => 'updateOrganization',
+          'method' => 'update_an_organization',
         ],
         'admin-update-organisation'
       ],
@@ -267,7 +267,7 @@ if (isset($_COOKIE['PHPSESSID'])) {
         '/admin-ajouter-organisation',
         [
           'controller' => 'OrgaController',
-          'method' => 'addOrga',
+          'method' => 'add_an_organization',
         ],
       ],
     ]

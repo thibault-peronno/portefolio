@@ -10,7 +10,7 @@ use PDO;
 
 class ProjectRepository
 {
-    public function getProjects(): array
+    public function get_projects(): array
     {
         try {
             $pdo = Database::getPDO();
@@ -34,13 +34,13 @@ class ProjectRepository
             $getProjects  = array_map(function ($getProject) {
                 $projectModel = new Project();
 
-                $projectModel->setId($getProject['id']);
-                $projectModel->setTitle($getProject['title']);
-                $projectModel->setDescription($getProject['description']);
-                $projectModel->setUrl($getProject['url']);
-                $projectModel->setPicture($getProject['picture']);
-                $projectModel->setOrganizationId($getProject['organization_id']);
-                $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+                $projectModel->set_id($getProject['id']);
+                $projectModel->set_title($getProject['title']);
+                $projectModel->set_description($getProject['description']);
+                $projectModel->set_url($getProject['url']);
+                $projectModel->set_picture($getProject['picture']);
+                $projectModel->set_organization_id($getProject['organization_id']);
+                $projectModel->set_labels(json_decode('[' . $getProject['labels'] . ']', true));
 
                 return $projectModel;
             }, $allProjects);
@@ -51,7 +51,7 @@ class ProjectRepository
         }
     }
 
-    public function getProjectById($idProject)
+    public function get_project_by_id($idProject)
     {
         try {
             $pdo = Database::getPDO();
@@ -68,16 +68,16 @@ class ProjectRepository
 
             $projectModel = new Project();
 
-            $projectModel->setId($getProject['id']);
-            $projectModel->setTitle($getProject['title']);
-            $projectModel->setDescription($getProject['description']);
-            $projectModel->setUrl($getProject['url']);
-            $projectModel->setPicture($getProject['picture']);
-            $projectModel->setOrganizationId($getProject['organization_id']);
-            $projectModel->setTitleOrganization($getProject['title_organization']);
-            $projectModel->setPictureOrganization($getProject['picture_organization']);
-            $projectModel->setDescriptionOrganization($getProject['description_organization']);
-            $projectModel->setLabels(json_decode('[' . $getProject['labels'] . ']', true));
+            $projectModel->set_id($getProject['id']);
+            $projectModel->set_title($getProject['title']);
+            $projectModel->set_description($getProject['description']);
+            $projectModel->set_url($getProject['url']);
+            $projectModel->set_picture($getProject['picture']);
+            $projectModel->set_organization_id($getProject['organization_id']);
+            $projectModel->set_title_organization($getProject['title_organization']);
+            $projectModel->set_picture_organization($getProject['picture_organization']);
+            $projectModel->set_description_organization($getProject['description_organization']);
+            $projectModel->set_labels(json_decode('[' . $getProject['labels'] . ']', true));
 
             // $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
 
@@ -87,7 +87,7 @@ class ProjectRepository
         }
     }
 
-    public function addProject(Project $projectModel, $languages): bool
+    public function add_a_project(Project $projectModel, $languages): bool
     {
         $pdo = Database::getPDO();
         $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :picture, :organizationId)";
@@ -99,11 +99,11 @@ class ProjectRepository
 
             /*  La méthode bindValue() de l'objet PDOStatement est utilisée pour lier une valeur à un paramètre nommé dans une requête SQL préparée. Elle prend trois arguments : le nom du paramètre (avec un préfixe :), la valeur à lier, et optionnellement le type de données de la valeur. Cette méthode permet de sécuriser les requêtes en évitant les injections SQL, car elle assure que les valeurs sont correctement échappées et traitées par le système de gestion de base de données. De plus, en spécifiant le type de données attendu, elle peut améliorer les performances de la requête et éviter des erreurs de type de données
              */
-            $pdoStatement->bindValue(':title', $projectModel->getTitle(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':description', $projectModel->getDescription(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':url', $projectModel->getUrl(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':picture', $projectModel->getPicture(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':organizationId', $projectModel->getOrganizationId(), PDO::PARAM_INT);
+            $pdoStatement->bindValue(':title', $projectModel->get_title(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':description', $projectModel->get_description(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':url', $projectModel->get_url(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':picture', $projectModel->get_picture(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':organizationId', $projectModel->get_organization_id(), PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();
             
@@ -115,8 +115,8 @@ class ProjectRepository
                 // dd("insertedRows");
                 foreach ($languages as $key => $value) {
                     $projectLanguageModel = new ProjectLanguage();
-                    $projectLanguageModel->setProjectId($projectId);
-                    $projectLanguageModel->setLanguageId($value);
+                    $projectLanguageModel->set_project_id($projectId);
+                    $projectLanguageModel->set_language_id($value);
                     
                     // call the method to exect the sql request
                     $projectLanguageRepository = new ProjectLanguageRepository();
@@ -132,7 +132,7 @@ class ProjectRepository
         }
     }
 
-    public function updateProject(Project $projectModel, $languages): bool
+    public function update_a_project(Project $projectModel, $languages): bool
     {
         
         $pdo = Database::getPDO();
@@ -140,12 +140,12 @@ class ProjectRepository
         try {
             $pdoStatement = $pdo->prepare($sql);
             // dd($this->title,$this->description, $this->url, $this->picture, $this->organization_id, $this->id);
-            $pdoStatement->bindParam(':title', $projectModel->getTitle(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':description', $projectModel->getDescription(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':url', $projectModel->getUrl(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':picture', $projectModel->getPicture(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':organizationId', $projectModel->getOrganizationId(), PDO::PARAM_INT);
-            $pdoStatement->bindParam(':projectId', $projectModel->getId(), PDO::PARAM_INT);
+            $pdoStatement->bindParam(':title', $projectModel->get_title(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':description', $projectModel->get_description(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':url', $projectModel->get_url(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':picture', $projectModel->get_picture(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':organizationId', $projectModel->get_organization_id(), PDO::PARAM_INT);
+            $pdoStatement->bindParam(':projectId', $projectModel->get_id(), PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();
             
@@ -153,14 +153,14 @@ class ProjectRepository
                 
                 // We retrieve the last id.
                 $projectLanguageRepository = new ProjectLanguageRepository();
-                $deleteLanguages = $projectLanguageRepository->deleteLanguagesProjects($projectModel->getId());
+                $deleteLanguages = $projectLanguageRepository->deleteLanguagesProjects($projectModel->get_id());
                 dump($deleteLanguages);
                 $insertLanguages = false;
                 if ($deleteLanguages) {
                     foreach ($languages as $key => $value) {
                         $projectLanguageModel = new ProjectLanguage();
-                        $projectLanguageModel->setProjectId($projectModel->getId());
-                        $projectLanguageModel->setLanguageId($value);
+                        $projectLanguageModel->set_project_id($projectModel->get_id());
+                        $projectLanguageModel->set_language_id($value);
                         
                         // call the method to exect the sql request
                         $projectLanguageRepository = new ProjectLanguageRepository();

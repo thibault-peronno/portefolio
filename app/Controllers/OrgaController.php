@@ -8,50 +8,50 @@ use App\Repositories\OrganizationsRepository;
 
 class OrgaController extends CoreController
 {
-    public function organizations(): void
+    public function display_organizations_page(): void
     {
 
         try {
             $organizationsRepository = new OrganizationsRepository();
             $data = [];
 
-            $data['organizations'] = $organizationsRepository->getOrganizations();
+            $data['organizations'] = $organizationsRepository->get_organizations();
 
-            $this->boShow('admin-orgas', $data);
+            $this->admin_page_to_display('admin-orgas', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('error', $data);
+            $this->admin_page_to_display('error', $data);
         }
     }
 
-    public function organization($idOrganization): void
+    public function display_organization_page($idOrganization): void
     {
         try {
             $organizationsRepository = new OrganizationsRepository();
             $data = [];
 
-            $data['organization'] = $organizationsRepository->getOrgaById($idOrganization);
+            $data['organization'] = $organizationsRepository->get_organization_by_id($idOrganization);
 
-            $this->boShow('admin-orga', $data);
+            $this->admin_page_to_display('admin-orga', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('error', $data);
+            $this->admin_page_to_display('error', $data);
         }
     }
 
 
-    public function addOrgaPage(): void
+    public function display_add_organization_page(): void
     {
-        $this->boShow('admin-add-orga');
+        $this->admin_page_to_display('admin-add-orga');
     }
 
-    public function addOrga(): void
+    public function add_an_organization(): void
     {
         try {
 
@@ -59,81 +59,81 @@ class OrgaController extends CoreController
 
             /* Inserte image : return true or an trow error */
             $imageHelper = new ImageHelper();
-            $imageHelper->insertedOrganizationImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
+            $imageHelper->inserted_organization_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
 
             // assigner les valeurs à l'objet, pour les récuperer dans notre model.
             $organizationModel = new Organization();
-            $organizationModel->setTitle($_POST['title']);
-            $organizationModel->setDescription($_POST['description']);
-            $organizationModel->setPicture($_FILES["picture"]["name"]);
+            $organizationModel->set_title($_POST['title']);
+            $organizationModel->set_description($_POST['description']);
+            $organizationModel->set_picture($_FILES["picture"]["name"]);
 
             // aller faire la requête dans notre repository
             $organizationsRepository = new OrganizationsRepository();
-            $insert = $organizationsRepository->addOrganization($organizationModel);
+            $insert = $organizationsRepository->add_an_organization($organizationModel);
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
             }
 
-            $this->boShow('admin-add-orga', $data);
+            $this->admin_page_to_display('admin-add-orga', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('error', $data);
+            $this->admin_page_to_display('error', $data);
         }
     }
 
-    public function editOrga($idOrga)
+    public function display_edit_an_organization_page($idOrga): void
     {
         try {
             $organizationsRepository = new OrganizationsRepository();
             $data = [];
-            $data['organization'] = $organizationsRepository->getOrgaById($idOrga['id']);
-            $this->boShow('admin-add-orga', $data);
+            $data['organization'] = $organizationsRepository->get_organization_by_id($idOrga['id']);
+            $this->admin_page_to_display('admin-add-orga', $data);
             
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('error', $data);
+            $this->admin_page_to_display('error', $data);
         }
     }
 
-    public function updateOrganization()
+    public function update_an_organization():void
     {
 
         try {
             $imageHelper = new ImageHelper();
-            $isNoUpdateImage = $imageHelper->isNoUpdateImage($_FILES['picture']);
+            $isNoUpdateImage = $imageHelper->is_update_image($_FILES['picture']);
             
             if (!$isNoUpdateImage) {
-                $imageHelper->insertedOrganizationImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
+                $imageHelper->inserted_organization_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
             
             $organizationModel = new Organization();
-            $organizationModel->setId($_POST['id']);
-            $organizationModel->setTitle($$_POST['title']);
-            $organizationModel->setDescription($_POST['description']);
+            $organizationModel->set_id($_POST['id']);
+            $organizationModel->set_title($$_POST['title']);
+            $organizationModel->set_description($_POST['description']);
             if (!$isNoUpdateImage) {
-            $organizationModel->setPicture($$_FILES["picture"]["name"]);
+            $organizationModel->set_picture($$_FILES["picture"]["name"]);
             } else {
-                $organizationModel->setPicture($_POST['picture']);
+                $organizationModel->set_picture($_POST['picture']);
             }
             
             $organizationsRepository = new OrganizationsRepository();
-            $insert = $organizationsRepository->updateOrganization($organizationModel);
+            $insert = $organizationsRepository->update_an_organization($organizationModel);
 
             $data['succeeded'] = $insert;
 
-            $this->boShow('admin-add-orga', $data);
+            $this->admin_page_to_display('admin-add-orga', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('error', $data);
+            $this->admin_page_to_display('error', $data);
         }
     }
 }

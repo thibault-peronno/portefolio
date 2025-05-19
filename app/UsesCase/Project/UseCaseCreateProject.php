@@ -9,20 +9,20 @@ class UseCaseCreateProject {
 
     private function insertImages() {
         $imageHelper = new ImageHelper();
-        $imageHelper->insertedProjectImage();
+        $imageHelper->inserted_project_image();
 
     }
 
     private function createProject() {
         $projectRepository = new ProjectRepository();
-        $insert = $projectRepository->addProject($projectModel, $_POST['languages']);
+        $insert = $projectRepository->add_a_project($projectModel, $_POST['languages']);
     }
 
     private function createLanguages() {
         foreach ($languages as $key => $value) {
             $projectLanguageModel = new ProjectLanguage();
-            $projectLanguageModel->setProjectId($projectId);
-            $projectLanguageModel->setLanguageId($value);
+            $projectLanguageModel->set_project_id($projectId);
+            $projectLanguageModel->set_language_id($value);
 
             // call the method to exect the sql request
             $projectLanguageRepository = new ProjectLanguageRepository();

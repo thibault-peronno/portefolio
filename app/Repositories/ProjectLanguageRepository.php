@@ -17,8 +17,8 @@ class ProjectLanguageRepository
             $sql = "INSERT INTO `projects_languages` (`project_id`, `language_id`) VALUES (:projectId, :languageId)";
             $pdoStatementLanguages = $pdo->prepare($sql);
 
-            $pdoStatementLanguages->bindValue(':projectId', $projectLanguageModel->getProjectId(), PDO::PARAM_INT);
-            $pdoStatementLanguages->bindValue(':languageId', $projectLanguageModel->getLanguageId(), PDO::PARAM_INT);
+            $pdoStatementLanguages->bindValue(':projectId', $projectLanguageModel->get_project_id(), PDO::PARAM_INT);
+            $pdoStatementLanguages->bindValue(':languageId', $projectLanguageModel->get_language_id(), PDO::PARAM_INT);
             $insertedRows = $pdoStatementLanguages->execute();
             return $insertedRows;
         } catch (\Throwable $error) {

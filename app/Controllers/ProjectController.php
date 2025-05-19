@@ -12,80 +12,80 @@ use App\Helpers\ImageHelper;
 class ProjectController extends CoreController
 {
 
-    public function getProjects(): void
+    public function display_projects_page(): void
     {
         try {
             $projectRepository = new projectRepository();
             $data = [];
 
-            $data['projects'] = $projectRepository->getProjects();
+            $data['projects'] = $projectRepository->get_projects();
 
-            $this->show('projects', $data);
+            $this->page_to_display('projects', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
     }
 
-    public function getProject($idProject): void
-    {
-        try {
-            $projectRepository = new projectRepository();
-
-            $data = [];
-
-            $data['project'] = $projectRepository->getProjectById($idProject['id']);
-
-            $this->show('project', $data);
-        } catch (\Throwable $error) {
-            $data = [
-                "message" => $error->getMessage(),
-                "succeeded" => false,
-            ];
-            $this->show('error', $data);
-        }
-    }
-
-    public function adminGetProjects(): void
-    {
-        try {
-            $projectRepository = new projectRepository();
-            $data = [];
-            $data['projects'] = $projectRepository->getProjects();
-
-            $this->boShow('admin-projects', $data);
-        } catch (\Throwable $error) {
-            $data = [
-                "message" => $error->getMessage(),
-                "succeeded" => false,
-            ];
-            $this->show('error', $data);
-        }
-    }
-
-    public function adminGetProject($idProject): void
+    public function display_project_page($idProject): void
     {
         try {
             $projectRepository = new projectRepository();
 
             $data = [];
 
-            $data['project'] = $projectRepository->getProjectById($idProject['id']);
+            $data['project'] = $projectRepository->get_project_by_id($idProject['id']);
 
-            $this->boShow('admin-project', $data);
+            $this->page_to_display('project', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
     }
 
-    public function addProjectPage(): void
+    public function display_admin_projects(): void
+    {
+        try {
+            $projectRepository = new projectRepository();
+            $data = [];
+            $data['projects'] = $projectRepository->get_projects();
+
+            $this->admin_page_to_display('admin-projects', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->page_to_display('error', $data);
+        }
+    }
+
+    public function display_admin_project($idProject): void
+    {
+        try {
+            $projectRepository = new projectRepository();
+
+            $data = [];
+
+            $data['project'] = $projectRepository->get_project_by_id($idProject['id']);
+
+            $this->admin_page_to_display('admin-project', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->page_to_display('error', $data);
+        }
+    }
+
+    public function display_admin_add_project_page(): void
     {
         try {
             $organizatiionRepository =  new OrganizationsRepository();
@@ -93,56 +93,56 @@ class ProjectController extends CoreController
 
             $data = [];
 
-            $data['languages'] = $languagesHelper->getLanguages();
-            $data['organizations'] = $organizatiionRepository->getOrganizations();
+            $data['languages'] = $languagesHelper->get_languages_helper();
+            $data['organizations'] = $organizatiionRepository->get_organizations();
 
-            $this->boShow('admin-add-project', $data);
+            $this->admin_page_to_display('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
     }
 
-    public function addProject(): void
+    public function add_a_project(): void
     {
         try {
 
             /* Insert image : return true or an throw error */
             $imageHelper = new ImageHelper();
             // dd($_POST);
-            $imageHelper->insertedProjectImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
+            $imageHelper->inserted_project_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             // dump("test");
 
             /*  Now we create our object with datas from input
             we have our object with $projectModel = new Project;
             */
             $projectModel = new Project();
-            $projectModel->setTitle($_POST['title']);
-            $projectModel->setDescription($_POST['description']);
-            $projectModel->setUrl($_POST['url']);
-            $projectModel->setPicture($_FILES["picture"]["name"]);
-            $projectModel->setOrganizationId($_POST['organizationId']);
+            $projectModel->set_title($_POST['title']);
+            $projectModel->set_description($_POST['description']);
+            $projectModel->set_url($_POST['url']);
+            $projectModel->set_picture($_FILES["picture"]["name"]);
+            $projectModel->set_organization_id($_POST['organizationId']);
 
             $projectRepository = new ProjectRepository();
-            $insert = $projectRepository->addProject($projectModel, $_POST['languages']);
+            $insert = $projectRepository->add_a_project($projectModel, $_POST['languages']);
             dump($insert);
             $data = [];
             $data['succeeded'] = $insert;
 
-            $this->boShow('admin-add-project', $data);
+            $this->admin_page_to_display('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('admin-add-project', $data);
+            $this->admin_page_to_display('admin-add-project', $data);
         }
     }
 
-    public function editProject($idProject)
+    public function display_admin_edit_project_page($idProject)
     {
         // dd($idProject);
         $languagesHelper = new LanguagesHelper();
@@ -151,50 +151,50 @@ class ProjectController extends CoreController
 
         $data = [];
 
-        $data['languages'] = $languagesHelper->getLanguages();
-        $data['organizations'] = $organizatiionRepository->getOrganizations();
-        $data['project'] = $projectRepository->getProjectById($idProject['id']);
+        $data['languages'] = $languagesHelper->get_languages_helper();
+        $data['organizations'] = $organizatiionRepository->get_organizations();
+        $data['project'] = $projectRepository->get_project_by_id($idProject['id']);
 
-        $this->boShow('admin-add-project', $data);
+        $this->admin_page_to_display('admin-add-project', $data);
     }
 
-    public function updateProject($idProject)
+    public function update_a_project($idProject)
     {
 
         try {
             $imageHelper = new ImageHelper();
 
             $data = [];
-            $isNoUpdateImage = $imageHelper->isNoUpdateImage($_FILES['picture']);
+            $isNoUpdateImage = $imageHelper->is_update_image($_FILES['picture']);
 
             if (!$isNoUpdateImage) {
-                $imageHelper->insertedProjectImage($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
+                $imageHelper->inserted_project_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
 
             $projectModel = new Project();
-            $projectModel->setId($idProject['id']);
-            $projectModel->setTitle($_POST['title']);
-            $projectModel->setDescription($_POST['description']);
-            $projectModel->setUrl($_POST['url']);
+            $projectModel->set_id($idProject['id']);
+            $projectModel->set_title($_POST['title']);
+            $projectModel->set_description($_POST['description']);
+            $projectModel->set_url($_POST['url']);
             if (!$isNoUpdateImage) {
-                $projectModel->setPicture($_FILES["picture"]["name"]);
+                $projectModel->set_picture($_FILES["picture"]["name"]);
             } else {
-                $projectModel->setPicture($_POST['picture']);
+                $projectModel->set_picture($_POST['picture']);
             }
-            $projectModel->setOrganizationId($_POST['organizationId']);
+            $projectModel->set_organization_id($_POST['organizationId']);
 
             $projectRepository = new ProjectRepository;
-            $insert = $projectRepository->updateProject($projectModel, $_POST['languages']);
+            $insert = $projectRepository->update_a_project($projectModel, $_POST['languages']);
 
             $data['succeeded'] = $insert;
 
-            $this->boShow('admin-add-project', $data);
+            $this->admin_page_to_display('admin-add-project', $data);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->boShow('error', $data);
+            $this->admin_page_to_display('error', $data);
         }
     }
 }

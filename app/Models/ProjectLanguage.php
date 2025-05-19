@@ -11,31 +11,31 @@ class ProjectLanguage
     private $languageId;
 
 
-    public function getId(): int
+    public function get_id(): int
     {
         return $this->id;
     }
-    public function setId($id): self
+    public function set_id($id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    public function getProjectId(): int
+    public function get_project_id(): int
     {
         return $this->projectId;
     }
-    public function setProjectId(int $projectId): self
+    public function set_project_id(int $projectId): self
     {
         $this->projectId = $projectId;
         return $this;
     }
 
-    public function getLanguageId(): int
+    public function get_language_id(): int
     {
         return $this->languageId;
     }
-    public function setLanguageId(int $languageId): self
+    public function set_language_id(int $languageId): self
     {
         if (!is_numeric($languageId)) {
             throw new Error("languageId must be numeric");

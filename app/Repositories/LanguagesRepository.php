@@ -11,7 +11,7 @@ use Exception;
 class LanguagesRepository
 {
 
-    public function getLanguages(): array | Error
+    public function get_languages(): array | Error
     {
 
         try {
@@ -26,10 +26,10 @@ class LanguagesRepository
             $getLanguages = array_map(function ($getLanguage) {
                 $languageModel = new Languages();
 
-                $languageModel->setId($getLanguage['id']);
-                $languageModel->setLabel($getLanguage['label']);
-                $languageModel->setPicture($getLanguage['picture']);
-                $languageModel->setType($getLanguage['type']);
+                $languageModel->set_id($getLanguage['id']);
+                $languageModel->set_label($getLanguage['label']);
+                $languageModel->set_picture($getLanguage['picture']);
+                $languageModel->set_type($getLanguage['type']);
 
                 return $languageModel;
             }, $allLanguages);
@@ -40,7 +40,7 @@ class LanguagesRepository
         }
     }
 
-    public function getLanguageById($id): array | bool | Error
+    public function get_language_by_id($id): array | bool | Error
     {
         try {
             $pdo = Database::getPDO();
@@ -55,7 +55,7 @@ class LanguagesRepository
         }
     }
 
-    public function addLanguages(): bool | Error
+    public function add_an_language(): bool | Error
     {
 
         try {
@@ -66,9 +66,9 @@ class LanguagesRepository
 
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindValue(':label',  $languageModel->getLabel());
-            $pdoStatement->bindValue(':picture',  $languageModel->getPicture());
-            $pdoStatement->bindValue(':type',  $languageModel->getType());
+            $pdoStatement->bindValue(':label',  $languageModel->get_label());
+            $pdoStatement->bindValue(':picture',  $languageModel->get_picture());
+            $pdoStatement->bindValue(':type',  $languageModel->get_type());
 
             $insertedRows = $pdoStatement->execute();
 
@@ -90,9 +90,9 @@ class LanguagesRepository
 
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindParam(':label', $languageModel->getLabel(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':type', $languageModel->getType(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':picture', $languageModel->getPicture(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':label', $languageModel->get_label(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':type', $languageModel->get_type(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':picture', $languageModel->get_picture(), PDO::PARAM_STR);
             $pdoStatement->bindParam(':idLanguage', $id, PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();

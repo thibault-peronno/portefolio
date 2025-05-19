@@ -31,9 +31,9 @@ class UserRepository {
             
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindValue(':firstname', $userModel->getFirstname());
-            $pdoStatement->bindValue(':lastname', $userModel->getLastname());
-            $pdoStatement->bindValue(':roleId', $userModel->getRoleId());
+            $pdoStatement->bindValue(':firstname', $userModel->get_firstname());
+            $pdoStatement->bindValue(':lastname', $userModel->get_lastname());
+            $pdoStatement->bindValue(':roleId', $userModel->get_role_id());
 
             $insertedRows = $pdoStatement->execute();
 
@@ -41,7 +41,7 @@ class UserRepository {
                 // We retrieve the last id.
                 $connectCtrl = new AuthController();
                 $usertId = $pdo->lastInsertId();
-                $insertRegister = $connectCtrl->isAddRegister($usertId);
+                $insertRegister = $connectCtrl->is_register_added($usertId);
 
                 if ($insertRegister) {
                     // We return true, because the sql insert has worked.

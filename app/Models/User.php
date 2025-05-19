@@ -10,41 +10,41 @@ class User
     public $lastname;
     public $roleId;
 
-    public function getId(): int
+    public function get_id(): int
     {
         return $this->id;
     }
-    public function setId($id): self
+    public function set_id($id): self
     {
         $this->id = $id;
         return $this;
     }
 
-    public function getFirstname(): string
+    public function get_firstname(): string
     {
         return $this->firstname;
     }
-    public function setFirstname($firstname): self
+    public function set_firstname($firstname): self
     {
         $this->firstname = $firstname;
         return $this;
     }
 
-    public function getLastname(): string
+    public function get_lastname(): string
     {
         return $this->lastname;
     }
-    public function setLastname($lastname): self
+    public function set_lastname($lastname): self
     {
         $this->lastname = $lastname;
         return $this;
     }
 
-    public function getRoleId(): int
+    public function get_role_id(): int
     {
         return $this->roleId;
     }
-    public function setRoleId($roleId): self
+    public function set_role_id($roleId): self
     {
         $this->roleId = $roleId;
         return $this;

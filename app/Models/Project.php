@@ -19,11 +19,11 @@ class Project
     private $description_organization;
 
 
-    public function getId(): string
+    public function get_id(): string
     {
         return $this->id;
     }
-    public function setId(int $id): self
+    public function set_id(int $id): self
     {
         if (!is_numeric($id)) {
             throw new Error("id must be a number");
@@ -33,14 +33,14 @@ class Project
         return $this;
     }
 
-    public function getTitle(): string
+    public function get_title(): string
     {
         return $this->title;
     }
-    public function setTitle($title): self
+    public function set_title($title): self
     {
         try {
-            $this->validateString($title, 100, "title");
+            $this->validate_string($title, 100, "title");
             $this->title = $title;
             return $this;
         } catch (\Throwable $error) {
@@ -48,14 +48,14 @@ class Project
         }
     }
 
-    public function getDescription(): string
+    public function get_description(): string
     {
         return $this->description;
     }
-    public function setDescription($description): self
+    public function set_description($description): self
     {
         try {
-            $this->validateString($description, 255, "description");
+            $this->validate_string($description, 255, "description");
             $this->description = $description;
             return $this;
         } catch (\Throwable $error) {
@@ -63,14 +63,14 @@ class Project
         }
     }
 
-    public function getPicture(): string
+    public function get_picture(): string
     {
         return $this->picture;
     }
-    public function setPicture($picture): self
+    public function set_picture($picture): self
     {
         try {
-            $this->validateString($picture, 100, "picture");
+            $this->validate_string($picture, 100, "picture");
             $this->picture = $picture;
             return $this;
         } catch (\Throwable $error) {
@@ -78,14 +78,14 @@ class Project
         }
     }
 
-    public function getUrl(): string
+    public function get_url(): string
     {
         return $this->url;
     }
-    public function setUrl($url): self
+    public function set_url($url): self
     {
         try {
-            $this->validateString($url, 100, "url");
+            $this->validate_string($url, 100, "url");
             $this->url = $url;
             return $this;
         } catch (\Throwable $error) {
@@ -93,11 +93,11 @@ class Project
         }
     }
 
-    public function getOrganizationId(): string
+    public function get_organization_id(): string
     {
         return $this->organization_id;
     }
-    public function setOrganizationId(int $organizationId): self
+    public function set_organization_id(int $organizationId): self
     {
         if (!is_numeric($organizationId)) {
             throw new Error("organizationId must be a number");
@@ -106,11 +106,11 @@ class Project
         return $this;
     }
 
-    public function getLabels(): array
+    public function get_labels(): array
     {
         return $this->labels;
     }
-    public function setLabels($labels): self
+    public function set_labels($labels): self
     {
         try {
             $this->labels = $labels;
@@ -120,14 +120,14 @@ class Project
         }
     }
 
-    public function getTitleOrganization(): string
+    public function get_title_organization(): string
     {
         return $this->title_organization;
     }
-    public function setTitleOrganization($titleOrganization): self
+    public function set_title_organization($titleOrganization): self
     {
         try {
-            $this->validateString($titleOrganization, 100, "titleOrganization");
+            $this->validate_string($titleOrganization, 100, "titleOrganization");
             $this->title_organization = $titleOrganization;
             return $this;
         } catch (\Throwable $error) {
@@ -135,14 +135,14 @@ class Project
         }
     }
 
-    public function getPictureOrganization(): string
+    public function get_picture_organization(): string
     {
         return $this->picture_organization;
     }
-    public function setPictureOrganization($pictureOrganization): self
+    public function set_picture_organization($pictureOrganization): self
     {
         try {
-            $this->validateString($pictureOrganization, 100, "pictureOrganization");
+            $this->validate_string($pictureOrganization, 100, "pictureOrganization");
             $this->picture_organization = $pictureOrganization;
             return $this;
         } catch (\Throwable $error) {
@@ -150,14 +150,14 @@ class Project
         }
     }
 
-    public function getDescriptionOrganization(): string
+    public function get_description_organization(): string
     {
         return $this->description_organization;
     }
-    public function setDescriptionOrganization($descriptionOrganization): self
+    public function set_description_organization($descriptionOrganization): self
     {
         try {
-            $this->validateString($descriptionOrganization, 255, "descriptionOrganization");
+            $this->validate_string($descriptionOrganization, 255, "descriptionOrganization");
             $this->description_organization = $descriptionOrganization;
             return $this;
         } catch (\Throwable $error) {
@@ -165,9 +165,9 @@ class Project
         }
     }
 
-    private function validateString($valeur, $length, $field)
+    private function validate_string($valeur, $length, $field)
     {
         $validateSetterData = new validateSetterData;
-        return $validateSetterData->validateString($valeur, $length, $field);
+        return $validateSetterData->validate_string($valeur, $length, $field);
     }
 }

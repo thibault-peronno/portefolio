@@ -8,10 +8,10 @@ class ImageHelper
 {
     private $IMAGE_TYPES = ['image/jpeg', 'image/png'];
 
-    public function insertedLanguageImage($fileName , $fileTmpName, $fileType): bool | Exception
+    public function inserted_language_image($fileName , $fileTmpName, $fileType)
     {
         try {
-            if (!$this->imageProcess($fileName, $fileTmpName, $fileType)) {
+            if (!$this->image_process($fileName, $fileTmpName, $fileType)) {
                 throw new Exception("L'image n'est pas valide");
             }
             // Check if image with same name exist
@@ -25,10 +25,10 @@ class ImageHelper
         }
     }
 
-    public function insertedOrganizationImage($fileName, $fileTmpName, $fileType): bool | Exception
+    public function inserted_organization_image($fileName, $fileTmpName, $fileType)
     {
         try {
-            if (!$this->imageProcess($fileName, $fileTmpName, $fileType)) {
+            if (!$this->image_process($fileName, $fileTmpName, $fileType)) {
                 throw new Exception("L'image n'est pas valide");
             }
             if (file_exists(__DIR__ . "/../../public/assets/images/organizations/" . $fileName)) {
@@ -40,10 +40,10 @@ class ImageHelper
         }
     }
     
-    public function insertedProjectImage($fileName, $fileTmpName, $fileType): bool | Exception
+    public function inserted_project_image($fileName, $fileTmpName, $fileType)
     {
         try {
-            if (!$this->imageProcess($fileName, $fileTmpName, $fileType)) {
+            if (!$this->image_process($fileName, $fileTmpName, $fileType)) {
                 throw new Exception("L'image n'est pas valide");
             }
             if (file_exists(__DIR__ . "/../../public/assets/images/projects/" . $fileName)) {
@@ -55,7 +55,7 @@ class ImageHelper
         }
     }
 
-    public function isNoUpdateImage($filePicture): bool | Exception
+    public function is_update_image($filePicture): bool | Exception
     {
         try {
             if (!isset($filePicture)) {
@@ -67,16 +67,16 @@ class ImageHelper
         }
     }
     // To check if I have data in tmp_name and it is not empty. I call the method to check the extension file, and the method to check the sign of the picture.
-    private function imageProcess($fileName, $fileTmpName, $fileType): bool | Exception
+    private function image_process($fileName, $fileTmpName, $fileType): bool | Exception
     {
         try {
-            return !empty($fileName) || $this->checkExtension($fileType) || $this->checkSign($fileTmpName);
+            return !empty($fileName) || $this->check_extension($fileType) || $this->check_signature($fileTmpName);
         } catch (\Throwable $error) {
             throw $error;
         }
     }
     // To check the extension file.
-    private function  checkExtension($fileType): bool | Exception
+    private function  check_extension($fileType): bool | Exception
     {
         try {
             return in_array($fileType, $this->IMAGE_TYPES);
@@ -85,7 +85,7 @@ class ImageHelper
         }
     }
     // To check the sign of the picture. One more security.
-    private function checkSign($fileTmpName): bool | Exception
+    private function check_signature($fileTmpName): bool | Exception
     {
         try {
             return in_array(exif_imagetype($fileTmpName), [IMAGETYPE_JPEG, IMAGETYPE_PNG], true);

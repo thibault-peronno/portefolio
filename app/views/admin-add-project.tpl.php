@@ -16,7 +16,7 @@
     <form action="" id="project-form" method="post" enctype="multipart/form-data">
         <div class="mb-5">
             <label for="title" class="text-primary text-xl">Nom<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
-            <input type="text" name="title" id="title" value="<?= isset($project) ? $project->getTitle() : " " ?>" class="rounded bg-white h-12 w-full p-2" />
+            <input type="text" name="title" id="title" value="<?= isset($project) ? $project->get_title() : " " ?>" class="rounded bg-white h-12 w-full p-2" />
         </div>
         <div class="mb-5">
             <label
@@ -24,19 +24,19 @@
                 class="text-primary text-xl">
                 Description<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
             <textarea
-                name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?php echo isset($project) ? $project->getDescription() : " " ?></textarea>
+                name="description" id="description" cols="30" rows="10" class="rounded bg-white h-24 w-full p-2"><?php echo isset($project) ? $project->get_description() : " " ?></textarea>
         </div>
         <span class="sm:flex sm:flex-row sm:gap-5 sm:flex-nowrap">
             <div class="mb-5 sm:w-6/12">
                 <label for="url" class="text-primary text-xl">URL</label>
-                <input type="text" name="url" id="url" value="<?= isset($project) ? $project->getUrl() : " " ?>" class="rounded bg-white h-12 w-full p-2" />
+                <input type="text" name="url" id="url" value="<?= isset($project) ? $project->get_url() : " " ?>" class="rounded bg-white h-12 w-full p-2" />
             </div>
             <div class="mb-5 sm:w-6/12">
-                <?php if (isset($project) && $project->getPicture() !== null) : ?>
+                <?php if (isset($project) && $project->get_picture() !== null) : ?>
                     <div id="updateImageTextDiv">
-                        <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="w-14">
+                        <img src="<?= "/assets/images/projects/" . $project->get_picture() ?>" alt="Image du projet" class="w-14">
                         <p class="font-bold text-white cursor-pointer" id="updateImageText">Modifier l'image</p>
-                        <input type="hidden" name="picture" value="<?= $project->getPicture() ?>">
+                        <input type="hidden" name="picture" value="<?= $project->get_picture() ?>">
                     </div>
                 <?php endif ?>
                 <span id="updateImageInput" class="<?= isset($project) ? "hidden" : "" ?>">
@@ -60,13 +60,13 @@
                     <div id="checklanguages" class="hidden absolute flex flex-col gap-2 bg-white left-0 p-2 w-full rounded h-28 overflow-y-auto">
                         <?php foreach ($languages as $language) : ?>
                             <span>
-                                <input type="checkbox" id="<?= $language->getId() ?>" value="<?= $language->getId() ?>" name="languages[]"
+                                <input type="checkbox" id="<?= $language->get_id() ?>" value="<?= $language->get_id() ?>" name="languages[]"
                                     <?php if (isset($project)) : ?>
-                                    <?php foreach ($project->getLabels() as $label) {
-                                            echo $label['label'] == $language->getLabel() ? "checked" : "";
+                                    <?php foreach ($project->get_labels() as $label) {
+                                            echo $label['label'] == $language->get_label() ? "checked" : "";
                                         } ?>
                                     <?php endif ?> />
-                                <label for="<?= $language->getId() ?>"><?= $language->getLabel() ?></label>
+                                <label for="<?= $language->get_id() ?>"><?= $language->get_label() ?></label>
                             </span>
                         <?php endforeach; ?>
                     </div>
@@ -75,11 +75,11 @@
             <div class="mb-5 sm:w-6/12">
                 <label for="organizationId" class="text-primary text-xl">Organisation<span class="text-red-900 text-[#7f1d1d] font-bold text-lg">*</span></label>
                 <select name="organizationId" id="organizationId" class="block rounded bg-white h-12 w-full p-2">
-                    <option value="<?= isset($project) ? $project->getOrganizationId() : "" ?>"><?= isset($project) ? $project->getTitleOrganization() : "Choisi l'organisation" ?></option>
+                    <option value="<?= isset($project) ? $project->get_organization_id() : "" ?>"><?= isset($project) ? $project->get_title_organization() : "Choisi l'organisation" ?></option>
                     <?php foreach ($organizations as $organization) : ?>
                         <option
-                            value=<?= $organization->getId() ?>>
-                            <?= $organization->getTitle() ?>
+                            value=<?= $organization->get_id() ?>>
+                            <?= $organization->get_title() ?>
                         </option>
                     <?php endforeach; ?>
                 </select>

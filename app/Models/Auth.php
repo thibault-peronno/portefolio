@@ -12,43 +12,43 @@ class Auth
     public $password;
     public $userId;
 
-    public function getMail(): string
+    public function get_mail(): string
     {
         return $this->mail;
     }
-    public function setMail($mail): self
+    public function set_mail($mail): self
     {
-        $this->validateString($mail, 100, "e-mail");
+        $this->validate_string($mail, 100, "e-mail");
 
         $this->mail = $mail;
         return $this;
     }
 
-    public function getPassword(): string | null
+    public function get_password(): string | null
     {
         return $this->password;
     }
-    public function setPassword($password): self
+    public function set_password($password): self
     {
-        $this->validateString($password, 100, "mot de passe");
+        $this->validate_string($password, 100, "mot de passe");
 
         $this->password = $password;
         return $this;
     }
 
-    public function getUserId(): int
+    public function get_user_id(): int
     {
         return $this->userId;
     }
-    public function setUserId($userId)
+    public function set_user_id($userId)
     {
         $this->userId = intval($userId);
         return $this->userId;
     }
 
-    private function validateString($valeur, $length, $field)
+    private function validate_string($valeur, $length, $field)
     {
         $validateSetterData = new validateSetterData;
-        return $validateSetterData->validateString($valeur, $length, $field);
+        return $validateSetterData->validate_string($valeur, $length, $field);
     }
 }

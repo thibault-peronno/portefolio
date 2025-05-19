@@ -10,7 +10,7 @@ use Error;
 class OrganizationsRepository
 {
 
-    public function getOrganizations(): array
+    public function get_organizations(): array
     {
 
         try {
@@ -23,10 +23,10 @@ class OrganizationsRepository
             $getOrganizations = array_map(function ($getOrganization) {
                 $organizationModel = new Organization();
 
-                $organizationModel->setId($getOrganization['id']);
-                $organizationModel->setTitle($getOrganization['title']);
-                $organizationModel->setDescription($getOrganization['description']);
-                $organizationModel->setPicture($getOrganization['picture']);
+                $organizationModel->set_id($getOrganization['id']);
+                $organizationModel->set_title($getOrganization['title']);
+                $organizationModel->set_description($getOrganization['description']);
+                $organizationModel->set_picture($getOrganization['picture']);
 
                 return $organizationModel;
             }, $allOrganizations);
@@ -37,7 +37,7 @@ class OrganizationsRepository
         }
     }
 
-    public function getOrgaById($id)
+    public function get_organization_by_id($id)
     {
         try {
             $organizationModel = new Organization();
@@ -52,10 +52,10 @@ class OrganizationsRepository
             $organization = $pdoStatement->fetch(PDO::FETCH_ASSOC);
             // dd($organization);
 
-            $organizationModel->setId($organization['id']);
-            $organizationModel->setTitle($organization['title']);
-            $organizationModel->setDescription($organization['description']);
-            $organizationModel->setPicture($organization['picture']);
+            $organizationModel->set_id($organization['id']);
+            $organizationModel->set_title($organization['title']);
+            $organizationModel->set_description($organization['description']);
+            $organizationModel->set_picture($organization['picture']);
 
             return $organizationModel;
         } catch (\Throwable $error) {
@@ -63,7 +63,7 @@ class OrganizationsRepository
         }
     }
 
-    public function addOrganization(Organization $organizationModel): bool
+    public function add_an_organization(Organization $organizationModel): bool
     {
 
         try {
@@ -71,9 +71,9 @@ class OrganizationsRepository
             $pdo = Database::getPDO();
             $sql = "INSERT INTO `organizations` (`title`, `description`, `picture`) VALUES (:title, :description, :picture)";
             $pdoStatement = $pdo->prepare($sql);
-            $pdoStatement->bindValue(':title',  $organizationModel->getTitle(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':description',  $organizationModel->getDescription(), PDO::PARAM_STR);
-            $pdoStatement->bindValue(':picture',  $organizationModel->getPicture(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':title',  $organizationModel->get_title(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':description',  $organizationModel->get_description(), PDO::PARAM_STR);
+            $pdoStatement->bindValue(':picture',  $organizationModel->get_picture(), PDO::PARAM_STR);
 
             $insertedRows = $pdoStatement->execute();
         
@@ -86,7 +86,7 @@ class OrganizationsRepository
         }
     }
 
-    public function updateOrganization(Organization $organizationModel)
+    public function update_an_organization(Organization $organizationModel)
     {
 
         try {
@@ -94,10 +94,10 @@ class OrganizationsRepository
             $sql = "UPDATE `organizations` SET `title` = :title, `description` = :description, `picture` = :picture WHERE id = :id";
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindParam(':title', $organizationModel->getTitle(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':description', $organizationModel->getDescription(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':picture', $organizationModel->getPicture(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':id', $organizationModel->getid(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':title', $organizationModel->get_title(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':description', $organizationModel->get_description(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':picture', $organizationModel->get_picture(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':id', $organizationModel->get_id(), PDO::PARAM_STR);
 
             $insertedRows = $pdoStatement->execute();
 

@@ -5,7 +5,7 @@ namespace App\Helpers;
 use Exception;
 
 class ValidateSetterData {
-    public function validateString(string $valeur, int $lengthMax, string $field): void
+    public function validate_string(string $valeur, int $lengthMax, string $field): void
     {
         if (mb_strlen($valeur) > $lengthMax) {
             throw new Exception('Le champ ' . $field . ' ne peut pas dépasser ' . $lengthMax . ' caractères');

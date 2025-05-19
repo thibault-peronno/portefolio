@@ -16,10 +16,10 @@ class UserController extends CoreController {
 
             $userModel = new User();
 
-            $userModel->setId($user["id"]);
-            $userModel->setFirstname($user["firstname"]);
-            $userModel->setLastname($user["lastname"]);
-            $userModel->setRoleId($user["roleId"]);
+            $userModel->set_id($user["id"]);
+            $userModel->set_firstname($user["firstname"]);
+            $userModel->set_lastname($user["lastname"]);
+            $userModel->set_role_id($user["roleId"]);
 
             $data["user"] = $userModel;
 
@@ -30,7 +30,7 @@ class UserController extends CoreController {
                 "message" => $error->getMessage(),
                 "succeeded" => false,
             ];
-            $this->show('error', $data);
+            $this->page_to_display('error', $data);
         }
 
 

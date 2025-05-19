@@ -14,16 +14,16 @@
     <?php foreach ($languages['Front-end'] as $language) : ?>
       <div class="rounded p-2.5 shadow-card w-max shrink-0 snap-start bg-white">
         <span class="flex gap-2.5 items-center mb-2">
-          <img src="<?php echo '/assets/images/languages/' . $language->getPicture() ?>" alt="" class="w-9 h-9" />
-          <h3 class="text-xl font-bold text-btn-sec"><?= $language->getLabel() ?></h3>
+          <img src="<?php echo '/assets/images/languages/' . $language->get_picture() ?>" alt="" class="w-9 h-9" />
+          <h3 class="text-xl font-bold text-btn-sec"><?= $language->get_label() ?></h3>
         </span>
         <span class="flex gap-5 sm:flex-nowrap">
-          <a href="<?= "/admin-editer-technologie/" . $language->getId() ?>">
+          <a href="<?= "/admin-editer-technologie/" . $language->get_id() ?>">
             <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
               Editer
             </button>
           </a>
-          <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl" id="deleteLanguages" data-label-id="<?= $language->getId() ?>">
+          <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl" id="deleteLanguages" data-label-id="<?= $language->get_id() ?>">
             Supprimer
           </button>
         </span>
@@ -35,11 +35,11 @@
     <?php foreach ($languages['Back-end'] as $language) : ?>
       <div class="rounded p-2.5 shadow-card w-max shrink-0 snap-start bg-white">
         <span class="flex gap-2.5 items-center mb-2">
-          <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="" class="w-9 h-9" />
-          <h3 class="text-xl font-bold text-btn-sec"><?= $language->getLabel() ?></h3>
+          <img src="<?= "/assets/images/languages/" . $language->get_picture() ?>" alt="" class="w-9 h-9" />
+          <h3 class="text-xl font-bold text-btn-sec"><?= $language->get_label() ?></h3>
         </span>
         <span class="flex gap-5 sm:flex-nowrap">
-          <a href="<?= "/admin-editer-technologie/" . $language->getId() ?>">
+          <a href="<?= "/admin-editer-technologie/" . $language->get_id() ?>">
             <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
               Editer
             </button>
@@ -70,11 +70,11 @@
     <?php foreach ($languages['DevOps'] as $language) : ?>
       <div class="rounded p-2.5 shadow-card w-max shrink-0 snap-start bg-white">
         <span class="flex gap-2.5 items-center mb-2">
-          <img src="<?= "/assets/images/languages/" . $language->getPicture() ?>" alt="" class="w-9 h-9" />
-          <h3 class="text-xl font-bold text-btn-sec"><?= $language->getLabel() ?></h3>
+          <img src="<?= "/assets/images/languages/" . $language->get_picture() ?>" alt="" class="w-9 h-9" />
+          <h3 class="text-xl font-bold text-btn-sec"><?= $language->get_label() ?></h3>
         </span>
         <span class="flex gap-5 sm:flex-nowrap">
-          <a href="<?= "/admin-editer-technologie/" . $language->getId() ?>">
+          <a href="<?= "/admin-editer-technologie/" . $language->get_id() ?>">
             <button class="bg-btn-sec rounded text-center mt-5 p-2 sm:w-32 text-white font-bold text-xl">
               Editer
             </button>

@@ -11,54 +11,57 @@ use App\Repositories\UserRepository;
 class AuthController extends MainController
 {
 
-    public function page($data = []): void
+    public function connect_page($data = []): void
     {
-        $this->show('connect', $data);
+        $this->page_to_display('connect', $data);
     }
 
-    public function loginPage(): void
+    public function display_login_page(): void
     {
-        $this->show('log-in');
+        $this->page_to_display('log-in');
     }
 
-    public function logToBackOffice(): void
+    public function sign_in_back_office(): void
     {
-        dump("logToBackOffice");
+        dump("sign_in_back_office");
         try {
             $authModel = new Auth();
             $userModel = new User();
             $AuthRepository = new AuthRepository();
 
             // récupérer l'utilisateur qui se connecte à un compte enregistré
-            $getUser = $AuthRepository->getUser($_POST['mail'], $authModel, $userModel);
-            dump($getUser);
+            $getUser = $AuthRepository->get_register($_POST['mail'], $authModel, $userModel);
+            
             if ($getUser["succeeded"] === false) {
                 // si pas identique, envoyer un message et rester sur la page
-                $this->page($getUser);
+                $this->connect_page($getUser);
                 exit();
             }
             // comparer le mot de passe de $_POST avec le password stocké en base de données
-            $isPasswordEqual = $this->isPasswordEqual($authModel->getPassword());
-            dump($isPasswordEqual);
-            if ($isPasswordEqual) {
+            $is_password_equal = $this->is_password_equal($authModel->get_password());
+        
+            if ($is_password_equal) {
                 session_start();
-                $_SESSION['user_id'] = $userModel->getId();
-                $_SESSION['firstname'] = $userModel->getFirstname();
-                $_SESSION['lastname'] = $userModel->getLastname();
+                $_SESSION['user_id'] = $userModel->get_id();
+                $_SESSION['firstname'] = $userModel->get_firstname();
+                $_SESSION['lastname'] = $userModel->get_lastname();
 
-                dump("isPasswordEqual");
-                $this->boHome();
+                $this->display_admin_home_page();
                 exit();
             }
-
-            $this->page();
+            // display a message to user
+            $this->connect_page();
         } catch (\Throwable $error) {
-            throw $error;
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false
+            ];
+            $this->page_to_display('error', $data);
         }
     }
 
 
-    public function isPasswordEqual($password): bool
+    public function is_password_equal($password): bool
     {
         try {
             if ($password) {
@@ -75,35 +78,35 @@ class AuthController extends MainController
     }
 
     /* Travailler un message de confirmation de création de compte */
-    public function signIn()
+    public function create_new_account(): void
     {
         try {
             $userModel = new User();
             
-            $userModel->setFirstname(htmlspecialchars($_POST['firstname']));
-            $userModel->setLastname(htmlspecialchars($_POST['lastname']));
-            $userModel->setRoleId(2);
+            $userModel->set_firstname(htmlspecialchars($_POST['firstname']));
+            $userModel->set_lastname(htmlspecialchars($_POST['lastname']));
+            $userModel->set_role_id(2);
             
             $userRepository = new UserRepository();
             $userRepository->addUser();
 
-            $this->page();
+            $this->connect_page();
         } catch (\Throwable $error) {
             throw $error;
         }
     }
     /* Attention, le password ne peut pas être null sur la méthode hash, il faut travailler ça */
-    public function isAddRegister($userId): bool
+    public function is_register_added($userId): bool
     {
         try {
             $authModel = new Auth();
             
-            $authModel->setMail(htmlspecialchars($_POST['mail']));
-            $authModel->setPassword(htmlspecialchars($_POST['password']));
-            $authModel->setUserId($userId);
+            $authModel->set_mail(htmlspecialchars($_POST['mail']));
+            $authModel->set_password(htmlspecialchars($_POST['password']));
+            $authModel->set_user_id($userId);
             
             $AuthRepository = new AuthRepository();
-            $AuthRepository->isAddRegister();
+            $AuthRepository->is_register_added();
 
             return true;
         } catch (\Throwable $error) {
