@@ -1,22 +1,28 @@
 const form = {
     init: function () {
-        let selectTechno = document.getElementById('selectTechnos');
-        console.log(selectTechno);
-        selectTechno.addEventListener('click', form.handleSelectTechno);
+        let updateImageText = document.getElementById('updateImageText');
+        let updateImageInput = document.getElementById('updateImageInput');
+        updateImageText.addEventListener('click', ()=> form.handleUpdateImage(updateImageText, updateImageInput));
+        let cancelUpdateImageInput = document.getElementById('cancelUpdateImageInput');
+        cancelUpdateImageInput.addEventListener('click', ()=>form.handleUpdateImage(updateImageText, updateImageInput))
     },
 
-    handleSelectTechno: function () {
-        console.log('handleSelectTechnos');
-        let boxesTEchnos = document.getElementById('checkTechnos');
-        console.log(boxesTEchnos.classList.value);
-        let classList = boxesTEchnos.classList.value;
+    handleUpdateImage: function (text, input) {
+        console.log('handleUpdateImage', text, input);
 
-        if(classList.includes('hidden')) {
-            boxesTEchnos.classList.remove('hidden');
-            boxesTEchnos.classList.add('block');
-        }else if (classList.includes('block')) {
-            boxesTEchnos.classList.remove('block');
-            boxesTEchnos.classList.add('hidden');
+        let updateImageTextDiv = document.getElementById('updateImageTextDiv');
+        let classListInput = input.classList.value;
+
+        if (classListInput.includes('hidden')) {
+            input.classList.remove('hidden');
+            input.classList.add('block');
+            updateImageTextDiv.classList.add('hidden');
+        } else {
+            input.classList.remove('block');
+            input.classList.add('hidden');
+            updateImageTextDiv.classList.remove('hidden');
+            updateImageTextDiv.classList.add('block');
         }
     },
+
 }

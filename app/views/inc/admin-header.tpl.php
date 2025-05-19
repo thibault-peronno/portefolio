@@ -1,0 +1,54 @@
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+// dump($currentPage);
+
+?>
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="/assets/style/output.css" rel="stylesheet" />
+  <title>"Portefolio Thibault PERONNO"</title>
+</head>
+
+<body class="3xl:px-dpc flex flex-col min-h-screen bg-secondary text-lg">
+  <header>
+    <!-- Our menu to diplay from tablet size -->
+    <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end sm:p-5 hidden sm:flex text-white">
+      <a href="/admin-accueil" class="<?php echo $currentPage == 'admin-accueil' ? 'underline underline-offset-8' : ''; ?>">Dashboard</a>
+      <a href="/admin-projets" class="<?php echo $currentPage == 'admin-projets' ? 'underline underline-offset-8' : ''; ?>">Projets</a>
+      <a href="/admin-technos" class="<?php echo $currentPage == 'admin-technos' ? 'underline underline-offset-8' : ''; ?>">Langages</a>
+      <a href="/admin-organisations" class="<?php echo $currentPage == 'admin-organisations' ? 'underline underline-offset-8' : ''; ?>">Organisations</a>
+      <a href="/" class="<?php echo $currentPage == 'index.php' ? 'underline underline-offset-8' : ''; ?>">Portefolio</a>
+    </nav>
+    <!-- Our menu to display for mobil size -->
+    <img src="/assets/images/nav/menu.svg" alt="" class="sm:hidden w-10 float-right mb-2.5" id="mobil-menu" />
+    <nav class="flex flex-col gap-5 p-5 bg-primary text-xl font-bold text-secondary w-screen h-screen sm:hidden fixed top-0 left-[1000px] z-10 transition-left duration-500 ease-out" id="menu">
+      <img src="/assets/images/icons/x.svg" alt="close the menu" class="w-12 self-end" id="close-menu" />
+      <span class="flex flex-row">
+        <img src="/assets/images/icons/home.svg" alt="" class="mr-2.5" />
+        <a href="/admin-accueil">Dashboard</a>
+      </span>
+      <span class="flex flex-row">
+        <img src="/assets/images/icons/cup.svg" alt="" class="mr-2.5" />
+        <a href="/admin-projets">Projets</a>
+      </span>
+      <span class="flex flex-row">
+        <img src="/assets/images/icons/techs.svg" alt="" class="mr-2.5" />
+        <a href="/admin-technos">Langages</a>
+      </span>
+      <span class="flex flex-row">
+        <img src="/assets/images/icons/file-text.svg" alt="" class="mr-2.5" />
+        <a href="/admin-organisations">Organisations</a>
+      </span>
+      <span class="flex flex-row">
+        <img src="/assets/images/icons/sliders.svg" alt="" class="mr-2.5" />
+        <a href="/">Portefolio</a>
+      </span>
+    </nav>
+  </header>
+  <main class="grow">

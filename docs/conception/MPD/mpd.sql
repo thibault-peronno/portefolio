@@ -19,14 +19,17 @@ GRANT ALL PRIVILEGES ON porteFolio.* TO 'adminPorteFolio'@'localhost';
 CREATE TABLE `languages`(
 `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 `label` VARCHAR(100) NOT NULL,
-`picture` VARCHAR(255) NOT NULL
+`picture` VARCHAR(255) NOT NULL,
+`type` varchar(255) NOT NULL
 );
 
 CREATE TABLE `organizations` (
 `id` INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-`title` VARCHAR(100) NOT NULL,
-`description` VARCHAR(100) NOT NULL,
-`picture` VARCHAR(100) NOT NULL
+`title` VARCHAR(255) NOT NULL,
+`description` VARCHAR(255) NOT NULL,
+`picture` VARCHAR(255) NOT NULL,
+`type` VARCHAR(255) NOT NULL,
+`type` varchar(255) NOT NULL
 );
 
 CREATE TABLE `roles`(

@@ -7,7 +7,7 @@ class CoreController
 
     protected $router;
 
-    public function __construct($router)
+    public function __construct($router = [])
     {
         $this->router = $router;
     }
@@ -31,12 +31,14 @@ class CoreController
     {
         $getNeededData = $this->getNeededDatas();
 
-        // dump($getNeededData);
+
         // include : ask to include, but does not allow a fatal error
         // require : the content is required, ans if does not exist, there is a fatal error.
         /**
          * We added try catch to manage the fatal error
          */
+        extract($data);
+        extract($getNeededData);
         try {
             require_once __DIR__ . '/../views/inc/header.tpl.php';
             require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';
@@ -51,12 +53,12 @@ class CoreController
     public function boShow(string $pageName, array $data = []): void
     {
         $getNeededData = $this->getNeededDatas();
-        dump($getNeededData);
-
+        extract($data);
+        extract($getNeededData);
         try {
-            require_once __DIR__ . '/../views/inc/bo-header.tpl.php';
+            require_once __DIR__ . '/../views/inc/admin-header.tpl.php';
             require_once __DIR__ . '/../views/' . $pageName . '.tpl.php';
-            require_once __DIR__ . '/../views/inc/bo-footer.tpl.php';
+            require_once __DIR__ . '/../views/inc/admin-footer.tpl.php';
         } catch (\Throwable $th) {
             header('location: /html/error.htm');
             die;
