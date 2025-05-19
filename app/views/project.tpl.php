@@ -18,12 +18,14 @@
     <section class="sm:hidden">
     <img src="<?= "/assets/images/projects/" . $project->getPicture() ?>" alt="Image du projet" class="">
   </section>
+  <?php if ($project->getUrl()) : ?>
     <a href="<?= $project->getUrl() ?>">
       <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-5 w-full sm:w-64">
         <p class="text-white">Projet en ligne</p>
         <img src="/assets/images/icons/online.svg" alt="" class="" />
       </button>
     </a>
+  <?php endif ?>
     <div class="flex gap-10 mt-10">
     <?php foreach ($project->getLabels() as $label) : ?>
       <span class="flex overflow-x-auto gap-5 sm:snap-none sm:gap-14 sm:flex-wrap">
@@ -40,16 +42,3 @@
     <img src="/assets/images/systeme/background_cross.svg" alt="" class="w-full h-full object-cover">
   </section>
 </div>
-<!-- <section class="bg-white p-2 sm:p-14">
-   <h2 class="text-3xl text-secondary uppercase mt-14 mb-5">Langages</h2>
-  <div class="flex gap-10 my-10  sm:mt-0">
-    <?php foreach ($project->getLabels() as $label) : ?>
-      <span class="flex overflow-x-auto gap-5 sm:snap-none sm:gap-14 sm:flex-wrap my-11">
-        <div class="bg-white rounded-full border">
-          <img src="<?= "/assets/images/languages/" . $label['picture'] ?>" alt="<?= "icon " . $label['label'] ?>" class="w-20 h-20 p-5" />
-        </div>
-         <p class="text-center rounded-full bg-secondary text-white p-2.5 w-36 mt-2.5"><?= $label['label'] ?></p>
-      </span>
-    <?php endforeach ?>
-  </div>
-</section> -->
