@@ -23,7 +23,6 @@ class AuthController extends MainController
 
     public function sign_in_back_office(): void
     {
-        dump("sign_in_back_office");
         try {
             $authModel = new Auth();
             $userModel = new User();
@@ -32,15 +31,14 @@ class AuthController extends MainController
             // récupérer l'utilisateur qui se connecte à un compte enregistré
             $getUser = $AuthRepository->get_register($_POST['mail'], $authModel, $userModel);
             
-            if ($getUser["succeeded"] === false) {
-                // si pas identique, envoyer un message et rester sur la page
-                $this->connect_page($getUser);
+            if (!$getUser) {
+                $this->wrong_identifiants();
                 exit();
             }
             // comparer le mot de passe de $_POST avec le password stocké en base de données
-            $is_password_equal = $this->is_password_equal($authModel->get_password());
+            $isPasswordEqual = $this->is_password_equal($authModel->get_password());
         
-            if ($is_password_equal) {
+            if ($isPasswordEqual) {
                 session_start();
                 $_SESSION['user_id'] = $userModel->get_id();
                 $_SESSION['firstname'] = $userModel->get_firstname();
@@ -49,8 +47,10 @@ class AuthController extends MainController
                 $this->display_admin_home_page();
                 exit();
             }
-            // display a message to user
-            $this->connect_page();
+
+            if(!$isPasswordEqual) {
+                $this->wrong_identifiants();
+            }
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
@@ -58,6 +58,15 @@ class AuthController extends MainController
             ];
             $this->page_to_display('error', $data);
         }
+    }
+
+    public function wrong_identifiants() : void
+    {
+        $data = [
+            "message" => "Vos identifiants ne sont pas valides",
+            "succeeded" => false
+        ];
+        $this->connect_page($data);
     }
 
 

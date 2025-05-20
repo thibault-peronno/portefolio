@@ -49,11 +49,9 @@ class AuthRepository
             $pdoStatement->execute();
 
             $getUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            
             if (!$getUser) {
-                return [
-                    "message" => "Votre e-mail ou mot de passe n'est pas valide",
-                    "succeeded" => false,
-                ];
+                return false;
             }
             $authModel->set_password($getUser['password']);
 

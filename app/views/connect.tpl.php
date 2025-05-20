@@ -1,5 +1,5 @@
 <div class="flex justify-center items-center">
-<?php if (isset($succeeded) && !$succeeded) : ?>
+    <?php if (isset($succeeded) && !$succeeded) : ?>
         <div class="p-2 text-center text-white font-bold fixed top-10 right-10 bg-orange-600 animate-notif">
             <p><?= $message ?></p>
         </div>
