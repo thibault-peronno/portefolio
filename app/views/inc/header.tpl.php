@@ -16,18 +16,18 @@ $currentPage = basename($_SERVER['PHP_SELF']);
 </head>
 <!-- header('location:/connexion') -->
 <!-- px-2 md:px-dpc  -->
-<body class="3xl:px-dpc flex flex-col min-h-screen text-lg bg-body-fade-grey">
+<body class="3xl:px-dpc flex flex-col min-h-screen text-lg bg-fade-grey">
     <header class="bg-white sm:p-5">
         <!-- Our menu to diplay from tablet size -->
         <nav class="flex flex-col gap-2.5 sm:flex-row sm:justify-end hidden sm:flex">
             <a href="/" class="text-xl <?php echo $currentPage == 'index.php' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Accueil</a>
             <a href="/projets" class="text-xl <?php echo $currentPage == 'projets' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Projets</a>
-            <a href="/technologies" class="text-xl <?php echo $currentPage == 'technologies' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Technologies</a>
+            <a href="/languages" class="text-xl <?php echo $currentPage == 'languages' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Langages</a>
             <a href="/cv" class="text-xl <?php echo $currentPage == 'cv' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">CV</a>
             <?php if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) : ?>
-                <a href="/bo-accueil">Dashboard</a>
+                <a href="/admin-accueil">Dashboard</a>
             <?php else : ?>
-                <a href="/connexion" class="text-xl <?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Administration</a>
+                <a href="/connexion" class="text-xl <?php echo $currentPage == 'connexion' ? 'rounded-full bg-secondary text-white p-2.5' : ''; ?>">Connexion</a>
             <?php endif ?>
         </nav>
         <!-- Our menu to display for mobil size -->
@@ -36,23 +36,27 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <img src="/assets/images/nav/x.svg" alt="close the menu" class="w-12 self-end" id="close-menu">
             <span class="flex flex-row">
                 <img src="/assets/images/nav/home.svg" alt="" class="mr-2.5">
-                <a href="/home.htm">Accueil</a>
+                <a href="/">Accueil</a>
             </span>
             <span class="flex flex-row">
                 <img src="/assets/images/nav/cup.svg" alt="" class="mr-2.5">
-                <a href="/projects.htm">Projets</a>
+                <a href="/projets">Projets</a>
             </span>
             <span class="flex flex-row">
                 <img src="/assets/images/nav/techs.svg" alt="" class="mr-2.5">
-                <a href="/technologie.htm">Technologies</a>
+                <a href="/languages">Langages</a>
             </span>
             <span class="flex flex-row">
                 <img src="/assets/images/nav/file-text.svg" alt="" class="mr-2.5">
-                <a href="/cv.htm">CV</a>
+                <a href="/cv">CV</a>
             </span>
             <span class="flex flex-row">
                 <img src="/assets/images/nav/sliders.svg" alt="" class="mr-2.5">
-                <a href="/connect.htm">Administration</a>
+                <?php if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) : ?>
+                <a href="/admin-accueil">Dashboard</a>
+            <?php else : ?>
+                <a href="/connexion">Connexion</a>
+            <?php endif ?>
             </span>
         </nav>
     </header>

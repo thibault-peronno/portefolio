@@ -2,9 +2,6 @@
 session_start();
 // We ask to required a fil in vendro folder to use our routing
 
-
-use App\Controllers\CoreController;
-
 require __DIR__ . '/../vendor/autoload.php';
 require './php.ini';
 
@@ -19,25 +16,25 @@ $router->addRoutes(
       '/',
       [
         'controller' => 'MainController',
-        'method' => 'home',
+        'method' => 'display_home_page',
       ],
-      'home',
+      'display_home_page',
     ],
     [
       'GET',
       '/cv',
       [
         'controller' => 'MainController',
-        'method' => 'cv',
+        'method' => 'display_cv_page',
       ],
-      'cv',
+      'display_cv_page',
     ],
     [
       'GET',
       '/projets',
       [
         'controller' => 'ProjectController',
-        'method' => 'projects',
+        'method' => 'display_projects_page',
       ],
       'projets',
     ],
@@ -46,7 +43,7 @@ $router->addRoutes(
       '/projet/[:id]',
       [
         'controller' => 'ProjectController',
-        'method' => 'project',
+        'method' => 'display_project_page',
       ],
       'projet',
     ],
@@ -54,8 +51,8 @@ $router->addRoutes(
       'GET',
       '/enregistrement',
       [
-        'controller' => 'ConnectController',
-        'method' => 'loginPage',
+        'controller' => 'AuthController',
+        'method' => 'display_login_page',
       ],
       'enregistrement',
     ],
@@ -63,8 +60,8 @@ $router->addRoutes(
       'POST',
       '/enregistrement',
       [
-        'controller' => 'ConnectController',
-        'method' => 'signIn',
+        'controller' => 'AuthController',
+        'method' => 'create_new_account',
       ],
       'createAccount',
     ],
@@ -72,28 +69,28 @@ $router->addRoutes(
       'GET',
       '/connexion',
       [
-        'controller' => 'ConnectController',
-        'method' => 'page',
+        'controller' => 'AuthController',
+        'method' => 'connect_page',
       ],
       'connexion',
     ],
     [
       'POST',
-      '/connexion',
+      '/admin-accueil',
       [
-        'controller' => 'ConnectController',
-        'method' => 'logToBackOffice',
+        'controller' => 'AuthController',
+        'method' => 'sign_in_back_office',
       ],
-      'connexion-post',
+      'admin-connexion',
     ],
     [
       'GET',
-      '/technologies',
+      '/languages',
       [
         'controller' => 'LanguageController',
-        'method' => 'technologies',
+        'method' => 'display_languages_page',
       ],
-      'technologies',
+      'languages',
     ],
   ]
 );
@@ -101,175 +98,176 @@ $router->addRoutes(
 // require __DIR__ . '/../bootstrap.php';
 
 /* This routes are protected by session from PHP */
-if (isset($_COOKIE['PHPSESSID']) && $_SESSION['user_id']) {
+// dump('3', $_SESSION);
+if (isset($_COOKIE['PHPSESSID'])) {
   $router->addRoutes(
     [
       [
         'GET',
-        '/bo-accueil',
+        '/admin-accueil',
         [
           'controller' => 'MainController',
-          'method' => 'boHome',
+          'method' => 'display_admin_home_page',
         ],
-        'bo-accueil',
+        'admin-accueil',
       ],
       [
         'GET',
-        '/bo-projets',
+        '/admin-projets',
         [
           'controller' => 'ProjectController',
-          'method' => 'boProjects',
+          'method' => 'display_admin_projects',
         ],
-        'bo-projets',
+        'admin-projets',
       ],
       [
         'GET',
-        '/bo-projet/[i:id]',
+        '/admin-projet/[i:id]',
         [
           'controller' => 'ProjectController',
-          'method' => 'boProject',
+          'method' => 'display_admin_project',
         ],
-        'bo-projet',
+        'admin-projet',
       ],
       [
         'GET',
-        '/bo-ajouter-projet',
+        '/admin-ajouter-projet',
         [
           'controller' => 'ProjectController',
-          'method' => 'addProjectPage',
+          'method' => 'display_admin_add_project_page',
         ],
-        'bo-ajouter-projet',
+        'admin-ajouter-projet',
       ],
       [
         'POST',
-        '/bo-ajouter-projet',
+        '/admin-ajouter-projet',
         [
           'controller' => 'ProjectController',
-          'method' => 'addProject',
+          'method' => 'add_a_project',
         ],
       ],
       [
         'GET',
-        '/bo-editer-projet/[i:id]',
+        '/admin-editer-projet/[i:id]',
         [
           'controller' => 'ProjectController',
-          'method' => 'editProject',
+          'method' => 'display_admin_edit_project_page',
         ],
-        'bo-editer-projet'
+        'admin-editer-projet'
       ],
       [
         'POST',
-        '/bo-editer-projet/[i:id]',
+        '/admin-editer-projet/[i:id]',
         [
           'controller' => 'ProjectController',
-          'method' => 'updateProject',
+          'method' => 'update_a_project',
         ],
-        'bo-update-projet'
+        'admin-update-projet'
       ],
       [
         'GET',
-        '/bo-ajouter-technologie',
+        '/admin-ajouter-technologie',
         [
           'controller' => 'LanguageController',
-          'method' => 'addTechnoPage',
+          'method' => 'display_add_languages_page',
         ],
-        'bo-ajouter-technologie',
+        'admin-ajouter-technologie',
       ],
       [
         'POST',
-        '/bo-ajouter-technologie',
+        '/admin-ajouter-technologie',
         [
           'controller' => 'LanguageController',
-          'method' => 'addTechno',
+          'method' => 'add_a_languages',
         ],
       ],
       [
         'GET',
-        '/bo-editer-technologie/[i:id]',
+        '/admin-editer-technologie/[i:id]',
         [
           'controller' => 'LanguageController',
-          'method' => 'editTechno',
+          'method' => 'display_edit_languages_page',
         ],
-        'bo-editer-technologie'
+        'admin-editer-technologie'
       ],
       [
         'POST',
-        '/bo-editer-technologie/[i:id]',
+        '/admin-editer-technologie/[i:id]',
         [
           'controller' => 'LanguageController',
-          'method' => 'updateTechno',
+          'method' => 'update_a_language',
         ],
-        'bo-update-technologie'
+        'admin-update-technologie'
       ],
       [
         'GET',
-        '/bo-technos',
+        '/admin-technos',
         [
           'controller' => 'LanguageController',
-          'method' => 'boTechnos',
+          'method' => 'display_admin_languages_page',
         ],
-        'bo-technos',
+        'admin-technos',
       ],
       [
         'DELETE',
-        '/bo-delete--technos/[i:id]',
+        '/admin-delete--technos/[i:id]',
         [
           'controller' => 'LanguageController',
-          'method' => 'boDeleteTechnos',
+          'method' => 'admin_delete_languages',
         ],
-        'bo-delete-technos',
+        'admin-delete-technos',
       ],
       [
         'GET',
-        '/bo-organisations',
+        '/admin-organisations',
         [
           'controller' => 'OrgaController',
-          'method' => 'organizations',
+          'method' => 'display_organizations_page',
         ],
-        'bo-organisations',
+        'admin-organisations',
       ],
       [
         'GET',
-        '/bo-organisation/[i:id]',
+        '/admin-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
-          'method' => 'organization',
+          'method' => 'display_organization_page',
         ],
-        'bo-organisation',
+        'admin-organisation',
       ],
       [
         'GET',
-        '/bo-ajouter-organisation',
+        '/admin-ajouter-organisation',
         [
           'controller' => 'OrgaController',
-          'method' => 'addOrgaPage',
+          'method' => 'display_add_organization_page',
         ],
-        'bo-ajouter-organisation',
+        'admin-ajouter-organisation',
       ],
       [
         'GET',
-        '/bo-editer-organisation/[i:id]',
+        '/admin-editer-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
-          'method' => 'editOrga',
+          'method' => 'display_edit_an_organization_page',
         ],
-        'bo-editer-organisation'
+        'admin-editer-organisation'
       ],
       [
         'POST',
-        '/bo-editer-organisation/[i:id]',
+        '/admin-editer-organisation/[i:id]',
         [
           'controller' => 'OrgaController',
-          'method' => 'updateOrganization',
+          'method' => 'update_an_organization',
         ],
-        'bo-update-organisation'
+        'admin-update-organisation'
       ],
       [
         'POST',
-        '/bo-ajouter-organisation',
+        '/admin-ajouter-organisation',
         [
           'controller' => 'OrgaController',
-          'method' => 'addOrga',
+          'method' => 'add_an_organization',
         ],
       ],
     ]

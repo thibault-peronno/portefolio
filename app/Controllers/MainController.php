@@ -2,53 +2,72 @@
 
 namespace App\Controllers;
 
-use App\Models\Languages;
-use App\Models\Organization;
-use App\Models\Project;
 use App\Models\User;
+use App\Repositories\LanguagesRepository;
+use App\Repositories\OrganizationsRepository;
+use App\Repositories\ProjectRepository;
 
-class MainController extends CoreController {
+class MainController extends CoreController
+{
 
-    public function home(): void
+    public function display_home_page(): void
     {
-        $projectModel = new Project();
-        $languageModel = new Languages();
-
-        $data = [];
-
         try {
-            $data['projects'] = $projectModel->getProjects();
-            $data['languages'] = $languageModel->getLanguages();
-        } catch (\Throwable $th) {
-            //throw $th;
+            $projectRepository = new ProjectRepository();
+            $LanguageRepository = new LanguagesRepository();
+
+            $data = [];
+            $data['projects'] = $projectRepository->get_projects();
+            $data['languages'] = $LanguageRepository->get_languages();
+
+            $this->page_to_display('home', $data);
+        } catch (\Throwable $error) {
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->page_to_display('error', $data);
         }
         // echo 'methode home dans MainController';
-        $this->show('home', $data);
     }
 
-    public function cv(): void
+    public function display_cv_page(): void
     {
-        $this->show('cv');
+        $this->page_to_display('cv');
     }
 
-    public function boHome(): void
+    public function display_admin_home_page(): void
     {
-        $user = new User;
-        $projectModel = new Project();
-        $languageModel = new Languages();
-        $organizationModel = new Organization();
-
-        $data=[];
         try {
-            $data['projects'] = $projectModel->getProjects();
-            $data['languages'] = $languageModel->getLanguages();
-            $data['organizations'] = $organizationModel->getOrganizations();
-            
-            $this->boShow('bo-home', $data);
+            $user = new User;
+            $projectRepository = new ProjectRepository();
+            $LanguageRepository = new LanguagesRepository();
+            $organizationRepository = new OrganizationsRepository();
+    
+            $data = [];
+            $data['projects'] = $projectRepository->get_projects();
+            $data['languages'] = $LanguageRepository->get_languages();
+            $data['organizations'] = $organizationRepository->get_organizations();
+
+            // $allOrganizations = $organizationRepository->get_organizations();
+            // $data['organizations'] = array_map(function ($getOrganization) {
+            //     $organizationModel = new Organization();
+
+            //     $organizationModel->set_id($getOrganization['id']);
+            //     $organizationModel->set_title($getOrganization['title']);
+            //     $organizationModel->set_description($getOrganization['description']);
+            //     $organizationModel->set_picture($getOrganization['picture']);
+
+            //     return $organizationModel;
+            // }, $allOrganizations);
+
+            $this->admin_page_to_display('admin-home', $data);
         } catch (\Throwable $error) {
-            dump('bo-home', $error);
+            $data = [
+                "message" => $error->getMessage(),
+                "succeeded" => false,
+            ];
+            $this->page_to_display('error', $data);
         }
     }
 };
-
-?>

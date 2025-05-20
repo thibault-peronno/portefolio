@@ -2,209 +2,172 @@
 
 namespace App\Models;
 
-
-use App\Controllers\ProjectLanguageController;
-use App\Utils\Database;
-use PDO;
+use App\Helpers\ValidateSetterData;
+use Error;
 
 class Project
 {
-    public $id;
-    public $title;
-    public $description;
-    public $picture;
-    public $url;
-    public $organization_id;
-
-    public function getProjects(): array
-    {
-        $pdo = Database::getPDO();
-        $sql = "SELECT p.*, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
-        FROM projects p
-        LEFT JOIN projects_languages pl ON p.id = pl.project_id
-        LEFT JOIN languages l ON pl.language_id = l.id
-        GROUP BY p.id";
+    private $id;
+    private $title;
+    private $description;
+    private $picture;
+    private $url;
+    private $organization_id;
+    private $labels;
+    private $title_organization;
+    private $picture_organization;
+    private $description_organization;
 
 
-        $pdoStatement = $pdo->query($sql);
-        $getProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
-
-        /* foreach($getProjects as &$getProject){
-            dump('foreach', $getProject['labels']);
-            $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
-            dump('foreach 2', $getProject['labels']);
-        }
-        unset($getProject);*/
-
-        $getProjects = array_map(function ($getProject) {
-            return [
-                'id' => $getProject['id'],
-                'title' => $getProject['title'],
-                'description' => $getProject['description'],
-                'url' => $getProject['url'],
-                'picture' => $getProject['picture'],
-                'organization_id' => $getProject['organization_id'],
-                'labels' => json_decode('[' . $getProject['labels'] . ']', true),
-            ];
-        }, $getProjects);
-        return $getProjects;
-    }
-
-    public function getProjectById($idProject): array
-    {
-        $pdo = Database::getPDO();
-        $sql = "SELECT p.*, o.title AS title_organization, o.picture AS picture_organization, o.description AS description_organization, GROUP_CONCAT(DISTINCT JSON_OBJECT('label', l.label, 'picture', l.picture)) AS labels
-        FROM projects p
-        LEFT JOIN projects_languages pl ON p.id = pl.project_id
-        LEFT JOIN languages l ON pl.language_id = l.id
-        LEFT JOIN organizations o ON p.organization_id = o.id
-        WHERE p.id = $idProject
-        GROUP BY p.id";
-
-        $pdoStatement = $pdo->query($sql);
-        $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-
-        $getProject['labels'] = json_decode('[' . $getProject['labels'] . ']', true);
-
-        return $getProject;
-    }
-
-    public function addProject(): bool
-    {
-
-        $pdo = Database::getPDO();
-        $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :url, :organizationId)";
-
-        try {
-            /*  La méthode prepare() de PDO est utilisée pour préparer une requête SQL pour son exécution, en créant un objet PDOStatement qui permet de lier des valeurs aux placeholders de la requête et d'exécuter la requête de manière sécurisée, évitant ainsi les injections SQL
-             */
-            $pdoStatement = $pdo->prepare($sql);
-
-            /*  La méthode bindValue() de l'objet PDOStatement est utilisée pour lier une valeur à un paramètre nommé dans une requête SQL préparée. Elle prend trois arguments : le nom du paramètre (avec un préfixe :), la valeur à lier, et optionnellement le type de données de la valeur. Cette méthode permet de sécuriser les requêtes en évitant les injections SQL, car elle assure que les valeurs sont correctement échappées et traitées par le système de gestion de base de données. De plus, en spécifiant le type de données attendu, elle peut améliorer les performances de la requête et éviter des erreurs de type de données
-             */
-            $pdoStatement->bindValue(':title', $this->title, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':description', $this->description, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':url', $this->url, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':url', $this->picture, PDO::PARAM_STR);
-            $pdoStatement->bindValue(':organizationId', $this->organization_id, PDO::PARAM_INT);
-
-            $insertedRows = $pdoStatement->execute();
-
-            if ($insertedRows > 0) {
-                // We retrieve the last id.
-                $projectLanguageCtrl = new ProjectLanguageController;
-                $projectId = $pdo->lastInsertId();
-                $insertLanguages = $projectLanguageCtrl->addProjectLanguage($projectId);
-
-                if ($insertLanguages) {
-                    // We return true, because the sql insert has worked.
-                    return true;
-                }
-            }
-
-            // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
-            return false;
-        } catch (\Throwable $error) {
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        }
-    }
-
-    public function updateProject(): bool
-    {
-        $pdo = Database::getPDO();
-        $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
-        try {
-            $pdoStatement = $pdo->prepare($sql);
-            // dd($this->title,$this->description, $this->url, $this->picture, $this->organization_id, $this->id);
-            $pdoStatement->bindParam(':title', $this->title, PDO::PARAM_STR);
-            $pdoStatement->bindParam(':description', $this->description, PDO::PARAM_STR);
-            $pdoStatement->bindParam(':url', $this->url, PDO::PARAM_STR);
-            $pdoStatement->bindParam(':picture', $this->picture, PDO::PARAM_STR);
-            $pdoStatement->bindParam(':organizationId', $this->organization_id, PDO::PARAM_INT);
-            $pdoStatement->bindParam(':projectId', $this->id, PDO::PARAM_INT);
-
-            $insertedRows = $pdoStatement->execute();
-
-
-            if ($insertedRows > 0) {
-                // We retrieve the last id.
-                $projectLanguageCtrl = new ProjectLanguageController;
-                $deleteLanguages = $projectLanguageCtrl->deleteProjetctLanguage($_POST['languages'], $this->id);
-                if ($deleteLanguages) {
-                    $insertLanguages = $projectLanguageCtrl->addProjectLanguage($this->id);
-                }
-
-                if ($insertLanguages) {
-                    // We return true, because the sql insert has worked.
-                    return true;
-                }
-            }
-
-            // Si on arrive ici, c'est que quelque chose n'a pas bien fonctionné => FAUX
-            return false;
-        } catch (\Throwable $th) {
-            $pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        }
-        return true;
-    }
-
-    public function getId(): string
+    public function get_id(): string
     {
         return $this->id;
     }
-    public function setId($id): self
+    public function set_id(int $id): self
     {
+        if (!is_numeric($id)) {
+            throw new Error("id must be a number");
+        }
+
         $this->id = $id;
         return $this;
     }
 
-    public function getTitle(): string
+    public function get_title(): string
     {
         return $this->title;
     }
-    public function setTitle($title): self
+    public function set_title($title): self
     {
-        $this->title = $title;
-        return $this;
+        try {
+            $this->validate_string($title, 100, "title");
+            $this->title = $title;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
-    public function getDescription(): string
+    public function get_description(): string
     {
         return $this->description;
     }
-    public function setDescription($description): self
+    public function set_description($description): self
     {
-        $this->description = $description;
-        return $this;
+        try {
+            $this->validate_string($description, 255, "description");
+            $this->description = $description;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
-    public function getPicture(): string
+    public function get_picture(): string
     {
         return $this->picture;
     }
-    public function setPicture($picture): self
+    public function set_picture($picture): self
     {
-        $this->picture = $picture;
-        return $this;
+        try {
+            $this->validate_string($picture, 100, "picture");
+            $this->picture = $picture;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
-    public function getUrl(): string
+    public function get_url(): string
     {
         return $this->url;
     }
-    public function setUrl($url): self
+    public function set_url($url): self
     {
-        $this->url = $url;
-        return $this;
+        try {
+            $this->validate_string($url, 100, "url");
+            $this->url = $url;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 
-    public function getOrganizationId(): string
+    public function get_organization_id(): string
     {
         return $this->organization_id;
     }
-    public function setOrganizationId($organizationId): self
+    public function set_organization_id(int $organizationId): self
     {
+        if (!is_numeric($organizationId)) {
+            throw new Error("organizationId must be a number");
+        }
         $this->organization_id = $organizationId;
         return $this;
+    }
+
+    public function get_labels(): array
+    {
+        return $this->labels;
+    }
+    public function set_labels($labels): self
+    {
+        try {
+            $this->labels = $labels;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    public function get_title_organization(): string
+    {
+        return $this->title_organization;
+    }
+    public function set_title_organization($titleOrganization): self
+    {
+        try {
+            $this->validate_string($titleOrganization, 100, "titleOrganization");
+            $this->title_organization = $titleOrganization;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    public function get_picture_organization(): string
+    {
+        return $this->picture_organization;
+    }
+    public function set_picture_organization($pictureOrganization): self
+    {
+        try {
+            $this->validate_string($pictureOrganization, 100, "pictureOrganization");
+            $this->picture_organization = $pictureOrganization;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    public function get_description_organization(): string
+    {
+        return $this->description_organization;
+    }
+    public function set_description_organization($descriptionOrganization): self
+    {
+        try {
+            $this->validate_string($descriptionOrganization, 255, "descriptionOrganization");
+            $this->description_organization = $descriptionOrganization;
+            return $this;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    private function validate_string($valeur, $length, $field)
+    {
+        $validateSetterData = new validateSetterData;
+        return $validateSetterData->validate_string($valeur, $length, $field);
     }
 }
