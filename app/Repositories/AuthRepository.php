@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Auth;
+use App\Models\User;
 use App\Utils\Database;
 use PDO;
 
@@ -37,7 +38,7 @@ class AuthRepository
         }
     }
 
-    public function get_register($mail, $authModel, $userModel): array | bool
+    public function get_register(string $mail, Auth $authModel, User $userModel): array | bool
     {
         try {
             // La méthodologie pour get un user devra etre mis autre part !!! 

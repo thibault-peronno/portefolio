@@ -40,7 +40,7 @@ class LanguagesRepository
         }
     }
 
-    public function get_language_by_id($id): array | bool | Error
+    public function get_language_by_id(string $id): array | bool | Error
     {
         try {
             $pdo = Database::getPDO();
@@ -81,7 +81,7 @@ class LanguagesRepository
         }
     }
 
-    public function updateLanguage(int $id)
+    public function update_language_repository(string $id)
     {
         try {
             $languageModel = new Languages();
@@ -106,7 +106,7 @@ class LanguagesRepository
         }
     }
 
-    public function deleteLanguage($id)
+    public function delete_language_repository(string $id)
     {
         try {
             $pdo = Database::getPDO();

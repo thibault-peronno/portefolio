@@ -149,7 +149,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function display_edit_languages_page($idLanguage): void
+    public function display_edit_languages_page(array $idLanguage): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
@@ -176,7 +176,7 @@ class LanguageController extends CoreController
         }
     }
 
-    public function update_a_language($idLanguage): void
+    public function update_a_language(array $idLanguage): void
     {
 
         try {
@@ -199,7 +199,7 @@ class LanguageController extends CoreController
             $languagesModel->set_picture($picture);
             $languagesModel->set_type(htmlspecialchars($_POST['type']));
 
-            $insert = $languagesRepository->updateLanguage($idLanguage);
+            $insert = $languagesRepository->update_language_repository($idLanguage["id"]);
 
             if ($insert || !$insert) {
                 $data['succeeded'] = $insert;
@@ -215,11 +215,11 @@ class LanguageController extends CoreController
         }
     }
 
-    public function admin_delete_languages($labelId): void
+    public function admin_delete_languages(array $labelId): void
     {
         try {
             $languagesRepository = new LanguagesRepository();
-            $languagesRepository->deleteLanguage((int)$labelId['id']);
+            $languagesRepository->delete_language_repository($labelId['id']);
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),

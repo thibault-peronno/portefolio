@@ -46,7 +46,7 @@ class Auth
         return $this->userId;
     }
 
-    private function validate_string($valeur, $length, $field)
+    private function validate_string(string $valeur, int $length, string $field)
     {
         $validateSetterData = new validateSetterData;
         return $validateSetterData->validate_string($valeur, $length, $field);

@@ -27,13 +27,13 @@ class OrgaController extends CoreController
         }
     }
 
-    public function display_organization_page($idOrganization): void
+    public function display_organization_page(array $idOrganization): void
     {
         try {
             $organizationsRepository = new OrganizationsRepository();
             $data = [];
 
-            $data['organization'] = $organizationsRepository->get_organization_by_id($idOrganization);
+            $data['organization'] = $organizationsRepository->get_organization_by_id($idOrganization["id"]);
 
             $this->admin_page_to_display('admin-orga', $data);
         } catch (\Throwable $error) {
@@ -84,7 +84,7 @@ class OrgaController extends CoreController
         }
     }
 
-    public function display_edit_an_organization_page($idOrga): void
+    public function display_edit_an_organization_page(array $idOrga): void
     {
         try {
             $organizationsRepository = new OrganizationsRepository();

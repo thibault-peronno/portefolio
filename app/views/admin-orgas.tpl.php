@@ -11,22 +11,24 @@
     </a>
     <div class="snap-x flex overflow-x-auto gap-5 p-2.5 sm:snap-none sm:gap-10 sm:flex-wrap">
         <?php foreach ($organizations as $organization) : ?>
-            <div class="rounded p-2.5 shadow-card w-max shrink-0 snap-start bg-white">
-                <span class="flex gap-2.5 items-center mb-2">
-                    <img src="<?= '/assets/images/organizations/' . $organization->get_picture() ?>" alt="" class="w-9 h-9" />
-                    <h3 class="text-xl font-bold text-btn-sec"><?= $organization->get_title() ?></h3>
-                </span>
-                <span class="flex gap-5 sm:flex-nowrap">
-                    <a href="<?= '/admin-editer-organisation/' . $organization->get_id() ?>">
-                        <button class="button-admin text-center mt-5 sm:w-32">
-                            Editer
+            <a href="<?= '/admin-organisation/' . $organization->get_id() ?>">
+                <div class="rounded p-2.5 shadow-card w-max shrink-0 snap-start bg-white">
+                    <span class="flex gap-2.5 items-center mb-2">
+                        <img src="<?= '/assets/images/organizations/' . $organization->get_picture() ?>" alt="" class="w-9 h-9" />
+                        <h3 class="text-xl font-bold text-btn-sec"><?= $organization->get_title() ?></h3>
+                    </span>
+                    <span class="flex gap-5 sm:flex-nowrap">
+                        <a href="<?= '/admin-editer-organisation/' . $organization->get_id() ?>">
+                            <button class="button-admin text-cente mt-5 sm:w-32">
+                                Editer
+                            </button>
+                        </a>
+                        <button class="button-admin text-cente mt-5 p-2 sm:w-32">
+                            Supprimer
                         </button>
-                    </a>
-                    <button class="button-admin text-center mt-5 p-2 sm:w-32">
-                        Supprimer
-                    </button>
-                </span>
-            </div>
+                    </span>
+                </div>
+            </a>
         <?php endforeach ?>
     </div>
 </section>

@@ -8,7 +8,18 @@ class ImageHelper
 {
     private $IMAGE_TYPES = ['image/jpeg', 'image/png'];
 
-    public function inserted_language_image($fileName , $fileTmpName, $fileType)
+    /**
+     * Insère une image de langue dans le système
+     *
+     * @param string $fileName        Le nom du fichier image
+     * @param string $fileTmpName     Le chemin temporaire du fichier
+     * @param string $fileType        Le type MIME du fichier
+     *
+     * @return bool                  true si l'opération réussit, false sinon
+     *
+     * @throws Exception             Si l'image n'est pas valide ou si le fichier existe déjà
+     */
+    public function inserted_language_image(string $fileName , string $fileTmpName, string $fileType): bool
     {
         try {
             if (!$this->image_process($fileName, $fileTmpName, $fileType)) {
@@ -25,7 +36,18 @@ class ImageHelper
         }
     }
 
-    public function inserted_organization_image($fileName, $fileTmpName, $fileType)
+    /**
+     * Insère une image de langue dans le système
+     *
+     * @param string $fileName        Le nom du fichier image
+     * @param string $fileTmpName     Le chemin temporaire du fichier
+     * @param string $fileType        Le type MIME du fichier
+     *
+     * @return bool                  true si l'opération réussit, false sinon
+     *
+     * @throws Exception             Si l'image n'est pas valide ou si le fichier existe déjà
+     */
+    public function inserted_organization_image(string $fileName, string $fileTmpName, string $fileType)
     {
         try {
             if (!$this->image_process($fileName, $fileTmpName, $fileType)) {
@@ -40,7 +62,18 @@ class ImageHelper
         }
     }
     
-    public function inserted_project_image($fileName, $fileTmpName, $fileType)
+    /**
+     * Insère une image de langue dans le système
+     *
+     * @param string $fileName        Le nom du fichier image
+     * @param string $fileTmpName     Le chemin temporaire du fichier
+     * @param string $fileType        Le type MIME du fichier
+     *
+     * @return bool                  true si l'opération réussit, false sinon
+     *
+     * @throws Exception             Si l'image n'est pas valide ou si le fichier existe déjà
+     */
+    public function inserted_project_image(string $fileName, string $fileTmpName, string $fileType): bool
     {
         try {
             if (!$this->image_process($fileName, $fileTmpName, $fileType)) {
@@ -55,7 +88,16 @@ class ImageHelper
         }
     }
 
-    public function is_update_image($filePicture): bool | Exception
+    /**
+     * Check if the image had to update
+     *
+     * @param array $filePicture     
+     *
+     * @return bool                  true si l'opération réussit, false sinon
+     *
+     * @throws Exception             Si l'image n'est pas valide ou si le fichier existe déjà
+     */
+    public function is_update_image(array $filePicture): bool | Exception
     {
         try {
             if (!isset($filePicture)) {
@@ -66,8 +108,20 @@ class ImageHelper
             throw $error;
         }
     }
-    // To check if I have data in tmp_name and it is not empty. I call the method to check the extension file, and the method to check the sign of the picture.
-    private function image_process($fileName, $fileTmpName, $fileType): bool | Exception
+    
+    /**
+     * To check if I have data in tmp_name and it is not empty. 
+     * I call the method to check the extension file, and the method to check the sign of the picture.
+     *
+     * @param string $fileName        Le nom du fichier image
+     * @param string $fileTmpName     Le chemin temporaire du fichier
+     * @param string $fileType        Le type MIME du fichier
+     *
+     * @return bool                  true si l'opération réussit, false sinon
+     *
+     * @throws Exception             appelle plusieurs verifications : nom, extension, signature
+     */
+    private function image_process(string $fileName, string $fileTmpName, string $fileType): bool | Exception
     {
         try {
             return !empty($fileName) || $this->check_extension($fileType) || $this->check_signature($fileTmpName);
@@ -75,8 +129,17 @@ class ImageHelper
             throw $error;
         }
     }
-    // To check the extension file.
-    private function  check_extension($fileType): bool | Exception
+    
+    /**
+     * Check the extension file.
+     *
+     * @param string $fileType        Le type MIME du fichier
+     *
+     * @return bool                  true si l'opération réussit, false sinon
+     *
+     * @throws Exception             Si l'extension n'est pas valide
+     */
+    private function  check_extension(string $fileType): bool | Exception
     {
         try {
             return in_array($fileType, $this->IMAGE_TYPES);
@@ -84,8 +147,17 @@ class ImageHelper
             throw $error;
         }
     }
-    // To check the sign of the picture. One more security.
-    private function check_signature($fileTmpName): bool | Exception
+
+    /**
+     * Check the sign of the picture. One more security.
+     *
+     * @param string $fileTmpName        Le chemin temporaire du fichier
+     *
+     * @return bool                  true si l'opération réussit, false sinon
+     *
+     * @throws Exception             Si l'extension n'est pas valide
+     */
+    private function check_signature(string $fileTmpName): bool | Exception
     {
         try {
             return in_array(exif_imagetype($fileTmpName), [IMAGETYPE_JPEG, IMAGETYPE_PNG], true);

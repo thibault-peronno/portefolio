@@ -17,34 +17,46 @@ class LanguagesHelper
         }
     }
 
-    public function sort_langages_by_type($languages)
+    public function sort_langages_by_type($languages): array
     {
-        $data = [];
-        foreach ($languages as $language) {
-            if ($language->get_type() === 'Front-end') {
-                $data[] = $language;
-            }
-        };
-        return $data;
+        try {
+            $data = [];
+            foreach ($languages as $language) {
+                if ($language->get_type() === 'Front-end') {
+                    $data[] = $language;
+                }
+            };
+            return $data;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
-    public function sortLangageByBackType($languages)
+    public function sortLangageByBackType($languages): array
     {
-        $data = [];
-        foreach ($languages as $language) {
-            if ($language->get_type() === 'Back-end') {
-                $data[] = $language;
-            }
-        };
-        return $data;
+        try {
+            $data = [];
+            foreach ($languages as $language) {
+                if ($language->get_type() === 'Back-end') {
+                    $data[] = $language;
+                }
+            };
+            return $data;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
-    public function sortLangageByDevopsType($languages)
+    public function sortLangageByDevopsType($languages): array
     {
-        $data = [];
-        foreach ($languages as $language) {
-            if ($language->get_type() === 'DevOps') {
-                $data[] = $language;
-            }
-        };
-        return $data;
+        try {
+            $data = [];
+            foreach ($languages as $language) {
+                if ($language->get_type() === 'DevOps') {
+                    $data[] = $language;
+                }
+            };
+            return $data;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
     }
 }

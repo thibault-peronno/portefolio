@@ -30,7 +30,7 @@ class ProjectController extends CoreController
         }
     }
 
-    public function display_project_page($idProject): void
+    public function display_project_page(Array $idProject): void
     {
         try {
             $projectRepository = new projectRepository();
@@ -66,7 +66,7 @@ class ProjectController extends CoreController
         }
     }
 
-    public function display_admin_project($idProject): void
+    public function display_admin_project(Array $idProject): void
     {
         try {
             $projectRepository = new projectRepository();
@@ -142,7 +142,7 @@ class ProjectController extends CoreController
         }
     }
 
-    public function display_admin_edit_project_page($idProject)
+    public function display_admin_edit_project_page(Array $idProject)
     {
         // dd($idProject);
         $languagesHelper = new LanguagesHelper();
@@ -158,7 +158,7 @@ class ProjectController extends CoreController
         $this->admin_page_to_display('admin-add-project', $data);
     }
 
-    public function update_a_project($idProject)
+    public function update_a_project(Array $idProject): void
     {
 
         try {

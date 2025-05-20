@@ -51,7 +51,7 @@ class ProjectRepository
         }
     }
 
-    public function get_project_by_id($idProject)
+    public function get_project_by_id(string $idProject): Project
     {
         try {
             $pdo = Database::getPDO();
@@ -132,7 +132,7 @@ class ProjectRepository
         }
     }
 
-    public function update_a_project(Project $projectModel, $languages): bool
+    public function update_a_project(Project $projectModel, array $languages): bool
     {
         
         $pdo = Database::getPDO();

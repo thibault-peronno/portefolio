@@ -37,7 +37,7 @@ class OrganizationsRepository
         }
     }
 
-    public function get_organization_by_id($id)
+    public function get_organization_by_id(string $id): Organization
     {
         try {
             $organizationModel = new Organization();
@@ -86,7 +86,7 @@ class OrganizationsRepository
         }
     }
 
-    public function update_an_organization(Organization $organizationModel)
+    public function update_an_organization(Organization $organizationModel): bool | Error
     {
 
         try {
@@ -104,6 +104,7 @@ class OrganizationsRepository
             if ($insertedRows > 0) {
                 return true;
             }
+            return false;
         } catch (\Throwable $error) {
             throw new Error("La mise à jour de l'organisation a échouée");
         }

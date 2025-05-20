@@ -22,6 +22,6 @@
     @apply text-custom-grey text-xs bg-silver rounded-sm p-1;
   }
   .button-admin {
-    @apply bg-btn-sec rounded p-2.5 w-full sm:w-64 font-bold text-xl;
+    @apply bg-btn-sec rounded text-white p-2.5 w-full sm:w-64 font-bold text-xl;
   }
 }
