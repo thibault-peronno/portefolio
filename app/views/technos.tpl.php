@@ -1,11 +1,11 @@
 <!-- <?php dump($languages, $arrayNumberOfProjectDevBylanguage); ?> -->
- <section class="p-2 sm:p-14">
-     <h1 class="text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 sm:w-max sm:mt-12 rounded">
+ <section class="section">
+     <h1 class="heading-1 mb-5 sm:mt-12">
          Mes langages ou framworks
      </h1>
      
      <?php foreach($languages as $keyLanguage => $arrayLanguageByType) : ?>
-     <h2 class="text-3xl text-secondary uppercase mt-14 mb-5"><?= $keyLanguage ?></h2>
+     <h2 class="heading-2 mt-14"><?= $keyLanguage ?></h2>
      <div class="snap-x flex overflow-x-auto gap-5 p-2.5 sm:snap-none sm:p-0 sm:gap-10 sm:flex-wrap">
      
      <?php foreach($arrayLanguageByType as $language) : ?>

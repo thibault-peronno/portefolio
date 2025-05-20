@@ -4,7 +4,7 @@
             <p><?= $message ?></p>
         </div>
     <?php endif ?>
-    <section class="bg-white p-2 w-10/12 flex flex-col items-center rounded relative sm:p-14 sm:w-max">
+    <section class="section bg-white w-10/12 flex flex-col items-center rounded relative sm:w-max">
         <span class="absolute w-2/4 h-0.5 bg-secondary top-0 left-0 "></span>
         <span class="absolute w-2/4 rotate-90 origin-left h-0.5 bg-secondary top-0 left-0"></span>
         <img src="/assets/images/face_co.jpg" alt="" class="w-28 h-28 rounded-full">
@@ -13,7 +13,7 @@
             <input type="email" name="mail" id="" class="mt-2.5 mb-5 h-14 rounded border-primary border-2 p-2 sm:w-80">
             <label for="password">Mot de passe</label>
             <input type="password" name="password" id="" class="mt-2.5 mb-5 h-14 rounded border-primary border-2 p-2 sm:w-80">
-            <button type="submit" class="bg-btn-sec rounded p-2.5 text-center mt-3 w-full sm:w-80 text-white">Se connecter</button>
+            <button type="submit" class="button text-center sm:w-80">Se connecter</button>
         </form>
         <span class="absolute w-2/4 h-0.5 bg-secondary bottom-0 right-0"></span>
         <span class="absolute w-2/4 origin-right rotate-90 h-0.5 bg-secondary bottom-0 right-0"></span>

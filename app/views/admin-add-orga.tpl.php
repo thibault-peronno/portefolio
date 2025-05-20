@@ -1,5 +1,5 @@
 <!-- <?php dump($organization) ?> -->
-<section class="p-2 sm:p-14">
+<section class="section">
     <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max rounded mb-5 sm:mt-12">
         <?= isset($organization) ? "Modifier" : "Ajouter" ?> une organisation
     </h1>
@@ -37,7 +37,7 @@
             </span>
         </div>
     </form>
-    <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl" type="submit" form="project-form">
+    <button class="button-admin flex justify-center items-center gap-2 mt-5" type="submit" form="project-form">
         <img src="/assets/images/icons/add.svg" alt="" />
         <p class="text-white"><?= isset($organization) ? "Modifier" : "Ajouter" ?></p>
     </button>

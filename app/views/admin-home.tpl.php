@@ -1,6 +1,6 @@
 <!-- <?php dump($projects, $languages, $organizations) ?> -->
 <!-- <?php dump('admin accueil') ?> -->
-<section class="p-2 sm:p-14">
+<section class="section">
   <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max sm:mt-12">
     back office Accueil
   </h1>
@@ -35,7 +35,7 @@
       </tbody>
     </table>
     <a href="/admin-projets">
-      <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-10 w-full sm:w-64">
+      <button class="button-admin flex justify-between items-center mt-10">
         <p class="text-white">Gérer les projets</p>
         <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
       </button>
@@ -57,7 +57,7 @@
       <?php endforeach ?>
     </div>
     <a href="/admin-technos">
-      <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-10 w-full sm:w-64">
+      <button class="button-admin flex justify-between items-center mt-10">
         <p class="text-white">Gérer les technos</p>
         <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
       </button>
@@ -95,7 +95,7 @@
       </tbody>
     </table>
     <a href="/admin-organisations">
-      <button class="bg-btn-sec rounded flex p-2.5 justify-between items-center mt-10 w-full sm:w-64">
+      <button class="button-admin flex justify-between items-center mt-10">
         <p class="text-white">Gérer les organisations</p>
         <img src="/assets/images/icons/arrow-right-circle.svg" alt="" />
       </button>

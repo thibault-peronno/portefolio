@@ -1,7 +1,7 @@
 <!-- <?php dump($projects); ?> -->
 <main class="grow">
-      <section class="p-2 sm:p-14">
-        <h1 class="text-4xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 my-5 w-max sm:mt-12 rounded">Mes projets</h1>
+      <section class="section">
+        <h1 class="heading-1 mb-5 sm:mt-12">Mes projets</h1>
         <div class="sm:flex sm:gap-10 sm:flex-wrap">
         <?php foreach ($projects as $project) : ?>
             <a href="<?= "/projet/" . $project->get_id() ?>">
@@ -10,7 +10,7 @@
                         <img src="<?= "/assets/images/projects/" . $project->get_picture() ?>" alt="Image du projet" class="h-full w-full rounded-t">
                     </div>
                     <div class="p-2">
-                        <p class="text-l font-bold text-btn-sec inline-block"><?= $project->get_title() ?></p>
+                        <p class="text-lg font-bold text-btn-sec inline-block"><?= $project->get_title() ?></p>
                         <div class="flex justify-start gap-2">
                             <?php foreach ($project->get_labels() as $label) : ?>
                                 <div class="bg-white border rounded-full">

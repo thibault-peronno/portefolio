@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .section {
+    @apply p-2 sm:p-14;
+  }
+  .heading-1 {
+    @apply text-4xl bg-primary text-secondary uppercase font-bold p-2.5 mb-5 rounded leading-relaxed sm:my-0 sm:w-max;
+  }
+  .heading-2 {
+    @apply text-3xl text-secondary uppercase mb-5;
+  }
+  .heading-3 {
+    @apply text-xl font-bold text-btn-sec mb-2;
+  }
+  .button {
+    @apply bg-btn-sec rounded p-2.5 w-full sm:w-64 mt-5 text-white;
+  }
+  .badge-language {
+    @apply text-custom-grey text-xs bg-silver rounded-sm p-1;
+  }
+  .button-admin {
+    @apply bg-btn-sec rounded p-2.5 w-full sm:w-64 font-bold text-xl;
+  }
+}

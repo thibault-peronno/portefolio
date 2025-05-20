@@ -1,5 +1,5 @@
 <!-- <?php dump($project) ?> -->
-<section class="p-2 sm:p-14">
+<section class="section">
     <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 sm:w-[60%] mb-5 sm:mt-12">
         <?= $project->get_title() ?>
     </h1>
@@ -33,7 +33,7 @@
         </div>
         <?php if ($project->get_url() !== null) : ?>
             <a href="<?= $project->get_url() ?>" class="row-start-3">
-                <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-max font-bold text-xl">
+                <button class="button-admin flex justify-center items-center gap-2 mt-5 sm:w-max">
                     <img src="/assets/images/icons/online.svg" alt=" ">
                     <p class="text-white">Voir le projet en ligne</p>
                 </button>

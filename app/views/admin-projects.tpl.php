@@ -1,10 +1,10 @@
 <!-- <?php dump($projects) ?> -->
-<section class="p-2 sm:p-14">
+<section class="section">
   <h1 class="text-3xl text-secondary bg-primary text-secondary uppercase font-bold p-2.5 w-max mb-5 sm:mt-12 rounded">
     back office Projets
   </h1>
   <a href="admin-ajouter-projet">
-    <button class="bg-btn-sec rounded flex p-2.5 justify-center items-center gap-2 mt-5 w-full sm:w-64 font-bold text-xl">
+    <button class="button-admin flex justify-center items-center gap-2 mt-5">
       <img src="/assets/images/icons/add.svg" alt="" />
       <p class="text-white">Nouveau projet</p>
     </button>

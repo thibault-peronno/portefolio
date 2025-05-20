@@ -1,5 +1,5 @@
 <div>
-    <section class="p-2 flex flex-row gap-10 flex-wrap bg-primary sm:p-14 lg:justify-around">
+    <section class="section flex flex-row gap-10 flex-wrap bg-primary lg:justify-around">
         <div class="flex flex-col animate-front opacity-0">
             <p class="font-bold text-lg">Front-end</p>
             <div class="flex flex-row gap-5">
@@ -72,7 +72,7 @@
             </div>
         </div>
     </section>
-    <section class="p-2 sm:p-14">
+    <section class="section">
         <div class="flex flex-row items-center mt-5 sm:mb-5 sm:mt-12 ">
             <h1 class="text-3xl text-secondary bg-primary uppercase font-bold p-2.5 lg:w-max rounded">
                 Mon parcours
@@ -100,9 +100,9 @@
                                     Développeur fullstack SmartGlobal Governance
                                 </h3>
                                 <span class="flex flex-row flex-wrap gap-1 mb-2">
-                                    <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Lua</p>
-                                    <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">N8N</p>
-                                    <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Roadmap</p>
+                                    <p class="badge-language">Lua</p>
+                                    <p class="badge-language">N8N</p>
+                                    <p class="badge-language">Roadmap</p>
                                 </span>
                                 <p class="text-lg">
                                     Au sein d'une 3 personnes, j'étais en charge du développement de nouvelles fonctionnalités en Lua :
@@ -123,11 +123,11 @@
                                         Développeur Front-end iSelection (août 22 - fév 24)
                                     </h3>
                                     <span class="flex flex-row flex-wrap gap-1 mb-2">
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Angular</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Vue.Js</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Jira</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                        <p class="badge-language">Angular</p>
+                                        <p class="badge-language">Vue.Js</p>
+                                        <p class="badge-language">Laravel</p>
+                                        <p class="badge-language">Jira</p>
+                                        <p class="badge-language">Git</p>
                                     </span>
                                     <p class="text-lg">
                                         Au sein d’une équipe de 8 personnes, j’étais en charge de la
@@ -143,15 +143,15 @@
                                 <div class="relative lg:w-[550px]">
                                     <h3 class="text-xl font-bold text-btn-sec mb-5">Bac+3/4 Titre de concepteur et développeur d’application (août 22 - fév 24)</h3>
                                     <span class="flex flex-row flex-wrap gap-1 mb-2">
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">PHP</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Javascript</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Vue.Js</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">React</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Flutter</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">NodeJs</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Jira</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                        <p class="badge-language">PHP</p>
+                                        <p class="badge-language">Javascript</p>
+                                        <p class="badge-language">Vue.Js</p>
+                                        <p class="badge-language">React</p>
+                                        <p class="badge-language">Flutter</p>
+                                        <p class="badge-language">NodeJs</p>
+                                        <p class="badge-language">Laravel</p>
+                                        <p class="badge-language">Jira</p>
+                                        <p class="badge-language">Git</p>
                                     </span>
                                     <p class="text-lg">PHP, Javascript, VueJS, Dockers, Laravel, NodeJs, ExpressJS et Flutter… sécurité et les tests unitaires.
                                         Titre de développeur web et web mobile (déc 21 - juin 22)
@@ -171,9 +171,9 @@
                                         Développeur fullstack O’Clock (déc 21- mai 22)
                                     </h3>
                                     <span class="flex flex-row flex-wrap gap-1 mb-2">
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">React</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                        <p class="badge-language">React</p>
+                                        <p class="badge-language">Laravel</p>
+                                        <p class="badge-language">Git</p>
                                     </span>
                                     <p class="text-lg">
                                         Simulation de 4 semaines : API Rest avec Laravel et un back-office
@@ -185,12 +185,12 @@
                                 <div class="relative lg:w-[550px]">
                                     <h3 class="text-xl font-bold text-btn-sec mb-5">Bac+2 Titre de développeur web et web mobile (déc 21 - juin 22)</h3>
                                     <span class="flex flex-row flex-wrap gap-1 mb-2">
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">PHP</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Javascript</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">React</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Laravel</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">WordPress</p>
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">Git</p>
+                                        <p class="badge-language">PHP</p>
+                                        <p class="badge-language">Javascript</p>
+                                        <p class="badge-language">React</p>
+                                        <p class="badge-language">Laravel</p>
+                                        <p class="badge-language">WordPress</p>
+                                        <p class="badge-language">Git</p>
                                     </span>
                                     <p class="text-lg">HTML, CSS, Javascript, PHP, Laravel, REACT, WordPress.
                                         challenge : exercices tous les jours après les cours.</p>
@@ -206,7 +206,7 @@
                                         Chargé de marketing digital Enfants d’Asie (juin 21-sept 22)
                                     </h3>
                                     <span class="flex flex-row flex-wrap gap-1 mb-2">
-                                        <p class="text-slate-400 text-xs bg-silver rounded-sm p-1">WordPress</p>
+                                        <p class="badge-language">WordPress</p>
                                     </span>
                                     <p class="text-lg">
                                         Refonte du site wordpress, mise en place de la stratégie digitale. Changement de l'emaileur afin de faire économiser l'asscociation,
