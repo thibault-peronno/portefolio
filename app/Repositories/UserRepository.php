@@ -2,13 +2,13 @@
 
 namespace App\Repositories;
 
-use App\Controllers\AuthController;
 use App\Models\User;
 use App\Utils\Database;
 use PDO;
 
-class UserRepository {
-    public function getUsers(): object
+class UserRepository
+{
+    public function getUsers(): User
     {
         $pdo = Database::getPDO();
 
@@ -17,38 +17,29 @@ class UserRepository {
         $pdoStatement = $pdo->query($sql);
 
         $currentUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+        $userModel = new User();
 
-        return $currentUser;
+        $userModel->set_id($currentUser["id"]);
+        $userModel->set_firstname($currentUser["firstname"]);
+        $userModel->set_lastname($currentUser["lastname"]);
+        $userModel->set_role_id($currentUser["roleId"]);
+
+        return $userModel;
     }
 
-    public function addUser(): bool
+    public function delete_user(User $userModel): bool
     {
 
         try {
             $userModel = new User;
             $pdo = Database::getPDO();
-            $sql = "INSERT INTO `users` (`firstname`, `lastname`, `role_id`) VALUE(:firstname, :lastname, :roleId)";
-            
+            $sql = "DELETE `users` WHERE 'id = :userId'";
+
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindValue(':firstname', $userModel->get_firstname());
-            $pdoStatement->bindValue(':lastname', $userModel->get_lastname());
-            $pdoStatement->bindValue(':roleId', $userModel->get_role_id());
+            $pdoStatement->bindValue(':userId', $userModel->get_id());
 
-            $insertedRows = $pdoStatement->execute();
-
-            if ($insertedRows > 0) {
-                // We retrieve the last id.
-                $connectCtrl = new AuthController();
-                $usertId = $pdo->lastInsertId();
-                $insertRegister = $connectCtrl->is_register_added($usertId);
-
-                if ($insertRegister) {
-                    // We return true, because the sql insert has worked.
-                    return true;
-                }
-            }
-            return false;
+            return $pdoStatement->execute(); // Renvoie directement true/false
         } catch (\Throwable $error) {
             throw $error;
         }

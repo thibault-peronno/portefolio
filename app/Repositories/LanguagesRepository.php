@@ -40,7 +40,7 @@ class LanguagesRepository
         }
     }
 
-    public function get_language_by_id(string $id): array | bool | Error
+    public function get_language_by_id(string $id): Languages
     {
         try {
             $pdo = Database::getPDO();
@@ -49,26 +49,37 @@ class LanguagesRepository
             $pdoStatement = $pdo->prepare($sql);
             $pdoStatement->bindParam(':idLanguage', $id, PDO::PARAM_STR);
             $pdoStatement->execute();
-            return $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            $language = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+
+            $languagesModel = new Languages();
+
+            $languagesModel->set_id($language['id']);
+            $languagesModel->set_label($language['label']);
+            $languagesModel->set_picture($language['picture']);
+            $languagesModel->set_type($language['type']);
+
+            return $languagesModel;
         } catch (\Throwable $error) {
             throw $error;
         }
     }
 
-    public function add_an_language(): bool | Error
+    public function add_an_language(string $label, string $picture, string $type): bool | Error
     {
-
         try {
-            $languageModel = new Languages();
+            if (!$label || $picture || !$type) {
+                throw new Error("Les données ne sont pas correctes");
+            }
+
             $pdo = Database::getPDO();
 
             $sql = "INSERT INTO `languages` (`label`, `picture`, `type`) VALUES (:label, :picture, :type)";
 
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindValue(':label',  $languageModel->get_label());
-            $pdoStatement->bindValue(':picture',  $languageModel->get_picture());
-            $pdoStatement->bindValue(':type',  $languageModel->get_type());
+            $pdoStatement->bindValue(':label',  $label);
+            $pdoStatement->bindValue(':picture',  $picture);
+            $pdoStatement->bindValue(':type',  $type);
 
             $insertedRows = $pdoStatement->execute();
 
@@ -77,30 +88,35 @@ class LanguagesRepository
             }
             return true;
         } catch (\Throwable $error) {
-            throw  $error;
+            throw new Error("L'ajout a échoué");
         }
     }
 
-    public function update_language_repository(string $id)
+    public function update_language_repository(string $id, string $label, string $picture, string $type): array
     {
         try {
-            $languageModel = new Languages();
             $pdo = Database::getPDO();
             $sql = "UPDATE `languages` SET label = :label, type = :type, picture = :picture WHERE id = :idLanguage";
 
             $pdoStatement = $pdo->prepare($sql);
 
-            $pdoStatement->bindParam(':label', $languageModel->get_label(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':type', $languageModel->get_type(), PDO::PARAM_STR);
-            $pdoStatement->bindParam(':picture', $languageModel->get_picture(), PDO::PARAM_STR);
+            $pdoStatement->bindParam(':label', $label, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':type', $type, PDO::PARAM_STR);
+            $pdoStatement->bindParam(':picture', $picture, PDO::PARAM_STR);
             $pdoStatement->bindParam(':idLanguage', $id, PDO::PARAM_INT);
 
             $insertedRows = $pdoStatement->execute();
-
+            
             if ($insertedRows > 0) {
-                // We retrieve the last id.
-                return true;
+                return [
+                    "message" => "L'ajout a réussi.",
+                    "succeeded" => true,
+                ];
             }
+            return [
+                "message" => "L'ajout a échoué.",
+                "succeeded" => false,
+            ];
         } catch (\Throwable $error) {
             throw $error;
         }

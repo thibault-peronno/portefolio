@@ -3,6 +3,7 @@
 namespace App\Helpers;
 
 use App\Repositories\LanguagesRepository;
+use App\Repositories\ProjectLanguageRepository;
 
 class LanguagesHelper
 {
@@ -16,8 +17,26 @@ class LanguagesHelper
             throw $error;
         }
     }
+    public function sort_languages(): array
+    {
+        try {
+            $languagesRepository = new LanguagesRepository();
+                $data = [];
+    
+                $languages = $languagesRepository->get_languages();
+                $data['languages']['Front-end'] = self::sort_langages_by_front_type($languages);
+                $data['languages']['Back-end'] = self::sort_langages_by_back_type($languages);
+                $data['languages']['DevOps'] = self::sort_langages_by_devOps_type($languages);
+    
+                $data['arrayNumberOfProjectDevBylanguage'] = self::count_number_of_project_dev_by_language($languages);
+    
+                return $data;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
 
-    public function sort_langages_by_type($languages): array
+    private static function sort_langages_by_front_type(array $languages): array
     {
         try {
             $data = [];
@@ -31,7 +50,8 @@ class LanguagesHelper
             throw $error;
         }
     }
-    public function sortLangageByBackType($languages): array
+
+    private static function sort_langages_by_back_type(array $languages): array
     {
         try {
             $data = [];
@@ -45,7 +65,8 @@ class LanguagesHelper
             throw $error;
         }
     }
-    public function sortLangageByDevopsType($languages): array
+
+    private static function sort_langages_by_devOps_type(array $languages): array
     {
         try {
             $data = [];
@@ -54,6 +75,29 @@ class LanguagesHelper
                     $data[] = $language;
                 }
             };
+            return $data;
+        } catch (\Throwable $error) {
+            throw $error;
+        }
+    }
+
+    private static function count_number_of_project_dev_by_language($languages): array
+    {
+ 
+        try {
+            $projectLanguageRepository = new ProjectLanguageRepository();
+            $data = [];
+            $arrayAllLanguagesId = $projectLanguageRepository->get_label_language_from_project_languages_id();
+            foreach ($languages as $language) {
+                
+                foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
+                    
+                    if ($language->get_label() === $arrayAllLanguages['label']) {
+                        $data[$language->get_label()][0] = $data[$language->get_label()][0] +1;
+                    }
+                }
+            }
+
             return $data;
         } catch (\Throwable $error) {
             throw $error;

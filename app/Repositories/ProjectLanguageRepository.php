@@ -9,7 +9,7 @@ use PDO;
 class ProjectLanguageRepository
 {
 
-    public function addLanguagesProjects(ProjectLanguage $projectLanguageModel): bool 
+    public function add_languages_by_projects(ProjectLanguage $projectLanguageModel): bool 
     {
         try {
             $pdo = Database::getPDO();
@@ -26,7 +26,7 @@ class ProjectLanguageRepository
         }
     }
 
-    public function getLabelLanguageFromProjectLanguagesId(): array
+    public function get_label_language_from_project_languages_id(): array
     {
         try {
             $pdo = Database::getPDO();
@@ -40,7 +40,7 @@ class ProjectLanguageRepository
         }
     }
 
-    public function deleteLanguagesProjects(int $id): bool
+    public function delete_languages_by_projects(int $id): bool
     {
         
         try {

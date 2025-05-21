@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Helpers\ImageHelper;
-use App\Models\Organization;
 use App\Repositories\OrganizationsRepository;
 
 class OrgaController extends CoreController
@@ -62,17 +61,12 @@ class OrgaController extends CoreController
             $imageHelper->inserted_organization_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
 
             // assigner les valeurs à l'objet, pour les récuperer dans notre model.
-            $organizationModel = new Organization();
-            $organizationModel->set_title($_POST['title']);
-            $organizationModel->set_description($_POST['description']);
-            $organizationModel->set_picture($_FILES["picture"]["name"]);
+            $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+            $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
+            $picture = $_FILES["picture"]["name"];
 
-            // aller faire la requête dans notre repository
             $organizationsRepository = new OrganizationsRepository();
-            $insert = $organizationsRepository->add_an_organization($organizationModel);
-            if ($insert || !$insert) {
-                $data['succeeded'] = $insert;
-            }
+            $data = $organizationsRepository->add_an_organization($title, $description, $picture);
 
             $this->admin_page_to_display('admin-add-orga', $data);
         } catch (\Throwable $error) {
@@ -111,21 +105,20 @@ class OrgaController extends CoreController
             if (!$isNoUpdateImage) {
                 $imageHelper->inserted_organization_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
-            
-            $organizationModel = new Organization();
-            $organizationModel->set_id($_POST['id']);
-            $organizationModel->set_title($$_POST['title']);
-            $organizationModel->set_description($_POST['description']);
+        
+            $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
+            $title = filter_input(INPUT_POST,'title', FILTER_SANITIZE_SPECIAL_CHARS);
+            $description= filter_input(INPUT_POST,'description', FILTER_SANITIZE_SPECIAL_CHARS);
+
+            $picture = "";
             if (!$isNoUpdateImage) {
-            $organizationModel->set_picture($$_FILES["picture"]["name"]);
+                $picture = $_FILES["picture"]["name"];
             } else {
-                $organizationModel->set_picture($_POST['picture']);
+                $picture = $_POST['picture'];
             }
             
             $organizationsRepository = new OrganizationsRepository();
-            $insert = $organizationsRepository->update_an_organization($organizationModel);
-
-            $data['succeeded'] = $insert;
+            $data = $organizationsRepository->update_an_organization($title, $description, $picture, $id);
 
             $this->admin_page_to_display('admin-add-orga', $data);
         } catch (\Throwable $error) {

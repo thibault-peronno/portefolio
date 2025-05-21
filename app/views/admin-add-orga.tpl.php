@@ -5,7 +5,7 @@
     </h1>
     <?php if (isset($succeeded) && $succeeded) : ?>
         <div class="p-2 text-center text-white font-bold fixed bg-lime-600 rounded animate-notif">
-            <p>L'ajout a réussi</p>
+            <?= $message ?></p>
         </div>
     <?php endif ?>
     <?php if (isset($succeeded) && !$succeeded) : ?>

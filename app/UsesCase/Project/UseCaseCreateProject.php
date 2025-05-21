@@ -26,7 +26,7 @@ class UseCaseCreateProject {
 
             // call the method to exect the sql request
             $projectLanguageRepository = new ProjectLanguageRepository();
-            $projectLanguageRepository->addLanguagesProjects($projectLanguageModel);
+            $projectLanguageRepository->add_languages_by_projects($projectLanguageModel);
         }
     }
 }

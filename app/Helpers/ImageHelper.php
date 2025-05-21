@@ -93,9 +93,9 @@ class ImageHelper
      *
      * @param array $filePicture     
      *
-     * @return bool                  true si l'opération réussit, false sinon
+     * @return bool true si l'opération réussit, false sinon
      *
-     * @throws Exception             Si l'image n'est pas valide ou si le fichier existe déjà
+     * @throws Exception Si l'image n'est pas valide ou si le fichier existe déjà
      */
     public function is_update_image(array $filePicture): bool | Exception
     {

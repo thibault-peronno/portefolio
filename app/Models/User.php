@@ -24,7 +24,7 @@ class User
     {
         return $this->firstname;
     }
-    public function set_firstname($firstname): self
+    public function set_firstname(string $firstname): self
     {
         $this->firstname = $firstname;
         return $this;
@@ -34,7 +34,7 @@ class User
     {
         return $this->lastname;
     }
-    public function set_lastname($lastname): self
+    public function set_lastname(string $lastname): self
     {
         $this->lastname = $lastname;
         return $this;
