@@ -9,7 +9,6 @@ class UserController extends CoreController {
     {
         try {
             $userRepository = new UserRepository();
-
             $data["user"] = $userRepository->getUsers();
 
             return $data;

@@ -14,9 +14,8 @@ class ProjectController extends CoreController
     public function display_projects_page(): void
     {
         try {
-            $projectRepository = new projectRepository();
             $data = [];
-
+            $projectRepository = new projectRepository();
             $data['projects'] = $projectRepository->get_projects();
 
             $this->page_to_display('projects', $data);
@@ -32,10 +31,8 @@ class ProjectController extends CoreController
     public function display_project_page(array $idProject): void
     {
         try {
-            $projectRepository = new projectRepository();
-
             $data = [];
-
+            $projectRepository = new projectRepository();
             $data['project'] = $projectRepository->get_project_by_id($idProject['id']);
 
             $this->page_to_display('project', $data);
@@ -51,8 +48,8 @@ class ProjectController extends CoreController
     public function display_admin_projects(): void
     {
         try {
-            $projectRepository = new projectRepository();
             $data = [];
+            $projectRepository = new projectRepository();
             $data['projects'] = $projectRepository->get_projects();
 
             $this->admin_page_to_display('admin-projects', $data);
@@ -68,10 +65,8 @@ class ProjectController extends CoreController
     public function display_admin_project(array $idProject): void
     {
         try {
-            $projectRepository = new projectRepository();
-
             $data = [];
-
+            $projectRepository = new projectRepository();
             $data['project'] = $projectRepository->get_project_by_id($idProject['id']);
 
             $this->admin_page_to_display('admin-project', $data);
@@ -87,11 +82,10 @@ class ProjectController extends CoreController
     public function display_admin_add_project_page(): void
     {
         try {
+            
+            $data = [];
             $organizatiionRepository =  new OrganizationsRepository();
             $languagesHelper = new languagesHelper();
-
-            $data = [];
-
             $data['languages'] = $languagesHelper->get_languages_helper();
             $data['organizations'] = $organizatiionRepository->get_organizations();
 
@@ -111,7 +105,6 @@ class ProjectController extends CoreController
 
             /* Insert image : return true or an throw error */
             $imageHelper = new ImageHelper();
-            // dd($_POST);
             $imageHelper->inserted_project_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
 
             $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -140,7 +133,6 @@ class ProjectController extends CoreController
         $projectRepository = new ProjectRepository;
 
         $data = [];
-
         $data['languages'] = $languagesHelper->get_languages_helper();
         $data['organizations'] = $organizatiionRepository->get_organizations();
         $data['project'] = $projectRepository->get_project_by_id($idProject['id']);
@@ -153,8 +145,6 @@ class ProjectController extends CoreController
 
         try {
             $imageHelper = new ImageHelper();
-
-            $data = [];
             $isNoUpdateImage = $imageHelper->is_update_image($_FILES['picture']);
 
             if (!$isNoUpdateImage) {

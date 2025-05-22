@@ -20,17 +20,16 @@ class LanguagesHelper
     public function sort_languages(): array
     {
         try {
+            $data = [];
             $languagesRepository = new LanguagesRepository();
-                $data = [];
-    
-                $languages = $languagesRepository->get_languages();
-                $data['languages']['Front-end'] = self::sort_langages_by_front_type($languages);
-                $data['languages']['Back-end'] = self::sort_langages_by_back_type($languages);
-                $data['languages']['DevOps'] = self::sort_langages_by_devOps_type($languages);
-    
-                $data['arrayNumberOfProjectDevBylanguage'] = self::count_number_of_project_dev_by_language($languages);
-    
-                return $data;
+            $languages = $languagesRepository->get_languages();
+
+            $data['languages']['Front-end'] = self::sort_langages_by_front_type($languages);
+            $data['languages']['Back-end'] = self::sort_langages_by_back_type($languages);
+            $data['languages']['DevOps'] = self::sort_langages_by_devOps_type($languages);
+            $data['arrayNumberOfProjectDevBylanguage'] = self::count_number_of_project_dev_by_language($languages);
+
+            return $data;
         } catch (\Throwable $error) {
             throw $error;
         }
@@ -83,17 +82,17 @@ class LanguagesHelper
 
     private static function count_number_of_project_dev_by_language($languages): array
     {
- 
+
         try {
-            $projectLanguageRepository = new ProjectLanguageRepository();
             $data = [];
+            $projectLanguageRepository = new ProjectLanguageRepository();
             $arrayAllLanguagesId = $projectLanguageRepository->get_label_language_from_project_languages_id();
             foreach ($languages as $language) {
-                
+
                 foreach ($arrayAllLanguagesId as $arrayAllLanguages) {
-                    
+
                     if ($language->get_label() === $arrayAllLanguages['label']) {
-                        $data[$language->get_label()][0] = $data[$language->get_label()][0] +1;
+                        $data[$language->get_label()][0] = $data[$language->get_label()][0] + 1;
                     }
                 }
             }

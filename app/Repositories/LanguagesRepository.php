@@ -57,22 +57,23 @@ class LanguagesRepository
             $languagesModel->set_label($language['label']);
             $languagesModel->set_picture($language['picture']);
             $languagesModel->set_type($language['type']);
-
+            
             return $languagesModel;
         } catch (\Throwable $error) {
             throw $error;
         }
     }
 
-    public function add_an_language(string $label, string $picture, string $type): bool | Error
+    public function add_an_language(string $label, string $picture, string $type): array | Error
     {
         try {
             if (!$label || $picture || !$type) {
-                throw new Error("Les données ne sont pas correctes");
+                return [
+                    "message" => "L'ajout a échoué : une donnée n'est pas correcte.",
+                    "succeeded" => false,
+                ];
             }
-
             $pdo = Database::getPDO();
-
             $sql = "INSERT INTO `languages` (`label`, `picture`, `type`) VALUES (:label, :picture, :type)";
 
             $pdoStatement = $pdo->prepare($sql);
@@ -84,11 +85,17 @@ class LanguagesRepository
             $insertedRows = $pdoStatement->execute();
 
             if (!$insertedRows) {
-                throw new Error("L'ajout a échoué");
+                return [
+                    "message" => "L'ajout a échoué.",
+                    "succeeded" => false,
+                ];
             }
-            return true;
+            return [
+                "message" => "L'ajout a réussi.",
+                "succeeded" => true,
+            ];
         } catch (\Throwable $error) {
-            throw new Error("L'ajout a échoué");
+            throw new Error("Une erreur est survenue");
         }
     }
 
@@ -109,16 +116,16 @@ class LanguagesRepository
             
             if ($insertedRows > 0) {
                 return [
-                    "message" => "L'ajout a réussi.",
+                    "message" => "La mise à jour a réussi.",
                     "succeeded" => true,
                 ];
             }
             return [
-                "message" => "L'ajout a échoué.",
+                "message" => "La mise à jour a échoué.",
                 "succeeded" => false,
             ];
         } catch (\Throwable $error) {
-            throw $error;
+            throw new Error("Une erreur est survenue.");
         }
     }
 
@@ -127,10 +134,17 @@ class LanguagesRepository
         try {
             $pdo = Database::getPDO();
             $sql = "DELETE FROM `languages` WHERE `id` = $id";
+
             $pdoStatement = $pdo->query($sql);
+
             return $pdoStatement->delete(PDO::FETCH_CLASS, Languages::class);
+            // A travailler
+            // return [
+            //     "message" => "Verifiez que le langage n'est pas utilisé par un projet",
+            //     "succeeded" => false,
+            // ];
         } catch (\Throwable $th) {
-            throw new Exception("Verifiez que le langage n'est pas utilisé par un projet");
+            throw new Exception("Une erreur est survenue.");
         }
     }
 }

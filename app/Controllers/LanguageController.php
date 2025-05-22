@@ -69,12 +69,7 @@ class LanguageController extends CoreController
             $type = filter_input(INPUT_POST, 'type', FILTER_SANITIZE_SPECIAL_CHARS);
 
             $languagesRepository = new LanguagesRepository();
-            $insert = $languagesRepository->add_an_language($label, $picture, $type);
-
-            $data = [];
-            if (isset($insert)) {
-                $data['succeeded'] = $insert;
-            }
+            $data = $languagesRepository->add_an_language($label, $picture, $type);
 
             $this->admin_page_to_display('admin-add-techno', $data);
         } catch (\Throwable $error) {
@@ -90,11 +85,7 @@ class LanguageController extends CoreController
     {
         try {
             $languagesRepository = new LanguagesRepository();
-            $languagesModel = $languagesRepository->get_language_by_id($idLanguage['id']);
-
-            $data = [];
-            $languagesModel = new Languages();
-            $data['language'] = $languagesModel;
+            $data['language'] = $languagesRepository->get_language_by_id($idLanguage['id']);
 
             $this->admin_page_to_display('admin-add-techno', $data);
         } catch (\Throwable $error) {

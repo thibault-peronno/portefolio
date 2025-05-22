@@ -22,7 +22,6 @@ class AuthController extends MainController
     {
         try {
             $AuthRepository = new AuthRepository();
-
             // récupérer l'utilisateur qui se connecte à un compte enregistré
             $getUser = $AuthRepository->get_register_by_login($_POST['mail'], $_POST['password']);
 
@@ -60,10 +59,8 @@ class AuthController extends MainController
     public function create_new_account(): void
     {
         try {
-
             $authRepository = new AuthRepository();
             $authRepository->add_register(htmlspecialchars($_POST['firstname']), htmlspecialchars($_POST['lastname']), 2);
-            
 
             $this->connect_page();
         } catch (\Throwable $error) {

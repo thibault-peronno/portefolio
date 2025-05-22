@@ -10,21 +10,24 @@ class UserRepository
 {
     public function getUsers(): User
     {
-        $pdo = Database::getPDO();
-
-        $sql = "SELECT * FROM `users`";
-
-        $pdoStatement = $pdo->query($sql);
-
-        $currentUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-        $userModel = new User();
-
-        $userModel->set_id($currentUser["id"]);
-        $userModel->set_firstname($currentUser["firstname"]);
-        $userModel->set_lastname($currentUser["lastname"]);
-        $userModel->set_role_id($currentUser["roleId"]);
-
-        return $userModel;
+        try {
+            $pdo = Database::getPDO();
+            $sql = "SELECT * FROM `users`";
+    
+            $pdoStatement = $pdo->query($sql);
+    
+            $currentUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
+            
+            $userModel = new User();
+            $userModel->set_id($currentUser["id"]);
+            $userModel->set_firstname($currentUser["firstname"]);
+            $userModel->set_lastname($currentUser["lastname"]);
+            $userModel->set_role_id($currentUser["roleId"]);
+    
+            return $userModel;
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
     public function delete_user(User $userModel): bool

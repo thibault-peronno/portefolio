@@ -13,7 +13,6 @@ class AuthRepository
     public function get_register_by_login(string $mail, string $password): User | bool
     {
         try {
-            
             $pdo = Database::getPDO();
             /* ici avec 'mail', cela ne fonctionnait pas  */
             $sql = "SELECT * FROM `registers` INNER JOIN `users` ON registers.user_id = users.id WHERE mail = :mail";
@@ -22,7 +21,7 @@ class AuthRepository
             $pdoStatement->execute();
 
             $getUser = $pdoStatement->fetch(PDO::FETCH_ASSOC);
-            
+
             if (!$getUser) {
                 return false;
             }
@@ -30,7 +29,7 @@ class AuthRepository
             // comparer le mot de passe de $_POST avec le password stocké en base de données
             $authModel = new Auth();
             $isPasswordEqual = $this->is_password_equal($authModel->get_password());
-            if(!$isPasswordEqual) {
+            if (!$isPasswordEqual) {
                 return false;
             }
             $authModel->set_password($password);
@@ -70,7 +69,7 @@ class AuthRepository
         try {
             $pdo = Database::getPDO();
             $sql = "INSERT INTO `users` (`firstname`, `lastname`, `role_id`) VALUE(:firstname, :lastname, :roleId)";
-            
+
             $pdoStatement = $pdo->prepare($sql);
 
             $pdoStatement->bindValue(':firstname', $firstname);
@@ -84,7 +83,7 @@ class AuthRepository
                 $userModel->set_firstname($firstname);
                 $userModel->set_lastname($lastname);
                 $userModel->set_id($pdo->lastInsertId());
-            
+
                 $insertRegister = $this->is_register_added($userModel);
 
                 if ($insertRegister) {

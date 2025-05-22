@@ -70,7 +70,9 @@ class OrganizationsRepository
             // $organizationModel = new Organization();
             $pdo = Database::getPDO();
             $sql = "INSERT INTO `organizations` (`title`, `description`, `picture`) VALUES (:title, :description, :picture)";
+
             $pdoStatement = $pdo->prepare($sql);
+
             $pdoStatement->bindValue(':title',  $title, PDO::PARAM_STR);
             $pdoStatement->bindValue(':description',  $description, PDO::PARAM_STR);
             $pdoStatement->bindValue(':picture',  $picture, PDO::PARAM_STR);
@@ -98,6 +100,7 @@ class OrganizationsRepository
         try {
             $pdo = Database::getPDO();
             $sql = "UPDATE `organizations` SET `title` = :title, `description` = :description, `picture` = :picture WHERE id = :id";
+            
             $pdoStatement = $pdo->prepare($sql);
 
             $pdoStatement->bindParam(':title', $title, PDO::PARAM_STR);

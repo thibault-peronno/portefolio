@@ -11,9 +11,8 @@ class OrgaController extends CoreController
     {
 
         try {
-            $organizationsRepository = new OrganizationsRepository();
             $data = [];
-
+            $organizationsRepository = new OrganizationsRepository();
             $data['organizations'] = $organizationsRepository->get_organizations();
 
             $this->admin_page_to_display('admin-orgas', $data);
@@ -29,9 +28,8 @@ class OrgaController extends CoreController
     public function display_organization_page(array $idOrganization): void
     {
         try {
-            $organizationsRepository = new OrganizationsRepository();
             $data = [];
-
+            $organizationsRepository = new OrganizationsRepository();
             $data['organization'] = $organizationsRepository->get_organization_by_id($idOrganization["id"]);
 
             $this->admin_page_to_display('admin-orga', $data);
@@ -53,9 +51,6 @@ class OrgaController extends CoreController
     public function add_an_organization(): void
     {
         try {
-
-            $data = [];
-
             /* Inserte image : return true or an trow error */
             $imageHelper = new ImageHelper();
             $imageHelper->inserted_organization_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
@@ -81,11 +76,10 @@ class OrgaController extends CoreController
     public function display_edit_an_organization_page(array $idOrga): void
     {
         try {
-            $organizationsRepository = new OrganizationsRepository();
             $data = [];
+            $organizationsRepository = new OrganizationsRepository();
             $data['organization'] = $organizationsRepository->get_organization_by_id($idOrga['id']);
             $this->admin_page_to_display('admin-add-orga', $data);
-            
         } catch (\Throwable $error) {
             $data = [
                 "message" => $error->getMessage(),
@@ -95,20 +89,20 @@ class OrgaController extends CoreController
         }
     }
 
-    public function update_an_organization():void
+    public function update_an_organization(): void
     {
 
         try {
             $imageHelper = new ImageHelper();
             $isNoUpdateImage = $imageHelper->is_update_image($_FILES['picture']);
-            
+
             if (!$isNoUpdateImage) {
                 $imageHelper->inserted_organization_image($_FILES["picture"]["name"], $_FILES['picture']['tmp_name'], $_FILES['picture']['type']);
             }
-        
+
             $id = filter_input(INPUT_POST, 'id', FILTER_SANITIZE_SPECIAL_CHARS);
-            $title = filter_input(INPUT_POST,'title', FILTER_SANITIZE_SPECIAL_CHARS);
-            $description= filter_input(INPUT_POST,'description', FILTER_SANITIZE_SPECIAL_CHARS);
+            $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+            $description = filter_input(INPUT_POST, 'description', FILTER_SANITIZE_SPECIAL_CHARS);
 
             $picture = "";
             if (!$isNoUpdateImage) {
@@ -116,7 +110,7 @@ class OrgaController extends CoreController
             } else {
                 $picture = $_POST['picture'];
             }
-            
+
             $organizationsRepository = new OrganizationsRepository();
             $data = $organizationsRepository->update_an_organization($title, $description, $picture, $id);
 

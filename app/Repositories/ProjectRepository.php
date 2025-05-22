@@ -21,8 +21,8 @@ class ProjectRepository
             LEFT JOIN languages l ON pl.language_id = l.id
             GROUP BY p.id";
 
-
             $pdoStatement = $pdo->query($sql);
+
             $allProjects = $pdoStatement->fetchAll(PDO::FETCH_ASSOC);
 
             /* foreach($getProjects as &$getProject){
@@ -65,6 +65,7 @@ class ProjectRepository
             GROUP BY p.id";
 
             $pdoStatement = $pdo->query($sql);
+
             $getProject = $pdoStatement->fetch(PDO::FETCH_ASSOC);
 
             $projectModel = new Project();
@@ -90,10 +91,9 @@ class ProjectRepository
 
     public function add_a_project(string $title, string $description, string $url, string $picture, string $organization_id, $languages): array
     {
-        $pdo = Database::getPDO();
-        $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :picture, :organizationId)";
-
         try {
+            $pdo = Database::getPDO();
+            $sql = "INSERT INTO `projects` (`title`, `description`, `url`, `picture`, `organization_id`) VALUES (:title, :description, :url, :picture, :organizationId)";
             /*  La méthode prepare() de PDO est utilisée pour préparer une requête SQL pour son exécution, en créant un objet PDOStatement qui permet de lier des valeurs aux placeholders de la requête et d'exécuter la requête de manière sécurisée, évitant ainsi les injections SQL
              */
             $pdoStatement = $pdo->prepare($sql);
@@ -140,11 +140,12 @@ class ProjectRepository
     public function update_a_project(string $id, string $title, string $description, string $url, string $picture, string $organization_id, array $languages): array | Error
     {
 
-        $pdo = Database::getPDO();
-        $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
         try {
+            $pdo = Database::getPDO();
+            $sql = "UPDATE `projects` SET `title` = :title, `description` = :description, `url` = :url, `picture` = :picture, `organization_id` = :organizationId WHERE id = :projectId ";
+
             $pdoStatement = $pdo->prepare($sql);
-            // dd($this->title,$this->description, $this->url, $this->picture, $this->organization_id, $this->id);
+
             $pdoStatement->bindParam(':title', $title, PDO::PARAM_STR);
             $pdoStatement->bindParam(':description', $description, PDO::PARAM_STR);
             $pdoStatement->bindParam(':url', $url, PDO::PARAM_STR);
@@ -157,7 +158,7 @@ class ProjectRepository
             if ($insertedRows) {
                 $projectLanguageRepository = new ProjectLanguageRepository();
                 $deleteLanguages = $projectLanguageRepository->delete_languages_by_projects($id);
-                
+
                 $insertLanguages = false;
                 if ($deleteLanguages) {
                     foreach ($languages as $key => $value) {
@@ -170,7 +171,7 @@ class ProjectRepository
                         $insertLanguages = $projectLanguageRepository->add_languages_by_projects($projectLanguageModel);
                     }
                 }
-                if($insertLanguages) {
+                if ($insertLanguages) {
                     return [
                         "message" => "La mise à jour a réussie.",
                         "succeeded" => true,
