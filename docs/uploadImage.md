@@ -1,6 +1,11 @@
 # Comment stocker une image depuis un formulaire
 
-Pour gérer l'upload d'une image via un formulaire PHP en méthode POST, vous avez deux options principales pour stocker l'image : soit dans une base de données, soit dans un dossier sur le serveur. Chacune de ces méthodes a ses avantages et ses inconvénients, et le choix dépend de vos besoins spécifiques.
+Pour gérer l'upload d'une image via un formulaire PHP en méthode POST, vous avez deux options principales pour stocker l'image
+
+- soit dans une base de données,
+- soit dans un dossier sur le serveur.
+
+Chacune de ces méthodes a ses avantages et ses inconvénients, et le choix dépend de vos besoins spécifiques.
 
 ## Stocker l'image dans une base de données
 
@@ -28,12 +33,13 @@ Intégrité des données : Si une image est supprimée ou déplacée, cela peut 
 
 ## Comment procéder
 
-### Upload de l'image : 
+### Upload de l'image :
 
-Utilisez la méthode move_uploaded_file() pour déplacer l'image téléchargée vers un dossier sur le serveur. Assurez-vous de vérifier la taille, le type de fichier et d'autres propriétés de l'image pour des raisons de sécurité 3.
+Utilisez la méthode `move_uploaded_file()` pour déplacer l'image téléchargée vers un dossier sur le serveur. Assurez-vous de vérifier la taille, le type de fichier et d'autres propriétés de l'image pour des raisons de sécurité.
+
 Stockage dans la base de données : Si vous choisissez de stocker l'image dans la base de données, vous pouvez stocker le chemin de l'image ou les données binaires de l'image dans une colonne BLOB. Cependant, cette approche est généralement déconseillée pour les raisons de performance et de gestion des fichiers mentionnées ci-dessus.
 
-### Stockage dans un dossier : 
+### Stockage dans un dossier :
 
 Si vous choisissez de stocker l'image dans un dossier, stockez simplement le chemin de l'image dans la base de données. Cela permet de récupérer facilement l'image via son URL.
 Voici un exemple simplifié de code pour l'upload d'une image et son stockage dans un dossier :

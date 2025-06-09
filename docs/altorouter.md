@@ -40,10 +40,10 @@ You need to read the documentation of Altorouter
    ],
    'projets',
  );
- 
+
 
 /**
- * This way, does not work in our file. But you can find this way on documentation
+ * This way, does not work in our router file. But you can find this way on documentation
  * $router->map(
  *   'GET', '/bo-ajouter-technologie', 'LanguageController#addTechnoPage', 'bo-ajouter-technologie',
  * );
@@ -89,7 +89,7 @@ dump($match);
 
 /**
  * If $match method from altorouter does not find the route, you have false. So we add a condition.
- * Is to test, and if the match is ok, we store in variable, the controller and the methos. Also, the params.
+ * if the match is ok, we store in variable, the controller, the method and the params.
  */
 if ($match !== false) {
   // We retreive the controller that matched, from the $match array
@@ -99,18 +99,16 @@ if ($match !== false) {
   // We retreive the params that matched, from the $match array
   $params = $match['params'];
 /**
- * Her is when you use global to call $router variable
- * 
+ * Here is when you use global to call $router variable
+ *
  * We create our object controller
  * $controller = new $controllerMatch;
  * dump($controller);
  * And we call the method
  * $controller->$method($params);
- * Instance of CoreController
+ * Instance of CoreControlleralso, because it is extends.
 
  */
-
-  // Instance of CoreController also, because it is extends.
 
   $controller = new $controllerMatch($router);
   dump($controller);
